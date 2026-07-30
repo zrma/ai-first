@@ -22,6 +22,9 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 repository overlay를 결정적으로 합성하고, central framework check와 standalone
 consumer drift check가 같은 lock을 검증한다.
 
+Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증한
+상태이며, 현재는 서로 다른 특성의 대표 소비 저장소 pilot을 진행한다.
+
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.
 
@@ -45,7 +48,7 @@ consumer drift check가 같은 lock을 검증한다.
 - architecture와 합성 경계: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
-- 현재 milestone: [`docs/todo-public-foundation/spec.md`](docs/todo-public-foundation/spec.md)
+- 현재 milestone: [`docs/todo-representative-pilots/spec.md`](docs/todo-representative-pilots/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)
 

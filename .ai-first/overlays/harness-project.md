@@ -21,5 +21,5 @@
 - Direction: `docs/roadmap.md`.
 - Completed milestones: `docs/completed-milestones.md`.
 - Publication policy: `docs/PUBLICATION.md`.
-- Active milestone: `docs/todo-public-foundation/spec.md`.
+- Active milestone: `docs/todo-representative-pilots/spec.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

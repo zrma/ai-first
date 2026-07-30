@@ -19,14 +19,14 @@ standalone fixture를 구현하고 이 저장소 자체에 적용한다.
 repository gate, machine-local publication gate, CI와 license를 닫고 공개 remote에서
 branch, SHA와 terminal CI를 검증한다.
 
-상태: 진행 중
+상태: 완료
 
 ## Stage 3 — Representative pilots
 
 서로 다른 개발·운영·위험 특성을 가진 대표 소비 저장소에 전용 migration workspace로
 도입한다. repository-native gate와 project identity 보존을 확인한다.
 
-상태: 미착수
+상태: 진행 중
 
 ## Stage 4 — Stable v1
 

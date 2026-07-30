@@ -20,3 +20,14 @@ synthetic consumer fixture가 동일 입력의 결정성, manual output와 overl
 unsafe path, symlink escape와 framework checkout 없는 standalone 검증을 증명한다.
 
 검증: `scripts/check.sh`
+
+## Public foundation
+
+`Apache-2.0` license, public README/contribution/security policy, least-privilege CI와
+repository publication checker를 구성했다.
+
+repository gate와 권한 있는 machine-local `all` gate를 통과한 동일 commit을 public
+`main`에 게시하고 visibility, default branch, local/remote equality와 Python
+3.11/3.14 terminal CI를 검증했다. private vulnerability reporting도 활성화했다.
+
+검증: `scripts/check.sh`, public remote metadata와 terminal CI

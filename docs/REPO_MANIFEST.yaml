@@ -14,7 +14,7 @@ entrypoints:
   publication: docs/PUBLICATION.md
 
 active_work_glob: docs/todo-*/spec.md
-active_work: docs/todo-public-foundation/spec.md
+active_work: docs/todo-representative-pilots/spec.md
 required_todo_files:
   - spec.md
   - open-questions.md
@@ -34,7 +34,10 @@ ci:
 publication:
   content_standard: public-ready
   remote: https://github.com/zrma/ai-first
-  remote_status: configured-public
+  remote_status: published-public
+  default_branch: main
+  ci_status: passing
+  private_vulnerability_reporting: enabled
   license_status: Apache-2.0
   policy: docs/PUBLICATION.md
 

@@ -28,7 +28,9 @@ for required_file in \
   docs/todo-bootstrap-core/spec.md \
   docs/todo-bootstrap-core/open-questions.md \
   docs/todo-public-foundation/spec.md \
-  docs/todo-public-foundation/open-questions.md; do
+  docs/todo-public-foundation/open-questions.md \
+  docs/todo-representative-pilots/spec.md \
+  docs/todo-representative-pilots/open-questions.md; do
   [ -s "$required_file" ] || fail "missing or empty $required_file"
 done
 

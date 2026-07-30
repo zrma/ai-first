@@ -37,6 +37,7 @@ remote 생성, visibility 변경, push, tag와 release는 각각 외부 write다
 
 ## 현재 상태
 
-- remote: 빈 public repository 생성 및 visibility 확인
+- remote: public `main` publication, default branch와 commit equality 확인
 - license: `Apache-2.0`
-- publication: 최초 push 전 gate 진행 중
+- security reporting: GitHub private vulnerability reporting 활성화
+- publication: local/repository/machine-local gate와 terminal CI 통과

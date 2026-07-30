@@ -58,7 +58,7 @@
 
 ## Repository Overlay
 
-- 현재 milestone은 `docs/todo-public-foundation/`이 소유한다.
+- 현재 milestone은 `docs/todo-representative-pilots/`가 소유한다.
 - framework core는 model/vendor 중립적으로 유지하고 model별 지침은 교체 가능한
   capability profile로 둔다.
 - 소비 저장소는 framework version을 pin하고 생성된 artifact를 tracked 상태로

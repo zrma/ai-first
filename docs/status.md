@@ -11,17 +11,19 @@
 - framework self-hosting render/check
 - standalone consumer fixture와 lock drift 검증
 - repository-local publication boundary checker
+- `Apache-2.0` license와 public repository foundation
+- public `main`, commit equality, default branch와 Python 3.11/3.14 CI 검증
+- private vulnerability reporting 활성화
 
 ## 진행 중
 
-- public repository foundation과 CI
-- 최초 remote publication evidence
+- representative pilot adoption
+- pilot에서 발견되는 common contract와 repository overlay 경계 고도화
 
 ## 미착수
 
 - 추가 versioned profile catalog
 - adoption/update/migration command
-- representative pilot adoption
 - stable v1 contract
 
 ## 결정 필요

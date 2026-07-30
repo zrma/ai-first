@@ -2,7 +2,8 @@
 
 ## 현재 단계
 
-`ai-first`는 self-hosting core를 완료하고 public foundation 단계에 있다.
+`ai-first`는 self-hosting core와 public foundation을 완료하고 representative pilot
+단계에 있다.
 
 `0.1.0-dev` 선언, core, `vcs-jj`/`public-repository` profile, repository overlay,
 deterministic render, content-addressed lock, central drift check와 standalone checker가
@@ -11,18 +12,18 @@ drift를 검증한다.
 
 ## 현재 milestone
 
-`docs/todo-public-foundation/spec.md`
+`docs/todo-representative-pilots/spec.md`
 
-목표는 license, CI, publication gate와 public remote evidence를 닫아 framework를
-안전하게 공개하는 것이다.
+목표는 서로 다른 개발·운영·위험 특성의 소비 저장소에서 dedicated migration
+workspace, pinned core, repository overlay와 native gate를 검증하는 것이다.
 
 ## 시작 순서
 
 1. `jj status`
 2. `docs/AI_FIRST_CHARTER.md`
 3. `docs/ARCHITECTURE.md`
-4. `docs/todo-public-foundation/spec.md`
-5. `docs/todo-public-foundation/open-questions.md`
+4. `docs/todo-representative-pilots/spec.md`
+5. `docs/todo-representative-pilots/open-questions.md`
 6. `scripts/check.sh`
 
 ## 현재 검증
@@ -33,9 +34,10 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: public repository 생성, 최초 push 전
+- remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
-- 최초 public publish: repository gate와 machine-local inventory gate 통과 필요
+- CI: Python 3.11/3.14 success
+- private vulnerability reporting: enabled
 
 ## 보호 경계
 

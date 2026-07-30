@@ -1,6 +1,6 @@
 # Public Foundation
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -48,3 +48,12 @@ CI를 별도 확인한다.
 - owner가 `Apache-2.0`을 선택했으며 tracked license와 manifest에 반영한다.
 - public remote 생성과 최초 push는 이 milestone의 명시적 publication action이다.
 - stable release/tag는 별도 milestone이다.
+
+## 완료 evidence
+
+- canonical local gate와 repository publication checker 통과
+- 권한 있는 machine-local checker의 `all` mode 통과
+- public visibility, `main` default branch와 local/remote commit equality 확인
+- Python 3.11/3.14 terminal CI success
+- GitHub private vulnerability reporting 활성화
+- clean local working copy 확인
