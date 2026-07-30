@@ -127,5 +127,5 @@ rule, profile, schema validation, fixture 또는 repository overlay에 기계화
 - Completed representative pilots: `docs/todo-representative-pilots/spec.md`.
 - Completed stable v1: `docs/todo-stable-v1/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
-- Active milestone: `docs/todo-portfolio-adoption/spec.md`.
+- Completed portfolio adoption: `docs/todo-portfolio-adoption/spec.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

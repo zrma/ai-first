@@ -2,8 +2,8 @@
 
 ## 현재 단계
 
-`ai-first`는 self-hosting core, public foundation, representative pilot과 stable
-`v1.0.0` release를 완료하고 portfolio adoption 단계에 있다.
+`ai-first`는 self-hosting core, public foundation, representative pilot, stable
+`v1.0.0` release와 승인된 소비 저장소 집합의 portfolio adoption을 완료했다.
 
 `1.0.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
@@ -12,10 +12,12 @@ check와 standalone checker가 동작한다. synthetic consumer fixture가 centr
 
 ## 현재 milestone
 
-`docs/todo-portfolio-adoption/spec.md`
+활성 milestone 없음.
 
-목표는 승인된 소비 저장소 집합을 stable release pin과 repository-owned overlay 위에
-저장소별 독립 change로 정립하는 것이다.
+완료된 Stage 5의 contract와 aggregate evidence는
+`docs/todo-portfolio-adoption/spec.md`에 있다. 다음 versioned profile 또는
+adoption tooling은 둘 이상의 독립 소비 저장소에서 반복 evidence가 생길 때 별도
+milestone으로 시작한다.
 
 ## 시작 순서
 
@@ -23,8 +25,8 @@ check와 standalone checker가 동작한다. synthetic consumer fixture가 centr
 2. `docs/AI_FIRST_CHARTER.md`
 3. `docs/ARCHITECTURE.md`
 4. `docs/COMPATIBILITY.md`
-5. `docs/todo-portfolio-adoption/spec.md`
-6. `docs/todo-portfolio-adoption/open-questions.md`
+5. `docs/status.md`
+6. task-relevant active `docs/todo-*/spec.md`와 `open-questions.md`가 있으면 해당 문서
 7. `scripts/check.sh`
 
 ## 현재 검증

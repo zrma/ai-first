@@ -24,7 +24,8 @@ consumer drift check가 같은 lock을 검증한다.
 
 Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증했고
 대표 소비 흐름의 도입과 publication도 닫았다. signed annotated `v1.0.0` release와
-remote tag identity를 검증했으며 현재는 stable v1 기반 portfolio adoption을 진행한다.
+remote tag identity를 검증했다. 승인된 소비 저장소 집합의 stable v1 도입도
+repository별 gate, remote equality와 terminal CI까지 완료했다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.
@@ -54,7 +55,7 @@ remote tag identity를 검증했으며 현재는 stable v1 기반 portfolio adop
   [`docs/todo-representative-pilots/spec.md`](docs/todo-representative-pilots/spec.md)
 - 완료된 stable v1:
   [`docs/todo-stable-v1/spec.md`](docs/todo-stable-v1/spec.md)
-- 현재 milestone:
+- 완료된 portfolio adoption:
   [`docs/todo-portfolio-adoption/spec.md`](docs/todo-portfolio-adoption/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)

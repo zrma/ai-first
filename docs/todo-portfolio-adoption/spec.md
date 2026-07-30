@@ -1,6 +1,6 @@
 # Portfolio Adoption
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -42,6 +42,17 @@ python3 .ai-first/check.py
 ```
 
 각 소비 저장소에서는 repository-owned canonical/publication gate를 추가로 실행한다.
+
+## Completion Evidence
+
+- 승인된 각 대상이 stable `v1.0.0` release와 verified source commit을 lock에
+  기록했다.
+- repository-owned overlay, generated standalone artifact와 native canonical gate를
+  저장소별 독립 change로 검증했다.
+- publication class에 맞는 경계 검사, remote default-branch equality와 same-SHA
+  terminal CI를 각 대상에서 확인했다.
+- 대상 inventory, local checkout과 진행 원문은 machine-local coordination에만
+  남기고 이 공개 framework에는 기록하지 않았다.
 
 ## Decision boundaries
 

@@ -19,10 +19,12 @@
 - native Git metadata gate를 보존하는 VCS-isolated checkout fallback
 - stable `1.0.0` compatibility/source identity contract
 - signed annotated `v1.0.0`과 remote tag/commit equality
+- 승인된 소비 저장소 집합의 stable v1 portfolio adoption, 저장소별 publication과
+  terminal CI
 
 ## 진행 중
 
-- stable v1 portfolio adoption
+- 없음
 
 ## 미착수
 

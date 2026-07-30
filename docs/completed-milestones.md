@@ -55,3 +55,16 @@ tag를 게시했다. local/remote tag object, peeled commit과 서명을 확인�
 release-source consumer render 및 standalone check를 통과시켰다.
 
 검증: `scripts/check.sh`, signed tag verification, remote tag identity, terminal CI
+
+## Portfolio adoption
+
+승인된 소비 저장소 집합을 stable `v1.0.0` pin, repository-owned overlay와 generated
+standalone artifact 위에 저장소별 독립 change로 정립했다.
+
+각 대상의 native canonical gate와 publication class를 보존하고 remote default-branch
+commit equality 및 same-SHA terminal CI까지 독립적으로 확인했다. 대상 inventory,
+local checkout과 진행 원문은 machine-local coordination에만 남겨 공개 framework의
+tracked artifact 경계를 유지했다.
+
+검증: `scripts/check.sh`, 소비 저장소별 canonical/publication gate, remote equality와
+terminal CI
