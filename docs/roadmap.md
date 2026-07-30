@@ -23,17 +23,17 @@ branch, SHA와 terminal CI를 검증한다.
 
 ## Stage 3 — Representative pilots
 
-서로 다른 개발·운영·위험 특성을 가진 대표 소비 저장소에 전용 migration workspace로
-도입한다. repository-native gate와 project identity 보존을 확인한다.
+서로 다른 개발·운영·위험 특성을 가진 대표 소비 저장소에 VCS-isolated migration
+checkout으로 도입한다. repository-native gate와 project identity 보존을 확인한다.
 
-상태: 진행 중
+상태: 완료
 
 ## Stage 4 — Stable v1
 
 pilot evidence를 반영해 schema, profile, migration contract와 compatibility policy를
 안정화하고 versioned v1을 공개한다.
 
-상태: 미착수
+상태: 진행 중
 
 ## Stage 5 — Portfolio adoption
 

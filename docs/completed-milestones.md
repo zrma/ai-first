@@ -7,7 +7,7 @@ AI-first를 command-only assistance가 아닌 active project stewardship로 정�
 project manager로 참여한다.
 
 identity, core, capability profile, repository overlay와 machine-private overlay를
-분리하고 소비 저장소의 독립 실행 및 dedicated migration workspace 계약을 고정했다.
+분리하고 소비 저장소의 독립 실행 및 VCS-isolated migration checkout 계약을 고정했다.
 
 검증: `scripts/check.sh`
 
@@ -31,3 +31,15 @@ repository gate와 권한 있는 machine-local `all` gate를 통과한 동일 co
 3.11/3.14 terminal CI를 검증했다. private vulnerability reporting도 활성화했다.
 
 검증: `scripts/check.sh`, public remote metadata와 terminal CI
+
+## Representative pilots
+
+서로 다른 개발·운영·publication class의 대표 흐름에서 pinned core, generated
+artifact, repository overlay와 standalone drift check를 도입했다.
+
+각 repository-native canonical gate와 publication boundary를 보존하고 remote commit
+equality와 terminal CI까지 독립적으로 검증했다. native gate가 실제 Git worktree
+metadata를 요구할 때는 Git-backed isolated checkout을 colocated `jj`로 관리하는
+fallback과 repository-owned todo/closure lifecycle 보존 규칙을 framework에 환류했다.
+
+검증: framework self-hosting gate, 소비 저장소 canonical gate와 terminal CI

@@ -35,6 +35,18 @@ class AiFirstTest(unittest.TestCase):
             b"- Publication boundary check: `scripts/check-publication-boundary.py`.",
             first.outputs["docs/agent-harness.md"],
         )
+        self.assertIn(
+            b"VCS-isolated checkout",
+            first.outputs["docs/agent-harness.md"],
+        )
+        self.assertIn(
+            b"Git-backed checkout",
+            first.outputs["AGENTS.md"],
+        )
+        self.assertIn(
+            b"repository-native gate",
+            first.outputs["docs/agent-harness.md"],
+        )
 
         changed = render_repository(root, FRAMEWORK_ROOT)
         self.assertEqual(

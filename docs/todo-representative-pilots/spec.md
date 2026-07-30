@@ -1,6 +1,6 @@
 # Representative Pilots
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -9,7 +9,7 @@ repository-owned overlay가 실제 작업 흐름을 보존하며 동작하는지
 
 ## In scope
 
-- 각 소비 저장소의 기본 working copy와 분리된 `jj workspace`
+- 각 소비 저장소의 기본 working copy와 분리된 VCS-isolated migration checkout
 - framework version, immutable source revision과 input digest를 고정한 tracked lock
 - 저장소 목적, source of truth, domain invariant와 native gate를 보존하는 overlay
 - central framework checkout 없이 동작하는 generated artifact와 standalone check
@@ -31,6 +31,18 @@ repository-owned overlay가 실제 작업 흐름을 보존하며 동작하는지
 4. 각 저장소의 canonical native gate가 도입 후에도 통과한다.
 5. framework에 환류한 변경은 synthetic regression과 self-hosting gate로 검증한다.
 6. pilot별 publication은 framework publication과 분리된 explicit boundary로 취급한다.
+
+## Outcome
+
+- 서로 다른 개발·운영·publication class를 가진 대표 흐름에서 generated artifact,
+  immutable source pin, repository overlay와 standalone check를 검증했다.
+- repository-native canonical gate, publication boundary, remote commit equality와
+  terminal CI를 저장소별로 독립 검증했다.
+- native gate가 실제 Git worktree metadata를 요구하는 경우를 위해 순수
+  `jj workspace` 우선, Git-backed isolated checkout fallback 계약을 framework에
+  환류했다.
+- repository-owned work-start, todo closure와 lessons lifecycle은 framework가
+  대체하지 않는다는 원칙을 core에 환류했다.
 
 ## Verification
 

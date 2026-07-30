@@ -15,18 +15,18 @@
 - public `main`, commit equality, default branch와 Python 3.11/3.14 CI 검증
 - private vulnerability reporting 활성화
 - OpenAI-specific model/prompt delta를 core와 분리한 capability profile
+- representative pilot adoption과 저장소별 publication/terminal CI
+- native Git metadata gate를 보존하는 VCS-isolated checkout fallback
 
 ## 진행 중
 
-- representative pilot adoption
-- pilot에서 발견되는 common contract와 repository overlay 경계 고도화
+- stable v1 compatibility, adoption/update와 release contract
 
 ## 미착수
 
 - 추가 versioned profile catalog
-- adoption/update/migration command
-- stable v1 contract
+- portfolio adoption
 
 ## 결정 필요
 
-- stable release의 CLI distribution format
+없음.

@@ -30,7 +30,9 @@ for required_file in \
   docs/todo-public-foundation/spec.md \
   docs/todo-public-foundation/open-questions.md \
   docs/todo-representative-pilots/spec.md \
-  docs/todo-representative-pilots/open-questions.md; do
+  docs/todo-representative-pilots/open-questions.md \
+  docs/todo-stable-v1/spec.md \
+  docs/todo-stable-v1/open-questions.md; do
   [ -s "$required_file" ] || fail "missing or empty $required_file"
 done
 
@@ -102,8 +104,10 @@ grep -Fq -- 'AI는 command-only assistant가 아니라' AGENTS.md ||
   fail "AI-first identity is missing from AGENTS.md"
 grep -Fq -- '방향지시자, 동반자와 project manager' docs/AI_FIRST_CHARTER.md ||
   fail "human role is missing from the charter"
-grep -Fq -- '전용 migration workspace' docs/ARCHITECTURE.md ||
-  fail "migration workspace boundary is missing"
+grep -Fq -- 'VCS-isolated migration checkout' docs/ARCHITECTURE.md ||
+  fail "VCS-isolated migration checkout boundary is missing"
+grep -Fq -- 'Git-backed checkout' framework/profiles/vcs-jj/AGENTS.md ||
+  fail "Git metadata fallback is missing from vcs-jj profile"
 grep -Fq -- '`gpt-5.6-sol`' AGENTS.md ||
   fail "current OpenAI model guidance is missing"
 grep -Fq -- '"source_kind": "development"' .ai-first.lock ||

@@ -76,7 +76,9 @@ docs/agent-harness.md
 framework update는 다음 transaction으로 처리한다.
 
 1. 대상 저장소의 상태, active workspace와 publication class를 읽는다.
-2. 기본 workspace가 아닌 전용 migration workspace를 만든다.
+2. 기본 working copy 밖에 VCS-isolated migration checkout을 만든다. `jj workspace`를
+   우선하되 repository-native gate가 실제 Git worktree metadata를 요구하면 격리된
+   Git-backed checkout을 colocated `jj`로 관리한다.
 3. 목표 framework version, immutable source revision과 profile을 선택한다.
 4. core, profile과 overlay를 결정적으로 합성한다.
 5. lock과 generated output diff를 검토한다.
@@ -85,6 +87,8 @@ framework update는 다음 transaction으로 처리한다.
 8. 통합, push와 release는 저장소별 권한 경계에서 수행한다.
 
 여러 저장소를 하나의 원자적 change나 일괄 push로 취급하지 않는다.
+격리를 위해 repository-native gate를 생략하거나 완화하지 않으며, 작업 시작·todo
+마감·교훈 이관 같은 저장소 고유 lifecycle도 기존 계약대로 닫는다.
 
 ## Framework repository
 

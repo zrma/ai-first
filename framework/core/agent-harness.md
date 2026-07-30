@@ -12,7 +12,8 @@
 ## Execution Loop
 
 1. working copy, handoff/status/roadmap와 활성 todo를 읽는다.
-2. 이번 slice의 goal, acceptance, non-goal, 검증과 decision boundary를 고정한다.
+2. repository가 요구하는 work-start, todo와 finalize lifecycle을 먼저 적용하고 이번
+   slice의 goal, acceptance, non-goal, 검증과 decision boundary를 고정한다.
 3. fixture 또는 failing check에서 시작해 가장 작은 vertical slice를 구현한다.
 4. focused verification에서 repository canonical gate까지 위험에 비례해 넓힌다.
 5. 사용자 표면, artifact, runtime 또는 remote 중 목표와 같은 계층의 evidence를 확인한다.
@@ -25,6 +26,7 @@
 - test, runtime behavior, generated artifact, remote ref와 terminal CI 중 목표에 맞는
   최종 evidence를 확인한다.
 - mutating check 뒤에는 working copy를 다시 읽고 범위 밖 생성물을 분리한다.
+- framework 도입도 repository-native gate와 작업 마감 증거를 대체하지 않는다.
 - 검증을 실행하지 못하면 누락 이유와 가장 강한 대체 evidence를 명시한다.
 
 ## Escalation

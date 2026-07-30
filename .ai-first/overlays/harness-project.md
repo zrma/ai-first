@@ -20,6 +20,7 @@
 - Current state: `docs/status.md`.
 - Direction: `docs/roadmap.md`.
 - Completed milestones: `docs/completed-milestones.md`.
+- Completed representative pilots: `docs/todo-representative-pilots/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
-- Active milestone: `docs/todo-representative-pilots/spec.md`.
+- Active milestone: `docs/todo-stable-v1/spec.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.
