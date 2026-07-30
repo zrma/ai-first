@@ -86,13 +86,16 @@ def tracked_files(root: Path) -> list[str]:
         ["git", "ls-files"],
     )
     for command in commands:
-        completed = subprocess.run(
-            command,
-            cwd=root,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
+        try:
+            completed = subprocess.run(
+                command,
+                cwd=root,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        except FileNotFoundError:
+            continue
         if completed.returncode == 0:
             return sorted(line for line in completed.stdout.splitlines() if line)
     raise RuntimeError("cannot list tracked files with jj or git")

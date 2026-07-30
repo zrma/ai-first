@@ -1,6 +1,6 @@
 {
   "framework": {
-    "digest": "017a02fde026bdfda89a627ee3c0912e9ec689cc0a7653d2a06ffb006aeeef91",
+    "digest": "a398afcd887ad6459d3f423781dc369cdc84307ec114a95226375b4fe41fe3eb",
     "source_kind": "development",
     "version": "0.1.0-dev"
   },
@@ -16,7 +16,7 @@
     "src/ai_first/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "src/ai_first/cli.py": "432cd5b48ddf64a23fcb567db84b509948b6d9049deb90002f34535ed6586f82",
     "src/ai_first/config.py": "83fe4f9318e2a8a469fcdcb1a27e415672f0ef22d642fbbb1a1ce1fe8fc0c663",
-    "src/ai_first/publication.py": "c84c577f67d7a60584b0aa1ca840f76ab3c0157d8d2fcd0b07d701b96a7e10b4",
+    "src/ai_first/publication.py": "af2beb3e18671267cb8fb1908239f4073abe8bb86121b01a19f96005b5cc24b6",
     "src/ai_first/render.py": "b12ae1573a93dd44cfa3a3d330a70b64e9b3fd16ccd8a5cc574dd9adbd757291"
   },
   "outputs": {
