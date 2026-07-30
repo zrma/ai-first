@@ -32,7 +32,9 @@ for required_file in \
   docs/todo-representative-pilots/spec.md \
   docs/todo-representative-pilots/open-questions.md \
   docs/todo-stable-v1/spec.md \
-  docs/todo-stable-v1/open-questions.md; do
+  docs/todo-stable-v1/open-questions.md \
+  docs/todo-portfolio-adoption/spec.md \
+  docs/todo-portfolio-adoption/open-questions.md; do
   [ -s "$required_file" ] || fail "missing or empty $required_file"
 done
 

@@ -15,7 +15,7 @@ entrypoints:
   publication: docs/PUBLICATION.md
 
 active_work_glob: docs/todo-*/spec.md
-active_work: docs/todo-stable-v1/spec.md
+active_work: docs/todo-portfolio-adoption/spec.md
 required_todo_files:
   - spec.md
   - open-questions.md
@@ -40,6 +40,7 @@ publication:
   ci_status: passing
   private_vulnerability_reporting: enabled
   license_status: Apache-2.0
+  stable_release: v1.0.0
   policy: docs/PUBLICATION.md
 
 vcs:

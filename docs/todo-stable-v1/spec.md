@@ -1,6 +1,6 @@
 # Stable v1
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -42,8 +42,9 @@ python3 .ai-first/check.py
 - 완료: compatibility policy, `1.0.0` self-hosting identity, annotated release tag
   validation, verified `source_commit` lock, Python 3.11-compatible unit/self-hosting gate.
 - local: `scripts/check.sh`, 16 synthetic/publication tests green.
-- 대기: public release-ready commit의 terminal CI, signed `v1.0.0` tag publication과
-  remote identity 검증.
+- 완료: public release-ready commit의 Python 3.11/3.14 terminal CI, signed annotated
+  `v1.0.0` tag publication, remote tag object/peeled commit equality와 실제
+  release-source render/standalone 검증.
 
 ## Decision boundaries
 

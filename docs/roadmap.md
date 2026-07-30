@@ -33,7 +33,7 @@ checkout으로 도입한다. repository-native gate와 project identity 보존�
 pilot evidence를 반영해 schema, profile, migration contract와 compatibility policy를
 안정화하고 versioned v1을 공개한다.
 
-상태: 진행 중
+상태: 완료
 
 ## Stage 5 — Portfolio adoption
 
@@ -41,4 +41,4 @@ pilot evidence를 반영해 schema, profile, migration contract와 compatibility
 소비 저장소의 inventory나 account-wide 진행 상태를 공개 tracked artifact로
 소유하지 않는다.
 
-상태: 미착수
+상태: 진행 중

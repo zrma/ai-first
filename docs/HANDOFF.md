@@ -2,8 +2,8 @@
 
 ## 현재 단계
 
-`ai-first`는 self-hosting core, public foundation과 representative pilot을 완료하고
-stable v1 정립 단계에 있다.
+`ai-first`는 self-hosting core, public foundation, representative pilot과 stable
+`v1.0.0` release를 완료하고 portfolio adoption 단계에 있다.
 
 `1.0.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
@@ -12,10 +12,10 @@ check와 standalone checker가 동작한다. synthetic consumer fixture가 centr
 
 ## 현재 milestone
 
-`docs/todo-stable-v1/spec.md`
+`docs/todo-portfolio-adoption/spec.md`
 
-목표는 pilot에서 확인한 VCS isolation, repository-native lifecycle과 publication
-evidence를 첫 stable compatibility/release contract로 고정하는 것이다.
+목표는 승인된 소비 저장소 집합을 stable release pin과 repository-owned overlay 위에
+저장소별 독립 change로 정립하는 것이다.
 
 ## 시작 순서
 
@@ -23,8 +23,8 @@ evidence를 첫 stable compatibility/release contract로 고정하는 것이다.
 2. `docs/AI_FIRST_CHARTER.md`
 3. `docs/ARCHITECTURE.md`
 4. `docs/COMPATIBILITY.md`
-5. `docs/todo-stable-v1/spec.md`
-6. `docs/todo-stable-v1/open-questions.md`
+5. `docs/todo-portfolio-adoption/spec.md`
+6. `docs/todo-portfolio-adoption/open-questions.md`
 7. `scripts/check.sh`
 
 ## 현재 검증
@@ -38,6 +38,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 - remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
 - CI: Python 3.11/3.14 success
+- stable release: signed annotated `v1.0.0`, remote tag/commit equality verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

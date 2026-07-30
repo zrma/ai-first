@@ -33,6 +33,7 @@ required_links = {
         "docs/PUBLICATION.md",
         "docs/todo-representative-pilots/spec.md",
         "docs/todo-stable-v1/spec.md",
+        "docs/todo-portfolio-adoption/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -46,6 +47,7 @@ required_links = {
         "docs/REPO_MANIFEST.yaml",
         "docs/todo-representative-pilots/spec.md",
         "docs/todo-stable-v1/spec.md",
+        "docs/todo-portfolio-adoption/spec.md",
     ],
 }
 

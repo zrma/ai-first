@@ -17,15 +17,16 @@
 - OpenAI-specific model/prompt delta를 core와 분리한 capability profile
 - representative pilot adoption과 저장소별 publication/terminal CI
 - native Git metadata gate를 보존하는 VCS-isolated checkout fallback
+- stable `1.0.0` compatibility/source identity contract
+- signed annotated `v1.0.0`과 remote tag/commit equality
 
 ## 진행 중
 
-- stable v1 compatibility, adoption/update와 release contract
+- stable v1 portfolio adoption
 
 ## 미착수
 
 - 추가 versioned profile catalog
-- portfolio adoption
 
 ## 결정 필요
 

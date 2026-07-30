@@ -43,3 +43,15 @@ metadata를 요구할 때는 Git-backed isolated checkout을 colocated `jj`로 �
 fallback과 repository-owned todo/closure lifecycle 보존 규칙을 framework에 환류했다.
 
 검증: framework self-hosting gate, 소비 저장소 canonical gate와 terminal CI
+
+## Stable v1
+
+framework/schema/Structure ID의 compatibility 축을 분리하고 `1.0.0` self-hosting
+identity를 고정했다. commit source와 stable annotated release source는 clean checkout
+및 실제 commit을 검증하고 lock에 `source_commit`을 기록한다.
+
+release-ready commit의 Python 3.11/3.14 CI를 확인한 뒤 signed annotated `v1.0.0`
+tag를 게시했다. local/remote tag object, peeled commit과 서명을 확인하고 실제
+release-source consumer render 및 standalone check를 통과시켰다.
+
+검증: `scripts/check.sh`, signed tag verification, remote tag identity, terminal CI
