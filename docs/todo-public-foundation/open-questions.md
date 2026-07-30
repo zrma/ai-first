@@ -2,13 +2,8 @@
 
 ## Blocking
 
-### License
-
-권장안은 `Apache-2.0`이다. 이 저장소는 reusable framework와 generator code를
-배포하므로 명시적인 patent grant와 기여 조건이 잘 맞는다.
-
-대안은 `MIT OR Apache-2.0` dual license다. 소비자의 선택 폭은 넓지만 문서와 package
-metadata에서 dual-license 표현을 지속적으로 관리해야 한다.
+없음. owner가 reusable framework와 generator code에 `Apache-2.0`을 적용하기로
+결정했다.
 
 ## Non-blocking
 

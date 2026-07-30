@@ -45,6 +45,6 @@ CI를 별도 확인한다.
 
 ## Decision boundaries
 
-- license는 owner decision이다.
+- owner가 `Apache-2.0`을 선택했으며 tracked license와 manifest에 반영한다.
 - public remote 생성과 최초 push는 이 milestone의 명시적 publication action이다.
 - stable release/tag는 별도 milestone이다.

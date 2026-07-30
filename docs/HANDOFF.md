@@ -34,7 +34,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 
 - tracked content class: `public`
 - remote: 미생성
-- license: 결정 필요
+- license: `Apache-2.0`
 - 최초 public publish: repository gate와 machine-local inventory gate 통과 필요
 
 ## 보호 경계

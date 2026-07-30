@@ -26,6 +26,11 @@ scripts/check.sh
 하나의 change는 하나의 독립적으로 설명·검증 가능한 목적만 가진다. public push나
 release 전에는 `docs/PUBLICATION.md`의 gate를 따른다.
 
+## 기여 license
+
+별도로 명시하지 않는 한, 제출한 기여는 프로젝트와 동일한 `Apache-2.0` 조건으로
+제공된다.
+
 ## 보안 문제
 
 보안 취약점은 public issue로 공개하지 말고 `SECURITY.md`의 private reporting 경로를

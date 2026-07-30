@@ -15,7 +15,6 @@
 ## 진행 중
 
 - public repository foundation과 CI
-- license decision
 - 최초 remote publication evidence
 
 ## 미착수
@@ -27,5 +26,4 @@
 
 ## 결정 필요
 
-- 최초 공개 전 license
 - stable release의 CLI distribution format

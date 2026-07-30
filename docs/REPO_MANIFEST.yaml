@@ -34,7 +34,7 @@ ci:
 publication:
   content_standard: public-ready
   remote_status: unconfigured
-  license_status: decision-required
+  license_status: Apache-2.0
   policy: docs/PUBLICATION.md
 
 vcs:

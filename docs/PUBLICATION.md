@@ -38,5 +38,5 @@ remote 생성, visibility 변경, push, tag와 release는 각각 외부 write다
 ## 현재 상태
 
 - remote: 미생성
-- license: 결정 필요
+- license: `Apache-2.0`
 - publication: 차단

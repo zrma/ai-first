@@ -63,5 +63,9 @@ scripts/ai-first check --repo .
 python3 .ai-first/check.py
 ```
 
-공개 remote와 license는 아직 확정되지 않았다. 최초 공개 전에는 repository
-publication gate와 권한 있는 machine-local private-inventory gate를 모두 실행한다.
+최초 공개 전에는 repository publication gate와 권한 있는 machine-local
+private-inventory gate를 모두 실행한다.
+
+## License
+
+이 프로젝트는 [Apache License 2.0](LICENSE)에 따라 배포된다.

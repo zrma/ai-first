@@ -13,6 +13,7 @@ fail() {
 for required_file in \
   AGENTS.md \
   CONTRIBUTING.md \
+  LICENSE \
   README.md \
   SECURITY.md \
   docs/AI_FIRST_CHARTER.md \

@@ -12,8 +12,14 @@ def require(text: str, needle: str, label: str) -> None:
 def main() -> int:
     workflow_path = Path(".github/workflows/ci.yml")
     dependabot_path = Path(".github/dependabot.yml")
+    license_path = Path("LICENSE")
+    readme_path = Path("README.md")
+    manifest_path = Path("docs/REPO_MANIFEST.yaml")
     workflow = workflow_path.read_text(encoding="utf-8")
     dependabot = dependabot_path.read_text(encoding="utf-8")
+    license_text = license_path.read_text(encoding="utf-8")
+    readme = readme_path.read_text(encoding="utf-8")
+    manifest = manifest_path.read_text(encoding="utf-8")
 
     require(workflow, "permissions:\n  contents: read", "read-only permissions missing")
     require(workflow, "persist-credentials: false", "checkout credentials persist")
@@ -35,6 +41,11 @@ def main() -> int:
 
     require(dependabot, "package-ecosystem: github-actions", "Actions updates missing")
     require(dependabot, "interval: monthly", "Actions update cadence drifted")
+
+    require(license_text, "Apache License", "Apache license heading missing")
+    require(license_text, "Version 2.0, January 2004", "Apache license version missing")
+    require(readme, "[Apache License 2.0](LICENSE)", "README license declaration missing")
+    require(manifest, "license_status: Apache-2.0", "manifest license drifted")
 
     for path in ("CONTRIBUTING.md", "SECURITY.md"):
         if not Path(path).is_file():
