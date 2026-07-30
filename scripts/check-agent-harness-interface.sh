@@ -12,7 +12,9 @@ fail() {
 
 for required_file in \
   AGENTS.md \
+  CONTRIBUTING.md \
   README.md \
+  SECURITY.md \
   docs/AI_FIRST_CHARTER.md \
   docs/ARCHITECTURE.md \
   docs/agent-harness.md \

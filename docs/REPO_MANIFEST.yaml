@@ -24,6 +24,12 @@ checks:
   harness: scripts/check-agent-harness-interface.sh
   generated: python3 .ai-first/check.py
   publication: scripts/check-publication-boundary.py
+  ci_contract: scripts/check-ci-contract.py
+
+ci:
+  workflow: .github/workflows/ci.yml
+  runner: ubuntu-24.04
+  python: ["3.11", "3.14"]
 
 publication:
   content_standard: public-ready

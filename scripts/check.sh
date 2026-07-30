@@ -9,6 +9,7 @@ python3 .ai-first/check.py
 scripts/check-agent-harness-interface.sh
 scripts/check-publication-boundary.py --self-test
 scripts/check-publication-boundary.py
+scripts/check-ci-contract.py
 
 sh -n scripts/check.sh
 sh -n scripts/check-agent-harness-interface.sh

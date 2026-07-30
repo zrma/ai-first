@@ -46,6 +46,8 @@ consumer drift check가 같은 lock을 검증한다.
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
 - 현재 milestone: [`docs/todo-public-foundation/spec.md`](docs/todo-public-foundation/spec.md)
+- 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 보안: [`SECURITY.md`](SECURITY.md)
 
 ## 검증
 
