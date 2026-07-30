@@ -29,6 +29,11 @@ class OutputPaths:
 
 
 @dataclass(frozen=True)
+class CheckPaths:
+    publication: str
+
+
+@dataclass(frozen=True)
 class Project:
     name: str
     objective: str
@@ -46,6 +51,7 @@ class Config:
     project: Project
     overlay: OverlayPaths
     output: OutputPaths
+    checks: CheckPaths
 
 
 def _table(data: dict[str, Any], name: str) -> dict[str, Any]:
@@ -185,6 +191,14 @@ def load_config(repo_root: Path) -> Config:
     if output_values & source_values:
         raise ConfigError("output paths must not overwrite configuration or overlays")
 
+    checks_data = _table(data, "checks")
+    checks = CheckPaths(
+        publication=safe_relative(
+            _string(checks_data, "publication"),
+            "checks.publication",
+        )
+    )
+
     for field, relative in (
         ("overlay.agents_first_read", overlay.agents_first_read),
         ("overlay.agents_project", overlay.agents_project),
@@ -193,6 +207,7 @@ def load_config(repo_root: Path) -> Config:
         ("output.harness", output.harness),
         ("output.standalone_check", output.standalone_check),
         ("output.lock", output.lock),
+        ("checks.publication", checks.publication),
     ):
         path_within(root, relative, field)
 
@@ -210,4 +225,5 @@ def load_config(repo_root: Path) -> Config:
         ),
         overlay=overlay,
         output=output,
+        checks=checks,
     )

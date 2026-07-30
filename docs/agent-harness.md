@@ -9,6 +9,7 @@
 - Project: `ai-first`.
 - Publication class: `public`.
 - Generated drift check: `python3 .ai-first/check.py`.
+- Publication boundary check: `scripts/check-publication-boundary.py`.
 
 ## Project Objective
 

@@ -1,6 +1,6 @@
 {
   "framework": {
-    "digest": "28121a3be1a162e55e89ff19505bcbd3efdb4460e8eed39586181b31eba6e851",
+    "digest": "657f9d69f38bdc2204be5796346342ff68c076aa7423b3dc1dc526585b1f56b0",
     "source_kind": "development",
     "source_revision": null,
     "version": "0.1.0-dev"
@@ -18,14 +18,14 @@
     "src/ai_first/__init__.py": "cc67ee471e2f875f585df5865c7df9448b6d1ec8a452842d864052c5ccf04721",
     "src/ai_first/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "src/ai_first/cli.py": "432cd5b48ddf64a23fcb567db84b509948b6d9049deb90002f34535ed6586f82",
-    "src/ai_first/config.py": "5867926a30219b85a4c99a0c1cef9d0d2aae6723e88a91c143503a3d3a100b70",
+    "src/ai_first/config.py": "2200ff32111007d55cb8eb20dfcae15073d74690e4c258c67eca4214405237f3",
     "src/ai_first/publication.py": "af2beb3e18671267cb8fb1908239f4073abe8bb86121b01a19f96005b5cc24b6",
-    "src/ai_first/render.py": "dd32c05e1abe49338038a0cd555619f8596bbd77db0a07eba6030799d70d42fb"
+    "src/ai_first/render.py": "b6bada2363b33d97ca2aa43518a1870104b44e9e1dbd76f1e92dee2e9e025126"
   },
   "outputs": {
     ".ai-first/check.py": "241f2d454674f16f1f9bab6474dce1fa0703a75c32b7106e7d54e52ce771d8a5",
     "AGENTS.md": "61cdc51793ff0af1432bffcb6929cb5d44fd2e9b63484d594a64cbc230a25728",
-    "docs/agent-harness.md": "78957e6c0a9e5b642b160d99dba60a7f5fd9b8c48b97d35c5ddd37878ea40c36"
+    "docs/agent-harness.md": "3229337587c6795d6a2cbcdc7881f407d281dab45e617e5c359e552866dd7da4"
   },
   "profiles": [
     "vcs-jj",
@@ -33,7 +33,7 @@
     "openai-agent-guidance"
   ],
   "repository_inputs": {
-    ".ai-first.toml": "0be55eba17b84c716bf3d0b6f211e4c1d936515b5778bcd308dd8ca729a4abfd",
+    ".ai-first.toml": "840f19a4904b4b1df50143aaf39287f28efd7136b44b9d554a53ff6a83bcb86b",
     ".ai-first/overlays/agents-first-read.md": "694333f7b760eeb475093796d474e1af637fbeb516ca5a2653f488efc1eb7c16",
     ".ai-first/overlays/agents-project.md": "9270cd8b144b9bb0453b2ed3b4181d0fe00744ca7841903e59b5d64cf82835f4",
     ".ai-first/overlays/harness-project.md": "83da53c278cd849892a36e106a4773ca115456c739c4f31d94b3ba60b3c3cef3"

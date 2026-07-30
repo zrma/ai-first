@@ -54,7 +54,8 @@ for required_line in \
   '- Framework version: `0.1.0-dev`.' \
   '- Project: `ai-first`.' \
   '- Publication class: `public`.' \
-  '- Generated drift check: `python3 .ai-first/check.py`.'; do
+  '- Generated drift check: `python3 .ai-first/check.py`.' \
+  '- Publication boundary check: `scripts/check-publication-boundary.py`.'; do
   grep -Fq -- "$required_line" docs/agent-harness.md ||
     fail "docs/agent-harness.md is missing: $required_line"
 done

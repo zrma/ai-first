@@ -31,6 +31,10 @@ class AiFirstTest(unittest.TestCase):
         first = build(root, FRAMEWORK_ROOT)
         second = build(root, FRAMEWORK_ROOT)
         self.assertEqual(first, second)
+        self.assertIn(
+            b"- Publication boundary check: `scripts/check-publication-boundary.py`.",
+            first.outputs["docs/agent-harness.md"],
+        )
 
         changed = render_repository(root, FRAMEWORK_ROOT)
         self.assertEqual(
@@ -96,6 +100,21 @@ class AiFirstTest(unittest.TestCase):
         )
 
         with self.assertRaises(ConfigError):
+            build(root, FRAMEWORK_ROOT)
+
+    def test_unsafe_publication_check_path_is_rejected(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'publication = "scripts/check-publication-boundary.py"',
+                'publication = "../check-publication-boundary.py"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "safe repository-relative path"):
             build(root, FRAMEWORK_ROOT)
 
     def test_commit_source_requires_full_revision(self) -> None:

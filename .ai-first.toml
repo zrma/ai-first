@@ -22,3 +22,6 @@ agents = "AGENTS.md"
 harness = "docs/agent-harness.md"
 standalone_check = ".ai-first/check.py"
 lock = ".ai-first.lock"
+
+[checks]
+publication = "scripts/check-publication-boundary.py"

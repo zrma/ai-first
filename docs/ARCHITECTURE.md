@@ -49,7 +49,8 @@ AGENTS.md
 docs/agent-harness.md
 ```
 
-- `.ai-first.toml`: framework version, profile, overlay와 output 선언의 source of truth.
+- `.ai-first.toml`: framework version, profile, overlay, output과 repository check
+  선언의 source of truth.
 - `.ai-first.lock`: framework source kind/revision, 입력과 생성 결과 digest.
 - `.ai-first/overlays/`: repository-owned 내용.
 - `AGENTS.md`, `docs/agent-harness.md`: core, profile과 overlay를 합성한 tracked output.

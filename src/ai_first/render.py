@@ -191,6 +191,7 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
             f"- Project: `{config.project.name}`.",
             f"- Publication class: `{config.project.publication_class}`.",
             "- Generated drift check: `python3 .ai-first/check.py`.",
+            f"- Publication boundary check: `{config.checks.publication}`.",
         ]
     )
     project_objective = "\n".join(
