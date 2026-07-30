@@ -18,8 +18,9 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재는 bootstrap 단계다. 정체성, architecture와 첫 self-hosting milestone이
-정의되어 있으며 합성 도구와 standalone consumer contract는 구현 중이다.
+현재 `0.1.0-dev` self-hosting core가 동작한다. 선언에서 core, capability profile과
+repository overlay를 결정적으로 합성하고, central framework check와 standalone
+consumer drift check가 같은 lock을 검증한다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.
@@ -44,12 +45,20 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 - architecture와 합성 경계: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
-- 현재 milestone: [`docs/todo-bootstrap-core/spec.md`](docs/todo-bootstrap-core/spec.md)
+- 현재 milestone: [`docs/todo-public-foundation/spec.md`](docs/todo-public-foundation/spec.md)
 
 ## 검증
 
 ```sh
 scripts/check.sh
+```
+
+현재 선언을 다시 합성하거나 drift를 확인하려면 다음 명령을 사용한다.
+
+```sh
+scripts/ai-first render --repo .
+scripts/ai-first check --repo .
+python3 .ai-first/check.py
 ```
 
 공개 remote와 license는 아직 확정되지 않았다. 최초 공개 전에는 repository

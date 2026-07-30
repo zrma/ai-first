@@ -2,31 +2,33 @@
 
 ## 현재 단계
 
-`ai-first`는 bootstrap 단계다. AI-first 정체성, 인간과 AI의 역할, framework layer,
-독립 consumer와 migration workspace 계약이 repository-owned 문서로 정의되어 있다.
+`ai-first`는 self-hosting core를 완료하고 public foundation 단계에 있다.
 
-합성 CLI, schema, lock, profile과 standalone fixture는 아직 구현되지 않았다.
+`0.1.0-dev` 선언, core, `vcs-jj`/`public-repository` profile, repository overlay,
+deterministic render, content-addressed lock, central drift check와 standalone checker가
+동작한다. synthetic consumer fixture가 central checkout 없이 generated input/output
+drift를 검증한다.
 
 ## 현재 milestone
 
-`docs/todo-bootstrap-core/spec.md`
+`docs/todo-public-foundation/spec.md`
 
-목표는 framework 선언에서 core, profile과 repository overlay를 결정적으로 합성하고,
-이 저장소 자체에서 drift check를 통과하는 최소 self-hosting vertical slice다.
+목표는 license, CI, publication gate와 public remote evidence를 닫아 framework를
+안전하게 공개하는 것이다.
 
 ## 시작 순서
 
 1. `jj status`
 2. `docs/AI_FIRST_CHARTER.md`
 3. `docs/ARCHITECTURE.md`
-4. `docs/todo-bootstrap-core/spec.md`
-5. `docs/todo-bootstrap-core/open-questions.md`
+4. `docs/todo-public-foundation/spec.md`
+5. `docs/todo-public-foundation/open-questions.md`
 6. `scripts/check.sh`
 
 ## 현재 검증
 
-bootstrap 문서 interface와 shell syntax만 검사한다. tooling 구현 후 deterministic
-render와 standalone fixture를 canonical gate에 추가한다.
+`scripts/check.sh`가 central/standalone drift, harness interface, repository publication
+boundary, navigation, Python syntax와 unit fixture를 검사한다.
 
 ## Publication 상태
 

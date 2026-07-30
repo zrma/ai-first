@@ -1,0 +1,20 @@
+schema_version = 1
+framework_version = "0.1.0-dev"
+source_kind = "development"
+profiles = ["vcs-jj", "public-repository"]
+
+[project]
+name = "sample-service"
+objective = "A synthetic service used to verify standalone AI-first composition."
+publication_class = "public"
+
+[overlay]
+agents_first_read = ".ai-first/overlays/agents-first-read.md"
+agents_project = ".ai-first/overlays/agents-project.md"
+harness_project = ".ai-first/overlays/harness-project.md"
+
+[output]
+agents = "AGENTS.md"
+harness = "docs/agent-harness.md"
+standalone_check = ".ai-first/check.py"
+lock = ".ai-first.lock"

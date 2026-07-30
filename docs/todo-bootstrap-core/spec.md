@@ -1,5 +1,7 @@
 # Bootstrap Core
 
+상태: 완료
+
 ## Goal
 
 AI-first identity와 layer contract를 실행 가능한 최소 composition framework로
@@ -63,6 +65,15 @@ tooling 구현 후 canonical gate에 다음 표면을 추가한다.
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 -m ai_first check --repo .
 ```
+
+완료 evidence:
+
+- `scripts/check.sh`
+- deterministic double render unit test
+- manual output와 overlay drift failure test
+- unsafe relative path와 symlink escape failure test
+- standalone generated checker fixture
+- repository publication boundary self-test와 tracked scan
 
 ## Decision boundaries
 

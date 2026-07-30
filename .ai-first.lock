@@ -1,0 +1,38 @@
+{
+  "framework": {
+    "digest": "017a02fde026bdfda89a627ee3c0912e9ec689cc0a7653d2a06ffb006aeeef91",
+    "source_kind": "development",
+    "version": "0.1.0-dev"
+  },
+  "framework_inputs": {
+    "framework/core/AGENTS.md": "8cd3e861dd910106f03fa50c7d9035d827e71bc46d3e0c314cc45d4db1f89927",
+    "framework/core/agent-harness.md": "08a348d882482c45bb25d40307a5e734d34e96071937e234a1762644506bad74",
+    "framework/profiles/public-repository/AGENTS.md": "b07ac20c9e1611c7e98c5978ec385ca0560363c4b3f55f0a84399791aee7c917",
+    "framework/profiles/public-repository/agent-harness.md": "4704a09b288b0afb5527c983f52b9ee28b4077c1876fb02c38b43b588b88afd9",
+    "framework/profiles/vcs-jj/AGENTS.md": "f5a00bb916ebcc25449e77ea7741678c381ea74d861ff82af24810ccf0318c35",
+    "framework/profiles/vcs-jj/agent-harness.md": "592f07d6bd361e45e689d79f05f3b94afd037ebfcf634df0e114f8c43888cb58",
+    "framework/standalone/check.py": "241f2d454674f16f1f9bab6474dce1fa0703a75c32b7106e7d54e52ce771d8a5",
+    "src/ai_first/__init__.py": "cc67ee471e2f875f585df5865c7df9448b6d1ec8a452842d864052c5ccf04721",
+    "src/ai_first/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/ai_first/cli.py": "432cd5b48ddf64a23fcb567db84b509948b6d9049deb90002f34535ed6586f82",
+    "src/ai_first/config.py": "83fe4f9318e2a8a469fcdcb1a27e415672f0ef22d642fbbb1a1ce1fe8fc0c663",
+    "src/ai_first/publication.py": "c84c577f67d7a60584b0aa1ca840f76ab3c0157d8d2fcd0b07d701b96a7e10b4",
+    "src/ai_first/render.py": "b12ae1573a93dd44cfa3a3d330a70b64e9b3fd16ccd8a5cc574dd9adbd757291"
+  },
+  "outputs": {
+    ".ai-first/check.py": "241f2d454674f16f1f9bab6474dce1fa0703a75c32b7106e7d54e52ce771d8a5",
+    "AGENTS.md": "30312e926c412d5b184308f7cf620da3d4e43f77ec08f1ab88963b2d3fc7decd",
+    "docs/agent-harness.md": "5429f0f5cbc7061b6fe5a185bef82c1537bdf6964747941f8b30e64536b1805f"
+  },
+  "profiles": [
+    "vcs-jj",
+    "public-repository"
+  ],
+  "repository_inputs": {
+    ".ai-first.toml": "55f1f21dfa9e04edca7ccffae77a7f665ef2ee9f09a8e79717777c10af74491d",
+    ".ai-first/overlays/agents-first-read.md": "694333f7b760eeb475093796d474e1af637fbeb516ca5a2653f488efc1eb7c16",
+    ".ai-first/overlays/agents-project.md": "6c3a872312266be30f00689e8c0cc2af8f946ff7d3a80f320f2beaca3dafb5a9",
+    ".ai-first/overlays/harness-project.md": "f5d5ded6857712129d6764939748a1b16578438c255a64afb1e62a30ca3f673a"
+  },
+  "schema_version": 1
+}

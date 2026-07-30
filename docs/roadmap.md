@@ -5,21 +5,21 @@
 AI-first identity, 인간과 AI의 역할, layer, permission, publication과 migration
 boundary를 고정한다.
 
-상태: 진행 중
+상태: 완료
 
 ## Stage 1 — Self-hosting core
 
 선언 schema, core/profile/overlay composition, lock, deterministic drift check와
 standalone fixture를 구현하고 이 저장소 자체에 적용한다.
 
-상태: 미착수
+상태: 완료
 
 ## Stage 2 — Public foundation
 
 repository gate, machine-local publication gate, CI와 license를 닫고 공개 remote에서
 branch, SHA와 terminal CI를 검증한다.
 
-상태: 미착수
+상태: 진행 중
 
 ## Stage 3 — Representative pilots
 

@@ -7,18 +7,21 @@
 - self-contained consumer와 pinned update transaction 정의
 - 기본 workspace를 보존하는 migration workspace 계약 정의
 - bootstrap harness interface와 repository navigation 구성
-
-## 진행 중
-
 - 선언 schema와 deterministic composition 도구
 - framework self-hosting render/check
 - standalone consumer fixture와 lock drift 검증
+- repository-local publication boundary checker
+
+## 진행 중
+
+- public repository foundation과 CI
+- license decision
+- 최초 remote publication evidence
 
 ## 미착수
 
-- versioned profile catalog
+- 추가 versioned profile catalog
 - adoption/update/migration command
-- public remote와 CI
 - representative pilot adoption
 - stable v1 contract
 

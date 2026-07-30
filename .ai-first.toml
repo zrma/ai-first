@@ -1,0 +1,24 @@
+schema_version = 1
+framework_version = "0.1.0-dev"
+source_kind = "development"
+profiles = ["vcs-jj", "public-repository"]
+
+[project]
+name = "ai-first"
+objective = """
+AI가 인간의 방향과 명시적 경계 안에서 프로젝트를 능동적으로 전진시키고, 인간이
+방향지시자·동반자·project manager로 참여할 수 있는 versioned project operating
+framework를 제공한다.
+"""
+publication_class = "public"
+
+[overlay]
+agents_first_read = ".ai-first/overlays/agents-first-read.md"
+agents_project = ".ai-first/overlays/agents-project.md"
+harness_project = ".ai-first/overlays/harness-project.md"
+
+[output]
+agents = "AGENTS.md"
+harness = "docs/agent-harness.md"
+standalone_check = ".ai-first/check.py"
+lock = ".ai-first.lock"

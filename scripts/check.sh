@@ -4,13 +4,22 @@ set -eu
 repo_root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$repo_root"
 
+scripts/ai-first check --repo .
+python3 .ai-first/check.py
 scripts/check-agent-harness-interface.sh
+scripts/check-publication-boundary.py --self-test
+scripts/check-publication-boundary.py
 
 sh -n scripts/check.sh
 sh -n scripts/check-agent-harness-interface.sh
+sh -n scripts/ai-first
 
 python3 - <<'PY'
+import ast
 from pathlib import Path
+
+for path in sorted(Path("src").rglob("*.py")) + sorted(Path("scripts").glob("*.py")):
+    ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
 
 required_links = {
     "README.md": [
@@ -20,7 +29,7 @@ required_links = {
         "docs/roadmap.md",
         "docs/agent-harness.md",
         "docs/PUBLICATION.md",
-        "docs/todo-bootstrap-core/spec.md",
+        "docs/todo-public-foundation/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -28,9 +37,10 @@ required_links = {
         "docs/HANDOFF.md",
         "docs/status.md",
         "docs/roadmap.md",
+        "docs/completed-milestones.md",
         "docs/PUBLICATION.md",
         "docs/REPO_MANIFEST.yaml",
-        "docs/todo-bootstrap-core/spec.md",
+        "docs/todo-public-foundation/spec.md",
     ],
 }
 
@@ -45,4 +55,7 @@ for source, targets in required_links.items():
 print("repository navigation links are valid")
 PY
 
-printf 'ai-first bootstrap checks passed\n'
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src \
+  python3 -m unittest discover -s tests -p 'test_*.py'
+
+printf 'ai-first checks passed\n'

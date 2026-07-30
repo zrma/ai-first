@@ -10,10 +10,11 @@ entrypoints:
   handoff: docs/HANDOFF.md
   status: docs/status.md
   roadmap: docs/roadmap.md
+  completed_milestones: docs/completed-milestones.md
   publication: docs/PUBLICATION.md
 
 active_work_glob: docs/todo-*/spec.md
-active_work: docs/todo-bootstrap-core/spec.md
+active_work: docs/todo-public-foundation/spec.md
 required_todo_files:
   - spec.md
   - open-questions.md
@@ -21,7 +22,8 @@ required_todo_files:
 checks:
   full: scripts/check.sh
   harness: scripts/check-agent-harness-interface.sh
-  publication: planned
+  generated: python3 .ai-first/check.py
+  publication: scripts/check-publication-boundary.py
 
 publication:
   content_standard: public-ready
@@ -36,6 +38,6 @@ vcs:
   push_requires_explicit_permission: true
 
 runtime:
-  status: design
-  implementation: undecided
+  status: selected
+  implementation: dependency-free Python 3.11 standard library
   architecture: docs/ARCHITECTURE.md
