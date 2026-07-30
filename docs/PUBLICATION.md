@@ -37,6 +37,6 @@ remote 생성, visibility 변경, push, tag와 release는 각각 외부 write다
 
 ## 현재 상태
 
-- remote: 미생성
+- remote: 빈 public repository 생성 및 visibility 확인
 - license: `Apache-2.0`
-- publication: 차단
+- publication: 최초 push 전 gate 진행 중

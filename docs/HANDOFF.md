@@ -33,7 +33,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: 미생성
+- remote: public repository 생성, 최초 push 전
 - license: `Apache-2.0`
 - 최초 public publish: repository gate와 machine-local inventory gate 통과 필요
 

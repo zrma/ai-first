@@ -33,7 +33,8 @@ ci:
 
 publication:
   content_standard: public-ready
-  remote_status: unconfigured
+  remote: https://github.com/zrma/ai-first
+  remote_status: configured-public
   license_status: Apache-2.0
   policy: docs/PUBLICATION.md
 
