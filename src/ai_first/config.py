@@ -41,6 +41,7 @@ class Config:
     config_path: Path
     framework_version: str
     source_kind: str
+    source_revision: str | None
     profiles: tuple[str, ...]
     project: Project
     overlay: OverlayPaths
@@ -97,8 +98,24 @@ def load_config(repo_root: Path) -> Config:
         )
 
     source_kind = _string(data, "source_kind")
-    if source_kind not in {"development", "release"}:
-        raise ConfigError("source_kind must be development or release")
+    if source_kind not in {"development", "commit", "release"}:
+        raise ConfigError("source_kind must be development, commit or release")
+    raw_source_revision = data.get("source_revision")
+    if raw_source_revision is None:
+        source_revision = None
+    elif isinstance(raw_source_revision, str) and raw_source_revision.strip():
+        source_revision = raw_source_revision.strip()
+    else:
+        raise ConfigError("source_revision must be a non-empty string")
+    if source_kind == "commit":
+        if source_revision is None or not re.fullmatch(
+            r"[0-9a-f]{40}", source_revision
+        ):
+            raise ConfigError(
+                "commit source_kind requires a full lowercase source_revision"
+            )
+    elif source_revision is not None:
+        raise ConfigError("source_revision is only valid for commit source_kind")
 
     raw_profiles = data.get("profiles")
     if (
@@ -184,6 +201,7 @@ def load_config(repo_root: Path) -> Config:
         config_path=config_path,
         framework_version=framework_version,
         source_kind=source_kind,
+        source_revision=source_revision,
         profiles=tuple(raw_profiles),
         project=Project(
             name=name,

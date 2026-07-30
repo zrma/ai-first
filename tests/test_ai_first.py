@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from ai_first.config import ConfigError
 from ai_first.render import DriftError, build, check_repository, render_repository
@@ -46,6 +47,7 @@ class AiFirstTest(unittest.TestCase):
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
         self.assertEqual(lock["framework"]["version"], "0.1.0-dev")
+        self.assertIsNone(lock["framework"]["source_revision"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
 
         completed = subprocess.run(
@@ -95,6 +97,101 @@ class AiFirstTest(unittest.TestCase):
 
         with self.assertRaises(ConfigError):
             build(root, FRAMEWORK_ROOT)
+
+    def test_commit_source_requires_full_revision(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                'source_kind = "commit"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "full lowercase source_revision"):
+            build(root, FRAMEWORK_ROOT)
+
+    def test_commit_source_rejects_other_framework_checkout(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                'source_kind = "commit"\n'
+                'source_revision = "0000000000000000000000000000000000000000"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "does not match source_revision"):
+            build(root, FRAMEWORK_ROOT)
+
+    def test_commit_source_records_verified_framework_revision(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        revision = "1" * 40
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                f'source_kind = "commit"\nsource_revision = "{revision}"',
+            ),
+            encoding="utf-8",
+        )
+
+        revision_result = subprocess.CompletedProcess(
+            args=["git", "rev-parse", "HEAD"],
+            returncode=0,
+            stdout=f"{revision}\n",
+            stderr="",
+        )
+        clean_result = subprocess.CompletedProcess(
+            args=["git", "status"],
+            returncode=0,
+            stdout="",
+            stderr="",
+        )
+        with patch(
+            "ai_first.render.subprocess.run",
+            side_effect=[revision_result, clean_result],
+        ):
+            lock = json.loads(build(root, FRAMEWORK_ROOT).lock)
+        self.assertEqual(lock["framework"]["source_kind"], "commit")
+        self.assertEqual(lock["framework"]["source_revision"], revision)
+
+    def test_commit_source_rejects_dirty_framework_checkout(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        revision = "1" * 40
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                f'source_kind = "commit"\nsource_revision = "{revision}"',
+            ),
+            encoding="utf-8",
+        )
+        revision_result = subprocess.CompletedProcess(
+            args=["git", "rev-parse", "HEAD"],
+            returncode=0,
+            stdout=f"{revision}\n",
+            stderr="",
+        )
+        dirty_result = subprocess.CompletedProcess(
+            args=["git", "status"],
+            returncode=0,
+            stdout=" M src/ai_first/render.py\n",
+            stderr="",
+        )
+        with patch(
+            "ai_first.render.subprocess.run",
+            side_effect=[revision_result, dirty_result],
+        ):
+            with self.assertRaisesRegex(ConfigError, "clean framework checkout"):
+                build(root, FRAMEWORK_ROOT)
 
     def test_output_cannot_overwrite_overlay(self) -> None:
         temporary, root = self.copy_fixture()

@@ -50,7 +50,7 @@ docs/agent-harness.md
 ```
 
 - `.ai-first.toml`: framework version, profile, overlay와 output 선언의 source of truth.
-- `.ai-first.lock`: framework release, 입력과 생성 결과 digest.
+- `.ai-first.lock`: framework source kind/revision, 입력과 생성 결과 digest.
 - `.ai-first/overlays/`: repository-owned 내용.
 - `AGENTS.md`, `docs/agent-harness.md`: core, profile과 overlay를 합성한 tracked output.
 
@@ -64,8 +64,8 @@ docs/agent-harness.md
 - 중앙 checkout 또는 sibling-relative path 없이 AI가 시작할 수 있다.
 - core contract와 필요한 profile 내용이 tracked output에 포함된다.
 - framework 도구가 없어도 현재 생성 결과와 repository-local 검증을 실행할 수 있다.
-- update에만 명시적으로 선택한 framework release 또는 local development source를
-  사용한다.
+- update에만 명시적으로 선택한 framework release, immutable commit 또는 local
+  development source를 사용한다.
 
 따라서 live symlink, 필수 git submodule과 machine-specific include path를 사용하지
 않는다.
@@ -76,7 +76,7 @@ framework update는 다음 transaction으로 처리한다.
 
 1. 대상 저장소의 상태, active workspace와 publication class를 읽는다.
 2. 기본 workspace가 아닌 전용 migration workspace를 만든다.
-3. 목표 framework version과 profile을 선택한다.
+3. 목표 framework version, immutable source revision과 profile을 선택한다.
 4. core, profile과 overlay를 결정적으로 합성한다.
 5. lock과 generated output diff를 검토한다.
 6. repository-local focused/canonical/publication gate를 실행한다.

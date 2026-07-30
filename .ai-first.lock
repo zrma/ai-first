@@ -1,7 +1,8 @@
 {
   "framework": {
-    "digest": "207683f82cc70e0432ad71639920f26d5992550fbe17fc31906f9c85b47b24fc",
+    "digest": "28121a3be1a162e55e89ff19505bcbd3efdb4460e8eed39586181b31eba6e851",
     "source_kind": "development",
+    "source_revision": null,
     "version": "0.1.0-dev"
   },
   "framework_inputs": {
@@ -17,9 +18,9 @@
     "src/ai_first/__init__.py": "cc67ee471e2f875f585df5865c7df9448b6d1ec8a452842d864052c5ccf04721",
     "src/ai_first/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "src/ai_first/cli.py": "432cd5b48ddf64a23fcb567db84b509948b6d9049deb90002f34535ed6586f82",
-    "src/ai_first/config.py": "83fe4f9318e2a8a469fcdcb1a27e415672f0ef22d642fbbb1a1ce1fe8fc0c663",
+    "src/ai_first/config.py": "5867926a30219b85a4c99a0c1cef9d0d2aae6723e88a91c143503a3d3a100b70",
     "src/ai_first/publication.py": "af2beb3e18671267cb8fb1908239f4073abe8bb86121b01a19f96005b5cc24b6",
-    "src/ai_first/render.py": "b12ae1573a93dd44cfa3a3d330a70b64e9b3fd16ccd8a5cc574dd9adbd757291"
+    "src/ai_first/render.py": "dd32c05e1abe49338038a0cd555619f8596bbd77db0a07eba6030799d70d42fb"
   },
   "outputs": {
     ".ai-first/check.py": "241f2d454674f16f1f9bab6474dce1fa0703a75c32b7106e7d54e52ce771d8a5",

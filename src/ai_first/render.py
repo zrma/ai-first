@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import subprocess
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -74,9 +75,43 @@ def _aggregate_digest(entries: dict[str, str]) -> str:
     return _digest(canonical)
 
 
+def _verify_framework_source(config: Config, framework: Path) -> None:
+    if config.source_kind != "commit":
+        return
+    try:
+        completed = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=framework,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+    except FileNotFoundError as error:
+        raise ConfigError("commit source requires a Git checkout") from error
+    actual = completed.stdout.strip()
+    if completed.returncode != 0 or len(actual) != 40:
+        raise ConfigError("cannot resolve framework Git revision")
+    if actual != config.source_revision:
+        raise ConfigError(
+            "framework checkout revision does not match source_revision"
+        )
+    status = subprocess.run(
+        ["git", "status", "--porcelain=v1", "--untracked-files=all"],
+        cwd=framework,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if status.returncode != 0:
+        raise ConfigError("cannot inspect framework Git checkout")
+    if status.stdout:
+        raise ConfigError("commit source requires a clean framework checkout")
+
+
 def build(repo_root: Path, framework_root: Path) -> Rendered:
     config = load_config(repo_root)
     framework = framework_root.resolve()
+    _verify_framework_source(config, framework)
 
     framework_inputs: dict[str, bytes] = {}
     repository_inputs: dict[str, bytes] = {
@@ -195,6 +230,7 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         "framework": {
             "version": config.framework_version,
             "source_kind": config.source_kind,
+            "source_revision": config.source_revision,
             "digest": _aggregate_digest(framework_hashes),
         },
         "profiles": list(config.profiles),

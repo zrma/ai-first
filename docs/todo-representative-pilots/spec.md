@@ -10,7 +10,7 @@ repository-owned overlay가 실제 작업 흐름을 보존하며 동작하는지
 ## In scope
 
 - 각 소비 저장소의 기본 working copy와 분리된 `jj workspace`
-- framework version과 input digest를 고정한 tracked lock
+- framework version, immutable source revision과 input digest를 고정한 tracked lock
 - 저장소 목적, source of truth, domain invariant와 native gate를 보존하는 overlay
 - central framework checkout 없이 동작하는 generated artifact와 standalone check
 - 도입 전후 repository-native gate 및 clean migration change
