@@ -14,6 +14,7 @@
 - `Apache-2.0` license와 public repository foundation
 - public `main`, commit equality, default branch와 Python 3.11/3.14 CI 검증
 - private vulnerability reporting 활성화
+- OpenAI-specific model/prompt delta를 core와 분리한 capability profile
 
 ## 진행 중
 

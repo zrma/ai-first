@@ -20,8 +20,8 @@ handoff, permission과 publication boundary를 정의한다.
 ### 3. Capability profiles
 
 VCS, 언어, runtime 또는 위험 표면에 필요한 공통 specialization을 선택한다.
-예상 profile은 `vcs-jj`, `public-repository`, `rust`, `typescript`, `k8s`,
-`game`과 model capability다.
+예상 profile은 `vcs-jj`, `public-repository`, `openai-agent-guidance`, `rust`,
+`typescript`, `k8s`, `game`과 model capability다.
 
 profile은 core의 permission 또는 evidence 기준을 약화할 수 없다.
 

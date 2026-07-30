@@ -1,7 +1,7 @@
 schema_version = 1
 framework_version = "0.1.0-dev"
 source_kind = "development"
-profiles = ["vcs-jj", "public-repository"]
+profiles = ["vcs-jj", "public-repository", "openai-agent-guidance"]
 
 [project]
 name = "ai-first"

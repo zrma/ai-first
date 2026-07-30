@@ -5,10 +5,10 @@
 `ai-first`는 self-hosting core와 public foundation을 완료하고 representative pilot
 단계에 있다.
 
-`0.1.0-dev` 선언, core, `vcs-jj`/`public-repository` profile, repository overlay,
-deterministic render, content-addressed lock, central drift check와 standalone checker가
-동작한다. synthetic consumer fixture가 central checkout 없이 generated input/output
-drift를 검증한다.
+`0.1.0-dev` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
+profile, repository overlay, deterministic render, content-addressed lock, central drift
+check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
+없이 generated input/output drift를 검증한다.
 
 ## 현재 milestone
 

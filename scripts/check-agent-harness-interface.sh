@@ -80,6 +80,7 @@ actual_harness_headings=$(sed -n 's/^\(## .*\)$/\1/p' docs/agent-harness.md)
 expected_profile_headings=$(cat <<'HEADINGS'
 ### Capability Profile: vcs-jj
 ### Capability Profile: public-repository
+### Capability Profile: openai-agent-guidance
 HEADINGS
 )
 actual_profile_headings=$(sed -n 's/^\(### Capability Profile: .*\)$/\1/p' AGENTS.md)
@@ -89,6 +90,7 @@ actual_profile_headings=$(sed -n 's/^\(### Capability Profile: .*\)$/\1/p' AGENT
 expected_harness_profiles=$(cat <<'HEADINGS'
 ### vcs-jj
 ### public-repository
+### openai-agent-guidance
 HEADINGS
 )
 actual_harness_profiles=$(sed -n 's/^\(### .*\)$/\1/p' docs/agent-harness.md)
@@ -101,6 +103,8 @@ grep -Fq -- '방향지시자, 동반자와 project manager' docs/AI_FIRST_CHARTE
   fail "human role is missing from the charter"
 grep -Fq -- '전용 migration workspace' docs/ARCHITECTURE.md ||
   fail "migration workspace boundary is missing"
+grep -Fq -- '`gpt-5.6-sol`' AGENTS.md ||
+  fail "current OpenAI model guidance is missing"
 grep -Fq -- '"source_kind": "development"' .ai-first.lock ||
   fail "development source kind is missing from .ai-first.lock"
 
