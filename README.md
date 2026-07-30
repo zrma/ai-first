@@ -18,7 +18,7 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 `0.1.0-dev` self-hosting core가 동작한다. 선언에서 core, capability profile과
+현재 `1.0.0` self-hosting core가 동작한다. 선언에서 core, capability profile과
 repository overlay를 결정적으로 합성하고, central framework check와 standalone
 consumer drift check가 같은 lock을 검증한다.
 
@@ -47,6 +47,7 @@ v1 contract를 정립한다.
 
 - AI-first 정체성: [`docs/AI_FIRST_CHARTER.md`](docs/AI_FIRST_CHARTER.md)
 - architecture와 합성 경계: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- v1 compatibility와 source pin: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
 - 완료된 representative pilots:

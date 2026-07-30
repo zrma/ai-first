@@ -25,7 +25,7 @@ AI-first framework의 첫 stable compatibility contract와 immutable release를 
 
 1. compatibility policy가 framework/schema/profile/output 변경 규칙을 정의한다.
 2. self-hosting 선언과 generated output이 `1.0.0` identity로 drift 없이 합성된다.
-3. adoption/update interface가 immutable release pin과 repository overlay를 보존한다.
+3. adoption/update interface가 annotated release pin과 검증된 commit을 lock에 기록한다.
 4. Python 3.11/3.14 synthetic/self-hosting gate가 통과한다.
 5. Apache-2.0, repository gate와 machine-local publication gate가 통과한다.
 6. public `main`, immutable release identity, remote SHA와 terminal CI가 일치한다.
@@ -36,6 +36,14 @@ AI-first framework의 첫 stable compatibility contract와 immutable release를 
 scripts/check.sh
 python3 .ai-first/check.py
 ```
+
+## Current evidence
+
+- 완료: compatibility policy, `1.0.0` self-hosting identity, annotated release tag
+  validation, verified `source_commit` lock, Python 3.11-compatible unit/self-hosting gate.
+- local: `scripts/check.sh`, 16 synthetic/publication tests green.
+- 대기: public release-ready commit의 terminal CI, signed `v1.0.0` tag publication과
+  remote identity 검증.
 
 ## Decision boundaries
 

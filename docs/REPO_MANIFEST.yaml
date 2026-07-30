@@ -6,6 +6,7 @@ publication_class: public
 entrypoints:
   charter: docs/AI_FIRST_CHARTER.md
   architecture: docs/ARCHITECTURE.md
+  compatibility: docs/COMPATIBILITY.md
   agent_harness: docs/agent-harness.md
   handoff: docs/HANDOFF.md
   status: docs/status.md

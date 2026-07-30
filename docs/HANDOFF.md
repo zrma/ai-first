@@ -5,7 +5,7 @@
 `ai-first`는 self-hosting core, public foundation과 representative pilot을 완료하고
 stable v1 정립 단계에 있다.
 
-`0.1.0-dev` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
+`1.0.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
 check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
 없이 generated input/output drift를 검증한다.
@@ -22,9 +22,10 @@ evidence를 첫 stable compatibility/release contract로 고정하는 것이다.
 1. `jj status`
 2. `docs/AI_FIRST_CHARTER.md`
 3. `docs/ARCHITECTURE.md`
-4. `docs/todo-stable-v1/spec.md`
-5. `docs/todo-stable-v1/open-questions.md`
-6. `scripts/check.sh`
+4. `docs/COMPATIBILITY.md`
+5. `docs/todo-stable-v1/spec.md`
+6. `docs/todo-stable-v1/open-questions.md`
+7. `scripts/check.sh`
 
 ## 현재 검증
 

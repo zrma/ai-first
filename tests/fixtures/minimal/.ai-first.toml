@@ -1,5 +1,5 @@
 schema_version = 1
-framework_version = "0.1.0-dev"
+framework_version = "1.0.0"
 source_kind = "development"
 profiles = ["vcs-jj", "public-repository"]
 

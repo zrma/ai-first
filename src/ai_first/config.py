@@ -120,8 +120,18 @@ def load_config(repo_root: Path) -> Config:
             raise ConfigError(
                 "commit source_kind requires a full lowercase source_revision"
             )
+    elif source_kind == "release":
+        if source_revision is None or not re.fullmatch(
+            r"v(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)",
+            source_revision,
+        ):
+            raise ConfigError(
+                "release source_kind requires a stable vMAJOR.MINOR.PATCH source_revision"
+            )
     elif source_revision is not None:
-        raise ConfigError("source_revision is only valid for commit source_kind")
+        raise ConfigError(
+            "source_revision is only valid for commit or release source_kind"
+        )
 
     raw_profiles = data.get("profiles")
     if (

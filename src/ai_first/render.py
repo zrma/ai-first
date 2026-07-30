@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import subprocess
 import tempfile
 from dataclasses import dataclass
@@ -75,43 +76,61 @@ def _aggregate_digest(entries: dict[str, str]) -> str:
     return _digest(canonical)
 
 
-def _verify_framework_source(config: Config, framework: Path) -> None:
-    if config.source_kind != "commit":
-        return
+def _run_git(framework: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
     try:
-        completed = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
+        return subprocess.run(
+            ["git", *arguments],
             cwd=framework,
             text=True,
             capture_output=True,
             check=False,
         )
     except FileNotFoundError as error:
-        raise ConfigError("commit source requires a Git checkout") from error
+        raise ConfigError("immutable source requires a Git checkout") from error
+
+
+def _verify_framework_source(config: Config, framework: Path) -> str | None:
+    if config.source_kind == "development":
+        return None
+
+    expected_commit = config.source_revision
+    if config.source_kind == "release":
+        tag = f"refs/tags/{config.source_revision}"
+        tag_type = _run_git(framework, "cat-file", "-t", tag)
+        if tag_type.returncode != 0 or tag_type.stdout.strip() != "tag":
+            raise ConfigError("release source requires an annotated Git tag")
+        tagged_commit = _run_git(framework, "rev-parse", "--verify", f"{tag}^{{commit}}")
+        expected_commit = tagged_commit.stdout.strip()
+        if tagged_commit.returncode != 0 or not re.fullmatch(
+            r"[0-9a-f]{40}", expected_commit
+        ):
+            raise ConfigError("cannot resolve release tag commit")
+
+    completed = _run_git(framework, "rev-parse", "HEAD")
     actual = completed.stdout.strip()
-    if completed.returncode != 0 or len(actual) != 40:
+    if completed.returncode != 0 or not re.fullmatch(r"[0-9a-f]{40}", actual):
         raise ConfigError("cannot resolve framework Git revision")
-    if actual != config.source_revision:
+    if actual != expected_commit:
         raise ConfigError(
             "framework checkout revision does not match source_revision"
         )
-    status = subprocess.run(
-        ["git", "status", "--porcelain=v1", "--untracked-files=all"],
-        cwd=framework,
-        text=True,
-        capture_output=True,
-        check=False,
+    status = _run_git(
+        framework,
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
     )
     if status.returncode != 0:
         raise ConfigError("cannot inspect framework Git checkout")
     if status.stdout:
-        raise ConfigError("commit source requires a clean framework checkout")
+        raise ConfigError("immutable source requires a clean framework checkout")
+    return actual
 
 
 def build(repo_root: Path, framework_root: Path) -> Rendered:
     config = load_config(repo_root)
     framework = framework_root.resolve()
-    _verify_framework_source(config, framework)
+    source_commit = _verify_framework_source(config, framework)
 
     framework_inputs: dict[str, bytes] = {}
     repository_inputs: dict[str, bytes] = {
@@ -232,6 +251,7 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
             "version": config.framework_version,
             "source_kind": config.source_kind,
             "source_revision": config.source_revision,
+            "source_commit": source_commit,
             "digest": _aggregate_digest(framework_hashes),
         },
         "profiles": list(config.profiles),

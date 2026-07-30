@@ -62,8 +62,9 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "0.1.0-dev")
+        self.assertEqual(lock["framework"]["version"], "1.0.0")
         self.assertIsNone(lock["framework"]["source_revision"])
+        self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
 
         completed = subprocess.run(
@@ -192,6 +193,7 @@ class AiFirstTest(unittest.TestCase):
             lock = json.loads(build(root, FRAMEWORK_ROOT).lock)
         self.assertEqual(lock["framework"]["source_kind"], "commit")
         self.assertEqual(lock["framework"]["source_revision"], revision)
+        self.assertEqual(lock["framework"]["source_commit"], revision)
 
     def test_commit_source_rejects_dirty_framework_checkout(self) -> None:
         temporary, root = self.copy_fixture()
@@ -222,6 +224,79 @@ class AiFirstTest(unittest.TestCase):
             side_effect=[revision_result, dirty_result],
         ):
             with self.assertRaisesRegex(ConfigError, "clean framework checkout"):
+                build(root, FRAMEWORK_ROOT)
+
+    def test_release_source_requires_stable_tag_revision(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                'source_kind = "release"\nsource_revision = "main"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "stable vMAJOR.MINOR.PATCH"):
+            build(root, FRAMEWORK_ROOT)
+
+    def test_release_source_requires_annotated_tag_and_records_commit(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        revision = "2" * 40
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'source_kind = "development"',
+                'source_kind = "release"\nsource_revision = "v1.0.0"',
+            ),
+            encoding="utf-8",
+        )
+        annotated = subprocess.CompletedProcess(
+            args=["git", "cat-file"],
+            returncode=0,
+            stdout="tag\n",
+            stderr="",
+        )
+        tagged_commit = subprocess.CompletedProcess(
+            args=["git", "rev-parse"],
+            returncode=0,
+            stdout=f"{revision}\n",
+            stderr="",
+        )
+        head = subprocess.CompletedProcess(
+            args=["git", "rev-parse"],
+            returncode=0,
+            stdout=f"{revision}\n",
+            stderr="",
+        )
+        clean = subprocess.CompletedProcess(
+            args=["git", "status"],
+            returncode=0,
+            stdout="",
+            stderr="",
+        )
+        with patch(
+            "ai_first.render.subprocess.run",
+            side_effect=[annotated, tagged_commit, head, clean],
+        ):
+            lock = json.loads(build(root, FRAMEWORK_ROOT).lock)
+        self.assertEqual(lock["framework"]["source_kind"], "release")
+        self.assertEqual(lock["framework"]["source_revision"], "v1.0.0")
+        self.assertEqual(lock["framework"]["source_commit"], revision)
+
+        lightweight = subprocess.CompletedProcess(
+            args=["git", "cat-file"],
+            returncode=0,
+            stdout="commit\n",
+            stderr="",
+        )
+        with patch(
+            "ai_first.render.subprocess.run",
+            return_value=lightweight,
+        ):
+            with self.assertRaisesRegex(ConfigError, "annotated Git tag"):
                 build(root, FRAMEWORK_ROOT)
 
     def test_output_cannot_overwrite_overlay(self) -> None:

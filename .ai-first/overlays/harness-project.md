@@ -16,6 +16,7 @@
 
 - Identity: `docs/AI_FIRST_CHARTER.md`.
 - Architecture: `docs/ARCHITECTURE.md`.
+- Compatibility: `docs/COMPATIBILITY.md`.
 - Navigation: `docs/HANDOFF.md`.
 - Current state: `docs/status.md`.
 - Direction: `docs/roadmap.md`.

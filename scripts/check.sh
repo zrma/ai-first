@@ -26,6 +26,7 @@ required_links = {
     "README.md": [
         "docs/AI_FIRST_CHARTER.md",
         "docs/ARCHITECTURE.md",
+        "docs/COMPATIBILITY.md",
         "docs/HANDOFF.md",
         "docs/roadmap.md",
         "docs/agent-harness.md",
@@ -36,6 +37,7 @@ required_links = {
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
         "docs/ARCHITECTURE.md",
+        "docs/COMPATIBILITY.md",
         "docs/HANDOFF.md",
         "docs/status.md",
         "docs/roadmap.md",
