@@ -14,7 +14,7 @@ terminal 상태로 닫힌 milestone packet이 active-work namespace와 pointer�
 - `docs/todo-*/spec.md`의 terminal status를 standalone checker가 거부한다.
 - active packet과 completed history를 구분하는 fixture를 추가한다.
 - framework self-hosting 문서에서 완료 packet을 completed milestone 영역으로 이동한다.
-- 호환 가능한 stable `1.1.0` release를 준비한다.
+- Markdown status heading 탐지를 보강한 stable `1.1.1` patch release를 준비한다.
 
 ## Non-goals
 
@@ -29,7 +29,7 @@ terminal 상태로 닫힌 milestone packet이 active-work namespace와 pointer�
 - 진행 중인 active packet과 active namespace 밖의 completed packet은 통과한다.
 - 완료된 framework milestone은 `docs/todo-*` 밖에 있고 navigation link가 유효하다.
 - handoff, status, roadmap와 manifest가 같은 active milestone을 가리킨다.
-- generated output과 lock이 `1.1.0` source와 lifecycle contract를 반영한다.
+- generated output과 lock이 `1.1.1` source와 lifecycle contract를 반영한다.
 - `scripts/check.sh`와 repository publication boundary가 통과한다.
 
 ## Completion Boundary

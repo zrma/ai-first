@@ -4,9 +4,9 @@
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
 `v1.0.0` release와 승인된 소비 저장소 집합의 portfolio adoption을 완료했다. 현재
-stable `1.1.0` active-work lifecycle release와 소비 저장소 update를 진행하고 있다.
+stable `1.1.1` active-work lifecycle patch release와 소비 저장소 update를 진행하고 있다.
 
-`1.1.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
+`1.1.1` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
 check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
 없이 generated input/output drift를 검증한다.

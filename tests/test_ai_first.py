@@ -62,7 +62,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.1.0")
+        self.assertEqual(lock["framework"]["version"], "1.1.1")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
@@ -86,6 +86,8 @@ class AiFirstTest(unittest.TestCase):
             "Status: deferred; resume in a future milestone\n",
             "Status: implemented and rendered QA passed\n",
             "상태: `completed — keep`\n",
+            "## Status\n\nCompleted. Canonical acceptance passed.\n",
+            "## 상태\n\n완료. 후속 작업은 별도 milestone이다.\n",
         )
         for status in terminal_statuses:
             with self.subTest(status=status):
