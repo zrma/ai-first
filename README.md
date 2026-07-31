@@ -18,9 +18,11 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 `1.0.0` self-hosting core가 동작한다. 선언에서 core, capability profile과
-repository overlay를 결정적으로 합성하고, central framework check와 standalone
-consumer drift check가 같은 lock을 검증한다.
+stable `1.1.0` self-hosting core가 동작한다. 선언에서 core, capability profile과
+repository overlay를 결정적으로
+합성하고, central framework check와 standalone consumer drift check가 같은 lock을
+검증한다. 현재 개발선은 완료된 work packet이 active namespace에 남지 않도록
+lifecycle contract와 standalone gate를 강화한다.
 
 Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증했고
 대표 소비 흐름의 도입과 publication도 닫았다. signed annotated `v1.0.0` release와
@@ -51,12 +53,11 @@ repository별 gate, remote equality와 terminal CI까지 완료했다.
 - v1 compatibility와 source pin: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
-- 완료된 representative pilots:
-  [`docs/todo-representative-pilots/spec.md`](docs/todo-representative-pilots/spec.md)
-- 완료된 stable v1:
-  [`docs/todo-stable-v1/spec.md`](docs/todo-stable-v1/spec.md)
-- 완료된 portfolio adoption:
-  [`docs/todo-portfolio-adoption/spec.md`](docs/todo-portfolio-adoption/spec.md)
+- 완료 milestone 요약:
+  [`docs/completed-milestones.md`](docs/completed-milestones.md)
+- 완료 milestone 상세 기록: [`docs/milestones/`](docs/milestones/)
+- 현재 active-work lifecycle:
+  [`docs/todo-active-work-lifecycle/spec.md`](docs/todo-active-work-lifecycle/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)
 

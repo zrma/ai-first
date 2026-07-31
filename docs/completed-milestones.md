@@ -11,6 +11,8 @@ identity, core, capability profile, repository overlay와 machine-private overla
 
 검증: `scripts/check.sh`
 
+상세 기록: `docs/milestones/bootstrap-core/spec.md`
+
 ## Self-hosting core
 
 `0.1.0-dev` 선언, deterministic composition, content-addressed lock, generated
@@ -20,6 +22,8 @@ synthetic consumer fixture가 동일 입력의 결정성, manual output와 overl
 unsafe path, symlink escape와 framework checkout 없는 standalone 검증을 증명한다.
 
 검증: `scripts/check.sh`
+
+상세 기록: `docs/milestones/bootstrap-core/spec.md`
 
 ## Public foundation
 
@@ -31,6 +35,8 @@ repository gate와 권한 있는 machine-local `all` gate를 통과한 동일 co
 3.11/3.14 terminal CI를 검증했다. private vulnerability reporting도 활성화했다.
 
 검증: `scripts/check.sh`, public remote metadata와 terminal CI
+
+상세 기록: `docs/milestones/public-foundation/spec.md`
 
 ## Representative pilots
 
@@ -44,6 +50,8 @@ fallback과 repository-owned todo/closure lifecycle 보존 규칙을 framework�
 
 검증: framework self-hosting gate, 소비 저장소 canonical gate와 terminal CI
 
+상세 기록: `docs/milestones/representative-pilots/spec.md`
+
 ## Stable v1
 
 framework/schema/Structure ID의 compatibility 축을 분리하고 `1.0.0` self-hosting
@@ -55,6 +63,8 @@ tag를 게시했다. local/remote tag object, peeled commit과 서명을 확인�
 release-source consumer render 및 standalone check를 통과시켰다.
 
 검증: `scripts/check.sh`, signed tag verification, remote tag identity, terminal CI
+
+상세 기록: `docs/milestones/stable-v1/spec.md`
 
 ## Portfolio adoption
 
@@ -68,3 +78,5 @@ tracked artifact 경계를 유지했다.
 
 검증: `scripts/check.sh`, 소비 저장소별 canonical/publication gate, remote equality와
 terminal CI
+
+상세 기록: `docs/milestones/portfolio-adoption/spec.md`

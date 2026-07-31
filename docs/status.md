@@ -24,10 +24,13 @@
 
 ## 진행 중
 
-- 없음
+- active-work packet의 terminal 상태를 거부하는 standalone lifecycle gate
+- 완료 milestone packet을 `docs/milestones/`로 이동하고 active pointer 정리
+- stable `1.1.0` framework source와 generated artifact 검증
 
 ## 미착수
 
+- stable `1.1.0` publication과 소비 저장소별 pinned update
 - 추가 versioned profile catalog
 
 ## 결정 필요

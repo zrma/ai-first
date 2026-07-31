@@ -21,8 +21,9 @@
 - Current state: `docs/status.md`.
 - Direction: `docs/roadmap.md`.
 - Completed milestones: `docs/completed-milestones.md`.
-- Completed representative pilots: `docs/todo-representative-pilots/spec.md`.
-- Completed stable v1: `docs/todo-stable-v1/spec.md`.
+- Completed representative pilots: `docs/milestones/representative-pilots/spec.md`.
+- Completed stable v1: `docs/milestones/stable-v1/spec.md`.
+- Completed portfolio adoption: `docs/milestones/portfolio-adoption/spec.md`.
+- Current active work: `docs/todo-active-work-lifecycle/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
-- Completed portfolio adoption: `docs/todo-portfolio-adoption/spec.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

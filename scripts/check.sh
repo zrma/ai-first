@@ -31,9 +31,8 @@ required_links = {
         "docs/roadmap.md",
         "docs/agent-harness.md",
         "docs/PUBLICATION.md",
-        "docs/todo-representative-pilots/spec.md",
-        "docs/todo-stable-v1/spec.md",
-        "docs/todo-portfolio-adoption/spec.md",
+        "docs/completed-milestones.md",
+        "docs/todo-active-work-lifecycle/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -45,9 +44,10 @@ required_links = {
         "docs/completed-milestones.md",
         "docs/PUBLICATION.md",
         "docs/REPO_MANIFEST.yaml",
-        "docs/todo-representative-pilots/spec.md",
-        "docs/todo-stable-v1/spec.md",
-        "docs/todo-portfolio-adoption/spec.md",
+        "docs/milestones/representative-pilots/spec.md",
+        "docs/milestones/stable-v1/spec.md",
+        "docs/milestones/portfolio-adoption/spec.md",
+        "docs/todo-active-work-lifecycle/spec.md",
     ],
 }
 

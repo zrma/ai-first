@@ -3,21 +3,22 @@
 ## 현재 단계
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
-`v1.0.0` release와 승인된 소비 저장소 집합의 portfolio adoption을 완료했다.
+`v1.0.0` release와 승인된 소비 저장소 집합의 portfolio adoption을 완료했다. 현재
+stable `1.1.0` active-work lifecycle release와 소비 저장소 update를 진행하고 있다.
 
-`1.0.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
+`1.1.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
 check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
 없이 generated input/output drift를 검증한다.
 
 ## 현재 milestone
 
-활성 milestone 없음.
+활성 milestone은 `docs/todo-active-work-lifecycle/spec.md`다.
 
-완료된 Stage 5의 contract와 aggregate evidence는
-`docs/todo-portfolio-adoption/spec.md`에 있다. 다음 versioned profile 또는
-adoption tooling은 둘 이상의 독립 소비 저장소에서 반복 evidence가 생길 때 별도
-milestone으로 시작한다.
+완료된 Stage 0부터 Stage 5까지의 summary와 상세 packet은
+`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 현재 milestone은 완료된
+packet이 active namespace에 남는 문제를 contract, checker와 self-hosting
+navigation에서 함께 닫는다.
 
 ## 시작 순서
 

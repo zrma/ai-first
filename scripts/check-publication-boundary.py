@@ -8,12 +8,14 @@ from pathlib import Path
 repo_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-from ai_first.publication import scan_repository, self_test  # noqa: E402
+from ai_first.publication import scan_repository, scan_text, self_test  # noqa: E402
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--stdin", action="store_true")
+    parser.add_argument("--label", default="candidate")
     arguments = parser.parse_args()
 
     if arguments.self_test:
@@ -21,7 +23,10 @@ def main() -> int:
         print("publication boundary self-test passed")
         return 0
 
-    findings = sorted(scan_repository(repo_root))
+    if arguments.stdin:
+        findings = sorted(scan_text(arguments.label, sys.stdin.read()))
+    else:
+        findings = sorted(scan_repository(repo_root))
     if findings:
         for finding in findings:
             print(

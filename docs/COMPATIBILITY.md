@@ -13,6 +13,11 @@ AI-first v1은 서로 다른 compatibility 축을 명시적으로 분리한다.
 명시적인 migration과 전체 repository-native gate를 실행해야 한다. minor는
 backward-compatible capability, patch는 contract를 바꾸지 않는 수정만 허용한다.
 
+현재 self-hosting framework version은 `1.1.0`이다. active-work lifecycle contract와
+standalone validation이 추가되지만 schema version 1과
+`ai-first-harness-v1` Structure ID는 유지한다. stable 소비 저장소는 별도의
+versioned release와 repository별 update 전까지 `1.0.0` pin을 유지한다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

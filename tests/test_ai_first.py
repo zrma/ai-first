@@ -62,7 +62,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.0.0")
+        self.assertEqual(lock["framework"]["version"], "1.1.0")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
@@ -75,6 +75,88 @@ class AiFirstTest(unittest.TestCase):
             check=False,
         )
         self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+
+    def test_standalone_check_rejects_completed_active_work(self) -> None:
+        terminal_statuses = (
+            "상태: 완료\n",
+            "Status: completed\n",
+            "**Status:** **Done**\n",
+            "- Status: Completed — Maintenance Mode\n",
+            "Status: Superseded by P16\n",
+            "Status: deferred; resume in a future milestone\n",
+            "Status: implemented and rendered QA passed\n",
+            "상태: `completed — keep`\n",
+        )
+        for status in terminal_statuses:
+            with self.subTest(status=status):
+                temporary, root = self.copy_fixture()
+                self.addCleanup(temporary.cleanup)
+                render_repository(root, FRAMEWORK_ROOT)
+                packet = root / "docs" / "todo-release" / "spec.md"
+                packet.parent.mkdir(parents=True)
+                packet.write_text(
+                    f"# Release\n\n{status}",
+                    encoding="utf-8",
+                )
+
+                completed = subprocess.run(
+                    [sys.executable, ".ai-first/check.py"],
+                    cwd=root,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                )
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn(
+                    "completed active-work packet must be archived or removed",
+                    completed.stdout,
+                )
+                self.assertIn("docs/todo-release/spec.md", completed.stdout)
+
+    def test_standalone_check_accepts_active_or_archived_work(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        active = root / "docs" / "todo-release" / "spec.md"
+        active.parent.mkdir(parents=True)
+        active.write_text("# Release\n\n상태: 진행 중\n", encoding="utf-8")
+        archived = root / "docs" / "milestones" / "release" / "spec.md"
+        archived.parent.mkdir(parents=True)
+        archived.write_text("# Release\n\n상태: 완료\n", encoding="utf-8")
+
+        completed = subprocess.run(
+            [sys.executable, ".ai-first/check.py"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+
+    def test_publication_checker_supports_candidate_stdin(self) -> None:
+        checker = FRAMEWORK_ROOT / "scripts" / "check-publication-boundary.py"
+        safe = subprocess.run(
+            [sys.executable, str(checker), "--stdin", "--label", "working-diff"],
+            cwd=FRAMEWORK_ROOT,
+            input="Use <home>/project for local examples.\n",
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(safe.returncode, 0, safe.stdout + safe.stderr)
+
+        unsafe = subprocess.run(
+            [sys.executable, str(checker), "--stdin", "--label", "working-diff"],
+            cwd=FRAMEWORK_ROOT,
+            input="/" + "Users" + "/private-person/project\n",
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertNotEqual(unsafe.returncode, 0)
+        self.assertIn("local-home-path", unsafe.stderr)
 
     def test_manual_output_drift_fails(self) -> None:
         temporary, root = self.copy_fixture()
