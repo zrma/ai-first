@@ -112,7 +112,7 @@ rule, profile, schema validation, fixture 또는 repository overlay에 기계화
 - 정체성: `docs/AI_FIRST_CHARTER.md`.
 - layer와 composition: `docs/ARCHITECTURE.md`.
 - 현재 상태와 순서: `docs/HANDOFF.md`, `docs/status.md`, `docs/roadmap.md`.
-- 현재 작업: 활성 `docs/todo-*/spec.md`와 `open-questions.md`.
+- 현재 작업: 활성 `docs/todo-*/spec.md`와 `open-questions.md`가 있으면 해당 문서.
 - 공개 경계: `docs/PUBLICATION.md`.
 - 저장소 interface와 checks: `docs/REPO_MANIFEST.yaml`.
 - framework는 model/vendor 중립적 identity와 contract를 소유한다.
@@ -133,6 +133,6 @@ rule, profile, schema validation, fixture 또는 repository overlay에 기계화
 - Completed representative pilots: `docs/milestones/representative-pilots/spec.md`.
 - Completed stable v1: `docs/milestones/stable-v1/spec.md`.
 - Completed portfolio adoption: `docs/milestones/portfolio-adoption/spec.md`.
-- Current active work: `docs/todo-active-work-lifecycle/spec.md`.
+- Completed active-work lifecycle: `docs/milestones/active-work-lifecycle/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

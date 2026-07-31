@@ -80,3 +80,21 @@ tracked artifact 경계를 유지했다.
 terminal CI
 
 상세 기록: `docs/milestones/portfolio-adoption/spec.md`
+
+## Active-work lifecycle
+
+terminal 상태로 닫힌 work packet이 active namespace와 pointer에 남는 문제를
+framework contract와 deterministic standalone gate로 차단했다. Markdown status
+field와 status heading 형식을 함께 검사하고 active namespace 밖의 completed
+history는 허용한다.
+
+signed annotated `v1.1.1` patch release를 게시하고 승인된 소비 저장소 집합을 같은
+source identity로 갱신했다. 저장소별 native gate와 publication boundary를 보존한
+채 완료 packet을 archive하고 remote default-branch equality와 same-SHA terminal
+CI를 확인했다. 대상 inventory와 local coordination 원문은 tracked artifact에
+기록하지 않았다.
+
+검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical gate,
+remote equality와 terminal CI
+
+상세 기록: `docs/milestones/active-work-lifecycle/spec.md`

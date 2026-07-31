@@ -3,8 +3,8 @@
 ## 현재 단계
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
-`v1.0.0` release와 승인된 소비 저장소 집합의 portfolio adoption을 완료했다. 현재
-stable `1.1.1` active-work lifecycle patch release와 소비 저장소 update를 진행하고 있다.
+release, portfolio adoption과 active-work lifecycle hardening을 완료했다. stable
+`v1.1.1` release와 승인된 소비 저장소 집합의 pinned update도 닫혔다.
 
 `1.1.1` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
@@ -13,12 +13,12 @@ check와 standalone checker가 동작한다. synthetic consumer fixture가 centr
 
 ## 현재 milestone
 
-활성 milestone은 `docs/todo-active-work-lifecycle/spec.md`다.
+활성 milestone은 없다.
 
-완료된 Stage 0부터 Stage 5까지의 summary와 상세 packet은
-`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 현재 milestone은 완료된
-packet이 active namespace에 남는 문제를 contract, checker와 self-hosting
-navigation에서 함께 닫는다.
+완료된 Stage 0부터 Stage 6까지의 summary와 상세 packet은
+`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 새 model, capability
+profile 또는 framework version 요구가 생기면 별도 active packet을 열고 roadmap의
+다음 bounded stage를 정의한다.
 
 ## 시작 순서
 
@@ -41,7 +41,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 - remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
 - CI: Python 3.11/3.14 success
-- stable release: signed annotated `v1.0.0`, remote tag/commit equality verified
+- stable release: signed annotated `v1.1.1`, remote tag/commit equality verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

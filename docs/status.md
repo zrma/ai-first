@@ -21,16 +21,18 @@
 - signed annotated `v1.0.0`과 remote tag/commit equality
 - 승인된 소비 저장소 집합의 stable v1 portfolio adoption, 저장소별 publication과
   terminal CI
+- terminal 상태의 active-work packet을 거부하는 standalone lifecycle gate
+- 완료 milestone packet의 `docs/milestones/` 보관과 active pointer 제거
+- signed annotated `v1.1.1`, remote tag/commit equality와 Python 3.11/3.14 CI
+- 승인된 소비 저장소 집합의 `v1.1.1` pinned update, 저장소별 native gate,
+  remote equality와 terminal CI
 
 ## 진행 중
 
-- active-work packet의 terminal 상태를 거부하는 standalone lifecycle gate
-- 완료 milestone packet을 `docs/milestones/`로 이동하고 active pointer 정리
-- stable `1.1.1` framework source와 generated artifact 검증
+없음.
 
 ## 미착수
 
-- stable `1.1.1` publication과 소비 저장소별 pinned update
 - 추가 versioned profile catalog
 
 ## 결정 필요

@@ -32,7 +32,7 @@ required_links = {
         "docs/agent-harness.md",
         "docs/PUBLICATION.md",
         "docs/completed-milestones.md",
-        "docs/todo-active-work-lifecycle/spec.md",
+        "docs/milestones/active-work-lifecycle/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -47,7 +47,7 @@ required_links = {
         "docs/milestones/representative-pilots/spec.md",
         "docs/milestones/stable-v1/spec.md",
         "docs/milestones/portfolio-adoption/spec.md",
-        "docs/todo-active-work-lifecycle/spec.md",
+        "docs/milestones/active-work-lifecycle/spec.md",
     ],
 }
 

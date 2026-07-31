@@ -76,11 +76,11 @@
 
 ## Repository Overlay
 
-- Stage 0부터 Stage 5까지 완료됐다. 완료된 계약과 evidence는
+- Stage 0부터 Stage 6까지 완료됐다. 완료된 계약과 evidence는
   `docs/completed-milestones.md`와 `docs/milestones/`, 현재 상태와 다음 trigger는
   `docs/HANDOFF.md`와 `docs/status.md`가 소유한다.
-- 현재 active milestone은 `docs/todo-active-work-lifecycle/`이며 terminal 상태로
-  닫히면 `docs/milestones/`로 이동하고 active pointer를 제거한다.
+- 현재 active milestone은 없다. 새 model, capability profile 또는 framework
+  version 요구가 생기면 별도 active packet을 연다.
 - framework core는 model/vendor 중립적으로 유지하고 model별 지침은 교체 가능한
   capability profile로 둔다.
 - 소비 저장소는 framework version을 pin하고 생성된 artifact를 tracked 상태로
