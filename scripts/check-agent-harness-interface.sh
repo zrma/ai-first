@@ -37,8 +37,8 @@ for required_file in \
   docs/milestones/portfolio-adoption/open-questions.md \
   docs/milestones/active-work-lifecycle/spec.md \
   docs/milestones/active-work-lifecycle/open-questions.md \
-  docs/todo-vcs-closeout-permission-continuity/spec.md \
-  docs/todo-vcs-closeout-permission-continuity/open-questions.md; do
+  docs/milestones/vcs-closeout-permission-continuity/spec.md \
+  docs/milestones/vcs-closeout-permission-continuity/open-questions.md; do
   [ -s "$required_file" ] || fail "missing or empty $required_file"
 done
 

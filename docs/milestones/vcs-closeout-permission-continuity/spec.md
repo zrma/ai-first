@@ -1,6 +1,6 @@
 # VCS Closeout And Permission Continuity
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -46,6 +46,15 @@ core contract와 VCS profile에서 방지한다.
 core/profile 구현과 local green만으로 완료하지 않는다. signed `v1.2.0` source,
 승인된 소비 저장소의 pinned update, repository-native gate, remote equality와 terminal
 CI가 모두 닫힌 뒤 이 packet을 `docs/milestones/`로 이동하고 active pointer를 제거한다.
+
+## Completion Evidence
+
+- core/profile, generated guidance와 self-hosting fixture가 local closeout 및 task-local
+  authorization contract를 검증했다.
+- signed annotated `v1.2.0` source, remote tag identity와 central terminal CI를 확인했다.
+- 승인된 소비 저장소 집합에서 pinned update, repository-native/publication gate, remote
+  equality와 same-SHA terminal CI를 확인했다.
+- packet을 completed history로 이동하고 manifest의 active pointer를 제거했다.
 
 ## Verification
 

@@ -56,4 +56,4 @@ deterministic gate로 거부하고 completed history와 current work의 경계�
 publication transaction은 같은 bounded task 안에서 중복 승인 없이 terminal evidence까지
 계속하는 계약을 고정한다.
 
-상태: 진행 중
+상태: 완료

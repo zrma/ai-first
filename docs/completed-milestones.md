@@ -98,3 +98,21 @@ CI를 확인했다. 대상 inventory와 local coordination 원문은 tracked art
 remote equality와 terminal CI
 
 상세 기록: `docs/milestones/active-work-lifecycle/spec.md`
+
+## VCS closeout and permission continuity
+
+change/build/fix의 기본 local 종료 상태를 described logical change와 empty working
+copy로 고정하고, local closeout과 external publication permission을 분리했다. exact
+plan에 대한 승인을 bounded-task authorization으로 유지하되 target, owner, version,
+visibility, material scope, destructive history, cost와 secret 경계가 바뀔 때만
+재승인하도록 core와 `vcs-jj` profile에 반영했다.
+
+signed annotated `v1.2.0` source와 central terminal CI를 확인한 뒤 승인된 소비 저장소
+집합을 같은 source identity로 갱신했다. 저장소별 native/publication gate, remote
+default-branch equality와 same-SHA terminal CI를 확인하고 active pointer를 제거했다.
+대상 inventory와 local coordination 원문은 tracked artifact에 기록하지 않았다.
+
+검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
+gate, remote equality와 terminal CI
+
+상세 기록: `docs/milestones/vcs-closeout-permission-continuity/spec.md`

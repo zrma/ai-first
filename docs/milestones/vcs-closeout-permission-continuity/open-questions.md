@@ -1,5 +1,7 @@
 # VCS Closeout And Permission Continuity Open Questions
 
+상태: 완료 이력
+
 ## Blocking
 
 없음.

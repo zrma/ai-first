@@ -29,7 +29,7 @@ gate도 동작한다.
 Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증했고
 대표 소비 흐름의 도입과 publication도 닫았다. signed annotated `v1.0.0`,
 `v1.1.0`, `v1.1.1`, `v1.2.0` release와 remote tag identity를 검증했다. 승인된 소비 저장소
-집합의 `v1.1.1` pinned update도 repository별 gate, remote equality와 terminal
+집합의 `v1.2.0` pinned update도 repository별 gate, remote equality와 terminal
 CI까지 완료했다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
@@ -61,8 +61,8 @@ CI까지 완료했다.
 - 완료 milestone 상세 기록: [`docs/milestones/`](docs/milestones/)
 - 완료된 active-work lifecycle:
   [`docs/milestones/active-work-lifecycle/spec.md`](docs/milestones/active-work-lifecycle/spec.md)
-- 현재 VCS closeout과 permission continuity:
-  [`docs/todo-vcs-closeout-permission-continuity/spec.md`](docs/todo-vcs-closeout-permission-continuity/spec.md)
+- 완료된 VCS closeout과 permission continuity:
+  [`docs/milestones/vcs-closeout-permission-continuity/spec.md`](docs/milestones/vcs-closeout-permission-continuity/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)
 

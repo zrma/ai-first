@@ -33,7 +33,7 @@ required_links = {
         "docs/PUBLICATION.md",
         "docs/completed-milestones.md",
         "docs/milestones/active-work-lifecycle/spec.md",
-        "docs/todo-vcs-closeout-permission-continuity/spec.md",
+        "docs/milestones/vcs-closeout-permission-continuity/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -49,7 +49,7 @@ required_links = {
         "docs/milestones/stable-v1/spec.md",
         "docs/milestones/portfolio-adoption/spec.md",
         "docs/milestones/active-work-lifecycle/spec.md",
-        "docs/todo-vcs-closeout-permission-continuity/spec.md",
+        "docs/milestones/vcs-closeout-permission-continuity/spec.md",
     ],
 }
 

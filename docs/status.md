@@ -29,11 +29,14 @@
 - logical local VCS closeout과 task-local publication authorization core contract
 - `vcs-jj`의 described change 및 empty working-copy closeout profile
 - `v1.2.0` self-hosting render, generated-guidance fixture와 canonical local gate
+- signed annotated `v1.2.0`, remote tag/commit equality와 terminal Python CI
+- 승인된 소비 저장소 집합의 `v1.2.0` pinned update, 저장소별 native/publication gate,
+  remote equality와 same-SHA terminal CI
+- VCS closeout과 permission continuity packet의 completed history 이동 및 active pointer 제거
 
 ## 진행 중
 
-- signed `v1.2.0` release identity와 terminal Python CI 검증
-- 소비 저장소 pinned update, native gate, remote equality와 terminal CI
+없음.
 
 ## 미착수
 
