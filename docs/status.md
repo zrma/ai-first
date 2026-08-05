@@ -26,12 +26,14 @@
 - signed annotated `v1.1.1`, remote tag/commit equality와 Python 3.11/3.14 CI
 - 승인된 소비 저장소 집합의 `v1.1.1` pinned update, 저장소별 native gate,
   remote equality와 terminal CI
+- logical local VCS closeout과 task-local publication authorization core contract
+- `vcs-jj`의 described change 및 empty working-copy closeout profile
+- `v1.2.0` self-hosting render, generated-guidance fixture와 canonical local gate
 
 ## 진행 중
 
-- logical local VCS closeout과 task-local publication authorization core contract
-- `vcs-jj`의 described change 및 empty working-copy closeout profile
-- `v1.2.0` self-hosting, release와 소비 저장소 pinned update 검증
+- signed `v1.2.0` release identity와 terminal Python CI 검증
+- 소비 저장소 pinned update, native gate, remote equality와 terminal CI
 
 ## 미착수
 

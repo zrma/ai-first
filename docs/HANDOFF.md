@@ -4,8 +4,8 @@
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
 release, portfolio adoption과 active-work lifecycle hardening을 완료했다. stable
-`v1.1.1` release와 승인된 소비 저장소 집합의 pinned update도 닫혔다. 현재 `1.2.0`
-development line에서 VCS closeout과 permission continuity를 강화하고 있다.
+`v1.2.0`에서 VCS closeout과 permission continuity core/profile 및 self-hosting 검증을
+완료했고, 승인된 소비 저장소 집합의 pinned update를 진행하고 있다.
 
 `1.2.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
@@ -42,7 +42,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 - remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
 - CI: Python 3.11/3.14 success
-- stable release: signed annotated `v1.1.1`, remote tag/commit equality verified
+- stable release: signed annotated `v1.2.0`, remote tag/commit equality verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계
