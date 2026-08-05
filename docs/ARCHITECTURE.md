@@ -83,8 +83,9 @@ framework update는 다음 transaction으로 처리한다.
 4. core, profile과 overlay를 결정적으로 합성한다.
 5. lock과 generated output diff를 검토한다.
 6. repository-local focused/canonical/publication gate를 실행한다.
-7. 하나의 독립적인 `jj` change로 닫는다.
-8. 통합, push와 release는 저장소별 권한 경계에서 수행한다.
+7. 각 logical unit을 설명된 `jj` change로 닫고 새 empty working-copy change를 만든다.
+8. 통합, push와 release는 task-local authorization에 기록된 exact action/target 범위에서
+   수행하고, 범위가 유지되는 동안 단계별 재승인을 요구하지 않는다.
 
 여러 저장소를 하나의 원자적 change나 일괄 push로 취급하지 않는다.
 격리를 위해 repository-native gate를 생략하거나 완화하지 않으며, 작업 시작·todo

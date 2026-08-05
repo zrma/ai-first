@@ -34,6 +34,10 @@
 8. clean working copy 확인
 
 remote 생성, visibility 변경, push, tag와 release는 각각 외부 write다.
+exact action과 target을 열거한 계획에 대한 사용자의 승인은 해당 bounded publication
+transaction 동안 유지한다. phase나 tool이 바뀌었다는 이유로 재승인하지 않으며,
+target, owner, version, visibility, material scope 또는 destructive history 경계가
+달라지면 다시 승인받는다. local logical change closeout은 external write가 아니다.
 
 ## 현재 상태
 

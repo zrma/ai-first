@@ -49,3 +49,11 @@ pilot evidence를 반영해 schema, profile, migration contract와 compatibility
 deterministic gate로 거부하고 completed history와 current work의 경계를 고정한다.
 
 상태: 완료
+
+## Stage 7 — VCS closeout and permission continuity
+
+검증된 local 작업을 logical change와 empty working copy로 기본 마감하고, 명확히 승인된
+publication transaction은 같은 bounded task 안에서 중복 승인 없이 terminal evidence까지
+계속하는 계약을 고정한다.
+
+상태: 진행 중

@@ -29,7 +29,9 @@
 
 ## 진행 중
 
-없음.
+- logical local VCS closeout과 task-local publication authorization core contract
+- `vcs-jj`의 described change 및 empty working-copy closeout profile
+- `v1.2.0` self-hosting, release와 소비 저장소 pinned update 검증
 
 ## 미착수
 

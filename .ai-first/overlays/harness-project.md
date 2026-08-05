@@ -25,5 +25,7 @@
 - Completed stable v1: `docs/milestones/stable-v1/spec.md`.
 - Completed portfolio adoption: `docs/milestones/portfolio-adoption/spec.md`.
 - Completed active-work lifecycle: `docs/milestones/active-work-lifecycle/spec.md`.
+- Current VCS closeout and permission continuity:
+  `docs/todo-vcs-closeout-permission-continuity/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

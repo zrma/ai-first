@@ -4,21 +4,22 @@
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
 release, portfolio adoption과 active-work lifecycle hardening을 완료했다. stable
-`v1.1.1` release와 승인된 소비 저장소 집합의 pinned update도 닫혔다.
+`v1.1.1` release와 승인된 소비 저장소 집합의 pinned update도 닫혔다. 현재 `1.2.0`
+development line에서 VCS closeout과 permission continuity를 강화하고 있다.
 
-`1.1.1` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
+`1.2.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
 profile, repository overlay, deterministic render, content-addressed lock, central drift
 check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
 없이 generated input/output drift를 검증한다.
 
 ## 현재 milestone
 
-활성 milestone은 없다.
+활성 milestone은 `docs/todo-vcs-closeout-permission-continuity/spec.md`다.
 
 완료된 Stage 0부터 Stage 6까지의 summary와 상세 packet은
-`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 새 model, capability
-profile 또는 framework version 요구가 생기면 별도 active packet을 열고 roadmap의
-다음 bounded stage를 정의한다.
+`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 현재 Stage 7은 local commit
+closeout과 한 번 승인된 publication transaction의 지속 규칙을 release와 소비 저장소
+evidence까지 닫는다.
 
 ## 시작 순서
 

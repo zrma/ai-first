@@ -47,6 +47,18 @@ class AiFirstTest(unittest.TestCase):
             b"repository-native gate",
             first.outputs["docs/agent-harness.md"],
         )
+        self.assertIn(
+            b"task-local publication authorization",
+            first.outputs["docs/agent-harness.md"],
+        )
+        self.assertIn(
+            b"empty working-copy change",
+            first.outputs["AGENTS.md"],
+        )
+        self.assertIn(
+            "phase, tool 또는 context compaction".encode(),
+            first.outputs["AGENTS.md"],
+        )
 
         changed = render_repository(root, FRAMEWORK_ROOT)
         self.assertEqual(
@@ -62,7 +74,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.1.1")
+        self.assertEqual(lock["framework"]["version"], "1.2.0")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))

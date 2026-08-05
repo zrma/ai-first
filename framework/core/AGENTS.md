@@ -6,7 +6,8 @@
 - Human role: 인간은 목적, 방향, 가치, 우선순위, 제품 판단과 비가역적 결정을
   소유하며 방향지시자, 동반자와 project manager로 참여한다.
 - Request modes: answer, explain, review, diagnose와 plan 요청은 조사하고 보고한다.
-  change, build와 fix 요청은 범위 안의 local 변경과 비파괴 검증까지 수행한다.
+  change, build와 fix 요청은 범위 안의 local 변경, 비파괴 검증과 logical local VCS
+  closeout까지 수행한다.
 - Persistence: 분석이나 중간 tool 성공에서 멈추지 않고 요청된 결과와 검증 evidence가
   닫힐 때까지 계속한다.
 - Initiative: repository-owned gap과 acceptance가 명확하면 다음 bounded slice를
@@ -21,6 +22,15 @@
 - Permissions: 범위 안의 읽기, 편집과 비파괴 검증은 change 작업에서 허용된다.
   external write, 파괴적·비가역 작업, 비용, secret와 material scope expansion은
   명시적인 권한을 요구한다.
+- Local VCS closeout: 의미 있고 검증된 change/build/fix 결과는 설명된 logical local
+  change로 닫고 새 empty working-copy change를 만든다. 이는 publication permission이
+  필요 없는 기본 local closeout이다. 사용자의 no-commit 지시, repository 금지 또는
+  blocker가 있으면 예외와 격리된 WIP의 이유·재개점을 명시한다.
+- Permission continuity: 사용자가 external action을 직접 승인하거나 exact action과
+  target을 열거한 직전 계획을 승인하면 그 권한은 해당 bounded task가 완료·철회될
+  때까지 유지된다. phase, tool 또는 context compaction이 바뀌었다는 이유만으로 다시
+  묻지 않는다. target, owner, version, visibility, material scope가 달라지거나 새로운
+  destructive history, cost 또는 secret 경계가 생기면 재승인받는다.
 - Publication boundary: 공개 push, tag/release, visibility 변경 또는 published-history
   rewrite 전에는 repository gate와 권한 있는 machine-local inventory gate를 통과한다.
 - Tracked privacy: local path, host·cluster identifier, internal endpoint/address,

@@ -18,10 +18,13 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-stable `1.1.1` self-hosting core가 동작한다. 선언에서 core, capability profile과
-repository overlay를 결정적으로 합성하고, central framework check와 standalone
-consumer drift check가 같은 lock을 검증한다. 완료된 work packet이 active
-namespace에 남지 않도록 lifecycle contract와 standalone gate도 동작한다.
+stable `1.1.1` 위에서 `1.2.0` self-hosting development line이 동작한다. 선언에서
+core, capability profile과 repository overlay를 결정적으로 합성하고, central
+framework check와 standalone consumer drift check가 같은 lock을 검증한다. 완료된
+work packet이 active namespace에 남지 않도록 lifecycle contract와 standalone
+gate도 동작한다.
+현재는 검증된 local 작업의 logical VCS closeout과 bounded-task permission continuity를
+core 및 `vcs-jj` profile에 고정하고 있다.
 
 Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증했고
 대표 소비 흐름의 도입과 publication도 닫았다. signed annotated `v1.0.0`,
@@ -58,6 +61,8 @@ CI까지 완료했다.
 - 완료 milestone 상세 기록: [`docs/milestones/`](docs/milestones/)
 - 완료된 active-work lifecycle:
   [`docs/milestones/active-work-lifecycle/spec.md`](docs/milestones/active-work-lifecycle/spec.md)
+- 현재 VCS closeout과 permission continuity:
+  [`docs/todo-vcs-closeout-permission-continuity/spec.md`](docs/todo-vcs-closeout-permission-continuity/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)
 
