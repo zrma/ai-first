@@ -34,6 +34,7 @@ required_links = {
         "docs/completed-milestones.md",
         "docs/milestones/active-work-lifecycle/spec.md",
         "docs/milestones/vcs-closeout-permission-continuity/spec.md",
+        "docs/milestones/contract-audit-hardening/spec.md",
     ],
     "docs/agent-harness.md": [
         "docs/AI_FIRST_CHARTER.md",
@@ -50,6 +51,7 @@ required_links = {
         "docs/milestones/portfolio-adoption/spec.md",
         "docs/milestones/active-work-lifecycle/spec.md",
         "docs/milestones/vcs-closeout-permission-continuity/spec.md",
+        "docs/milestones/contract-audit-hardening/spec.md",
     ],
 }
 

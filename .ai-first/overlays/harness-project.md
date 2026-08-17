@@ -27,5 +27,7 @@
 - Completed active-work lifecycle: `docs/milestones/active-work-lifecycle/spec.md`.
 - Completed VCS closeout and permission continuity:
   `docs/milestones/vcs-closeout-permission-continuity/spec.md`.
+- Completed contract audit hardening:
+  `docs/milestones/contract-audit-hardening/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

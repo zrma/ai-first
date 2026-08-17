@@ -57,3 +57,11 @@ publication transaction은 같은 bounded task 안에서 중복 승인 없이 te
 계속하는 계약을 고정한다.
 
 상태: 완료
+
+## Stage 8 — Contract audit hardening
+
+일반 contract/status review를 명시 없이 exhaustive capability로 확대하지 않는
+proportionality를 core에 고정하고, standalone checker가 lock의 source/profile/input
+metadata 정합성을 독립적으로 검증하게 한다.
+
+상태: 완료

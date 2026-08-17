@@ -13,8 +13,9 @@ AI-first v1은 서로 다른 compatibility 축을 명시적으로 분리한다.
 명시적인 migration과 전체 repository-native gate를 실행해야 한다. minor는
 backward-compatible capability, patch는 contract를 바꾸지 않는 수정만 허용한다.
 
-현재 stable self-hosting framework version은 `1.2.0`이다. logical local VCS
-closeout과 bounded-task permission continuity가 추가됐지만 schema version 1과
+현재 stable framework version은 `1.2.0`, self-hosting development version은
+`1.3.0-dev`다. development line은 investigation-depth proportionality와 standalone
+lock metadata integrity를 backward-compatible minor change로 보강한다. schema version 1과
 `ai-first-harness-v1` Structure ID는 유지한다. stable 소비 저장소는 versioned release를
 pin하고 repository별 update transaction으로 올린다.
 

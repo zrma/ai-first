@@ -3,23 +3,23 @@
 ## 현재 단계
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
-release, portfolio adoption, active-work lifecycle과 VCS closeout/permission
-continuity까지 Stage 0부터 Stage 7을 완료했다. stable `v1.2.0`과 승인된 소비 저장소
+release, portfolio adoption, active-work lifecycle, VCS closeout/permission continuity와
+contract audit hardening까지 Stage 0부터 Stage 8을 완료했다. stable `v1.2.0`과 승인된 소비 저장소
 집합의 pinned update는 repository-native gate, remote equality와 terminal CI까지 닫혔다.
 
-`1.2.0` 선언, core, `vcs-jj`/`public-repository`/`openai-agent-guidance`
-profile, repository overlay, deterministic render, content-addressed lock, central drift
-check와 standalone checker가 동작한다. synthetic consumer fixture가 central checkout
-없이 generated input/output drift를 검증한다.
+stable `1.2.0`과 self-hosting `1.3.0-dev` 선언, core,
+`vcs-jj`/`public-repository`/`openai-agent-guidance` profile, repository overlay,
+deterministic render, content-addressed lock, central drift check와 standalone checker가
+동작한다. synthetic consumer fixture가 central checkout 없이 generated input/output
+drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
 현재 active milestone은 없다.
 
-완료된 Stage 0부터 Stage 7까지의 summary와 상세 packet은
-`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 새 model, capability
-profile, framework version 또는 반복되는 false stop evidence가 생기면 별도 active
-packet을 연다.
+완료된 Stage 0부터 Stage 8까지의 summary와 상세 packet은
+`docs/completed-milestones.md`와 `docs/milestones/`에 있다. 다음 trigger는 stable
+`v1.3.0` release 결정, consumer migration 승인 또는 새 capability profile 요구다.
 
 ## 시작 순서
 

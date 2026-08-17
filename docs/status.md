@@ -33,6 +33,9 @@
 - 승인된 소비 저장소 집합의 `v1.2.0` pinned update, 저장소별 native/publication gate,
   remote equality와 same-SHA terminal CI
 - VCS closeout과 permission continuity packet의 completed history 이동 및 active pointer 제거
+- investigation-depth proportionality와 standalone lock metadata 정합성 검증
+- `1.3.0-dev` self-hosting render, metadata-tampering fixture와 consumer interface
+  compatibility 검증
 
 ## 진행 중
 
@@ -41,6 +44,7 @@
 ## 미착수
 
 - 추가 versioned profile catalog
+- stable `v1.3.0` release와 consumer migration
 
 ## 결정 필요
 

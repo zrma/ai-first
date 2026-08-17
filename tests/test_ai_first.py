@@ -59,6 +59,14 @@ class AiFirstTest(unittest.TestCase):
             "phase, tool 또는 context compaction".encode(),
             first.outputs["AGENTS.md"],
         )
+        self.assertIn(
+            b"Scope proportionality",
+            first.outputs["AGENTS.md"],
+        )
+        self.assertIn(
+            b"contract/status review",
+            first.outputs["docs/agent-harness.md"],
+        )
 
         changed = render_repository(root, FRAMEWORK_ROOT)
         self.assertEqual(
@@ -74,7 +82,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.2.0")
+        self.assertEqual(lock["framework"]["version"], "1.3.0-dev")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
@@ -148,6 +156,66 @@ class AiFirstTest(unittest.TestCase):
         )
 
         self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+
+    def test_standalone_check_rejects_tampered_framework_metadata(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        lock_path = root / ".ai-first.lock"
+        lock = json.loads(lock_path.read_text(encoding="utf-8"))
+        lock["framework"]["source_kind"] = "release"
+        lock["framework"]["source_revision"] = "v9.9.9"
+        lock["framework"]["source_commit"] = "f" * 40
+        lock["profiles"] = ["tampered-profile"]
+        framework_input = next(iter(lock["framework_inputs"]))
+        lock["framework_inputs"][framework_input] = "0" * 64
+        lock_path.write_text(
+            json.dumps(lock, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
+        completed = subprocess.run(
+            [sys.executable, ".ai-first/check.py"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        for message in (
+            "framework.source_kind does not match .ai-first.toml",
+            "framework.source_revision does not match .ai-first.toml",
+            "profiles does not match .ai-first.toml",
+            "framework.digest does not match framework_inputs",
+        ):
+            self.assertIn(message, completed.stdout)
+
+    def test_standalone_check_rejects_invalid_development_source_commit(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        lock_path = root / ".ai-first.lock"
+        lock = json.loads(lock_path.read_text(encoding="utf-8"))
+        lock["framework"]["source_commit"] = "f" * 40
+        lock_path.write_text(
+            json.dumps(lock, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
+        completed = subprocess.run(
+            [sys.executable, ".ai-first/check.py"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn(
+            "development source requires null source_revision and source_commit",
+            completed.stdout,
+        )
 
     def test_publication_checker_supports_candidate_stdin(self) -> None:
         checker = FRAMEWORK_ROOT / "scripts" / "check-publication-boundary.py"

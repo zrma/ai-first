@@ -18,7 +18,9 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-stable `1.2.0` self-hosting core가 동작한다. 선언에서
+stable release는 `1.2.0`이고, self-hosting main은 `1.3.0-dev` contract
+hardening을 완료했다. stable `v1.3.0` release와 consumer migration은 별도
+publication decision으로 남아 있다. 선언에서
 core, capability profile과 repository overlay를 결정적으로 합성하고, central
 framework check와 standalone consumer drift check가 같은 lock을 검증한다. 완료된
 work packet이 active namespace에 남지 않도록 lifecycle contract와 standalone
@@ -63,6 +65,8 @@ CI까지 완료했다.
   [`docs/milestones/active-work-lifecycle/spec.md`](docs/milestones/active-work-lifecycle/spec.md)
 - 완료된 VCS closeout과 permission continuity:
   [`docs/milestones/vcs-closeout-permission-continuity/spec.md`](docs/milestones/vcs-closeout-permission-continuity/spec.md)
+- 완료된 contract audit hardening:
+  [`docs/milestones/contract-audit-hardening/spec.md`](docs/milestones/contract-audit-hardening/spec.md)
 - 기여: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 보안: [`SECURITY.md`](SECURITY.md)
 

@@ -116,3 +116,19 @@ default-branch equality와 same-SHA terminal CI를 확인하고 active pointer�
 gate, remote equality와 terminal CI
 
 상세 기록: `docs/milestones/vcs-closeout-permission-continuity/spec.md`
+
+## Contract audit hardening
+
+일반 contract/status review를 capability availability만으로 exhaustive scan, 제품 코드
+전수 조사 또는 material time/token/cost 작업으로 확대하지 않는
+investigation-depth proportionality를 core에 고정했다.
+
+standalone checker가 `.ai-first.toml`과 lock의 framework source identity, profile 순서,
+`framework_inputs` path/digest 형식과 aggregate digest를 비교하게 했다. synthetic
+fixture가 config과 lock의 source/profile 불일치와 framework input aggregate 불일치를
+거부하고, 기존 stable consumer interface는 변경 없이 통과했다.
+
+검증: focused tampering fixture, self-hosting render/check, `scripts/check.sh`, consumer
+standalone/harness interface compatibility
+
+상세 기록: `docs/milestones/contract-audit-hardening/spec.md`
