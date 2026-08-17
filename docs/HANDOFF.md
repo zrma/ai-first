@@ -3,9 +3,10 @@
 ## 현재 단계
 
 `ai-first`는 self-hosting core, public foundation, representative pilot, stable
-release, portfolio adoption, active-work lifecycle, VCS closeout/permission continuity와
-contract audit hardening까지 Stage 0부터 Stage 8을 완료했다. stable `v1.2.0`과 승인된 소비 저장소
-집합의 pinned update는 repository-native gate, remote equality와 terminal CI까지 닫혔다.
+release, portfolio adoption, active-work lifecycle, VCS closeout/permission continuity,
+contract audit hardening과 stable v1.3 adoption까지 Stage 0부터 Stage 9을 완료했다.
+stable `v1.3.1`과 승인된 소비 저장소 집합의 pinned update는 repository-native gate,
+remote equality와 terminal CI까지 닫혔다.
 
 release-ready `1.3.1` self-hosting 선언, core,
 `vcs-jj`/`public-repository`/`openai-agent-guidance` profile, repository overlay,
@@ -15,12 +16,11 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 stable `v1.3.1` patch release와 승인된 소비 저장소 집합의
-migration이다. `v1.3.0`은 게시됐지만 generated Markdown formatter 호환성 수정이
-필요해 adoption source를 `v1.3.1`로 전환했다. 범위, acceptance와 publication 순서는
-`docs/todo-v1-3-release-and-adoption/`이 소유한다.
+현재 active milestone은 없다. 새 model, capability profile 또는 framework version
+요구가 생기면 별도 active packet을 연다. stable v1.3 release와 adoption의 범위,
+acceptance와 evidence는 `docs/milestones/stable-v1-3-release-and-adoption/`에 있다.
 
-완료된 Stage 0부터 Stage 8까지의 summary와 상세 packet은
+완료된 Stage 0부터 Stage 9까지의 summary와 상세 packet은
 `docs/completed-milestones.md`와 `docs/milestones/`에 있다.
 
 ## 시작 순서
@@ -44,8 +44,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 - remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
 - CI: Python 3.11/3.14 success
-- stable release: signed annotated `v1.3.0`, remote tag/commit equality verified;
-  `v1.3.1` patch publication 진행 중
+- stable release: signed annotated `v1.3.1`, remote tag/commit equality와 terminal CI verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

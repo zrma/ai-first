@@ -161,7 +161,7 @@ rule, profile, schema validation, fixture 또는 repository overlay에 기계화
   `docs/milestones/vcs-closeout-permission-continuity/spec.md`.
 - Completed contract audit hardening:
   `docs/milestones/contract-audit-hardening/spec.md`.
-- Active v1.3 release and adoption:
-  `docs/todo-v1-3-release-and-adoption/spec.md`.
+- Completed stable v1.3 release and adoption:
+  `docs/milestones/stable-v1-3-release-and-adoption/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.

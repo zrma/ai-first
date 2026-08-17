@@ -1,6 +1,6 @@
 # Stable v1.3 Release And Adoption
 
-상태: 진행 중
+상태: 완료
 
 ## Goal
 
@@ -37,6 +37,19 @@ continuation 호환성 gap이 발견되어 source를 이동하지 않고 patch r
    terminal success다.
 6. 완료 packet은 `docs/milestones/`로 이동하고 active pointer를 제거한다.
 
+## Completion Evidence
+
+- `1.3.1` self-hosting render, standalone check와 canonical central gate가 통과했다.
+- signed annotated `v1.3.1` tag의 local/remote tag object, peeled commit과 서명을
+  확인하고 tag target의 Python CI가 terminal success임을 확인했다.
+- 이미 게시된 `v1.3.0` tag는 이동하지 않고 formatter-compatible `v1.3.1` source를
+  adoption 기준으로 사용했다.
+- 승인된 소비 저장소 집합을 VCS-isolated checkout에서 갱신하고 각 대상의 standalone,
+  native와 publication gate를 통과시켰다.
+- 각 대상의 remote default branch equality와 same-SHA terminal CI를 확인했다.
+- package registry와 GitHub Release는 생성하지 않았고, 소비 inventory와 local
+  coordination 원문을 tracked artifact에 기록하지 않았다.
+
 ## Verification
 
 ```sh
@@ -45,10 +58,10 @@ python3 .ai-first/check.py
 ```
 
 소비 저장소에서는 같은 release checkout으로 render/check한 뒤 repository-owned
-canonical/publication gate를 추가로 실행한다.
+canonical/publication gate를 추가로 실행했다.
 
 ## Completion boundary
 
 central release source, 승인된 대상별 독립 migration과 terminal evidence, central
-completed-history closeout이 모두 끝날 때 완료한다. tag target과 이후 closeout commit은
-별도 SHA로 보고한다.
+completed-history closeout을 모두 완료했다. tag target과 이후 closeout commit은 별도
+SHA로 유지한다.

@@ -132,3 +132,20 @@ fixture가 config과 lock의 source/profile 불일치와 framework input aggrega
 standalone/harness interface compatibility
 
 상세 기록: `docs/milestones/contract-audit-hardening/spec.md`
+
+## Stable v1.3 release and adoption
+
+contract audit hardening을 signed annotated `v1.3.0`으로 공개한 뒤 generated Markdown
+formatter 호환성 gap을 immutable `v1.3.1` patch로 교정했다. `v1.3.0` tag는 이동하지
+않고 signed `v1.3.1` tag의 local/remote identity, peeled commit, 서명과 terminal
+Python CI를 검증했다.
+
+승인된 소비 저장소 집합을 `v1.3.1` release source로 갱신하고 저장소별 standalone,
+native와 publication gate, remote default-branch equality와 same-SHA terminal CI를
+확인했다. 대상 inventory와 local coordination 원문은 tracked artifact에 기록하지
+않았다.
+
+검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
+gate, remote equality와 terminal CI
+
+상세 기록: `docs/milestones/stable-v1-3-release-and-adoption/spec.md`

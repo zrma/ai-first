@@ -73,4 +73,4 @@ formatter 호환성 patch인 `v1.3.1`을 adoption source로 사용해 승인된 
 VCS-isolated checkout에서 이관한다. 각 저장소의 standalone/native/publication gate,
 remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 
-상태: 진행 중
+상태: 완료
