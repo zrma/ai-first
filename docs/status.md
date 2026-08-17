@@ -39,12 +39,13 @@
 
 ## 진행 중
 
-없음.
+- stable `v1.3.0` release publication
+- 승인된 소비 저장소 집합의 VCS-isolated migration, repository-native gate,
+  remote equality와 same-SHA terminal CI 검증
 
 ## 미착수
 
 - 추가 versioned profile catalog
-- stable `v1.3.0` release와 consumer migration
 
 ## 결정 필요
 

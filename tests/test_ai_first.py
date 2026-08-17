@@ -82,7 +82,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.3.0-dev")
+        self.assertEqual(lock["framework"]["version"], "1.3.0")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
