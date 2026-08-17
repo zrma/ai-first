@@ -67,6 +67,13 @@ class AiFirstTest(unittest.TestCase):
             b"contract/status review",
             first.outputs["docs/agent-harness.md"],
         )
+        self.assertIn(
+            (
+                "10. 의미 있고 검증된 결과를 하나 이상의 독립적으로 설명 가능한 local change로\n"
+                "    describe하고 새 empty working-copy change를 만든 뒤 다음 logical unit으로 이동한다."
+            ).encode(),
+            first.outputs["docs/agent-harness.md"],
+        )
 
         changed = render_repository(root, FRAMEWORK_ROOT)
         self.assertEqual(
@@ -82,7 +89,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.3.0")
+        self.assertEqual(lock["framework"]["version"], "1.3.1")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))

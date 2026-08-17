@@ -30,7 +30,7 @@
    history로 이동하거나 durable summary에 합치고, stale active pointer를 제거한다.
    future trigger는 handoff/status에 남긴다.
 10. 의미 있고 검증된 결과를 하나 이상의 독립적으로 설명 가능한 local change로
-   describe하고 새 empty working-copy change를 만든 뒤 다음 logical unit으로 이동한다.
+    describe하고 새 empty working-copy change를 만든 뒤 다음 logical unit으로 이동한다.
 
 ## Verification And Evidence
 

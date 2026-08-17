@@ -13,9 +13,9 @@ AI-first v1은 서로 다른 compatibility 축을 명시적으로 분리한다.
 명시적인 migration과 전체 repository-native gate를 실행해야 한다. minor는
 backward-compatible capability, patch는 contract를 바꾸지 않는 수정만 허용한다.
 
-현재 stable framework version은 `1.3.0`이다. 이 release는 investigation-depth
-proportionality와 standalone lock metadata integrity를 backward-compatible minor
-change로 보강한다. schema version 1과
+현재 stable framework version은 `1.3.1`이다. `1.3.0`의 investigation-depth
+proportionality와 standalone lock metadata integrity를 유지하면서 generated Markdown의
+ordered-list continuation을 formatter-compatible하게 교정한 patch다. schema version 1과
 `ai-first-harness-v1` Structure ID는 유지한다. stable 소비 저장소는 versioned release를
 pin하고 repository별 update transaction으로 올린다.
 
@@ -43,9 +43,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.3.0"
+framework_version = "1.3.1"
 source_kind = "release"
-source_revision = "v1.3.0"
+source_revision = "v1.3.1"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

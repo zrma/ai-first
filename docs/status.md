@@ -36,10 +36,11 @@
 - investigation-depth proportionality와 standalone lock metadata 정합성 검증
 - `1.3.0-dev` self-hosting render, metadata-tampering fixture와 consumer interface
   compatibility 검증
+- signed annotated `v1.3.0`, remote tag/commit equality와 terminal Python CI
 
 ## 진행 중
 
-- stable `v1.3.0` release publication
+- stable `v1.3.1` formatter-compatibility patch release publication
 - 승인된 소비 저장소 집합의 VCS-isolated migration, repository-native gate,
   remote equality와 same-SHA terminal CI 검증
 

@@ -68,8 +68,9 @@ metadata 정합성을 독립적으로 검증하게 한다.
 
 ## Stage 9 — Stable v1.3 release and adoption
 
-contract audit hardening을 signed annotated `v1.3.0` source로 공개하고 승인된 소비
-저장소 집합을 VCS-isolated checkout에서 이관한다. 각 저장소의 standalone/native/
-publication gate, remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
+contract audit hardening을 signed annotated `v1.3.0`으로 공개한 뒤, generated Markdown
+formatter 호환성 patch인 `v1.3.1`을 adoption source로 사용해 승인된 소비 저장소 집합을
+VCS-isolated checkout에서 이관한다. 각 저장소의 standalone/native/publication gate,
+remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 
 상태: 진행 중

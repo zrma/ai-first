@@ -4,13 +4,15 @@
 
 ## Goal
 
-contract audit hardening을 stable `v1.3.0` source로 공개하고 승인된 소비 저장소
-집합을 repository-owned overlay와 native lifecycle을 보존한 채 이관한다.
+contract audit hardening의 formatter-compatible patch인 stable `v1.3.1` source를 공개하고
+승인된 소비 저장소 집합을 repository-owned overlay와 native lifecycle을 보존한 채
+이관한다. `v1.3.0`은 게시됐지만 adoption 전에 generated Markdown의 ordered-list
+continuation 호환성 gap이 발견되어 source를 이동하지 않고 patch release로 교정한다.
 
 ## In scope
 
-- `1.3.0` self-hosting identity와 canonical central gate
-- signed annotated `v1.3.0` tag, remote tag/commit equality와 terminal CI
+- `1.3.1` self-hosting identity와 canonical central gate
+- signed annotated `v1.3.1` tag, remote tag/commit equality와 terminal CI
 - 기본 working copy 밖의 VCS-isolated consumer migration
 - 저장소별 standalone, native와 publication gate
 - 저장소별 default-branch remote equality와 same-SHA terminal CI
@@ -24,11 +26,11 @@ contract audit hardening을 stable `v1.3.0` source로 공개하고 승인된 소
 
 ## Acceptance criteria
 
-1. central self-hosting 선언과 generated output이 stable `1.3.0` identity로 drift 없이
+1. central self-hosting 선언과 generated output이 stable `1.3.1` identity로 drift 없이
    합성된다.
 2. canonical/publication gate를 통과한 central commit이 public `main`과 signed
-   annotated `v1.3.0` tag에서 동일하게 확인되고 terminal CI가 성공한다.
-3. 각 대상은 기본 working copy 밖의 격리 checkout에서 `v1.3.0` release source와
+   annotated `v1.3.1` tag에서 동일하게 확인되고 terminal CI가 성공한다.
+3. 각 대상은 기본 working copy 밖의 격리 checkout에서 `v1.3.1` release source와
    verified commit을 lock에 기록한다.
 4. 각 대상의 standalone, repository-native와 publication gate가 통과한다.
 5. 각 대상의 remote default branch가 의도한 migration commit과 같고 same-SHA CI가
