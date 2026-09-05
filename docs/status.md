@@ -51,8 +51,8 @@
 
 ## 진행 중
 
-framework 정식 release와 소비 저장소의 최종 release pin/publication이 남아 있다.
-local 후보 검증은 완료했고 출고 권한과 최종 source 검증은 별도 단계다.
+`docs/todo-v1-5-release-and-adoption/spec.md`: 최신 main 위의 `1.5.0` release와
+소비 저장소 최종 pin/publication, remote equality 및 same-SHA CI 검증.
 
 ## 미착수
 

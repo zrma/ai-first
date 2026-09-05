@@ -15,7 +15,7 @@ entrypoints:
   completed_milestones: docs/completed-milestones.md
   publication: docs/PUBLICATION.md
 
-active_work: none
+active_work: docs/todo-v1-5-release-and-adoption/spec.md
 active_work_glob: docs/todo-*/spec.md
 required_todo_files:
   - spec.md

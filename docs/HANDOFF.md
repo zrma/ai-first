@@ -12,27 +12,13 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-`1.5.0-dev`의 spec 설계 계약과 완료 지식 이관 보강을 local에서 검증했다.
-framework 구현 packet은 지식 이관 후 정리했다. 현재 관리 대상 소비 저장소는
-격리 checkout에서 immutable candidate pin과 generated artifact, native/interface
-검증을 완료했다. 대상별 상태는 machine-local coordination이 소유한다.
-남은 작업은 framework 정식 release와 소비 저장소 release pin/publication 전환이다.
-local 후보 검증을 release 또는 소비 저장소 publication 완료로 해석하지 않는다.
+현재 작업은 `docs/todo-v1-5-release-and-adoption/spec.md`와 `open-questions.md`다.
+framework와 소비 저장소의 candidate는 local 검증을 통과했다. 최신 remote main을
+다시 확인한 뒤 `1.5.0` 정식 release와 소비 저장소의 최종 pin/publication을 진행한다.
+source tag와 이후 상태 문서 commit의 identity 및 CI를 각각 확인한다.
 
-`v1.4.0` signed annotated source tag의 identity와 terminal Python CI를 확인했고,
-승인된 활성 소비 저장소의 release pin도 native/publication gate, remote equality와
-same-SHA terminal CI까지 닫혔다. 고정 source tag와 이후 상태 문서 commit은 구분한다.
-
-완료 결과와 검증 범위는 `docs/completed-milestones.md`에 있다. spec 정립과 완료
-지식 이관은 `docs/WORK_LIFECYCLE.md`를 따른다. 원래 작업 packet은 VCS 이력으로 추적한다.
-
-## 다음 순서
-
-1. `1.5.0` 정식 source와 signed annotated release, 소비 저장소별 원격 기본 브랜치
-   반영의 exact target과 publication 권한을 확인한다.
-2. 출고 직전 remote를 재조회하고 최종 source/pin의 standalone/native/publication
-   gate를 검증한다. concurrent change가 있으면 해당 대상의 diff와 검증을 갱신한다.
-3. 승인된 publication을 remote identity와 same-SHA terminal CI로 닫는다.
+완료 결과는 `docs/completed-milestones.md`, spec 정립과 지식 이관은
+`docs/WORK_LIFECYCLE.md`를 따른다. 대상별 evidence는 machine-local 계층에서 관리한다.
 
 ## 시작 순서
 

@@ -13,17 +13,14 @@ AI-first v1은 서로 다른 compatibility 축을 명시적으로 분리한다.
 명시적인 migration과 전체 repository-native gate를 실행해야 한다. minor는
 backward-compatible capability, patch는 contract를 바꾸지 않는 수정만 허용한다.
 
-현재 stable framework version은 `1.4.0`이다. GPT-6 Astra에 맞춘
-backward-compatible `openai-agent-guidance` profile 갱신이다. core의 기존 permission,
-evidence와 scope contract, 선언/lock schema version 1과 `ai-first-harness-v1`은 유지한다.
-application runtime model, endpoint와 tool contract는 자동 변경하지 않는다.
-stable 소비 저장소는 versioned release를 pin하고 repository별 update transaction으로
-올린다. signed annotated release source와 저장소별 terminal evidence를 확인했다.
+framework `1.5.0`은 spec 정립과 artifact 전환의 완료 계약을 보강한다.
+선언/lock schema version 1과 `ai-first-harness-v1`, GPT-6 Astra profile을 유지한다.
+기존 archive를 기계적으로 금지하지 않고 지식 이관 이후 명시적인 보존 필요를
+판단하게 한다. application runtime model, endpoint와 tool contract는 변경하지 않는다.
 
-개발 중인 `1.5.0-dev`는 spec 정립과 artifact 전환의 완료 계약을 보강한다.
-선언/lock schema version 1과 `ai-first-harness-v1`을 유지한다. 기존 archive를
-기계적으로 금지하지 않고, 지식 이관 이후 명시적인 보존 필요를 판단하게 한다.
-이 개발 변경의 publication과 소비 저장소 release 전환은 아직 완료되지 않았다.
+stable 소비 저장소는 versioned release를 pin하고 repository별 update transaction으로
+올린다. signed annotated source와 저장소별 terminal evidence를 검증한다.
+현재 publication 상태는 `docs/HANDOFF.md`가 소유한다.
 
 ## Source identity
 
@@ -53,9 +50,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.4.0"
+framework_version = "1.5.0"
 source_kind = "release"
-source_revision = "v1.4.0"
+source_revision = "v1.5.0"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를
