@@ -18,22 +18,24 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-stable release는 `1.4.0`이다. GPT-6 Astra (`gpt-6-astra`)에 맞춰
-`openai-agent-guidance` profile의 승인·skill 해석, 설명과 검증 범위 지침을 갱신했다.
-model/vendor 중립적인 core와 기존 schema/Structure ID는 유지한다.
+stable release는 `1.5.0`이다. milestone/bounded specification의 목적, 조건과 관계를
+todo spec으로 정립하고, 완료 시 지속할 지식을 소유 artifact로 이관한 뒤 작업 문서를
+정리하는 계약을 제공한다. model/vendor 중립적인 core와 기존 schema/Structure ID,
+GPT-6 Astra (`gpt-6-astra`) capability profile을 유지한다.
 
 선언에서 core, capability profile과 repository overlay를 결정적으로 합성하고,
 central framework check와 standalone consumer drift check가 같은 lock을 검증한다.
 완료 packet의 active namespace 잔류를 막는 lifecycle gate, logical VCS closeout과
 bounded-task permission continuity도 유지한다.
 
-signed annotated `v1.4.0`의 서명과 remote tag identity, Python 3.11/3.14 CI를 검증했다.
+signed annotated `v1.5.0`의 서명과 remote tag identity, Python 3.11/3.14 CI를 검증했다.
 승인된 활성 소비 저장소의 release pin 전환도 repository별 native/publication gate,
 remote equality와 same-SHA terminal CI까지 완료했다. 완료 범위와 evidence는
 [`완료 요약`](docs/completed-milestones.md)에 있다.
 
-`1.5.0-dev`에서 spec 설계 계약과 완료 지식 이관, 소비 저장소 후보 검증을 완료했다.
-개발 변경과 소비 저장소 후보 검증은 stable publication과 구분한다.
+기존 완료 spec의 설계 근거와 후속 조건을 architecture, compatibility와 lifecycle
+문서로 이관하고 원본 작업 packet을 정리했다. 원본 보존은 명시적인 추적·운영 필요가
+있을 때 선택한다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.

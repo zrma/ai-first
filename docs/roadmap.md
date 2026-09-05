@@ -88,5 +88,6 @@ remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 마일스톤의 설계 정합성을 spec으로 확보하고 완료 결과를 지속할 artifact로 이관한다.
 framework self-hosting 정리와 소비 저장소 적용을 각각 검증한다.
 
-상태: framework local 구현·지식 이관과 소비 저장소 후보 검증 완료. 정식 release 및
-소비 저장소 publication은 미완료이며 `docs/HANDOFF.md`가 다음 순서를 소유한다.
+상태: 완료. signed `v1.5.0`과 승인된 소비 저장소의 release pin, native/publication
+gate, remote equality와 same-SHA terminal CI를 확인했다. 결과와 검증 한계는
+`docs/completed-milestones.md`, 현재 상태는 `docs/HANDOFF.md`가 소유한다.

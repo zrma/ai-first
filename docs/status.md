@@ -49,10 +49,14 @@
 - 과거 완료 packet 정리와 navigation/active-packet 회귀 검증
 - 관리 대상 소비 저장소의 immutable candidate 준비와 native/interface 검증
 
+- signed annotated `v1.5.0`, 서명과 remote tag/source identity 및 terminal Python CI
+- 최신 main 기반 소비 저장소의 `v1.5.0` release pin, native/publication gate,
+  remote main equality와 same-SHA terminal CI
+- release 작업의 결과 이관과 active packet 및 pointer 정리
+
 ## 진행 중
 
-`docs/todo-v1-5-release-and-adoption/spec.md`: 최신 main 위의 `1.5.0` release와
-소비 저장소 최종 pin/publication, remote equality 및 same-SHA CI 검증.
+없음.
 
 ## 미착수
 

@@ -150,33 +150,32 @@ coordination 원문은 tracked artifact에 기록하지 않았다.
 검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
 gate, remote equality와 terminal CI. model 행동에 대한 별도 실측 eval은 포함하지 않았다.
 
+## Spec-to-artifact lifecycle
 
-## Spec-to-artifact lifecycle — local framework
-
-`1.5.0-dev` core에 milestone/bounded specification의 설계 정립, 구현 중 정합성,
-완료 지식 이관과 작업 문서 정리 계약을 반영했다. 원본 보존은 명시적인 추적·운영
-필요가 있을 때만 선택하며 자동 폴더 이동으로 완료를 대신하지 않는다.
+`1.5.0` core에 milestone/bounded specification의 목적·조건·관계·완료 기준 정립,
+구현 중 정합성 유지와 완료 지식 이관을 반영했다. 중요한 판단 근거와 한계를 소유
+artifact에 남긴 뒤 작업 spec과 질문 파일을 정리한다. 원본 보존은 명시적인 추적·
+운영 필요가 있을 때 선택하며 자동 폴더 이동이나 일률적인 별도 보고서를 요구하지
+않는다.
 
 기존 완료 packet의 설계 선택은 `docs/ARCHITECTURE.md`, 후속 capability 조건은
 `docs/COMPATIBILITY.md`, 운영 lifecycle은 `docs/WORK_LIFECYCLE.md`로 이관했다.
-과거 결과와 검증 범위는 이 문서에 유지하고 원본 spec·질문 파일은 정리했다.
+과거 결과와 검증 범위는 이 문서에 유지하고 원본 spec·질문 파일은 정리했다. 소비
+저장소의 기존 native 절차는 보존하면서 checklist 중심의 설명을 spec 정립과 지식
+이관으로 보충했다. bootstrap 길이 제한은 상세 정책의 소유 문서로 안내해 유지했다.
 
-검증: `scripts/check.sh`, central/standalone drift, publication/interface gate와
-24개 unit fixture. archive 없는 완료 artifact, stale reference, spec 없는 질문 파일을
-검증했다. 이 결과는 지침의 구조·합성과 문서 정합성 검증이며 model 행동의 실측
-평가나 새 release 및 소비 저장소 publication 완료를 의미하지 않는다.
+signed annotated `v1.5.0`의 서명, local/remote tag object와 source commit identity,
+source와 같은 SHA의 terminal Python CI를 확인했다. 갱신된 원격 main 위에서 승인된
+활성 소비 저장소의 선언·lock·generated artifact·native assertion을 같은 release
+source로 전환했다. 저장소별 native/publication gate, remote main equality와
+same-SHA terminal CI를 검증했다. 기존 제품 작업과 원본 보존 근거가 있는 기록은
+보존했다. 대상 inventory와 local coordination 원문은 machine-local 계층에 둔다.
 
-## Spec-to-artifact lifecycle — consumer preparation
+release 작업의 지속할 결과는 이 문서와 compatibility/handoff/status에 이관하고
+active spec·질문 파일과 pointer를 정리했다. source tag는 immutable하게 유지하며
+이후 상태 문서 closeout은 별도 main commit이다.
 
-현재 원격 기본 브랜치의 관리 의도와 비아카이브 상태를 확인한 소비 저장소를
-기본 working copy 밖의 colocated jj checkout에서 준비했다. immutable candidate
-pin, generated artifact와 repository-native interface의 source identity를 함께 갱신했다.
-
-공통 계약과 이미 일치하는 native todo 정리 절차는 보존했다. checklist 중심의
-설명은 spec 정립과 artifact 이관 기준으로 보충했고 bootstrap 길이 제한은 상세
-정책의 소유 문서로 안내하는 방식으로 유지했다.
-
-검증: 소비 저장소별 standalone/interface 및 repository-native gate 통과. native
-절차가 요구하는 작업 packet은 검증 뒤 지식을 이관하고 정리했다. 대상별 명령과
-판정은 machine-local coordination에서 관리한다. optional runtime acceptance와
-live 배포, 최종 release pin 및 remote/same-SHA CI는 이 후보 검증에 포함하지 않았다.
+검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 standalone/interface,
+native/publication gate, remote equality와 same-SHA terminal CI. 검증은 지침 합성·
+문서 정합성과 repository-native gate를 대상으로 하며 model 행동의 실측 eval이나
+별도 요청이 없는 live runtime acceptance를 의미하지 않는다.
