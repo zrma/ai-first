@@ -19,6 +19,12 @@ ordered-list continuation을 formatter-compatible하게 교정한 patch다. sche
 `ai-first-harness-v1` Structure ID는 유지한다. stable 소비 저장소는 versioned release를
 pin하고 repository별 update transaction으로 올린다.
 
+`1.4.0`은 GPT-6 Astra에 맞춘 backward-compatible profile 갱신을 준비 중이다.
+core, 선언/lock schema version 1과 `ai-first-harness-v1`은 유지한다.
+기존 runtime model, endpoint와 tool contract는 자동 변경하지 않는다.
+publication 전 검증에는 immutable commit pin을 사용할 수 있으며, stable adoption의
+release pin과 terminal evidence는 별도로 확인한다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

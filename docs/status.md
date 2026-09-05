@@ -44,7 +44,9 @@
 
 ## 진행 중
 
-없음.
+- `1.4.0` GPT-6 Astra profile 갱신과 self-hosting 검증
+- versioned publication 및 활성 소비 저장소 adoption 준비:
+  `docs/todo-gpt-6-astra-adoption/spec.md`
 
 ## 미착수
 

@@ -19,6 +19,7 @@
 - Compatibility: `docs/COMPATIBILITY.md`.
 - Navigation: `docs/HANDOFF.md`.
 - Current state: `docs/status.md`.
+- GPT-6 Astra adoption: `docs/todo-gpt-6-astra-adoption/spec.md`.
 - Direction: `docs/roadmap.md`.
 - Completed milestones: `docs/completed-milestones.md`.
 - Completed representative pilots: `docs/milestones/representative-pilots/spec.md`.

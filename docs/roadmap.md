@@ -74,3 +74,11 @@ VCS-isolated checkout에서 이관한다. 각 저장소의 standalone/native/pub
 remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 
 상태: 완료
+
+## Stage 10 — GPT-6 Astra guidance and adoption
+
+공식 Astra 지침으로 `openai-agent-guidance` profile을 갱신하고 schema/core 경계를
+유지한다. 아카이브 여부와 원격 기본 브랜치의 관리 선언·lifecycle을 확인한 활성 소비
+저장소를 격리 checkout에서 검증하고, 승인된 publication과 same-SHA CI로 닫는다.
+
+상태: 진행 중 — `docs/todo-gpt-6-astra-adoption/spec.md`.

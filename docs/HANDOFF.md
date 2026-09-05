@@ -8,7 +8,7 @@ contract audit hardening과 stable v1.3 adoption까지 Stage 0부터 Stage 9을 
 stable `v1.3.1`과 승인된 소비 저장소 집합의 pinned update는 repository-native gate,
 remote equality와 terminal CI까지 닫혔다.
 
-release-ready `1.3.1` self-hosting 선언, core,
+release 준비 중인 `1.4.0` self-hosting 선언, core,
 `vcs-jj`/`public-repository`/`openai-agent-guidance` profile, repository overlay,
 deterministic render, content-addressed lock, central drift check와 standalone checker가
 동작한다. synthetic consumer fixture가 central checkout 없이 generated input/output
@@ -16,8 +16,11 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. 새 model, capability profile 또는 framework version
-요구가 생기면 별도 active packet을 연다. stable v1.3 release와 adoption의 범위,
+현재 active milestone은 `docs/todo-gpt-6-astra-adoption/spec.md`다.
+`1.4.0`의 Astra profile과 소비 저장소 변경을 local 검증한 뒤 framework publication,
+소비 저장소 pin 확정·publication과 same-SHA CI 순서로 진행한다.
+현재 published stable은 `v1.3.1`이며 `v1.4.0` 출고 완료를 의미하지 않는다.
+stable v1.3 release와 adoption의 범위,
 acceptance와 evidence는 `docs/milestones/stable-v1-3-release-and-adoption/`에 있다.
 
 완료된 Stage 0부터 Stage 9까지의 summary와 상세 packet은
