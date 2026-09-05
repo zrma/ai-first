@@ -20,6 +20,11 @@ application runtime model, endpoint와 tool contract는 자동 변경하지 않�
 stable 소비 저장소는 versioned release를 pin하고 repository별 update transaction으로
 올린다. signed annotated release source와 저장소별 terminal evidence를 확인했다.
 
+개발 중인 `1.5.0-dev`는 spec 정립과 artifact 전환의 완료 계약을 보강한다.
+선언/lock schema version 1과 `ai-first-harness-v1`을 유지한다. 기존 archive를
+기계적으로 금지하지 않고, 지식 이관 이후 명시적인 보존 필요를 판단하게 한다.
+이 개발 변경의 publication과 소비 저장소 release 전환은 아직 완료되지 않았다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.
@@ -68,3 +73,14 @@ generated artifact는 계속 tracked 상태로 남으므로 framework checkout�
 - profile 제거, output 의미 변경과 required field 추가는 major migration이다.
 - additive profile과 optional metadata는 minor에서 추가할 수 있다.
 - repository overlay와 native gate는 framework update가 덮어쓰거나 우회하지 않는다.
+
+## 추가 capability의 시작 조건
+
+package registry, standalone binary는 반복되는 installation friction이 확인될 때
+검토한다. language/toolchain profile은 둘 이상의 독립 소비 근거가 있을 때,
+adoption scaffold 확대는 반복되는 수동 overlay 오류가 확인될 때 검토한다.
+현재 이 가능성 자체를 active milestone로 취급하지 않는다.
+
+별도 VCS profile, opt-in 종료 hook, optional lifecycle namespace·terminal vocabulary와
+native gate 선언 확장도 실제 소비 요구나 반복 실패가 확인되면 범위와 compatibility를
+별도 평가한다. 기존 구조를 미리 일반화하거나 종료 hook을 기본 설치하지 않는다.

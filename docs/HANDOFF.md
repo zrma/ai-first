@@ -12,15 +12,26 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 작업은 `docs/todo-spec-artifact-lifecycle/spec.md`와 `open-questions.md`다.
-spec 설계 계약과 완료 지식 이관을 보강한 뒤 소비 저장소 적용을 준비한다.
+`1.5.0-dev`의 spec 설계 계약과 완료 지식 이관 보강을 local에서 검증했다.
+framework 구현 packet은 지식 이관 후 정리했다. 현재 남은 작업은 소비 저장소의
+격리 적용 준비와 repository-native 검증, 이후 승인된 release/publication 전환이다.
+대상별 상태는 machine-local coordination이 소유한다. local 준비를 release 또는
+소비 저장소 publication 완료로 해석하지 않는다.
 
 `v1.4.0` signed annotated source tag의 identity와 terminal Python CI를 확인했고,
 승인된 활성 소비 저장소의 release pin도 native/publication gate, remote equality와
 same-SHA terminal CI까지 닫혔다. 고정 source tag와 이후 상태 문서 commit은 구분한다.
 
-완료된 계약과 evidence는 `docs/completed-milestones.md`, 상세 packet은
-`docs/milestones/gpt-6-astra-adoption/`와 `docs/milestones/`에 있다.
+완료 결과와 검증 범위는 `docs/completed-milestones.md`에 있다. spec 정립과 완료
+지식 이관은 `docs/WORK_LIFECYCLE.md`를 따른다. 원래 작업 packet은 VCS 이력으로 추적한다.
+
+## 다음 순서
+
+1. 현재 remote와 관리 의도를 확인한 소비 저장소를 기본 working copy 밖에서 준비한다.
+2. immutable candidate source로 pin/render하고 native gate와 lifecycle 충돌을 확인한다.
+3. framework source 확정, signed release와 각 소비 저장소 publication은 exact target과
+   권한을 확인한 뒤 수행한다. 최종 pin 변경 뒤 standalone/native gate를 재검증한다.
+4. 승인된 publication은 remote identity와 same-SHA terminal CI로 닫는다.
 
 ## 시작 순서
 

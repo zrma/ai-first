@@ -89,7 +89,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.4.0")
+        self.assertEqual(lock["framework"]["version"], "1.5.0-dev")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
@@ -138,7 +138,7 @@ class AiFirstTest(unittest.TestCase):
 
                 self.assertNotEqual(completed.returncode, 0)
                 self.assertIn(
-                    "completed active-work packet must be archived or removed",
+                    "completed active-work packet requires artifact transfer and cleanup",
                     completed.stdout,
                 )
                 self.assertIn("docs/todo-release/spec.md", completed.stdout)
@@ -152,7 +152,10 @@ class AiFirstTest(unittest.TestCase):
         active.write_text("# Release\n\n상태: 진행 중\n", encoding="utf-8")
         archived = root / "docs" / "milestones" / "release" / "spec.md"
         archived.parent.mkdir(parents=True)
-        archived.write_text("# Release\n\n상태: 완료\n", encoding="utf-8")
+        archived.write_text(
+            "# Release\n\n상태: 완료\n\n보존 이유: release 감사에 필요한 원본 계약.\n",
+            encoding="utf-8",
+        )
 
         completed = subprocess.run(
             [sys.executable, ".ai-first/check.py"],

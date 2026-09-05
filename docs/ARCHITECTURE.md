@@ -58,6 +58,15 @@ docs/agent-harness.md
 생성 output은 명확한 generated boundary를 포함하고, 수동 변경은 `check`에서 drift로
 실패해야 한다. repository-owned 변경은 overlay에서 수행한다.
 
+bootstrap에서 선택한 구현은 dependency-free Python standard library, Markdown
+fragment와 전체 generated output이다. standalone 실행성과 작은 dependency 표면을
+유지하면서 합성 경계를 결정적으로 검증하기 위한 선택이다. marker 내부만 수정하는
+방식 대신 전체 output과 lock digest로 수동 변경을 탐지한다.
+
+core, 선언 순서의 profile과 repository overlay를 합성한다. 선언 순서는 권한 우선순위를
+뒤집지 않으며 profile/overlay는 core를 약화할 수 없다. schema와 heading 검사는
+구조 정합성을 확인하지만 자연어 지침의 의미적 충돌은 diff 검토로 확인해야 한다.
+
 ## 독립 실행 계약
 
 소비 저장소는 다음 조건을 만족해야 한다.
@@ -90,6 +99,11 @@ framework update는 다음 transaction으로 처리한다.
 여러 저장소를 하나의 원자적 change나 일괄 push로 취급하지 않는다.
 격리를 위해 repository-native gate를 생략하거나 완화하지 않으며, 작업 시작·todo
 마감·교훈 이관 같은 저장소 고유 lifecycle도 기존 계약대로 닫는다.
+
+spec 정립과 완료 지식 이관은 `docs/WORK_LIFECYCLE.md`를 따른다. native finalize가
+원본 packet을 보존하더라도 현재 계약과 운영 지식의 소유 문서로 이관하는 단계는
+생략하지 않는다. framework update는 pin/generated artifact와 계약에 충돌하는 overlay를
+갱신하며, 소비 저장소의 과거 완료 기록 재정리는 별도 확인된 작업이다.
 
 ## Framework repository
 

@@ -1,10 +1,10 @@
 ## Repository Overlay
 
 - Stage 0부터 Stage 10까지 완료됐다. 완료된 계약과 evidence는
-  `docs/completed-milestones.md`와 `docs/milestones/`, 현재 상태와 다음 trigger는
+  `docs/completed-milestones.md`, 현재 상태와 다음 trigger는
   `docs/HANDOFF.md`와 `docs/status.md`가 소유한다.
-- 현재 작업은 `docs/todo-spec-artifact-lifecycle/spec.md`다. spec 설계 계약과
-  완료 지식 이관을 보강하고 소비 저장소 적용을 준비한다.
+- spec 설계 계약과 완료 지식 이관은 `docs/WORK_LIFECYCLE.md`를 따른다.
+  framework local 보강은 완료했고 소비 저장소 준비와 publication은 handoff를 따른다.
 - framework core는 model/vendor 중립적으로 유지하고 model별 지침은 교체 가능한
   capability profile로 둔다.
 - 소비 저장소는 framework version을 pin하고 생성된 artifact를 tracked 상태로

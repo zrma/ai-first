@@ -22,7 +22,7 @@
 - 승인된 소비 저장소 집합의 stable v1 portfolio adoption, 저장소별 publication과
   terminal CI
 - terminal 상태의 active-work packet을 거부하는 standalone lifecycle gate
-- 완료 milestone packet의 `docs/milestones/` 보관과 active pointer 제거
+- 완료 milestone의 active pointer 제거
 - signed annotated `v1.1.1`, remote tag/commit equality와 Python 3.11/3.14 CI
 - 승인된 소비 저장소 집합의 `v1.1.1` pinned update, 저장소별 native gate,
   remote equality와 terminal CI
@@ -32,7 +32,6 @@
 - signed annotated `v1.2.0`, remote tag/commit equality와 terminal Python CI
 - 승인된 소비 저장소 집합의 `v1.2.0` pinned update, 저장소별 native/publication gate,
   remote equality와 same-SHA terminal CI
-- VCS closeout과 permission continuity packet의 completed history 이동 및 active pointer 제거
 - investigation-depth proportionality와 standalone lock metadata 정합성 검증
 - `1.3.0-dev` self-hosting render, metadata-tampering fixture와 consumer interface
   compatibility 검증
@@ -40,17 +39,19 @@
 - signed annotated `v1.3.1`, remote tag/commit equality와 terminal Python CI
 - 승인된 소비 저장소 집합의 `v1.3.1` pinned update, 저장소별 native/publication gate,
   remote equality와 same-SHA terminal CI
-- stable v1.3 release/adoption packet의 completed history 이동 및 active pointer 제거
 
 - GPT-6 Astra agent guidance와 backward-compatible `1.4.0` profile 갱신
 - signed annotated `v1.4.0`, remote tag/commit equality와 terminal Python CI
 - 승인된 활성 소비 저장소 집합의 `v1.4.0` release pin, standalone/native/publication
   gate, remote equality와 same-SHA terminal CI
-- Astra adoption packet의 completed history 이동 및 active pointer 제거
+
+- `1.5.0-dev` spec 설계 계약과 완료 artifact 전환, self-hosting 지식 이관
+- 과거 완료 packet 정리와 navigation/active-packet 회귀 검증
 
 ## 진행 중
 
-`docs/todo-spec-artifact-lifecycle/spec.md`: spec 설계 계약, 완료 지식 이관과 소비 저장소 적용 준비.
+소비 저장소의 격리 적용 준비와 native 검증. framework release와 소비 저장소
+publication은 미완료이며 local 구현 결과와 구분한다.
 
 ## 미착수
 

@@ -1,5 +1,9 @@
 # Completed Milestones
 
+아래는 각 작업 종료 당시 기록한 결과와 검증 범위다. 현재 계약은 architecture,
+compatibility와 `docs/WORK_LIFECYCLE.md`가 소유하며 원래 작업 spec은 VCS 이력으로
+추적한다. 과거 성공 기록은 현재 remote/runtime 상태의 재검증을 뜻하지 않는다.
+
 ## Charter and architecture
 
 AI-first를 command-only assistance가 아닌 active project stewardship로 정의했다.
@@ -11,8 +15,6 @@ identity, core, capability profile, repository overlay와 machine-private overla
 
 검증: `scripts/check.sh`
 
-상세 기록: `docs/milestones/bootstrap-core/spec.md`
-
 ## Self-hosting core
 
 `0.1.0-dev` 선언, deterministic composition, content-addressed lock, generated
@@ -22,8 +24,6 @@ synthetic consumer fixture가 동일 입력의 결정성, manual output와 overl
 unsafe path, symlink escape와 framework checkout 없는 standalone 검증을 증명한다.
 
 검증: `scripts/check.sh`
-
-상세 기록: `docs/milestones/bootstrap-core/spec.md`
 
 ## Public foundation
 
@@ -35,8 +35,6 @@ repository gate와 권한 있는 machine-local `all` gate를 통과한 동일 co
 3.11/3.14 terminal CI를 검증했다. private vulnerability reporting도 활성화했다.
 
 검증: `scripts/check.sh`, public remote metadata와 terminal CI
-
-상세 기록: `docs/milestones/public-foundation/spec.md`
 
 ## Representative pilots
 
@@ -50,8 +48,6 @@ fallback과 repository-owned todo/closure lifecycle 보존 규칙을 framework�
 
 검증: framework self-hosting gate, 소비 저장소 canonical gate와 terminal CI
 
-상세 기록: `docs/milestones/representative-pilots/spec.md`
-
 ## Stable v1
 
 framework/schema/Structure ID의 compatibility 축을 분리하고 `1.0.0` self-hosting
@@ -63,8 +59,6 @@ tag를 게시했다. local/remote tag object, peeled commit과 서명을 확인�
 release-source consumer render 및 standalone check를 통과시켰다.
 
 검증: `scripts/check.sh`, signed tag verification, remote tag identity, terminal CI
-
-상세 기록: `docs/milestones/stable-v1/spec.md`
 
 ## Portfolio adoption
 
@@ -78,8 +72,6 @@ tracked artifact 경계를 유지했다.
 
 검증: `scripts/check.sh`, 소비 저장소별 canonical/publication gate, remote equality와
 terminal CI
-
-상세 기록: `docs/milestones/portfolio-adoption/spec.md`
 
 ## Active-work lifecycle
 
@@ -97,8 +89,6 @@ CI를 확인했다. 대상 inventory와 local coordination 원문은 tracked art
 검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical gate,
 remote equality와 terminal CI
 
-상세 기록: `docs/milestones/active-work-lifecycle/spec.md`
-
 ## VCS closeout and permission continuity
 
 change/build/fix의 기본 local 종료 상태를 described logical change와 empty working
@@ -115,8 +105,6 @@ default-branch equality와 same-SHA terminal CI를 확인하고 active pointer�
 검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
 gate, remote equality와 terminal CI
 
-상세 기록: `docs/milestones/vcs-closeout-permission-continuity/spec.md`
-
 ## Contract audit hardening
 
 일반 contract/status review를 capability availability만으로 exhaustive scan, 제품 코드
@@ -130,8 +118,6 @@ fixture가 config과 lock의 source/profile 불일치와 framework input aggrega
 
 검증: focused tampering fixture, self-hosting render/check, `scripts/check.sh`, consumer
 standalone/harness interface compatibility
-
-상세 기록: `docs/milestones/contract-audit-hardening/spec.md`
 
 ## Stable v1.3 release and adoption
 
@@ -147,8 +133,6 @@ native와 publication gate, remote default-branch equality와 same-SHA terminal 
 
 검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
 gate, remote equality와 terminal CI
-
-상세 기록: `docs/milestones/stable-v1-3-release-and-adoption/spec.md`
 
 ## GPT-6 Astra guidance and adoption
 
@@ -166,4 +150,18 @@ coordination 원문은 tracked artifact에 기록하지 않았다.
 검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
 gate, remote equality와 terminal CI. model 행동에 대한 별도 실측 eval은 포함하지 않았다.
 
-상세 기록: `docs/milestones/gpt-6-astra-adoption/spec.md`
+
+## Spec-to-artifact lifecycle — local framework
+
+`1.5.0-dev` core에 milestone/bounded specification의 설계 정립, 구현 중 정합성,
+완료 지식 이관과 작업 문서 정리 계약을 반영했다. 원본 보존은 명시적인 추적·운영
+필요가 있을 때만 선택하며 자동 폴더 이동으로 완료를 대신하지 않는다.
+
+기존 완료 packet의 설계 선택은 `docs/ARCHITECTURE.md`, 후속 capability 조건은
+`docs/COMPATIBILITY.md`, 운영 lifecycle은 `docs/WORK_LIFECYCLE.md`로 이관했다.
+과거 결과와 검증 범위는 이 문서에 유지하고 원본 spec·질문 파일은 정리했다.
+
+검증: `scripts/check.sh`, central/standalone drift, publication/interface gate와
+24개 unit fixture. archive 없는 완료 artifact, stale reference, spec 없는 질문 파일을
+검증했다. 이 결과는 지침의 구조·합성과 문서 정합성 검증이며 model 행동의 실측
+평가나 새 release 및 소비 저장소 publication 완료를 의미하지 않는다.

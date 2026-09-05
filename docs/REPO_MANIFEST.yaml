@@ -6,6 +6,7 @@ publication_class: public
 entrypoints:
   charter: docs/AI_FIRST_CHARTER.md
   architecture: docs/ARCHITECTURE.md
+  work_lifecycle: docs/WORK_LIFECYCLE.md
   compatibility: docs/COMPATIBILITY.md
   agent_harness: docs/agent-harness.md
   handoff: docs/HANDOFF.md
@@ -14,7 +15,7 @@ entrypoints:
   completed_milestones: docs/completed-milestones.md
   publication: docs/PUBLICATION.md
 
-active_work: docs/todo-spec-artifact-lifecycle/spec.md
+active_work: none
 active_work_glob: docs/todo-*/spec.md
 required_todo_files:
   - spec.md

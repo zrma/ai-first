@@ -81,11 +81,12 @@ remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 유지한다. 아카이브 여부와 원격 기본 브랜치의 관리 선언·lifecycle을 확인한 활성 소비
 저장소를 격리 checkout에서 검증하고, 승인된 publication과 same-SHA CI로 닫는다.
 
-상태: 완료 — `docs/milestones/gpt-6-astra-adoption/spec.md`.
+상태: 완료. 결과와 검증 범위는 `docs/completed-milestones.md`에 있다.
 
 ## Stage 11 — Spec-to-artifact lifecycle
 
 마일스톤의 설계 정합성을 spec으로 확보하고 완료 결과를 지속할 artifact로 이관한다.
 framework self-hosting 정리와 소비 저장소 적용을 각각 검증한다.
 
-상태: 진행 중 — `docs/todo-spec-artifact-lifecycle/spec.md`.
+상태: framework local 구현과 지식 이관 완료. 소비 저장소 준비·검증 및 publication은
+진행 중이며 `docs/HANDOFF.md`가 다음 순서를 소유한다.

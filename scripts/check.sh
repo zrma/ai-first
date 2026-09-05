@@ -21,50 +21,9 @@ from pathlib import Path
 
 for path in sorted(Path("src").rglob("*.py")) + sorted(Path("scripts").glob("*.py")):
     ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-
-required_links = {
-    "README.md": [
-        "docs/AI_FIRST_CHARTER.md",
-        "docs/ARCHITECTURE.md",
-        "docs/COMPATIBILITY.md",
-        "docs/HANDOFF.md",
-        "docs/roadmap.md",
-        "docs/agent-harness.md",
-        "docs/PUBLICATION.md",
-        "docs/completed-milestones.md",
-        "docs/milestones/active-work-lifecycle/spec.md",
-        "docs/milestones/vcs-closeout-permission-continuity/spec.md",
-        "docs/milestones/contract-audit-hardening/spec.md",
-    ],
-    "docs/agent-harness.md": [
-        "docs/AI_FIRST_CHARTER.md",
-        "docs/ARCHITECTURE.md",
-        "docs/COMPATIBILITY.md",
-        "docs/HANDOFF.md",
-        "docs/status.md",
-        "docs/roadmap.md",
-        "docs/completed-milestones.md",
-        "docs/PUBLICATION.md",
-        "docs/REPO_MANIFEST.yaml",
-        "docs/milestones/representative-pilots/spec.md",
-        "docs/milestones/stable-v1/spec.md",
-        "docs/milestones/portfolio-adoption/spec.md",
-        "docs/milestones/active-work-lifecycle/spec.md",
-        "docs/milestones/vcs-closeout-permission-continuity/spec.md",
-        "docs/milestones/contract-audit-hardening/spec.md",
-    ],
-}
-
-for source, targets in required_links.items():
-    text = Path(source).read_text(encoding="utf-8")
-    for target in targets:
-        if target not in text:
-            raise SystemExit(f"{source} does not reference {target}")
-        if not Path(target).is_file():
-            raise SystemExit(f"{source} references missing file {target}")
-
-print("repository navigation links are valid")
 PY
+
+python3 scripts/check-navigation.py
 
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src \
   python3 -m unittest discover -s tests -p 'test_*.py'

@@ -16,21 +16,11 @@
 
 - Identity: `docs/AI_FIRST_CHARTER.md`.
 - Architecture: `docs/ARCHITECTURE.md`.
+- Work lifecycle: `docs/WORK_LIFECYCLE.md`.
 - Compatibility: `docs/COMPATIBILITY.md`.
 - Navigation: `docs/HANDOFF.md`.
 - Current state: `docs/status.md`.
-- Completed GPT-6 Astra adoption: `docs/milestones/gpt-6-astra-adoption/spec.md`.
 - Direction: `docs/roadmap.md`.
 - Completed milestones: `docs/completed-milestones.md`.
-- Completed representative pilots: `docs/milestones/representative-pilots/spec.md`.
-- Completed stable v1: `docs/milestones/stable-v1/spec.md`.
-- Completed portfolio adoption: `docs/milestones/portfolio-adoption/spec.md`.
-- Completed active-work lifecycle: `docs/milestones/active-work-lifecycle/spec.md`.
-- Completed VCS closeout and permission continuity:
-  `docs/milestones/vcs-closeout-permission-continuity/spec.md`.
-- Completed contract audit hardening:
-  `docs/milestones/contract-audit-hardening/spec.md`.
-- Completed stable v1.3 release and adoption:
-  `docs/milestones/stable-v1-3-release-and-adoption/spec.md`.
 - Publication policy: `docs/PUBLICATION.md`.
 - Declared checks: `docs/REPO_MANIFEST.yaml`.
