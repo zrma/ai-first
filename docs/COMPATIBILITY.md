@@ -13,17 +13,12 @@ AI-first v1은 서로 다른 compatibility 축을 명시적으로 분리한다.
 명시적인 migration과 전체 repository-native gate를 실행해야 한다. minor는
 backward-compatible capability, patch는 contract를 바꾸지 않는 수정만 허용한다.
 
-현재 stable framework version은 `1.3.1`이다. `1.3.0`의 investigation-depth
-proportionality와 standalone lock metadata integrity를 유지하면서 generated Markdown의
-ordered-list continuation을 formatter-compatible하게 교정한 patch다. schema version 1과
-`ai-first-harness-v1` Structure ID는 유지한다. stable 소비 저장소는 versioned release를
-pin하고 repository별 update transaction으로 올린다.
-
-`1.4.0`은 GPT-6 Astra에 맞춘 backward-compatible profile 갱신을 준비 중이다.
-core, 선언/lock schema version 1과 `ai-first-harness-v1`은 유지한다.
-기존 runtime model, endpoint와 tool contract는 자동 변경하지 않는다.
-publication 전 검증에는 immutable commit pin을 사용할 수 있으며, stable adoption의
-release pin과 terminal evidence는 별도로 확인한다.
+현재 stable framework version은 `1.4.0`이다. GPT-6 Astra에 맞춘
+backward-compatible `openai-agent-guidance` profile 갱신이다. core의 기존 permission,
+evidence와 scope contract, 선언/lock schema version 1과 `ai-first-harness-v1`은 유지한다.
+application runtime model, endpoint와 tool contract는 자동 변경하지 않는다.
+stable 소비 저장소는 versioned release를 pin하고 repository별 update transaction으로
+올린다. signed annotated release source와 저장소별 terminal evidence를 확인했다.
 
 ## Source identity
 
@@ -49,9 +44,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.3.1"
+framework_version = "1.4.0"
 source_kind = "release"
-source_revision = "v1.3.1"
+source_revision = "v1.4.0"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

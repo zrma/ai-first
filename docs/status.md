@@ -42,11 +42,15 @@
   remote equality와 same-SHA terminal CI
 - stable v1.3 release/adoption packet의 completed history 이동 및 active pointer 제거
 
+- GPT-6 Astra agent guidance와 backward-compatible `1.4.0` profile 갱신
+- signed annotated `v1.4.0`, remote tag/commit equality와 terminal Python CI
+- 승인된 활성 소비 저장소 집합의 `v1.4.0` release pin, standalone/native/publication
+  gate, remote equality와 same-SHA terminal CI
+- Astra adoption packet의 completed history 이동 및 active pointer 제거
+
 ## 진행 중
 
-- `1.4.0` GPT-6 Astra profile 및 활성 소비 저장소의 local 준비·검증 완료
-- 남은 단계는 versioned publication, 소비 저장소 release pin과 same-SHA CI:
-  `docs/todo-gpt-6-astra-adoption/spec.md`
+없음. 새 model, capability profile 또는 framework version 요구가 다음 시작 trigger다.
 
 ## 미착수
 

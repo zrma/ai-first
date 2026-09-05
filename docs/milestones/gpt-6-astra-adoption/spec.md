@@ -1,11 +1,11 @@
 # GPT-6 Astra guidance and adoption
 
-상태: 진행 중
+상태: 완료
 
 ## 목적과 범위
 
 `openai-agent-guidance` baseline을 GPT-6 Astra (`gpt-6-astra`)로 갱신하고
-backward-compatible framework `1.4.0`과 활성 소비 저장소의 pinned adoption을 준비한다.
+backward-compatible framework `1.4.0`과 활성 소비 저장소의 pinned adoption을 완료했다.
 core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는 변경하지 않는다.
 
 ## 근거와 결정
@@ -26,10 +26,10 @@ core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는
 - [x] profile source, self-hosting output, version fixture와 interface gate가 일치한다.
 - [x] `scripts/check.sh`와 repository publication gate가 통과한다.
 - [x] 활성 소비 저장소의 standalone/native gate 및 overlay 보존을 확인한다.
-- [ ] 승인된 framework publication에서 remote commit, signed annotated `v1.4.0`과
+- [x] 승인된 framework publication에서 remote commit, signed annotated `v1.4.0`과
   same-SHA terminal CI를 확인한다.
-- [ ] 소비 저장소 release pin과 독립 publication, remote equality, same-SHA CI를 확인한다.
-- [ ] terminal packet을 completed history로 이동하고 current pointer를 정리한다.
+- [x] 소비 저장소 release pin과 독립 publication, remote equality, same-SHA CI를 확인한다.
+- [x] terminal packet을 completed history로 이동하고 current pointer를 정리한다.
 
 ## 실행 순서와 중단 조건
 
@@ -42,15 +42,16 @@ core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는
 미확인 관리 대상, unrelated WIP 충돌, native gate 실패 또는 미승인 external action이
 있으면 해당 저장소의 다음 의존 단계만 보류하고 원인과 재개 조건을 남긴다.
 
-## 현재 evidence
+## 완료 evidence
 
 - central/standalone drift, harness interface, publication/navigation/CI contract와
-  unit fixture 21개가 local에서 통과했다. 이는 model 행동의 실측 평가나
-  remote publication 완료를 의미하지 않는다.
-- 소비 저장소의 short routing-map gate에서 profile 길이 초과를 확인해 상세
-  calibration은 harness에 유지하고 bootstrap profile을 기존 크기로 축약했다.
-- 대상별 native gate와 최종 source pin의 standalone/interface 검증이 통과했다.
-  bootstrap 축약 후에는 변경된 generated 표면의 길이·formatter 호환성을 재확인했다.
-- 공개 대상의 repository gate와 machine-local private-inventory gate가 통과했다.
-- publication 직전 원격 기본 브랜치가 전진하면 기존 prepared change를 덮어쓰거나
-  history를 rewrite하지 않고 새 base에서 변경을 재합성·검증한다.
+  unit fixture 21개가 통과했다.
+- signed annotated `v1.4.0`의 서명, local/remote tag object와 peeled source commit
+  identity, framework main/source의 same-SHA terminal Python CI를 확인했다.
+- 승인된 활성 소비 저장소의 release pin과 source commit이 일치한다. 최종 pin에서
+  standalone/native/publication gate, remote equality와 same-SHA terminal CI를 확인했다.
+- 소비 저장소 overlay와 기존 working copy를 보존했다. 공개 대상은 repository gate와
+  권한 있는 machine-local private-inventory gate를 통과했다.
+- bootstrap 길이 제한을 보존하기 위해 상세 calibration은 harness에 두었다.
+- terminal packet을 completed history로 이동하고 active pointer를 제거했다.
+- 이 evidence는 model 행동 개선에 대한 별도 실측 eval을 의미하지 않는다.

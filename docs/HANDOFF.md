@@ -2,30 +2,25 @@
 
 ## 현재 단계
 
-`ai-first`는 self-hosting core, public foundation, representative pilot, stable
-release, portfolio adoption, active-work lifecycle, VCS closeout/permission continuity,
-contract audit hardening과 stable v1.3 adoption까지 Stage 0부터 Stage 9을 완료했다.
-stable `v1.3.1`과 승인된 소비 저장소 집합의 pinned update는 repository-native gate,
-remote equality와 terminal CI까지 닫혔다.
+`ai-first`는 self-hosting core부터 GPT-6 Astra guidance와 활성 소비 저장소
+adoption까지 Stage 0부터 Stage 10을 완료했다. 현재 stable은 `v1.4.0`이다.
 
-release 준비 중인 `1.4.0` self-hosting 선언, core,
-`vcs-jj`/`public-repository`/`openai-agent-guidance` profile, repository overlay,
+self-hosting 선언, model/vendor 중립적 core, capability profile, repository overlay,
 deterministic render, content-addressed lock, central drift check와 standalone checker가
-동작한다. synthetic consumer fixture가 central checkout 없이 generated input/output
+동작한다. synthetic consumer fixture는 central checkout 없이 generated input/output
 drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 `docs/todo-gpt-6-astra-adoption/spec.md`다.
-`1.4.0`의 Astra profile과 소비 저장소 변경은 local 검증을 마쳤다.
-다음 단계는 권한이 확인된 framework publication, 소비 저장소 release pin 확정,
-저장소별 publication과 same-SHA CI다. source tag와 이후 handoff commit은 구분한다.
-현재 published stable은 `v1.3.1`이며 `v1.4.0` 출고 완료를 의미하지 않는다.
-stable v1.3 release와 adoption의 범위,
-acceptance와 evidence는 `docs/milestones/stable-v1-3-release-and-adoption/`에 있다.
+현재 active milestone은 없다. 새 model, capability profile 또는 framework version
+요구가 생기면 별도 active packet을 연다.
 
-완료된 Stage 0부터 Stage 9까지의 summary와 상세 packet은
-`docs/completed-milestones.md`와 `docs/milestones/`에 있다.
+`v1.4.0` signed annotated source tag의 identity와 terminal Python CI를 확인했고,
+승인된 활성 소비 저장소의 release pin도 native/publication gate, remote equality와
+same-SHA terminal CI까지 닫혔다. 고정 source tag와 이후 상태 문서 commit은 구분한다.
+
+완료된 계약과 evidence는 `docs/completed-milestones.md`, 상세 packet은
+`docs/milestones/gpt-6-astra-adoption/`와 `docs/milestones/`에 있다.
 
 ## 시작 순서
 
@@ -48,7 +43,7 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 - remote: public `main` publication과 commit equality 확인
 - license: `Apache-2.0`
 - CI: Python 3.11/3.14 success
-- stable release: signed annotated `v1.3.1`, remote tag/commit equality와 terminal CI verified
+- stable release: signed annotated `v1.4.0`, remote tag/commit equality와 terminal CI verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

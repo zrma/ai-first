@@ -18,25 +18,19 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-stable release는 `1.3.1`이다. `1.3.0`의 contract/status review 조사 깊이와
-standalone lock metadata 정합성 보강을 유지하면서 generated Markdown의 ordered-list
-continuation을 formatter-compatible하게 교정한 patch다. 선언에서
-core, capability profile과 repository overlay를 결정적으로 합성하고, central
-framework check와 standalone consumer drift check가 같은 lock을 검증한다. 완료된
-work packet이 active namespace에 남지 않도록 lifecycle contract와 standalone
-gate도 동작한다.
-검증된 local 작업의 logical VCS closeout과 bounded-task permission continuity도 core
-및 `vcs-jj` profile에 고정됐다.
+stable release는 `1.4.0`이다. GPT-6 Astra (`gpt-6-astra`)에 맞춰
+`openai-agent-guidance` profile의 승인·skill 해석, 설명과 검증 범위 지침을 갱신했다.
+model/vendor 중립적인 core와 기존 schema/Structure ID는 유지한다.
 
-Apache-2.0 license, public `main`, publication gate와 Python 3.11/3.14 CI까지 검증했고
-대표 소비 흐름의 도입과 publication도 닫았다. signed annotated `v1.0.0`,
-`v1.1.0`, `v1.1.1`, `v1.2.0`, `v1.3.0` release와 remote tag identity를 검증했다.
-`v1.3.1` patch release와 승인된 소비 저장소 집합의 migration은 repository별 gate,
-remote equality와 terminal CI까지 검증했다.
+선언에서 core, capability profile과 repository overlay를 결정적으로 합성하고,
+central framework check와 standalone consumer drift check가 같은 lock을 검증한다.
+완료 packet의 active namespace 잔류를 막는 lifecycle gate, logical VCS closeout과
+bounded-task permission continuity도 유지한다.
 
-현재 `1.4.0`의 GPT-6 Astra profile 갱신과 활성 소비 저장소 adoption을 준비 중이다.
-범위와 출고 전 남은 검증은
-[`Astra adoption packet`](docs/todo-gpt-6-astra-adoption/spec.md)을 따른다.
+signed annotated `v1.4.0`의 서명과 remote tag identity, Python 3.11/3.14 CI를 검증했다.
+승인된 활성 소비 저장소의 release pin 전환도 repository별 native/publication gate,
+remote equality와 same-SHA terminal CI까지 완료했다. 완료 범위와 evidence는
+[`Astra adoption packet`](docs/milestones/gpt-6-astra-adoption/spec.md)에 있다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.

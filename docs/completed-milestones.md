@@ -149,3 +149,21 @@ native와 publication gate, remote default-branch equality와 same-SHA terminal 
 gate, remote equality와 terminal CI
 
 상세 기록: `docs/milestones/stable-v1-3-release-and-adoption/spec.md`
+
+## GPT-6 Astra guidance and adoption
+
+공식 Astra migration/prompting 지침을 `openai-agent-guidance` profile에 반영했다.
+승인 질문, skill 해석과 설명·검증 범위를 조정하면서 core의 model/vendor 중립성과
+schema/Structure ID를 유지했다. bootstrap은 짧은 routing map으로 두고 상세 model
+calibration은 harness에서 제공한다.
+
+signed annotated `v1.4.0` source의 서명, remote tag/commit identity와 terminal Python
+CI를 확인했다. 승인된 활성 소비 저장소 집합은 overlay와 기존 작업을 보존하는
+격리 checkout에서 release pin을 갱신하고 standalone/native/publication gate,
+remote equality와 same-SHA terminal CI까지 검증했다. 대상 inventory와 local
+coordination 원문은 tracked artifact에 기록하지 않았다.
+
+검증: `scripts/check.sh`, signed tag verification, 소비 저장소별 canonical/publication
+gate, remote equality와 terminal CI. model 행동에 대한 별도 실측 eval은 포함하지 않았다.
+
+상세 기록: `docs/milestones/gpt-6-astra-adoption/spec.md`

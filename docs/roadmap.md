@@ -81,4 +81,4 @@ remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
 유지한다. 아카이브 여부와 원격 기본 브랜치의 관리 선언·lifecycle을 확인한 활성 소비
 저장소를 격리 checkout에서 검증하고, 승인된 publication과 same-SHA CI로 닫는다.
 
-상태: 진행 중 — `docs/todo-gpt-6-astra-adoption/spec.md`.
+상태: 완료 — `docs/milestones/gpt-6-astra-adoption/spec.md`.
