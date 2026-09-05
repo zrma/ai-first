@@ -50,7 +50,7 @@
 
 ## 진행 중
 
-없음. 새 model, capability profile 또는 framework version 요구가 다음 시작 trigger다.
+`docs/todo-spec-artifact-lifecycle/spec.md`: spec 설계 계약, 완료 지식 이관과 소비 저장소 적용 준비.
 
 ## 미착수
 

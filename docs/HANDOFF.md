@@ -12,8 +12,8 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. 새 model, capability profile 또는 framework version
-요구가 생기면 별도 active packet을 연다.
+현재 작업은 `docs/todo-spec-artifact-lifecycle/spec.md`와 `open-questions.md`다.
+spec 설계 계약과 완료 지식 이관을 보강한 뒤 소비 저장소 적용을 준비한다.
 
 `v1.4.0` signed annotated source tag의 identity와 terminal Python CI를 확인했고,
 승인된 활성 소비 저장소의 release pin도 native/publication gate, remote equality와
