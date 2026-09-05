@@ -47,11 +47,12 @@
 
 - `1.5.0-dev` spec 설계 계약과 완료 artifact 전환, self-hosting 지식 이관
 - 과거 완료 packet 정리와 navigation/active-packet 회귀 검증
+- 관리 대상 소비 저장소의 immutable candidate 준비와 native/interface 검증
 
 ## 진행 중
 
-소비 저장소의 격리 적용 준비와 native 검증. framework release와 소비 저장소
-publication은 미완료이며 local 구현 결과와 구분한다.
+framework 정식 release와 소비 저장소의 최종 release pin/publication이 남아 있다.
+local 후보 검증은 완료했고 출고 권한과 최종 source 검증은 별도 단계다.
 
 ## 미착수
 

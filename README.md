@@ -32,8 +32,8 @@ signed annotated `v1.4.0`의 서명과 remote tag identity, Python 3.11/3.14 CI�
 remote equality와 same-SHA terminal CI까지 완료했다. 완료 범위와 evidence는
 [`완료 요약`](docs/completed-milestones.md)에 있다.
 
-`1.5.0-dev`에서는 spec 설계 계약과 완료 지식 이관을 보강하고 있다.
-개발 변경과 소비 저장소 적용 준비 상태는 stable publication과 구분한다.
+`1.5.0-dev`에서 spec 설계 계약과 완료 지식 이관, 소비 저장소 후보 검증을 완료했다.
+개발 변경과 소비 저장소 후보 검증은 stable publication과 구분한다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.

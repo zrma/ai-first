@@ -165,3 +165,18 @@ gate, remote equality와 terminal CI. model 행동에 대한 별도 실측 eval�
 24개 unit fixture. archive 없는 완료 artifact, stale reference, spec 없는 질문 파일을
 검증했다. 이 결과는 지침의 구조·합성과 문서 정합성 검증이며 model 행동의 실측
 평가나 새 release 및 소비 저장소 publication 완료를 의미하지 않는다.
+
+## Spec-to-artifact lifecycle — consumer preparation
+
+현재 원격 기본 브랜치의 관리 의도와 비아카이브 상태를 확인한 소비 저장소를
+기본 working copy 밖의 colocated jj checkout에서 준비했다. immutable candidate
+pin, generated artifact와 repository-native interface의 source identity를 함께 갱신했다.
+
+공통 계약과 이미 일치하는 native todo 정리 절차는 보존했다. checklist 중심의
+설명은 spec 정립과 artifact 이관 기준으로 보충했고 bootstrap 길이 제한은 상세
+정책의 소유 문서로 안내하는 방식으로 유지했다.
+
+검증: 소비 저장소별 standalone/interface 및 repository-native gate 통과. native
+절차가 요구하는 작업 packet은 검증 뒤 지식을 이관하고 정리했다. 대상별 명령과
+판정은 machine-local coordination에서 관리한다. optional runtime acceptance와
+live 배포, 최종 release pin 및 remote/same-SHA CI는 이 후보 검증에 포함하지 않았다.

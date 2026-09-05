@@ -38,6 +38,10 @@ stable 소비 저장소는 versioned release를 pin하고 repository별 update t
 lock은 선언된 source revision과 검증된 `source_commit`을 함께 기록한다. release tag
 이동이나 다른 checkout에서의 합성은 fail-closed 한다.
 
+standalone checker는 tracked config/input/output과 lock metadata의 내부 정합성을
+검증한다. 외부 Git tag·commit의 실제 identity와 서명은 release source checkout과
+publication 검증이 소유하며 standalone 결과만으로 재검증됐다고 주장하지 않는다.
+
 ## Canonical v1 distribution
 
 v1의 canonical distribution은 public source checkout이다. package registry와

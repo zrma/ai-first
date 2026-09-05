@@ -13,10 +13,11 @@ drift와 lock metadata 정합성을 검증한다.
 ## 현재 milestone
 
 `1.5.0-dev`의 spec 설계 계약과 완료 지식 이관 보강을 local에서 검증했다.
-framework 구현 packet은 지식 이관 후 정리했다. 현재 남은 작업은 소비 저장소의
-격리 적용 준비와 repository-native 검증, 이후 승인된 release/publication 전환이다.
-대상별 상태는 machine-local coordination이 소유한다. local 준비를 release 또는
-소비 저장소 publication 완료로 해석하지 않는다.
+framework 구현 packet은 지식 이관 후 정리했다. 현재 관리 대상 소비 저장소는
+격리 checkout에서 immutable candidate pin과 generated artifact, native/interface
+검증을 완료했다. 대상별 상태는 machine-local coordination이 소유한다.
+남은 작업은 framework 정식 release와 소비 저장소 release pin/publication 전환이다.
+local 후보 검증을 release 또는 소비 저장소 publication 완료로 해석하지 않는다.
 
 `v1.4.0` signed annotated source tag의 identity와 terminal Python CI를 확인했고,
 승인된 활성 소비 저장소의 release pin도 native/publication gate, remote equality와
@@ -27,11 +28,11 @@ same-SHA terminal CI까지 닫혔다. 고정 source tag와 이후 상태 문서 
 
 ## 다음 순서
 
-1. 현재 remote와 관리 의도를 확인한 소비 저장소를 기본 working copy 밖에서 준비한다.
-2. immutable candidate source로 pin/render하고 native gate와 lifecycle 충돌을 확인한다.
-3. framework source 확정, signed release와 각 소비 저장소 publication은 exact target과
-   권한을 확인한 뒤 수행한다. 최종 pin 변경 뒤 standalone/native gate를 재검증한다.
-4. 승인된 publication은 remote identity와 same-SHA terminal CI로 닫는다.
+1. `1.5.0` 정식 source와 signed annotated release, 소비 저장소별 원격 기본 브랜치
+   반영의 exact target과 publication 권한을 확인한다.
+2. 출고 직전 remote를 재조회하고 최종 source/pin의 standalone/native/publication
+   gate를 검증한다. concurrent change가 있으면 해당 대상의 diff와 검증을 갱신한다.
+3. 승인된 publication을 remote identity와 same-SHA terminal CI로 닫는다.
 
 ## 시작 순서
 
