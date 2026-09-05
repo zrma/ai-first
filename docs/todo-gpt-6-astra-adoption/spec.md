@@ -25,7 +25,7 @@ core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는
 
 - [x] profile source, self-hosting output, version fixture와 interface gate가 일치한다.
 - [x] `scripts/check.sh`와 repository publication gate가 통과한다.
-- [ ] 활성 소비 저장소의 standalone/native gate 및 overlay 보존을 확인한다.
+- [x] 활성 소비 저장소의 standalone/native gate 및 overlay 보존을 확인한다.
 - [ ] 승인된 framework publication에서 remote commit, signed annotated `v1.4.0`과
   same-SHA terminal CI를 확인한다.
 - [ ] 소비 저장소 release pin과 독립 publication, remote equality, same-SHA CI를 확인한다.
@@ -49,3 +49,8 @@ core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는
   remote publication 완료를 의미하지 않는다.
 - 소비 저장소의 short routing-map gate에서 profile 길이 초과를 확인해 상세
   calibration은 harness에 유지하고 bootstrap profile을 기존 크기로 축약했다.
+- 대상별 native gate와 최종 source pin의 standalone/interface 검증이 통과했다.
+  bootstrap 축약 후에는 변경된 generated 표면의 길이·formatter 호환성을 재확인했다.
+- 공개 대상의 repository gate와 machine-local private-inventory gate가 통과했다.
+- publication 직전 원격 기본 브랜치가 전진하면 기존 prepared change를 덮어쓰거나
+  history를 rewrite하지 않고 새 base에서 변경을 재합성·검증한다.

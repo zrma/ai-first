@@ -17,8 +17,9 @@ drift와 lock metadata 정합성을 검증한다.
 ## 현재 milestone
 
 현재 active milestone은 `docs/todo-gpt-6-astra-adoption/spec.md`다.
-`1.4.0`의 Astra profile과 소비 저장소 변경을 local 검증한 뒤 framework publication,
-소비 저장소 pin 확정·publication과 same-SHA CI 순서로 진행한다.
+`1.4.0`의 Astra profile과 소비 저장소 변경은 local 검증을 마쳤다.
+다음 단계는 권한이 확인된 framework publication, 소비 저장소 release pin 확정,
+저장소별 publication과 same-SHA CI다. source tag와 이후 handoff commit은 구분한다.
 현재 published stable은 `v1.3.1`이며 `v1.4.0` 출고 완료를 의미하지 않는다.
 stable v1.3 release와 adoption의 범위,
 acceptance와 evidence는 `docs/milestones/stable-v1-3-release-and-adoption/`에 있다.

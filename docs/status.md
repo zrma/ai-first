@@ -44,8 +44,8 @@
 
 ## 진행 중
 
-- `1.4.0` GPT-6 Astra profile 갱신과 self-hosting 검증
-- versioned publication 및 활성 소비 저장소 adoption 준비:
+- `1.4.0` GPT-6 Astra profile 및 활성 소비 저장소의 local 준비·검증 완료
+- 남은 단계는 versioned publication, 소비 저장소 release pin과 same-SHA CI:
   `docs/todo-gpt-6-astra-adoption/spec.md`
 
 ## 미착수
