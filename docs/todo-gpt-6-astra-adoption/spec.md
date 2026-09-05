@@ -47,3 +47,5 @@ core는 model/vendor 중립성을 유지하며 schema와 harness Structure ID는
 - central/standalone drift, harness interface, publication/navigation/CI contract와
   unit fixture 21개가 local에서 통과했다. 이는 model 행동의 실측 평가나
   remote publication 완료를 의미하지 않는다.
+- 소비 저장소의 short routing-map gate에서 profile 길이 초과를 확인해 상세
+  calibration은 harness에 유지하고 bootstrap profile을 기존 크기로 축약했다.
