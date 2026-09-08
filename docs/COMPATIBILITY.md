@@ -33,6 +33,11 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 출시와 소비 저장소 적용 상태는 `docs/HANDOFF.md`가 소유한다. 지침의 합성·구조
 검증을 agent 행동 개선의 실측 evidence로 해석하지 않는다.
 
+소비 저장소의 concise routing gate는 공통 생성 본문과 repository-owned overlay의
+소유 경계를 구별할 수 있다. 고정 framework 본문의 무결성은 source/render/standalone
+검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
+자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

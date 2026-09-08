@@ -182,7 +182,7 @@ native/publication gate, remote equality와 same-SHA terminal CI. 검증은 지�
 
 ## Intent-aware change review
 
-`1.6.0-dev`는 기존 spec에 문제·원하는 결과·영향·제약·non-goal을 구별하고,
+`1.6.0`은 기존 spec에 문제·원하는 결과·영향·제약·non-goal을 구별하고,
 원래 기준과 이후 spec 변경을 diff·검증과 함께 검토하도록 구체화했다. 유지해야 할
 동작의 위반, 근거 없는 기준 완화와 실제 효과의 미검증을 구별하는 시나리오는
 `docs/WORK_LIFECYCLE.md`에 있다. PR이 없는 local change에도 같은 리뷰 기준을
@@ -190,7 +190,7 @@ native/publication gate, remote equality와 same-SHA terminal CI. 검증은 지�
 
 원래 설계와 acceptance의 이력 전용 참조:
 `b7979bf31557c7340573f722dfe2aaa78be920ae:docs/todo-intent-review/spec.md`.
-이는 repository-local VCS 참조이며 외부에서 열리는 published permalink가 아니다.
+해당 기준선은 release source의 공개 이력에서 확인할 수 있다.
 기준을 완화하지 않고 결과를 대조했으며, 현재 규칙과 예시는 `docs/WORK_LIFECYCLE.md`,
 native 형식·schema의 호환성과 release 경계는 `docs/COMPATIBILITY.md`로 이관했다.
 역할이 끝난 packet과 active pointer를 정리했다.
@@ -201,8 +201,22 @@ packet과 overlay의 render 전후 보존, packet 제거 후 standalone 실행, 
 두 generated entrypoint에 리뷰 계약이 전달되는 것을 synthetic fixture로 검사했다.
 독립 리뷰에서 발견한 합성 assertion 누락도 보완했다.
 
+signed annotated `v1.6.0`의 서명, local/remote tag object와 source commit identity,
+GitHub Release 및 동일 source SHA의 Python 3.11/3.14 CI를 확인했다. release/adoption의
+원래 acceptance는
+`c6da34456412cb7956b5f0d03011500664f25fca:docs/todo-release-1.6/spec.md`에 있다.
+승인된 활성 소비 저장소에서 최종 release pin, standalone/interface와 native gate,
+publication boundary, remote equality 및 same-SHA terminal CI까지 검증했다.
+
+native work-start 안내는 기존 spec 안에서 의도를 구체화하도록 연결했다. 실제 생성,
+readiness·질문 스키마 및 기존 파일 보존을 확인했으며 기존 active packet과 overlay를
+보존했다. 초기 schema PASS는 의미적 요구사항 확정을 대신하지 않는다는 경계를
+native 소유 문서에 남겼다. concise routing 검사에서는 공통 생성 본문 증가와 native
+안내 예산을 구별하고 기존 native 예산을 유지했다. 별도 중앙 parser는 추가하지 않았다.
+
 검증: `scripts/check.sh`의 25개 unit test, central/standalone drift, harness interface,
-repository publication boundary와 navigation PASS. 원래 spec과 diff의 계약 검토를
-수행했다. agent의 실제 발견률·오탐률, 소비 저장소 native readiness 도입과 remote CI는
-이번 검증에 포함하지 않았다. local development candidate이며 published stable은
-`v1.5.0`이다. release·소비 저장소 adoption은 별도 요청 시 검증한다.
+repository publication boundary와 navigation PASS. 원래 spec과 diff의 계약 검토,
+독립 리뷰와 repository-native 검증을 수행했다. 결과·판단 근거·검증 한계를 이 문서와
+`docs/WORK_LIFECYCLE.md`, `docs/COMPATIBILITY.md`에 이관하고 완료 packet을 정리했다.
+agent의 실제 발견률·오탐률, 제품 release와 live runtime 배포는 이번 검증에 포함하지
+않았다. 지침의 배포와 구조적 정합성이 행동 성능 향상의 실측 evidence를 뜻하지 않는다.

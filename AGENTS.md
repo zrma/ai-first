@@ -114,8 +114,8 @@
 
 ## Repository Overlay
 
-- Stage 0부터 Stage 11까지의 release/adoption과 Stage 12의 local 구현·검증을 완료했다.
-  published stable과 development candidate는 `docs/HANDOFF.md`에서 구분한다. 계약과 evidence는
+- Stage 0부터 Stage 12까지의 release/adoption을 완료했다. stable release는
+  `docs/HANDOFF.md`에서 확인한다. 계약과 evidence는
   `docs/completed-milestones.md`, 현재 상태와 다음 trigger는
   `docs/HANDOFF.md`와 `docs/status.md`가 소유한다.
 - spec 설계 계약과 완료 지식 이관은 `docs/WORK_LIFECYCLE.md`를 따른다.

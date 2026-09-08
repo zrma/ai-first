@@ -3,9 +3,8 @@
 ## 현재 단계
 
 `ai-first`는 self-hosting core부터 GPT-6 Astra guidance와 활성 소비 저장소
-adoption 및 spec-to-artifact lifecycle까지 Stage 0부터 Stage 11을 완료했다.
-Stage 12의 의도 기반 변경 리뷰는 `1.6.0-dev` local candidate로 구현·검증했다.
-현재 published stable은 `v1.5.0`이다.
+adoption, spec-to-artifact lifecycle과 의도 기반 변경 리뷰까지 Stage 0부터 Stage 12를
+완료했다. 현재 published stable은 `v1.6.0`이다.
 
 self-hosting 선언, model/vendor 중립적 core, capability profile, repository overlay,
 deterministic render, content-addressed lock, central drift check와 standalone checker가
@@ -14,13 +13,13 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 `docs/todo-release-1.6/spec.md`의 stable release와 adoption이다.
-`1.6.0` source와 생성 결과를 검증하고 framework publication, signed tag와 release,
-활성 소비 저장소의 release pin·native gate·원격 반영·동일 SHA의 CI를 순서대로 확인한다.
-기존 제품 작업과 고유 이력은 보존한다. 대상별 증거는 machine-local 계층에서 관리한다.
+현재 active milestone은 없다. `v1.6.0` source와 signed annotated tag, GitHub Release,
+승인된 활성 소비 저장소의 release pin·native gate·원격 반영·동일 SHA의 terminal CI를
+확인했다. 기존 제품 작업과 고유 이력을 보존했다.
 
-완료 결과는 `docs/completed-milestones.md`, spec 정립과 지식 이관은
-`docs/WORK_LIFECYCLE.md`를 따른다. 대상별 evidence는 machine-local 계층에서 관리한다.
+완료 결과와 다음 capability의 시작 조건은 `docs/completed-milestones.md`와
+`docs/COMPATIBILITY.md`, spec 정립과 지식 이관은 `docs/WORK_LIFECYCLE.md`가 소유한다.
+대상별 inventory와 검증 원문은 machine-local 계층에서 관리한다.
 
 ## 시작 순서
 
@@ -40,10 +39,10 @@ boundary, navigation, Python syntax와 unit fixture를 검사한다.
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: 기존 `v1.5.0` lifecycle closeout까지 public `main`에 반영
+- remote: `v1.6.0` release와 adoption 완료를 public `main`에 반영
 - license: `Apache-2.0`
-- CI: published `v1.5.0`의 Python 3.11/3.14 success; development candidate는 local 검증
-- stable release: signed annotated `v1.5.0`, remote tag/commit equality와 terminal CI verified
+- CI: `v1.6.0` source의 Python 3.11/3.14 success; 소비 저장소의 동일 SHA CI verified
+- stable release: signed annotated `v1.6.0`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

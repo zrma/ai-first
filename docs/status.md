@@ -58,9 +58,14 @@
 - 기존 native packet의 갱신·이관 후 정리와 standalone 동작에 대한 synthetic 회귀 검증
 - local 검증 결과와 한계의 lifecycle/compatibility/완료 요약 이관
 
+- signed annotated `v1.6.0`, 서명·remote tag/source identity, GitHub Release와 terminal Python CI
+- 활성 소비 저장소의 release pin과 native template 연결, 기존 schema·overlay·WIP 보존
+- 저장소별 native/publication gate, remote equality와 same-SHA terminal CI
+- release/adoption 결과·판단 근거·한계 이관과 완료 packet 및 pointer 정리
+
 ## 진행 중
 
-`docs/todo-release-1.6/spec.md`: stable `v1.6.0` 출시와 활성 소비 저장소 적용.
+없음.
 
 ## 미착수
 
