@@ -22,6 +22,17 @@ stable 소비 저장소는 versioned release를 pin하고 repository별 update t
 올린다. signed annotated source와 저장소별 terminal evidence를 검증한다.
 현재 publication 상태는 `docs/HANDOFF.md`가 소유한다.
 
+`1.6.0-dev`는 기존 spec·검증·이관 계약을 의도 기반 변경 리뷰로 구체화하는
+development candidate다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
+`docs/WORK_LIFECYCLE.md`에 있다. 선언/lock schema version 1, harness Structure ID와
+기존 native packet 형식을 유지하며 새 parser 필드, 중앙 readiness 명령 또는 PR
+사용을 요구하지 않는다. 공통 guidance는 합성 결과에 포함되므로 중앙 문서가 없어도
+소비 저장소에서 동작한다. 기존 heading과 출력 역할을 유지하는 범위이며 새 필수
+형식을 도입한다면 별도의 compatibility/migration 판단이 필요하다.
+
+현재 stable은 계속 `v1.5.0`이다. development candidate의 local 검증은 release,
+소비 저장소 adoption 또는 agent 행동 개선을 실측한 evidence를 뜻하지 않는다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

@@ -54,9 +54,13 @@
   remote main equality와 same-SHA terminal CI
 - release 작업의 결과 이관과 active packet 및 pointer 정리
 
+- `1.6.0-dev` 의도 정보·변경 전 기준·spec 변경 리뷰·완료 후 참조 계약
+- 기존 native packet의 갱신·이관 후 정리와 standalone 동작에 대한 synthetic 회귀 검증
+- local 검증 결과와 한계의 lifecycle/compatibility/완료 요약 이관
+
 ## 진행 중
 
-의도 기반 변경 리뷰 계약과 예시: `docs/todo-intent-review/spec.md`.
+없음. `1.6.0-dev`는 local candidate이며 published stable은 `v1.5.0`이다.
 
 ## 미착수
 

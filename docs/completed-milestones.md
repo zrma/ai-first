@@ -179,3 +179,30 @@ active spec·질문 파일과 pointer를 정리했다. source tag는 immutable�
 native/publication gate, remote equality와 same-SHA terminal CI. 검증은 지침 합성·
 문서 정합성과 repository-native gate를 대상으로 하며 model 행동의 실측 eval이나
 별도 요청이 없는 live runtime acceptance를 의미하지 않는다.
+
+## Intent-aware change review
+
+`1.6.0-dev`는 기존 spec에 문제·원하는 결과·영향·제약·non-goal을 구별하고,
+원래 기준과 이후 spec 변경을 diff·검증과 함께 검토하도록 구체화했다. 유지해야 할
+동작의 위반, 근거 없는 기준 완화와 실제 효과의 미검증을 구별하는 시나리오는
+`docs/WORK_LIFECYCLE.md`에 있다. PR이 없는 local change에도 같은 리뷰 기준을
+적용하며, 완료 후 당시 spec이 필요하면 immutable commit과 경로로 참조한다.
+
+원래 설계와 acceptance의 이력 전용 참조:
+`b7979bf31557c7340573f722dfe2aaa78be920ae:docs/todo-intent-review/spec.md`.
+이는 repository-local VCS 참조이며 외부에서 열리는 published permalink가 아니다.
+기준을 완화하지 않고 결과를 대조했으며, 현재 규칙과 예시는 `docs/WORK_LIFECYCLE.md`,
+native 형식·schema의 호환성과 release 경계는 `docs/COMPATIBILITY.md`로 이관했다.
+역할이 끝난 packet과 active pointer를 정리했다.
+
+별도 intent 파일과 중앙 readiness schema를 추가하면 native lifecycle과 중복되므로
+공통 정보·검토 계약을 generated guidance에 배포하는 방식을 선택했다. 기존 native
+packet과 overlay의 render 전후 보존, packet 제거 후 standalone 실행, 중앙 문서 없이
+두 generated entrypoint에 리뷰 계약이 전달되는 것을 synthetic fixture로 검사했다.
+독립 리뷰에서 발견한 합성 assertion 누락도 보완했다.
+
+검증: `scripts/check.sh`의 25개 unit test, central/standalone drift, harness interface,
+repository publication boundary와 navigation PASS. 원래 spec과 diff의 계약 검토를
+수행했다. agent의 실제 발견률·오탐률, 소비 저장소 native readiness 도입과 remote CI는
+이번 검증에 포함하지 않았다. local development candidate이며 published stable은
+`v1.5.0`이다. release·소비 저장소 adoption은 별도 요청 시 검증한다.

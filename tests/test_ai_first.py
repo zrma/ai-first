@@ -67,6 +67,11 @@ class AiFirstTest(unittest.TestCase):
             b"contract/status review",
             first.outputs["docs/agent-harness.md"],
         )
+        # 중앙 문서 없이 배포되는 두 entrypoint의 리뷰 계약 누락을 탐지한다.
+        self.assertIn(b"Change review:", first.outputs["AGENTS.md"])
+        for output in ("AGENTS.md", "docs/agent-harness.md"):
+            self.assertIn("변경 전 의도·제약·".encode(), first.outputs[output])
+            self.assertIn("immutable revision과 경로".encode(), first.outputs[output])
         self.assertIn(
             (
                 "10. 의미 있고 검증된 결과를 하나 이상의 독립적으로 설명 가능한 local change로\n"
@@ -89,7 +94,7 @@ class AiFirstTest(unittest.TestCase):
         self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
         lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.5.0")
+        self.assertEqual(lock["framework"]["version"], "1.6.0-dev")
         self.assertIsNone(lock["framework"]["source_revision"])
         self.assertIsNone(lock["framework"]["source_commit"])
         self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
@@ -166,6 +171,49 @@ class AiFirstTest(unittest.TestCase):
         )
 
         self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+
+    def test_native_packet_survives_update_and_closes_without_new_schema(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        packet = root / "docs" / "todo-retry"
+        packet.mkdir(parents=True)
+        native_files = {
+            packet / "spec.md": "# Retry\n\n상태: 진행 중\n\n기존 native 계획 형식.\n",
+            packet / "open-questions.md": "# 질문\n\n미결정 없음.\n",
+        }
+        for path, content in native_files.items():
+            path.write_text(content, encoding="utf-8")
+        overlay = root / ".ai-first" / "overlays" / "agents-project.md"
+        overlay.write_text(
+            overlay.read_text(encoding="utf-8") + "\n- Preserve the native retry contract.\n",
+            encoding="utf-8",
+        )
+
+        render_repository(root, FRAMEWORK_ROOT)
+        for path, content in native_files.items():
+            self.assertEqual(path.read_text(encoding="utf-8"), content)
+        self.assertIn(
+            "Preserve the native retry contract.",
+            (root / "AGENTS.md").read_text(encoding="utf-8"),
+        )
+
+        # 문서의 의미적 충분성이 아니라 native 형식과 완료 후 독립 실행을 검사한다.
+        for closed in (False, True):
+            with self.subTest(closed=closed):
+                if closed:
+                    (root / "docs" / "retry.md").write_text(
+                        "# Retry contract\n\n시도 횟수를 유지한다.\n", encoding="utf-8"
+                    )
+                    for path in native_files:
+                        path.unlink()
+                    packet.rmdir()
+                self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
+                completed = subprocess.run(
+                    [sys.executable, ".ai-first/check.py"], cwd=root,
+                    text=True, capture_output=True, check=False,
+                )
+                self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
 
     def test_standalone_check_rejects_tampered_framework_metadata(self) -> None:
         temporary, root = self.copy_fixture()

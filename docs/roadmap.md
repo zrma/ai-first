@@ -91,3 +91,14 @@ framework self-hosting 정리와 소비 저장소 적용을 각각 검증한다.
 상태: 완료. signed `v1.5.0`과 승인된 소비 저장소의 release pin, native/publication
 gate, remote equality와 same-SHA terminal CI를 확인했다. 결과와 검증 한계는
 `docs/completed-milestones.md`, 현재 상태는 `docs/HANDOFF.md`가 소유한다.
+
+## Stage 12 — Intent-aware change review
+
+기존 spec에 문제·원하는 결과·영향·제약·non-goal을 구별하고, 변경 전 기준과 spec
+변경 자체를 diff·검증과 대조한다. PR/local 리뷰 기록에서 완료 후에도 필요한 당시
+기준과 최종 소유 artifact를 추적한다. 문서량·리뷰 깊이는 위험에 비례시키며
+native 형식과 기존 permission/schema를 보존한다.
+
+상태: local 구현·검증 완료 (`1.6.0-dev`). 계약과 예시는 `docs/WORK_LIFECYCLE.md`,
+검증 범위와 한계는 `docs/completed-milestones.md`에 있다. publication과 소비 저장소
+adoption은 별도 요청 시 진행한다.
