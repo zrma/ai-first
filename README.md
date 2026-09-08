@@ -37,10 +37,10 @@ remote equality와 same-SHA terminal CI까지 완료했다. 완료 범위와 evi
 문서로 이관하고 원본 작업 packet을 정리했다. 원본 보존은 명시적인 추적·운영 필요가
 있을 때 선택한다.
 
-현재 development candidate `1.6.0-dev`는 기존 spec의 의도·제약과 spec 변경 자체를
+`1.6.0`은 기존 spec의 의도·제약과 spec 변경 자체를
 리뷰에 연결하고, 완료 후에도 당시 기준과 최종 소유 문서를 추적하는 계약을 제공한다.
 문서량과 리뷰 깊이는 위험에 비례하며 기존 native 형식과 schema를 유지한다.
-local 합성·회귀 검증을 완료했으며 release와 소비 저장소 adoption은 아직 수행하지 않았다.
+합성·회귀 검증과 출시·적용 현황은 handoff에서 확인한다.
 
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.

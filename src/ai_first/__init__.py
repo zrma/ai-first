@@ -1,3 +1,3 @@
 """AI-first project operating framework."""
 
-VERSION = "1.6.0-dev"
+VERSION = "1.6.0"

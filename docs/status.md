@@ -60,7 +60,7 @@
 
 ## 진행 중
 
-없음. `1.6.0-dev`는 local candidate이며 published stable은 `v1.5.0`이다.
+`docs/todo-release-1.6/spec.md`: stable `v1.6.0` 출시와 활성 소비 저장소 적용.
 
 ## 미착수
 

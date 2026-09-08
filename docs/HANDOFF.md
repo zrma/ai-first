@@ -14,13 +14,10 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. 의도 정보, 기준 변경 리뷰와 완료 후 참조 규칙은
-`docs/WORK_LIFECYCLE.md`에 이관했다. native packet 형식과 schema를 유지하며
-generated guidance와 synthetic consumer의 local 검증을 통과했다.
-
-다음 trigger는 release 또는 소비 저장소 adoption 요청이다. 그때 current remote와
-active work를 다시 확인해 version/source pin, native/publication gate와 same-SHA CI를
-닫는다. `1.6.0-dev`는 아직 publication·소비 저장소 adoption을 수행하지 않았다.
+현재 active milestone은 `docs/todo-release-1.6/spec.md`의 stable release와 adoption이다.
+`1.6.0` source와 생성 결과를 검증하고 framework publication, signed tag와 release,
+활성 소비 저장소의 release pin·native gate·원격 반영·동일 SHA의 CI를 순서대로 확인한다.
+기존 제품 작업과 고유 이력은 보존한다. 대상별 증거는 machine-local 계층에서 관리한다.
 
 완료 결과는 `docs/completed-milestones.md`, spec 정립과 지식 이관은
 `docs/WORK_LIFECYCLE.md`를 따른다. 대상별 evidence는 machine-local 계층에서 관리한다.
