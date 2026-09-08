@@ -13,7 +13,9 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. `v1.5.0` signed release와 승인된 활성 소비 저장소의
+현재 active milestone은 `docs/todo-intent-review/spec.md`의 의도 기반 변경 리뷰다.
+core/lifecycle 계약, 예시와 synthetic 검증을 local 변경으로 준비한다.
+`v1.5.0` signed release와 승인된 활성 소비 저장소의
 최종 release pin, repository-native/publication gate, remote main equality 및
 same-SHA terminal CI를 확인했다. framework와 소비 변경은 갱신된 원격 main을
 기준으로 반영했다. 새 요구가 생기면 목적·관계·완료 조건을 정립하는 spec을 연다.

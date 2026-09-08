@@ -56,7 +56,7 @@
 
 ## 진행 중
 
-없음.
+의도 기반 변경 리뷰 계약과 예시: `docs/todo-intent-review/spec.md`.
 
 ## 미착수
 
