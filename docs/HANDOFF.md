@@ -13,17 +13,17 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 `docs/todo-operational-workflows/spec.md`의 공통 갱신 검사와
-작업 배정·인계·통합 기능이다. `1.7.0-dev`의 선택형 verification runtime·skill을
-local candidate로 구현·검증했다. `docs/VERIFICATION.md`가 사용법을,
-`docs/completed-milestones.md`가 소비자 연결 비용·행동 평가·한계를 소유한다.
-기존 stable release는 `v1.6.0`이며 새 candidate는 공개하거나 기본 소비 저장소에
-도입하지 않았다.
+현재 active milestone은 없다. `1.7.0-dev`의 선택형 verification/work-coordination 도구와
+공통 interface 위임을 local candidate로 구현·평가했다. `docs/VERIFICATION.md`와
+`docs/WORK_COORDINATION.md`가 사용법·지원 경계를, `docs/completed-milestones.md`가
+도입 비용·실제 파일 편집 비교·한계를 소유한다. stable은 `v1.6.0`이다.
 
-공통 실행 코드의 재사용은 확인했으나 기존 직접 실행보다 수작업이 감소했거나 행동
-판단이 개선됐다는 근거는 아직 없다. 반복 업무에서 절감 효과가 확인되거나 명시적
-추가 요구가 생길 때 다음 범위를 정한다. 대상별 inventory와 평가 원문은 machine-local
-계층에서 관리한다.
+두 격리 소비 clone에서 최초 위임 후 다음 version/profile 갱신의 native 검사 파일 수정
+0회를 확인했다. 같은 실제 편집 과제의 기존 단일/workflow 단일/workflow 다중 결과는 모두
+고정 acceptance 8개를 통과했다. 추가 호출 비용이 있으므로 일반적인 속도·비용·품질 우위를
+주장하지 않는다. 다음 확대는 반복 업무의 실측 효용 또는 명시적 요구를 기준으로 정한다.
+새 candidate의 release나 기본 소비 저장소 adoption은 수행하지 않았다. 대상별 inventory와
+평가 원문은 machine-local 계층에서 관리한다.
 
 ## 시작 순서
 
@@ -38,7 +38,8 @@ local candidate로 구현·검증했다. `docs/VERIFICATION.md`가 사용법을,
 ## 현재 검증
 
 `scripts/check.sh`가 central/standalone drift, harness interface, repository publication
-boundary, navigation, Python syntax와 unit fixture를 검사한다.
+boundary, navigation, Python syntax와 60개 회귀 테스트를 검사한다. 실제 jj clone 통합을
+포함하며 CI는 pinned jj 설치와 부재 시 실패를 요구한다. 새 candidate의 remote CI는 미실행이다.
 
 ## Publication 상태
 

@@ -68,9 +68,14 @@
 - 행동 보고 사례 8개에서 baseline/candidate 동률, 실제 수작업 감소는 미입증
 - local candidate의 사용법·평가·한계 이관; release와 portfolio 확대는 미실행
 
+- 공통 interface 위임 후 두 소비 clone의 다음 version/profile 갱신 native 수정 0회
+- work-coordination의 실제 jj 배정·인계·통합·재개와 standalone distribution
+- 동일 실제 파일 편집 과제의 세 arm 모두 acceptance 8/8; 일반 속도·비용 우위는 미입증
+- canonical local gate 60개 테스트와 명령/평가 소유 문서 이관
+
 ## 진행 중
 
-- `docs/todo-operational-workflows/spec.md`: 반복 갱신 수정 제거와 실제 multi-agent 작업 workflow
+없음. `1.7.0-dev` local candidate 평가를 닫았으며 release/adoption은 별도 범위다.
 
 ## 미착수
 

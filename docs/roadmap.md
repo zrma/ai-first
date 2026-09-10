@@ -114,3 +114,15 @@ native/publication gate, remote equality 및 same-SHA terminal CI를 확인했�
 `docs/completed-milestones.md`를 따른다. 행동 판단 개선과 기존 직접 실행 대비 수작업
 감소는 입증하지 못했으므로 portfolio 확대를 자동으로 진행하지 않는다. 반복 업무의
 절감 evidence 또는 명시적 요구가 다음 시작 조건이다.
+
+
+## Stage 14 — Operational work coordination
+
+공통 interface assertion을 standalone checker에 위임하고 독립 변경의 배정·격리·검증 인계와
+통합을 command로 제공한다. 단일·다중 agent의 실제 파일 수정과 반복 갱신 비용을 평가한다.
+
+상태: local candidate 구현·평가 완료. 두 소비 clone의 반복 native 수정 제거와 Codex에서의
+실제 작업 배정·통합을 확인했다. 작은 과제 세 arm은 모두 acceptance를 통과했으며 추가 호출
+비용도 관측했다. 사용 계약은 `docs/WORK_COORDINATION.md`, 평가와 한계는
+`docs/completed-milestones.md`가 소유한다. release/adoption이나 타 vendor adapter는 별도의
+명시적 요구 또는 반복 운영 evidence가 생겼을 때 범위를 정한다.

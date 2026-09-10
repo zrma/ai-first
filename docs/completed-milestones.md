@@ -292,6 +292,11 @@ remote CI는 이번 범위 밖이다. private 평가 원문과 대상별 결과�
 개선을 입증하지 못했다. 후속 범위는 중복 갱신 검사를 제거하고 독립 변경의 배정·인계·통합을
 실제 도구로 제공하는 것으로 정했다. 기존 core/native spec의 의미 판단 계약은 유지했다.
 
+원래 완료 기준의 immutable 참조:
+`2ba12c5a3e8979f07c3bfd7473e0447381c19ce7:docs/todo-operational-workflows/spec.md`.
+기준을 결과에 맞춰 축소하지 않았다. 반복 수정 제거·실제 상태/실패 처리·standalone 실행과
+동일 과제 비교를 대조했으며, 속도·비용 우위와 타 vendor 실행은 미입증으로 남겼다.
+
 ### 공통 갱신 검사
 
 standalone checker가 선언·lock을 기준으로 generated header, output role, input, 공통 heading,
