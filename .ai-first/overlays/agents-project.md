@@ -1,6 +1,6 @@
 ## Repository Overlay
 
-- Stage 0부터 Stage 12까지의 release/adoption을 완료했다. stable release는
+- Stage 0부터 Stage 15까지의 구현·평가와 release/adoption을 완료했다. stable release는
   `docs/HANDOFF.md`에서 확인한다. 계약과 evidence는
   `docs/completed-milestones.md`, 현재 상태와 다음 trigger는
   `docs/HANDOFF.md`와 `docs/status.md`가 소유한다.

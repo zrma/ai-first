@@ -66,16 +66,21 @@
 - `1.7.0-dev` 선택형 verification runtime·skill 및 native binding/discovery 구현
 - canonical gate 44개 테스트와 isolated consumer 두 곳·held-out Go 실행 검증
 - 행동 보고 사례 8개에서 baseline/candidate 동률, 실제 수작업 감소는 미입증
-- local candidate의 사용법·평가·한계 이관; release와 portfolio 확대는 미실행
+- local candidate 당시 사용법·평가·한계를 이관하고 release 범위를 별도 결정
 
 - 공통 interface 위임 후 두 소비 clone의 다음 version/profile 갱신 native 수정 0회
 - work-coordination의 실제 jj 배정·인계·통합·재개와 standalone distribution
 - 동일 실제 파일 편집 과제의 세 arm 모두 acceptance 8/8; 일반 속도·비용 우위는 미입증
 - canonical local gate 60개 테스트와 명령/평가 소유 문서 이관
 
+- signed annotated `v1.7.0`, 서명·remote tag/source identity, GitHub Release와 terminal Python CI
+- 공통 interface checker 위임과 활성 소비 저장소의 release pin/native/publication/동일 SHA CI
+- 기존 profile·overlay·active work·원본 working copy 보존; optional runtime 일괄 도입 없음
+- release gate 61개 회귀 테스트와 완료 지식 이관, active packet 및 pointer 정리
+
 ## 진행 중
 
-`docs/todo-release-1.7/spec.md`: v1.7.0 배포와 공통 checker 위임, optional profile 선택 보존.
+없음.
 
 ## 미착수
 

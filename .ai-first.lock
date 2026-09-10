@@ -34,7 +34,7 @@
     ".agents/skills/ai-first-verify/agents/openai.yaml": "e59e7699bf47a4431b24be5c237a27e61f548b4282db9085b09228befe98c76c",
     ".ai-first/check.py": "b295ca0029a9000084849de35c11adbb4694927f14ec8e9b7f31824af76ab11c",
     ".ai-first/verify.py": "3569bfb5b15b31e76e6257524ced916d36bd454bc0a054218ebba5d11078b8dc",
-    "AGENTS.md": "e0a39669e43d79a092da2302e7b05fe9af355246288202f02e477cbf7ab2a1e0",
+    "AGENTS.md": "0ce9eed187da50250253d0f56bc63f1a58003f4b9dd28edf853ac8917c66fd2b",
     "docs/agent-harness.md": "742559493de676782bf7446de6d24df154fa0a18536cfed19efc0700ad698492"
   },
   "profiles": [
@@ -46,7 +46,7 @@
   "repository_inputs": {
     ".ai-first.toml": "b42fa6328bbb1e8f79097c881390b14edad05754761d3615d16aa05e86b26ce8",
     ".ai-first/overlays/agents-first-read.md": "f9ad86b01a785206d6f339b48e87d599cb73f4a2a40fb1c1c00dc037883f1958",
-    ".ai-first/overlays/agents-project.md": "b8185471cb0700424cc60a5eb544aa7abf8de9a7d3958f425c71a78460200973",
+    ".ai-first/overlays/agents-project.md": "ea970fde29667924fd18f6127cd45f46ef803c695754a4c635d1c196d0408df2",
     ".ai-first/overlays/harness-project.md": "1fb94a5b0687c34272f4c5b6f7c86e522ab721e28a1ee954d2db0ac45b41fca9",
     ".ai-first/verification.toml": "d0a617b9716a67fd414922da61b3db78fd6f5e14dac691d93a9473af4daf6c20"
   },

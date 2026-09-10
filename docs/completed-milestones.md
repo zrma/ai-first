@@ -360,3 +360,38 @@ canonical local gate는 interface, verification, 실제 jj workspace, optional d
 이 결과는 local candidate이며 새 remote CI, release 또는 기본 소비 저장소 도입의 evidence가
 아니다. 다음 확대는 실제 반복 과제에서 추가 호출 비용을 상쇄하는 운영 효과 또는 별도의
 명시적 요구를 기준으로 판단한다.
+
+## Stage 15 — Proportional v1.7 release and adoption
+
+운영 효용에 비례해 기본 도입 범위를 정했다. 반복 native assertion 수정을 제거하는 공통
+checker는 기본 배포하고, verification은 선택형 보조 기능, work-coordination은 실험적
+opt-in으로 유지했다. self-hosting도 work-coordination을 선택 해제했고 소비 저장소에는
+기존 profile 선택을 그대로 보존했다. 추가 runtime·binding의 일괄 설치는 하지 않았다.
+
+원래 출고 기준은 signed `v1.7.0` source의
+`3dddb71ebb4362590c68d4f2e7f43d2752ef08a1:docs/todo-release-1.7/spec.md`에 있다.
+배포·adoption 범위와 완료 기준은 변경하지 않았다. independent release review에서 발견한
+경로 normalization 차이를 수정하고 실제 render → standalone 회귀 검증을 추가했다.
+제품·모델·runtime 배포나 타 vendor 지원으로 범위를 넓히지 않았다.
+
+canonical gate의 61개 테스트, Python 3.11/3.14 source CI, signed annotated tag의 서명과
+local/remote tag object·source identity, GitHub Release를 확인했다. source tag는 후속 완료
+문서 commit과 구분해 immutable하게 유지한다.
+
+활성 소비 저장소는 현재 remote default branch의 선언을 기준으로 격리 checkout에서
+갱신했다. generated source는 signed release commit에 고정했다. 공통 version/header/profile
+assertion을 pinned standalone checker로 위임하고 native 제품 조건, release-source 정책과
+publication 호출을 보존했다. 최초 이관 후 반복 native pin 수정이 필요 없는 구조다.
+기존 overlay·active work·원본 working copy와 고유 history를 보존하고 archived 대상은 제외했다.
+
+저장소별 standalone/interface와 native gate, publication gate, 원격 기본 브랜치 equality 및
+최종 동일 SHA CI를 확인했다. 변경 표면에 따라 native 문서 gate부터 full release gate까지
+실행했다. 이 검증은 agent bootstrap과 검증 경로의 adoption evidence이며 제품 전체의 새로운
+수용 시험이나 live 배포를 뜻하지 않는다. 작업 종료 규약이 있는 소비자는 원래 spec을
+immutable revision에 남기고 결과를 native 소유 문서로 이관한 후 packet을 정리했다.
+
+사용 계약은 `docs/VERIFICATION.md`, `docs/WORK_COORDINATION.md`와
+`docs/COMPATIBILITY.md`가 소유한다. inventory와 원문 evidence는 machine-local 계층에 두고
+이 공개 기록에는 판단·방법·한계만 남겼다. 다음 확대는 반복 업무에서 추가 절차 비용을
+상쇄하는 효용 또는 명시적 요구가 확인될 때 검토한다. 일반 속도·비용·품질 우위는 여전히
+미입증이며 실험적 기능의 배포를 그 증명으로 취급하지 않는다.
