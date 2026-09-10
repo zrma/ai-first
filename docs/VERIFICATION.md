@@ -83,6 +83,9 @@ version을 남긴다. `--report`는 현재 binding, source와 대조한다. 이�
 build/dependency 디렉터리를 제외한 filesystem fingerprint를 사용한다.
 ignored 파일, submodule 내부, 실제 toolchain/dependency version, remote/live 상태는
 이 fingerprint의 범위 밖이다. symlink target의 외부 내용도 읽지 않는다.
+revision도 비교하므로 jj describe/new처럼 내용이 같아도 revision이 바뀌면 stale이다.
+원래 report의 content digest와 diff를 검토해 증거의 재사용 가능성을 판단할 수 있지만
+이를 새 revision에서 실제 실행한 결과나 same-SHA CI라고 표시하지 않는다.
 
 native runner가 내부 check를 생략하고도 exit 0을 반환하면 공통 runtime은 이를 알 수 없다.
 예를 들어 quick mode의 passed를 full gate 통과로 보고하지 않는다. 스킬은 native 출력의

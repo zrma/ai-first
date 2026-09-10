@@ -247,7 +247,12 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         if ".ai-first/verification.toml" in set(outputs) | {config.output.lock}:
             raise ConfigError("verification binding collides with configured output")
         for destination, source in VERIFICATION_OUTPUTS.items():
-            if destination in reserved:
+            if any(
+                destination == path
+                or destination.startswith(path + "/")
+                or path.startswith(destination + "/")
+                for path in reserved
+            ):
                 raise ConfigError("verification output collides with configured path")
             path_within(config.repo_root, destination, "verification output")
             data = _read(framework / source, source)

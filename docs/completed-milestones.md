@@ -220,3 +220,68 @@ repository publication boundary와 navigation PASS. 원래 spec과 diff의 계�
 `docs/WORK_LIFECYCLE.md`, `docs/COMPATIBILITY.md`에 이관하고 완료 packet을 정리했다.
 agent의 실제 발견률·오탐률, 제품 release와 live runtime 배포는 이번 검증에 포함하지
 않았다. 지침의 배포와 구조적 정합성이 행동 성능 향상의 실측 evidence를 뜻하지 않는다.
+
+
+## Reusable verification workflow — local candidate
+
+`1.7.0-dev`에 선택형 `verification` profile을 구현했다. 하나의 stdlib runtime을
+central CLI와 standalone consumer에 배포하고, 공통 검증 skill도 version/lock으로
+관리한다. native runner 하나를 argv/coverage binding으로 연결하거나 지원 toolchain의
+실제 기본 명령을 발견·선택할 수 있다. 실행 실패·skip·도구 부재·timeout·subset과
+source freshness를 JSON으로 처리하며 제품별 의미·acceptance와 native lifecycle은
+소비 저장소에 남긴다. 사용법과 API 한계는 `docs/VERIFICATION.md`, 계층은
+`docs/ARCHITECTURE.md`, 선택형 도입·제거 호환성은 `docs/COMPATIBILITY.md`가 소유한다.
+
+원래 acceptance의 이력 전용 참조:
+`acda896a89bdb26ebf83b1822d9119013ef2d882:docs/todo-verification-workflow/spec.md`.
+원래 목적은 소비자마다 검증 절차·wrapper·skill을 다시 작성하는 부담을 줄이는 것이었다.
+실행 가능한 공통 제공물은 구현했지만, 기존 직접 실행 절차보다 수작업이 줄었다는
+효과까지 입증하지는 못했다. 이 차이를 acceptance 완화나 성공 주장으로 덮지 않는다.
+
+### 실행과 도입 검증
+
+canonical gate와 전체 44개 unit test가 통과했다. 추가된 19개 runtime/profile test는
+실패·skip·unavailable·timeout, subset, mutation/stale/report 재사용, binding 오류,
+private report 저장 경계, standalone 실행, generated drift와 collision/opt-out 보존을
+검사한다. 기존 profile 미선택 fixture도 통과했다.
+
+이질적인 기존 consumer 두 곳의 격리 checkout에서 native 문서 gate와 manifest quick
+runner를 연결·실행했다. 각각 7줄 binding과 기존 native interface pin 파일 한 곳의
+갱신이 필요했고 새 wrapper나 수동 작성 skill은 없었다. 초기 pin 불일치를 native gate가
+실제로 거부했다. 한 trial에서는 pin 직렬화 수정과 local clone의 remote metadata 복원도
+필요했다. 최종 실행은 둘 다 선택한 범위에서 통과했다. manifest quick mode의 내부 skip은
+유지되므로 full product gate 통과를 뜻하지 않는다. 기존 기본 working copy는 보존했다.
+
+held-out 작은 Go project는 이미 제공된 discovery에서 `go-test`를 선택해 실행했다.
+해당 project를 위해 framework 코드를 추가 수정하지 않았고, 중앙 checkout 없이
+runtime 실행과 standalone drift 검사를 통과했다.
+
+| 관측 대상 | native 직접 실행 | 공통 runtime 전체 실행 |
+| --- | --- | --- |
+| 문서 gate | 0.78초 | 1.05초 |
+| manifest quick gate | 4.37초 | 4.84초 |
+| held-out Go test | 0.14초 | 0.54초 |
+
+단일 warmed-cache 관측이며 wrapped 실행 뒤 직접 실행한 순서 효과가 있다. 속도 개선의
+추정치가 아니다. 반복 업무 전체 시간, token 비용과 장기 유지보수 절감은 측정하지 않았다.
+기존 runner를 직접 한 번 실행하던 업무에는 새 binding과 report 절차가 추가될 수 있다.
+공통 결과 처리를 위한 새 소비자별 코드를 요구하지 않는다는 사실과 실제 수작업 감소는
+서로 다른 결과다.
+
+### 행동 평가와 결정
+
+동일한 inherited model과 tool 한도·출력 한도에서 두 독립 평가자가 동일한 8개
+증거 기반 완료 보고 사례를 처리했다. 기본 core와 core+신규 skill만 다르게 제공했다.
+증거 불일치/skip/stale 5개와 충분한 증거가 있는 정상 사례 3개를 포함했다.
+두 조건 모두 부족한 증거 5/5를 구분하고 정상 사례 3/3에서 불필요하게 범위를 넓히지
+않았다. 신규 skill의 추가 개선은 관측되지 않았다.
+
+한 쌍의 보고 과제 결과이며 실제 여러 단계 작업 수행, model 간 일반화, 장기 오류율이나
+생산성 향상은 검증하지 않았다. 따라서 capability를 optional local candidate로 유지하고
+portfolio 자동 도입이나 더 큰 workflow로 확장하지 않는다. 후속 시작 조건은 실제 반복
+업무에서 수작업·재작업 감소가 관측되거나 명확한 추가 요구가 생기는 경우다.
+
+public release, consumer 기본 working-copy adoption, full product/browser/live acceptance와
+remote CI는 이번 범위 밖이다. private 평가 원문과 대상별 결과는 machine-local 계층에 두고
+공개 artifact에는 정제된 판정·방법·한계만 남겼다. 역할이 끝난 spec과 active pointer는
+정리하고 현재 상태와 후속 조건은 handoff/status/roadmap으로 이관했다.

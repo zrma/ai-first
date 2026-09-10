@@ -13,16 +13,16 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 `docs/todo-verification-workflow/spec.md`의 reusable verification workflow다.
-local candidate는 `1.7.0-dev`이며 publication은 범위 밖이다.
+현재 active milestone은 없다. `1.7.0-dev`의 선택형 verification runtime·skill을
+local candidate로 구현·검증했다. `docs/VERIFICATION.md`가 사용법을,
+`docs/completed-milestones.md`가 소비자 연결 비용·행동 평가·한계를 소유한다.
+기존 stable release는 `v1.6.0`이며 새 candidate는 공개하거나 기본 소비 저장소에
+도입하지 않았다.
 
-이전 release는 `v1.6.0` source와 signed annotated tag, GitHub Release,
-승인된 활성 소비 저장소의 release pin·native gate·원격 반영·동일 SHA의 terminal CI를
-확인했다. 기존 제품 작업과 고유 이력을 보존했다.
-
-완료 결과와 다음 capability의 시작 조건은 `docs/completed-milestones.md`와
-`docs/COMPATIBILITY.md`, spec 정립과 지식 이관은 `docs/WORK_LIFECYCLE.md`가 소유한다.
-대상별 inventory와 검증 원문은 machine-local 계층에서 관리한다.
+공통 실행 코드의 재사용은 확인했으나 기존 직접 실행보다 수작업이 감소했거나 행동
+판단이 개선됐다는 근거는 아직 없다. 반복 업무에서 절감 효과가 확인되거나 명시적
+추가 요구가 생길 때 다음 범위를 정한다. 대상별 inventory와 평가 원문은 machine-local
+계층에서 관리한다.
 
 ## 시작 순서
 
@@ -40,6 +40,8 @@ local candidate는 `1.7.0-dev`이며 publication은 범위 밖이다.
 boundary, navigation, Python syntax와 unit fixture를 검사한다.
 
 ## Publication 상태
+
+아래는 기존 `v1.6.0` publication 상태다. `1.7.0-dev`는 local-only다.
 
 - tracked content class: `public`
 - remote: `v1.6.0` release와 adoption 완료를 public `main`에 반영

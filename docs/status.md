@@ -63,9 +63,14 @@
 - 저장소별 native/publication gate, remote equality와 same-SHA terminal CI
 - release/adoption 결과·판단 근거·한계 이관과 완료 packet 및 pointer 정리
 
+- `1.7.0-dev` 선택형 verification runtime·skill 및 native binding/discovery 구현
+- canonical gate 44개 테스트와 isolated consumer 두 곳·held-out Go 실행 검증
+- 행동 보고 사례 8개에서 baseline/candidate 동률, 실제 수작업 감소는 미입증
+- local candidate의 사용법·평가·한계 이관; release와 portfolio 확대는 미실행
+
 ## 진행 중
 
-- `docs/todo-verification-workflow/spec.md`: 선택형 runtime·skill 배포와 consumer 수작업 감소 검증
+없음.
 
 ## 미착수
 

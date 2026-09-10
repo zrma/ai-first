@@ -103,3 +103,14 @@ native 형식과 기존 permission/schema를 보존한다.
 native/publication gate, remote equality 및 same-SHA terminal CI를 확인했다.
 계약은 `docs/WORK_LIFECYCLE.md`, 검증 범위와 한계는 `docs/completed-milestones.md`,
 현재 상태는 `docs/HANDOFF.md`가 소유한다.
+
+
+## Stage 13 — Reusable verification workflow
+
+공통 검증 runtime·skill을 versioned optional profile로 배포하고 native runner를 한 번
+연결한다. 실제 실행·결과·standalone 및 도입 비용을 검증한다.
+
+상태: local candidate 구현·평가 완료. 사용법은 `docs/VERIFICATION.md`, 결과와 한계는
+`docs/completed-milestones.md`를 따른다. 행동 판단 개선과 기존 직접 실행 대비 수작업
+감소는 입증하지 못했으므로 portfolio 확대를 자동으로 진행하지 않는다. 반복 업무의
+절감 evidence 또는 명시적 요구가 다음 시작 조건이다.

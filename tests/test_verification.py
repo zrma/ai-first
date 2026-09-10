@@ -189,9 +189,12 @@ class VerificationTests(unittest.TestCase):
     def test_optional_output_collision_rejected(self):
         self.enable_profile()
         config = self.root / '.ai-first.toml'
-        config.write_text(config.read_text().replace('agents = "AGENTS.md"', 'agents = ".ai-first/verify.py"'))
-        with self.assertRaises(ConfigError):
-            build(self.root, FRAMEWORK)
+        original = config.read_text()
+        for destination in ['.ai-first/verify.py', '.agents/skills']:
+            with self.subTest(destination=destination):
+                config.write_text(original.replace('agents = "AGENTS.md"', f'agents = "{destination}"'))
+                with self.assertRaises(ConfigError):
+                    build(self.root, FRAMEWORK)
 
     def test_adoption_preserves_existing_unowned_skill(self):
         self.enable_profile()

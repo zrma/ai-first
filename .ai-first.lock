@@ -1,6 +1,6 @@
 {
   "framework": {
-    "digest": "ef4cb7fc42fa6f7c61ebd8de13bd327a18226da55df42f0fc2fd05ee9d6171a0",
+    "digest": "ed83f2ffae48a797331d4dfda40906a31f04f8ed3a8d114a3923a5530a7fba40",
     "source_commit": null,
     "source_kind": "development",
     "source_revision": null,
@@ -25,7 +25,7 @@
     "src/ai_first/cli.py": "ed318b92c72015cf601f630796432eb8d8bd9b5341e80f1147749aa05cd85082",
     "src/ai_first/config.py": "429dd098fa823c64c0dc8cba48378efa8e6f1a7788fd3bdc34cf0e6da82f99aa",
     "src/ai_first/publication.py": "af2beb3e18671267cb8fb1908239f4073abe8bb86121b01a19f96005b5cc24b6",
-    "src/ai_first/render.py": "2592a10dacea1165d8936823ffb069acd215ca72f9a9c824837539091dc7c93e",
+    "src/ai_first/render.py": "399af1890f5cc5923c280924ce6d61e5726f55b70a6834f6730b1dd6e86fce4e",
     "src/ai_first/verification.py": "4bfb9a6c3678e55693288e1e47b349781cc546a70174a997b540464511e31989"
   },
   "outputs": {
