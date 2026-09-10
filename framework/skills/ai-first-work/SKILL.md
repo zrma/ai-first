@@ -5,6 +5,9 @@ description: 독립 변경을 여러 agent에게 나누거나 격리된 단일 �
 
 # Isolated work and integration
 
+실험적 opt-in 도구다. 독립 worker의 범위·revision·재개 관리가 필요한 작업에서 선택하며,
+기존 native 흐름으로 충분한 작은 작업에 새 조정 절차를 강제하지 않는다.
+
 native spec에서 목표와 성공 조건을 확인하고 이번 작업에서 수정할 파일/디렉터리를
 정한다. 공통 CLI가 workspace와 인계·통합 상태를 처리하므로 이를 위한 별도 wrapper나
 수동 manifest를 만들지 않는다. 다른 파일은 읽을 수 있지만 배정 범위 밖의 편집은

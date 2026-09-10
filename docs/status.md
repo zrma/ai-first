@@ -75,7 +75,7 @@
 
 ## 진행 중
 
-없음. `1.7.0-dev` local candidate 평가를 닫았으며 release/adoption은 별도 범위다.
+`docs/todo-release-1.7/spec.md`: v1.7.0 배포와 공통 checker 위임, optional profile 선택 보존.
 
 ## 미착수
 

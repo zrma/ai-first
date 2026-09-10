@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI-first isolated work"
-  short_description: "Prepare isolated tasks and verify handoffs and integration"
-  default_prompt: "Use $ai-first-work to prepare scoped workspaces and verify the integrated result."

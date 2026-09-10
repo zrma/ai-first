@@ -18,30 +18,24 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-stable release는 `1.6.0`이다. 기존 spec의 문제·원하는 결과·영향·제약과
-non-goal을 구별하고, 변경 전 기준과 이후 spec 변경을 diff·검증 evidence와 함께
-리뷰하는 계약을 제공한다. 완료 후에는 유지할 지식을 소유 artifact로 이관하고
-필요한 당시 기준을 immutable revision으로 추적한다.
+`1.7.0`은 공통 interface 검사를 standalone checker에 모아 framework 갱신 때 native
+assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존 profile 선택과 제품 고유
+검증을 유지하며 version/source pin과 generated artifact를 갱신한다.
+
+[검증 workflow](docs/VERIFICATION.md)는 필요할 때 선택하는 보조 기능이다.
+[작업 배정·통합 도구](docs/WORK_COORDINATION.md)는 독립 worker의 범위·revision·재개 관리가
+필요한 경우를 위한 실험적 opt-in이다. 소비 저장소 갱신 시 새 runtime이나 binding을
+일괄 추가하지 않는다. 작은 작업은 기존 native 명령과 흐름으로 수행한다.
 
 model/vendor 중립적인 core, 기존 schema/Structure ID와 GPT-6 Astra
 (`gpt-6-astra`) capability profile을 유지한다. 선언에서 core, profile과 overlay를
 결정적으로 합성하며 central/standalone check가 같은 lock을 검증한다.
-문서량과 리뷰 깊이는 위험에 비례하고 기존 native 형식·권한을 보존한다.
+기존 spec의 의도·제약·acceptance와 diff/evidence를 대조하고 완료 지식을 owning artifact로
+이관하는 계약도 유지한다.
 
-signed annotated `v1.6.0`의 서명, remote tag/source identity, GitHub Release와
-Python 3.11/3.14 CI를 검증했다. 승인된 활성 소비 저장소의 release pin과 필요한
-native template 연결도 repository별 native/publication gate, remote equality와
-same-SHA terminal CI까지 완료했다. 결과와 검증 한계는
-[`완료 요약`](docs/completed-milestones.md)에 있다.
-
-현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
-[`docs/roadmap.md`](docs/roadmap.md)를 따른다.
-
-local candidate `1.7.0-dev`는 선택형 [검증 workflow](docs/VERIFICATION.md)를 추가한다.
-native runner 연결, standalone 실행·결과 처리와 repository skill을 함께 배포한다.
-선택형 [작업 배정·통합 도구](docs/WORK_COORDINATION.md)는 독립 작업의 clone, 검증 인계와
-통합 실행을 제공한다. 공통 interface 검사는 standalone checker로 위임할 수 있다.
-기존 stable release와 별개인 local 검증 단계다.
+기능별 실행 검증과 실측 효용의 차이, 추가 호출 비용과 작은 표본의 한계는
+[완료 요약](docs/completed-milestones.md)에 있다. 현재 publication/adoption 상태와
+다음 순서는 [handoff](docs/HANDOFF.md), 장기 방향은 [roadmap](docs/roadmap.md)을 따른다.
 
 ## 설계 원칙
 

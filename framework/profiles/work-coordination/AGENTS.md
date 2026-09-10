@@ -1,5 +1,6 @@
 ### Capability Profile: work-coordination
 
+- 이 profile은 실험적 opt-in이다. 기존 native 흐름으로 충분하면 추가 절차를 강제하지 않는다.
 - 독립 작업의 배정·격리·인계·통합에는 `.agents/skills/ai-first-work/SKILL.md`와
   `python3 .ai-first/work.py`를 사용한다. native spec과 제품 acceptance는 유지한다.
 - 수정 범위와 기준 revision을 배정하고, 실제 변경·검증을 확인한 인계만 통합한다.

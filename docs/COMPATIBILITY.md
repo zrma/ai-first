@@ -40,7 +40,7 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 
 ## Optional verification capability
 
-`1.7.0-dev`는 `verification` profile을 선택할 때만 runtime/skill output 세 개를 추가한다.
+`1.7.0`는 `verification` profile을 선택할 때만 runtime/skill output 세 개를 추가한다.
 선언·lock schema 1과 기존 output role은 유지한다. 미선택 소비자는 새 binding을 만들
 필요가 없다. 선택한 소비자는 작은 repository-owned argv/coverage binding을 사용하며,
 존재하는 binding은 lock의 input이 된다. native manifest/readiness schema는 변경하지 않는다.
@@ -49,8 +49,8 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 최초 migration에서 한 번 위임하고 제품 검사와 publication 호출을 유지한다. 이후 버전과
 profile 변경은 선언/lock/generated output으로 검증한다. collision과 opt-out 보존 규칙,
 report contract는 `docs/VERIFICATION.md`가
-소유한다. runtime API는 아직 development candidate이며 release/portfolio adoption은
-별도 판단과 승인이 필요하다.
+소유한다. verification은 선택형 보조 기능이다. 기존 native 명령 하나로 충분한 작업에 새 실행 단계를
+강제하지 않는다. work-coordination은 실험적 opt-in이며 소비 저장소 갱신 시 자동 선택하지 않는다.
 
 ## Optional work coordination
 
@@ -92,9 +92,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.6.0"
+framework_version = "1.7.0"
 source_kind = "release"
-source_revision = "v1.6.0"
+source_revision = "v1.7.0"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

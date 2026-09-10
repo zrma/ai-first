@@ -1,10 +1,10 @@
 {
   "framework": {
-    "digest": "480de25922a94a09e6cc6a94aed383b4e5cba8d11a6388d9e62981a8524fe3f3",
+    "digest": "37fe2f638ebb21aa922606d0e6152e27fd811cddc1f02179817139d1cb9e5049",
     "source_commit": null,
     "source_kind": "development",
     "source_revision": null,
-    "version": "1.7.0-dev"
+    "version": "1.7.0"
   },
   "framework_inputs": {
     "framework/core/AGENTS.md": "960ad55328cd285f35c5abdb0add6d904620c44b55ce7a3ba1cbc0a048f422d3",
@@ -17,14 +17,10 @@
     "framework/profiles/vcs-jj/agent-harness.md": "f132dfad51892450ae93c18e468aea60a7a0b7ace36df325975ac976ae0a1cf3",
     "framework/profiles/verification/AGENTS.md": "d486fb664bf142fdc9fed02e93bc2e9baddf17efa899221d74cc45623e2084e9",
     "framework/profiles/verification/agent-harness.md": "c5bef32f7c89b8a503a74afc5c69aedf1190b780de5b87667d2291d564f90b73",
-    "framework/profiles/work-coordination/AGENTS.md": "0515d710ca3702498f189a46f40e54e548c3bcb310592430119dbf81079db00c",
-    "framework/profiles/work-coordination/agent-harness.md": "a3f4d6b0ae220f5be425da81acce07fdcff7dae618f7bff35cb1dc854f306b4b",
     "framework/skills/ai-first-verify/SKILL.md": "efe97070e6fb71497637c8ce0b969802e40a2fcc7f08bdb0a70fd3e9d137026f",
     "framework/skills/ai-first-verify/agents/openai.yaml": "e59e7699bf47a4431b24be5c237a27e61f548b4282db9085b09228befe98c76c",
-    "framework/skills/ai-first-work/SKILL.md": "911b3b30d75becfe5f8317f1adbed303ee963042f81e20aa8800d31df8de613b",
-    "framework/skills/ai-first-work/agents/openai.yaml": "8774c31f0c121aa1602a11cf15c600b786c54a85d0e2c2635d0f3ee35e38a2db",
     "framework/standalone/check.py": "a869c09d8eb21c1e44a712cb9956890b82bfb149e9da0ae23af06e0ae75bd810",
-    "src/ai_first/__init__.py": "1a0a7baeb3aec4b34429f1deadcb521378251fff17838348d81f8e4cf2bef010",
+    "src/ai_first/__init__.py": "3aacd065272ded80a798ef6128972fe909bb99d28bb0a20ace37682987813ccd",
     "src/ai_first/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
     "src/ai_first/cli.py": "8ca4a197d802ef6c557a8bfad27994e6f4cdc089cc385e0d3ce2f793b94d762c",
     "src/ai_first/config.py": "429dd098fa823c64c0dc8cba48378efa8e6f1a7788fd3bdc34cf0e6da82f99aa",
@@ -36,23 +32,19 @@
   "outputs": {
     ".agents/skills/ai-first-verify/SKILL.md": "efe97070e6fb71497637c8ce0b969802e40a2fcc7f08bdb0a70fd3e9d137026f",
     ".agents/skills/ai-first-verify/agents/openai.yaml": "e59e7699bf47a4431b24be5c237a27e61f548b4282db9085b09228befe98c76c",
-    ".agents/skills/ai-first-work/SKILL.md": "911b3b30d75becfe5f8317f1adbed303ee963042f81e20aa8800d31df8de613b",
-    ".agents/skills/ai-first-work/agents/openai.yaml": "8774c31f0c121aa1602a11cf15c600b786c54a85d0e2c2635d0f3ee35e38a2db",
     ".ai-first/check.py": "a869c09d8eb21c1e44a712cb9956890b82bfb149e9da0ae23af06e0ae75bd810",
     ".ai-first/verify.py": "3569bfb5b15b31e76e6257524ced916d36bd454bc0a054218ebba5d11078b8dc",
-    ".ai-first/work.py": "dfb2817814a8449a7f0f405dd34e3884cb90fa9bcbca11ab833a96539460efce",
-    "AGENTS.md": "bf28cb872a048045ebc4839f94ce38021bd4d66faecf77f1159788dfb631d82e",
-    "docs/agent-harness.md": "a6bab465a96858dfba7b00318292f9c8dc977bfb7b106b73de52eafa4f4488d4"
+    "AGENTS.md": "e0a39669e43d79a092da2302e7b05fe9af355246288202f02e477cbf7ab2a1e0",
+    "docs/agent-harness.md": "742559493de676782bf7446de6d24df154fa0a18536cfed19efc0700ad698492"
   },
   "profiles": [
     "vcs-jj",
     "public-repository",
     "openai-agent-guidance",
-    "verification",
-    "work-coordination"
+    "verification"
   ],
   "repository_inputs": {
-    ".ai-first.toml": "89b0f6f2ef97a1e83a263be4c515bf388319c515489143c5d17963e4bb7f8115",
+    ".ai-first.toml": "b42fa6328bbb1e8f79097c881390b14edad05754761d3615d16aa05e86b26ce8",
     ".ai-first/overlays/agents-first-read.md": "f9ad86b01a785206d6f339b48e87d599cb73f4a2a40fb1c1c00dc037883f1958",
     ".ai-first/overlays/agents-project.md": "b8185471cb0700424cc60a5eb544aa7abf8de9a7d3958f425c71a78460200973",
     ".ai-first/overlays/harness-project.md": "1fb94a5b0687c34272f4c5b6f7c86e522ab721e28a1ee954d2db0ac45b41fca9",

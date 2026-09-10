@@ -1,8 +1,10 @@
 # Work coordination
 
-`1.7.0-dev`의 선택형 `work-coordination` profile은 독립 변경을 배정하고 검증된 revision을
+`1.7.0`의 실험적 선택형 `work-coordination` profile은 독립 변경을 배정하고 검증된 revision을
 통합하는 실행 도구다. 반복되는 clone·수정 범위 확인·인계 상태·전체 검증 처리를 공통화한다.
 `verification` profile, Python 3.11 이상, Git과 jj가 필요하다. 실제 검증 버전은 jj 0.45.1이다.
+이 profile은 기본으로 선택하지 않는다. 독립 worker의 범위·revision·중단 재개를 반복해서
+관리해야 할 때 도입하며 작은 단일 작업은 기존 native 흐름을 유지한다.
 
 ## 설치와 실행
 

@@ -1,6 +1,6 @@
 # Verification workflow
 
-`1.7.0-dev`의 선택형 `verification` profile은 공통 실행 도구와 검증 스킬을 배포한다.
+`1.7.0`의 선택형 `verification` profile은 공통 실행 도구와 검증 스킬을 배포한다.
 native runner를 하나의 명령으로 연결하고 실행 결과와 source freshness를 공통 형식으로
 처리한다. 제품별 acceptance와 native lifecycle은 repository가 계속 소유한다.
 

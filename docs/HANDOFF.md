@@ -13,7 +13,7 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. `1.7.0-dev`의 선택형 verification/work-coordination 도구와
+현재 active milestone은 `docs/todo-release-1.7/spec.md`의 v1.7.0 배포와 비례적 소비 적용이다. `1.7.0-dev`의 선택형 verification/work-coordination 도구와
 공통 interface 위임을 local candidate로 구현·평가했다. `docs/VERIFICATION.md`와
 `docs/WORK_COORDINATION.md`가 사용법·지원 경계를, `docs/completed-milestones.md`가
 도입 비용·실제 파일 편집 비교·한계를 소유한다. stable은 `v1.6.0`이다.
