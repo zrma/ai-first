@@ -37,6 +37,10 @@ same-SHA terminal CI까지 완료했다. 결과와 검증 한계는
 현재 사실과 다음 순서는 [`docs/HANDOFF.md`](docs/HANDOFF.md), 장기 방향은
 [`docs/roadmap.md`](docs/roadmap.md)를 따른다.
 
+local candidate `1.7.0-dev`는 선택형 [검증 workflow](docs/VERIFICATION.md)를 추가한다.
+native runner 연결, standalone 실행·결과 처리와 repository skill을 함께 배포한다.
+기존 stable release와 별개인 local 검증 단계다.
+
 ## 설계 원칙
 
 - **Self-contained consumer:** 생성된 저장소는 중앙 저장소나 sibling 경로 없이
@@ -56,6 +60,7 @@ same-SHA terminal CI까지 완료했다. 결과와 검증 한계는
 - AI-first 정체성: [`docs/AI_FIRST_CHARTER.md`](docs/AI_FIRST_CHARTER.md)
 - architecture와 합성 경계: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - v1 compatibility와 source pin: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- 공통 실행·증거 workflow: [`docs/VERIFICATION.md`](docs/VERIFICATION.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
 - 완료 milestone 요약:

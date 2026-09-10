@@ -1,0 +1,8 @@
+schema_version = 1
+
+[[checks]]
+id = "native-check"
+argv = ["bash", "scripts/check.sh"]
+coverage = ["Framework canonical local gate: drift, interface, publication, CI contract, navigation and unit tests; no consumer product or live acceptance."]
+timeout_seconds = 300
+skip_exit_codes = []

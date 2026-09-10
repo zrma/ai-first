@@ -65,7 +65,7 @@
 
 ## 진행 중
 
-없음.
+- `docs/todo-verification-workflow/spec.md`: 선택형 runtime·skill 배포와 consumer 수작업 감소 검증
 
 ## 미착수
 

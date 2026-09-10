@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI-first verification"
+  short_description: "Run native checks and match evidence to requested outcomes"
+  default_prompt: "Use $ai-first-verify to verify this change against the original request and report evidence gaps."

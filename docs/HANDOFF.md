@@ -13,7 +13,10 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. `v1.6.0` source와 signed annotated tag, GitHub Release,
+현재 active milestone은 `docs/todo-verification-workflow/spec.md`의 reusable verification workflow다.
+local candidate는 `1.7.0-dev`이며 publication은 범위 밖이다.
+
+이전 release는 `v1.6.0` source와 signed annotated tag, GitHub Release,
 승인된 활성 소비 저장소의 release pin·native gate·원격 반영·동일 SHA의 terminal CI를
 확인했다. 기존 제품 작업과 고유 이력을 보존했다.
 

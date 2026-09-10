@@ -11,6 +11,12 @@ from pathlib import Path
 
 from .config import Config, ConfigError, load_config, path_within
 
+VERIFICATION_OUTPUTS = {
+    ".ai-first/verify.py": "src/ai_first/verification.py",
+    ".agents/skills/ai-first-verify/SKILL.md": "framework/skills/ai-first-verify/SKILL.md",
+    ".agents/skills/ai-first-verify/agents/openai.yaml": "framework/skills/ai-first-verify/agents/openai.yaml",
+}
+
 
 class DriftError(RuntimeError):
     pass
@@ -236,6 +242,26 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         config.output.harness: harness,
         config.output.standalone_check: standalone,
     }
+    if "verification" in config.profiles:
+        reserved = set(outputs) | set(repository_inputs) | {config.output.lock, ".ai-first/verification.toml"}
+        if ".ai-first/verification.toml" in set(outputs) | {config.output.lock}:
+            raise ConfigError("verification binding collides with configured output")
+        for destination, source in VERIFICATION_OUTPUTS.items():
+            if destination in reserved:
+                raise ConfigError("verification output collides with configured path")
+            path_within(config.repo_root, destination, "verification output")
+            data = _read(framework / source, source)
+            framework_inputs[source] = data
+            outputs[destination] = data
+        binding = path_within(config.repo_root, ".ai-first/verification.toml", "verification binding")
+        if binding.exists():
+            from .verification import VerificationError, load_checks
+
+            try:
+                load_checks(config.repo_root)
+            except VerificationError as error:
+                raise ConfigError(str(error)) from error
+            repository_inputs[".ai-first/verification.toml"] = _read(binding, "verification binding")
     framework_hashes = {
         path: _digest(data) for path, data in sorted(framework_inputs.items())
     }
@@ -276,6 +302,25 @@ def _atomic_write(path: Path, data: bytes) -> None:
 def render_repository(repo_root: Path, framework_root: Path) -> list[str]:
     config = load_config(repo_root)
     rendered = build(repo_root, framework_root)
+    try:
+        previous = json.loads((config.repo_root / config.output.lock).read_text())
+        owned = previous.get("outputs", {})
+    except (OSError, ValueError, AttributeError):
+        owned = {}
+    if not isinstance(owned, dict):
+        owned = {}
+    retired: list[Path] = []
+    for relative in VERIFICATION_OUTPUTS:
+        if "verification" in config.profiles:
+            path = path_within(config.repo_root, relative, "verification output")
+            if path.exists() and relative not in owned and path.read_bytes() != rendered.outputs[relative]:
+                raise ConfigError("verification output already exists outside framework ownership")
+        elif relative in owned and relative not in rendered.outputs:
+            path = path_within(config.repo_root, relative, "retired verification output")
+            if path.exists():
+                if _digest(path.read_bytes()) != owned[relative]:
+                    raise ConfigError("modified verification output must be preserved or restored before opting out")
+                retired.append(path)
     changed: list[str] = []
     for relative, data in rendered.outputs.items():
         path = path_within(config.repo_root, relative, f"output {relative}")
@@ -290,6 +335,9 @@ def render_repository(repo_root: Path, framework_root: Path) -> list[str]:
     if not lock_path.is_file() or lock_path.read_bytes() != rendered.lock:
         _atomic_write(lock_path, rendered.lock)
         changed.append(config.output.lock)
+    for path in retired:
+        path.unlink()
+        changed.append(path.relative_to(config.repo_root).as_posix())
     return sorted(changed)
 
 

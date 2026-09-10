@@ -25,6 +25,10 @@ VCS, 언어, runtime 또는 위험 표면에 필요한 공통 specialization을 
 
 profile은 core의 permission 또는 evidence 기준을 약화할 수 없다.
 
+선택형 `verification`은 문서 외에 runtime과 repository skill을 generated artifact로
+배포한다. 공통 실행·결과·freshness 처리는 framework가, native 명령과 제품별 acceptance는
+소비 저장소가 소유한다. 연결 형식과 한계는 `docs/VERIFICATION.md`를 따른다.
+
 ### 4. Repository overlay
 
 소비 저장소가 제품 목적, source of truth, architecture, domain invariant, 검증 명령,

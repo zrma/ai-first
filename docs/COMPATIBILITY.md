@@ -38,6 +38,18 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Optional verification capability
+
+`1.7.0-dev`는 `verification` profile을 선택할 때만 runtime/skill output 세 개를 추가한다.
+선언·lock schema 1과 기존 output role은 유지한다. 미선택 소비자는 새 binding을 만들
+필요가 없다. 선택한 소비자는 작은 repository-owned argv/coverage binding을 사용하며,
+존재하는 binding은 lock의 input이 된다. native manifest/readiness schema는 변경하지 않는다.
+
+기존 native interface의 version/source/profile pin 갱신은 여전히 repository update에
+포함된다. collision과 opt-out 보존 규칙, report contract는 `docs/VERIFICATION.md`가
+소유한다. runtime API는 아직 development candidate이며 release/portfolio adoption은
+별도 판단과 승인이 필요하다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

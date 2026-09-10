@@ -16,6 +16,7 @@
 
 - Identity: `docs/AI_FIRST_CHARTER.md`.
 - Architecture: `docs/ARCHITECTURE.md`.
+- Verification workflow: `docs/VERIFICATION.md`.
 - Work lifecycle: `docs/WORK_LIFECYCLE.md`.
 - Compatibility: `docs/COMPATIBILITY.md`.
 - Navigation: `docs/HANDOFF.md`.
