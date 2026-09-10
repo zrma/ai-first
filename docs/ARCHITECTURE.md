@@ -29,6 +29,11 @@ profile은 core의 permission 또는 evidence 기준을 약화할 수 없다.
 배포한다. 공통 실행·결과·freshness 처리는 framework가, native 명령과 제품별 acceptance는
 소비 저장소가 소유한다. 연결 형식과 한계는 `docs/VERIFICATION.md`를 따른다.
 
+선택형 `work-coordination`은 검증 runtime 위에서 local clone, 수정 소유 범위, revision
+인계와 통합 상태를 처리한다. agent 호출·취소는 host가 소유하며, workspace의 native spec과
+제품 acceptance는 유지한다. 자동 publish나 lifecycle 대체가 아닌 실행 도구이며 사용법은
+`docs/WORK_COORDINATION.md`를 따른다.
+
 ### 4. Repository overlay
 
 소비 저장소가 제품 목적, source of truth, architecture, domain invariant, 검증 명령,

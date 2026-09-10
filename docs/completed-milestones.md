@@ -285,3 +285,73 @@ public release, consumer 기본 working-copy adoption, full product/browser/live
 remote CI는 이번 범위 밖이다. private 평가 원문과 대상별 결과는 machine-local 계층에 두고
 공개 artifact에는 정제된 판정·방법·한계만 남겼다. 역할이 끝난 spec과 active pointer는
 정리하고 현재 상태와 후속 조건은 handoff/status/roadmap으로 이관했다.
+
+## Operational workflows — local candidate
+
+이전 검증 profile은 실행 결과를 공통화했지만 직접 실행 대비 수작업 감소나 agent 판단
+개선을 입증하지 못했다. 후속 범위는 중복 갱신 검사를 제거하고 독립 변경의 배정·인계·통합을
+실제 도구로 제공하는 것으로 정했다. 기존 core/native spec의 의미 판단 계약은 유지했다.
+
+### 공통 갱신 검사
+
+standalone checker가 선언·lock을 기준으로 generated header, output role, input, 공통 heading,
+project/publication metadata와 profile 순서를 검사한다. 외부 source tag·서명 검증과 제품
+고유 assertion/publication 호출은 기존 native gate가 계속 소유한다.
+
+기존 소비 저장소 두 곳의 격리 clone에서 native script의 중복 공통 assertion을 각각 70줄,
+61줄 제거했다. 한 번 연결한 뒤 다음 development version 갱신과 profile 제거를 실행했고
+두 곳 모두 native script 수정 **0회**로 통과했다. native 필수 검사 파일을 없애면 standalone
+정합성 검사는 성공하더라도 native gate는 실패했고, 복원 후 다시 성공했다. 이는 반복되는
+공통 pin 수정 지점 제거의 evidence이며 전체 제품 gate나 portfolio adoption의 완료가 아니다.
+최초 이관 스크립트의 구간 선택 오류 한 건은 shell 검사에서 검출해 수정한 뒤 다시 실행했다.
+
+### 실제 파일 수정 비교
+
+보고 문장 분류 대신 CSV loader와 정확한 decimal summary를 구현하는 동일한 두 파일 과제를
+사용했다. SPEC과 8개 acceptance test를 실행 전에 고정하고, 동일한 source 자료·부모 모델과
+설정을 상속한 Codex agent를 사용했다. 대조군은 직접 native 명령을 실행하는 단일 agent,
+workflow 단일군은 전체 범위 assignment 하나, 다중군은 겹치지 않는 assignment 두 개다.
+worker는 허용된 두 파일만 변경했고 frozen spec/test는 모든 결과에서 보존됐다.
+
+각 arm의 총 도구 예산은 30으로 동일하게 제한했다. 단일 worker는 20, 다중 worker는 각각
+10으로 두고 coordinator에 10을 남겼다. 관측 budget 단위는 worker 호출, coordinator의
+init/assign/integrate, host dispatch와 최종 acceptance 감사다. 내부 subprocess 수와 token은
+같은 단위가 아니며 전체 계측하지 않았다.
+
+| 관측 | 기존 단일 | Workflow 단일 | Workflow 다중 |
+| --- | --- | --- | --- |
+| 고정 acceptance | 8/8 | 8/8 | 8/8 |
+| worker 도구 호출 | 6 | 6 | 9 합계 |
+| coordinator 작업 명령 | 0 | 3 | 4 |
+| dispatch·최종 감사 포함 budget 사용 | 8/30 | 11/30 | 16/30 |
+| worker 실행 구간 | 128.8초 | 98.2초 | 83.3초, 첫 시작부터 마지막 완료 |
+| clone 배정 준비 | 공통 fixture 외 없음 | 0.93초 | 1.82초 |
+| 별도 clone 통합·전체 검증 | 해당 없음 | 2.05초, 성공 | 2.34초, 성공 |
+| 사람 개입 / 구현 재작업 | 0 / 0 | 0 / 0 | 0 / 0 |
+
+workflow의 setup 시작부터 통합 종료까지 실제 경과는 각각 188.3초와 189.7초였다. 여기에는
+coordinator의 배정·결과 수거 지연과 다른 검증 작업이 포함된다. worker 구간만으로 전체
+작업이 빨라졌다고 주장하지 않는다. 다중군에서 packet 목록을 object로 가정한 읽기 오류
+1회를 복구했으며 구현이나 acceptance를 변경하지 않았다. 최소 fixture의 일부 탐색 링크는
+placeholder였고 세 arm 모두 고정 SPEC의 native 검사로 진행했다.
+
+통합 결과에 독립적으로 같은 8개 acceptance를 다시 실행했고 범위와 frozen 자료를 대조했다.
+workflow 두 군의 원본 source는 보존됐고 통합 실패는 없었다. 별도의 회귀 시험에서는 실제
+native combined check 실패가 개별 worker PASS 이후에도 최종 실패로 남는 것을 검증했다.
+
+이 비교는 작은 독립 파일 과제당 1회이며 무작위 반복이나 서비스 부하 통제가 없다. token과
+금액은 미측정이다. 품질 우위·일반적인 속도 향상·비용 절감을 주장하지 않는다. 확인된 결과는
+반복 native 수정 지점 제거, Codex worker의 실제 packet 실행, revision 인계와 별도 통합,
+그리고 그 과정의 추가 호출 비용이다. 다른 vendor의 adapter 지원은 아직 미검증이다.
+
+### 소유 artifact와 검증 한계
+
+공통 checker/verification 연결은 `docs/VERIFICATION.md`, 명령·상태·재개·지원 경계는
+`docs/WORK_COORDINATION.md`, compatibility는 `docs/COMPATIBILITY.md`가 소유한다.
+`ai-first-verify` skill은 core의 일반 판단 예시 반복을 줄여 command와 결과 해석에 집중했다.
+
+canonical local gate는 interface, verification, 실제 jj workspace, optional distribution과
+기존 회귀 검증을 포함한다. CI는 checksum으로 고정한 jj 설치와 부재 시 실패를 연결했다.
+이 결과는 local candidate이며 새 remote CI, release 또는 기본 소비 저장소 도입의 evidence가
+아니다. 다음 확대는 실제 반복 과제에서 추가 호출 비용을 상쇄하는 운영 효과 또는 별도의
+명시적 요구를 기준으로 판단한다.

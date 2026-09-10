@@ -45,8 +45,12 @@ timeout_seconds = 300
 `argv`는 shell 문자열이 아닌 argument 배열이며 저장소 루트에서 실행한다. native manifest의
 명령들을 복사하지 말고 manifest runner와 그 모드를 연결한다. `skip_exit_codes`는 runner가
 정의한 nonzero skip code가 있을 때만 지정한다. coverage는 실제 연결 모드와 일치해야 한다.
-native interface checker가 version/source/profile을 고정했다면 update transaction에서 그
-pin도 갱신해야 한다. 이 profile은 해당 repository gate를 우회하거나 자동 수정하지 않는다.
+공통 version/source/profile/heading assertion은 standalone checker가 선언과 lock을 기준으로
+검사한다. 기존 native script에 복제된 공통 assertion은 최초 migration에서 한 번 제거하고
+`python3 .ai-first/check.py` 호출로 연결한다. 제품 고유 required-file/invariant, publication과
+외부 source 검증은 유지한다. 이후 framework version/profile 갱신에는 선언과 generated
+artifact를 갱신하며 native assertion을 반복 수정하지 않는다. render가 native script를 자동
+편집하지는 않는다.
 
 ## 실행과 결과 재사용
 
@@ -80,7 +84,8 @@ incomplete/stale에는 exit 1, binding·입력 오류에는 exit 2를 반환한�
 report에는 check별 coverage·exit·소요 시간, 검증 전후 revision/content digest와 OS/Python
 version을 남긴다. `--report`는 현재 binding, source와 대조한다. 이는 서명된 증명이나
 환경 재현 보증이 아니다. jj/Git에서는 현재 source 목록을 사용하고, VCS가 없는 저장소는
-build/dependency 디렉터리를 제외한 filesystem fingerprint를 사용한다.
+build/dependency 디렉터리를 제외한 filesystem fingerprint를 사용한다. 파일 mode는 Git과 같이
+executable bit만 비교하므로 clone의 일반 권한 정규화가 내용 drift로 오인되지 않는다.
 ignored 파일, submodule 내부, 실제 toolchain/dependency version, remote/live 상태는
 이 fingerprint의 범위 밖이다. symlink target의 외부 내용도 읽지 않는다.
 revision도 비교하므로 jj describe/new처럼 내용이 같아도 revision이 바뀌면 stale이다.

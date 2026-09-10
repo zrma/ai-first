@@ -70,7 +70,7 @@
 
 ## 진행 중
 
-없음.
+- `docs/todo-operational-workflows/spec.md`: 반복 갱신 수정 제거와 실제 multi-agent 작업 workflow
 
 ## 미착수
 

@@ -13,7 +13,8 @@ drift와 lock metadata 정합성을 검증한다.
 
 ## 현재 milestone
 
-현재 active milestone은 없다. `1.7.0-dev`의 선택형 verification runtime·skill을
+현재 active milestone은 `docs/todo-operational-workflows/spec.md`의 공통 갱신 검사와
+작업 배정·인계·통합 기능이다. `1.7.0-dev`의 선택형 verification runtime·skill을
 local candidate로 구현·검증했다. `docs/VERIFICATION.md`가 사용법을,
 `docs/completed-milestones.md`가 소비자 연결 비용·행동 평가·한계를 소유한다.
 기존 stable release는 `v1.6.0`이며 새 candidate는 공개하거나 기본 소비 저장소에

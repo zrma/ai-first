@@ -16,6 +16,15 @@ VERIFICATION_OUTPUTS = {
     ".agents/skills/ai-first-verify/SKILL.md": "framework/skills/ai-first-verify/SKILL.md",
     ".agents/skills/ai-first-verify/agents/openai.yaml": "framework/skills/ai-first-verify/agents/openai.yaml",
 }
+COORDINATION_OUTPUTS = {
+    ".ai-first/work.py": "src/ai_first/coordination.py",
+    ".agents/skills/ai-first-work/SKILL.md": "framework/skills/ai-first-work/SKILL.md",
+    ".agents/skills/ai-first-work/agents/openai.yaml": "framework/skills/ai-first-work/agents/openai.yaml",
+}
+OPTIONAL_OUTPUTS = {
+    "verification": VERIFICATION_OUTPUTS,
+    "work-coordination": COORDINATION_OUTPUTS,
+}
 
 
 class DriftError(RuntimeError):
@@ -215,7 +224,7 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
             f"- Framework version: `{config.framework_version}`.",
             f"- Project: `{config.project.name}`.",
             f"- Publication class: `{config.project.publication_class}`.",
-            "- Generated drift check: `python3 .ai-first/check.py`.",
+            f"- Generated drift check: `python3 {config.output.standalone_check}`.",
             f"- Publication boundary check: `{config.checks.publication}`.",
         ]
     )
@@ -242,22 +251,27 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         config.output.harness: harness,
         config.output.standalone_check: standalone,
     }
-    if "verification" in config.profiles:
+    if "work-coordination" in config.profiles and "verification" not in config.profiles:
+        raise ConfigError("work-coordination requires the verification profile")
+    for profile, capability_outputs in OPTIONAL_OUTPUTS.items():
+        if profile not in config.profiles:
+            continue
         reserved = set(outputs) | set(repository_inputs) | {config.output.lock, ".ai-first/verification.toml"}
         if ".ai-first/verification.toml" in set(outputs) | {config.output.lock}:
             raise ConfigError("verification binding collides with configured output")
-        for destination, source in VERIFICATION_OUTPUTS.items():
+        for destination, source in capability_outputs.items():
             if any(
                 destination == path
                 or destination.startswith(path + "/")
                 or path.startswith(destination + "/")
                 for path in reserved
             ):
-                raise ConfigError("verification output collides with configured path")
-            path_within(config.repo_root, destination, "verification output")
+                raise ConfigError("optional capability output collides with configured path")
+            path_within(config.repo_root, destination, "optional capability output")
             data = _read(framework / source, source)
             framework_inputs[source] = data
             outputs[destination] = data
+    if "verification" in config.profiles:
         binding = path_within(config.repo_root, ".ai-first/verification.toml", "verification binding")
         if binding.exists():
             from .verification import VerificationError, load_checks
@@ -315,16 +329,16 @@ def render_repository(repo_root: Path, framework_root: Path) -> list[str]:
     if not isinstance(owned, dict):
         owned = {}
     retired: list[Path] = []
-    for relative in VERIFICATION_OUTPUTS:
-        if "verification" in config.profiles:
-            path = path_within(config.repo_root, relative, "verification output")
+    for relative in {path for group in OPTIONAL_OUTPUTS.values() for path in group}:
+        if relative in rendered.outputs:
+            path = path_within(config.repo_root, relative, "optional capability output")
             if path.exists() and relative not in owned and path.read_bytes() != rendered.outputs[relative]:
-                raise ConfigError("verification output already exists outside framework ownership")
+                raise ConfigError("optional capability output already exists outside framework ownership")
         elif relative in owned and relative not in rendered.outputs:
-            path = path_within(config.repo_root, relative, "retired verification output")
+            path = path_within(config.repo_root, relative, "retired optional capability output")
             if path.exists():
                 if _digest(path.read_bytes()) != owned[relative]:
-                    raise ConfigError("modified verification output must be preserved or restored before opting out")
+                    raise ConfigError("modified optional capability output must be preserved or restored before opting out")
                 retired.append(path)
     changed: list[str] = []
     for relative, data in rendered.outputs.items():

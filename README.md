@@ -39,6 +39,8 @@ same-SHA terminal CI까지 완료했다. 결과와 검증 한계는
 
 local candidate `1.7.0-dev`는 선택형 [검증 workflow](docs/VERIFICATION.md)를 추가한다.
 native runner 연결, standalone 실행·결과 처리와 repository skill을 함께 배포한다.
+선택형 [작업 배정·통합 도구](docs/WORK_COORDINATION.md)는 독립 작업의 clone, 검증 인계와
+통합 실행을 제공한다. 공통 interface 검사는 standalone checker로 위임할 수 있다.
 기존 stable release와 별개인 local 검증 단계다.
 
 ## 설계 원칙
@@ -61,6 +63,7 @@ native runner 연결, standalone 실행·결과 처리와 repository skill을 �
 - architecture와 합성 경계: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - v1 compatibility와 source pin: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - 공통 실행·증거 workflow: [`docs/VERIFICATION.md`](docs/VERIFICATION.md)
+- 독립 작업 배정·인계·통합: [`docs/WORK_COORDINATION.md`](docs/WORK_COORDINATION.md)
 - agent operating loop: [`docs/agent-harness.md`](docs/agent-harness.md)
 - 공개 경계: [`docs/PUBLICATION.md`](docs/PUBLICATION.md)
 - 완료 milestone 요약:

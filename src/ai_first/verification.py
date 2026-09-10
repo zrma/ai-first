@@ -189,7 +189,7 @@ def snapshot(root: Path) -> dict:
             else:
                 data = b"missing"
             digest.update(hashlib.sha256(data).digest())
-            digest.update(str(path.lstat().st_mode & 0o777).encode() if path.exists() else b"missing")
+            digest.update(str(path.lstat().st_mode & 0o100).encode() if path.exists() else b"missing")
         except OSError as error:
             raise VerificationError("cannot fingerprint source content") from error
     return {"vcs": vcs, "revision": revision, "content_sha256": digest.hexdigest(), "file_count": len(set(names))}

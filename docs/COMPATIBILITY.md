@@ -45,10 +45,24 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 필요가 없다. 선택한 소비자는 작은 repository-owned argv/coverage binding을 사용하며,
 존재하는 binding은 lock의 input이 된다. native manifest/readiness schema는 변경하지 않는다.
 
-기존 native interface의 version/source/profile pin 갱신은 여전히 repository update에
-포함된다. collision과 opt-out 보존 규칙, report contract는 `docs/VERIFICATION.md`가
+공통 interface assertion은 standalone checker가 소유한다. 기존 native script의 중복 pin은
+최초 migration에서 한 번 위임하고 제품 검사와 publication 호출을 유지한다. 이후 버전과
+profile 변경은 선언/lock/generated output으로 검증한다. collision과 opt-out 보존 규칙,
+report contract는 `docs/VERIFICATION.md`가
 소유한다. runtime API는 아직 development candidate이며 release/portfolio adoption은
 별도 판단과 승인이 필요하다.
+
+## Optional work coordination
+
+`work-coordination`은 `verification`을 요구하며 `.ai-first/work.py`와 `ai-first-work`
+skill/metadata 세 output을 추가한다. runtime은 Python stdlib, Git과 jj를 사용한다.
+실제 검증한 jj 버전은 `0.45.1`이다. native Git worktree registration이 필요한 저장소에는
+이 clone 방식의 지원을 주장하지 않으며 gate를 생략하지 않는다.
+
+최초 contract는 독립적인 literal path ownership, private state schema 1과 Codex host를
+통한 packet 실행이다. 다른 host의 spawn/cancel API 지원, 순서 의존 작업의 scheduler와
+자동 cleanup은 포함하지 않는다. 상세 상태와 재개 계약은 `docs/WORK_COORDINATION.md`에 있다.
+기존 profile 미선택 소비자는 변경되지 않는다.
 
 ## Source identity
 

@@ -7,6 +7,7 @@ entrypoints:
   charter: docs/AI_FIRST_CHARTER.md
   architecture: docs/ARCHITECTURE.md
   verification: docs/VERIFICATION.md
+  work_coordination: docs/WORK_COORDINATION.md
   work_lifecycle: docs/WORK_LIFECYCLE.md
   compatibility: docs/COMPATIBILITY.md
   agent_harness: docs/agent-harness.md
@@ -16,7 +17,7 @@ entrypoints:
   completed_milestones: docs/completed-milestones.md
   publication: docs/PUBLICATION.md
 
-active_work: null
+active_work: docs/todo-operational-workflows/spec.md
 active_work_glob: docs/todo-*/spec.md
 required_todo_files:
   - spec.md

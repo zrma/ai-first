@@ -6,7 +6,7 @@ from pathlib import Path
 from . import VERSION
 from .config import ConfigError
 from .render import DriftError, check_repository, render_repository
-from . import verification
+from . import coordination, verification
 
 
 def framework_root() -> Path:
@@ -21,6 +21,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--version", action="version", version=VERSION)
     subcommands = result.add_subparsers(dest="command", required=True)
     verification.configure_parser(subcommands.add_parser("verify"))
+    coordination.configure_parser(subcommands.add_parser("work"))
 
     for name in ("render", "check"):
         command = subcommands.add_parser(name)
@@ -37,6 +38,8 @@ def main(argv: list[str] | None = None) -> int:
     arguments = parser().parse_args(argv)
     if arguments.command == "verify":
         return verification.dispatch(arguments)
+    if arguments.command == "work":
+        return coordination.dispatch(arguments)
     try:
         if arguments.command == "render":
             changed = render_repository(arguments.repo, framework_root())

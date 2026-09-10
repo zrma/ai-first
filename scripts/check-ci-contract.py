@@ -36,6 +36,9 @@ def main() -> int:
         "setup-python action is not pinned",
     )
     require(workflow, "run: scripts/check.sh", "canonical gate is not wired")
+    require(workflow, 'AI_FIRST_REQUIRE_JJ_TESTS: "1"', "real workspace tests may be skipped")
+    require(workflow, "jj-v0.45.1-x86_64-unknown-linux-musl.tar.gz", "jj fixture runtime is not pinned")
+    require(workflow, "f35438350b5d61963aac5dd74ede510b31d6b9690769d1a6268cf058cc825f72", "jj archive checksum missing")
     if "pull_request_target" in workflow:
         raise SystemExit("CI contract check failed: pull_request_target is forbidden")
 

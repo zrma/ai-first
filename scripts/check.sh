@@ -25,6 +25,10 @@ PY
 
 python3 scripts/check-navigation.py
 
+if [ "${AI_FIRST_REQUIRE_JJ_TESTS:-0}" = 1 ]; then
+  command -v jj >/dev/null || { printf 'jj integration tests require jj\n' >&2; exit 1; }
+fi
+
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src \
   python3 -m unittest discover -s tests -p 'test_*.py'
 

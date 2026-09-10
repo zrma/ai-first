@@ -164,6 +164,16 @@ class VerificationTests(unittest.TestCase):
         target.write_text('two')
         self.assertEqual(before, v.snapshot(self.root))
 
+    def test_source_identity_preserves_git_mode_semantics_across_clones(self):
+        path = self.root / 'source.py'
+        path.write_text('pass\n')
+        path.chmod(0o600)
+        before = v.snapshot(self.root)
+        path.chmod(0o644)
+        self.assertEqual(before, v.snapshot(self.root))
+        path.chmod(0o755)
+        self.assertNotEqual(before, v.snapshot(self.root))
+
     def enable_profile(self):
         shutil.copytree(FRAMEWORK / 'tests/fixtures/minimal', self.root, dirs_exist_ok=True)
         config = self.root / '.ai-first.toml'
