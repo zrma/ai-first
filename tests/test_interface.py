@@ -71,6 +71,21 @@ class InterfaceTests(unittest.TestCase):
             lock_path.write_text(json.dumps(lock))
             self.assertTrue(self.check())
 
+    def test_equivalent_config_paths_preserve_standalone_compatibility(self):
+        config = self.root / ".ai-first.toml"
+        text = config.read_text()
+        for relative in ["AGENTS.md", "docs/agent-harness.md", ".ai-first/check.py", ".ai-first.lock",
+                         ".ai-first/overlays/agents-first-read.md", ".ai-first/overlays/agents-project.md",
+                         ".ai-first/overlays/harness-project.md", "scripts/check-publication-boundary.py"]:
+            text = text.replace(f'"{relative}"', f'" ./{relative} "')
+        text = text.replace('name = "sample-service"', 'name = " sample-service "')
+        text = text.replace('publication_class = "public"', 'publication_class = " public "')
+        text = text.replace('[overlay]', '[overlay]\nannotation = "Ignored extension retained by the central parser"')
+        config.write_text(text)
+        render_repository(self.root, FRAMEWORK)
+        result = subprocess.run([sys.executable, ".ai-first/check.py"], cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_product_gate_still_runs_after_shared_check(self):
         native = self.root / "scripts/native.sh"
         native.write_text("#!/bin/sh\nset -eu\npython3 .ai-first/check.py\ntest -f product-acceptance.txt\n")

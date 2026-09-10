@@ -166,13 +166,20 @@ def verify_lock_contract(root: Path, lock: dict[str, object]) -> list[str]:
     return failures
 
 
+def config_path(value: object) -> str:
+    # central parser와 같은 문자열/경로 정규화로 기존 선언의 동등 표기를 보존한다.
+    if not isinstance(value, str) or not safe_lock_key(value.strip()):
+        raise ValueError("invalid configured path")
+    return PurePosixPath(value.strip()).as_posix()
+
+
 def verify_interface(root: Path, lock: dict[str, object]) -> list[str]:
     """고정된 선언으로 공통 interface를 검증한다."""
     failures: list[str] = []
     try:
         config = tomllib.loads((root / ".ai-first.toml").read_text(encoding="utf-8"))
         output = config["output"]
-        roles = {role: output[role] for role in ("agents", "harness", "standalone_check")}
+        roles = {role: config_path(output[role]) for role in ("agents", "harness", "standalone_check")}
         if not all(isinstance(path, str) and safe_lock_key(path) for path in roles.values()):
             raise ValueError("invalid output role path")
         if len(set(roles.values())) != len(roles):
@@ -181,7 +188,7 @@ def verify_interface(root: Path, lock: dict[str, object]) -> list[str]:
         if not isinstance(entries, dict) or not set(roles.values()) <= entries.keys():
             raise ValueError("lock is missing a configured output role")
         inputs = lock.get("repository_inputs")
-        required_inputs = {".ai-first.toml", *config["overlay"].values()}
+        required_inputs = {".ai-first.toml", *(config_path(config["overlay"][role]) for role in ("agents_first_read", "agents_project", "harness_project"))}
         if not isinstance(inputs, dict) or not required_inputs <= inputs.keys():
             raise ValueError("lock is missing a configured repository input")
         agents = safe_relative(root, roles["agents"]).read_text(encoding="utf-8")
@@ -194,10 +201,10 @@ def verify_interface(root: Path, lock: dict[str, object]) -> list[str]:
         lines = [
             "- Structure ID: `ai-first-harness-v1`.",
             f"- Framework version: `{version}`.",
-            f"- Project: `{project['name']}`.",
-            f"- Publication class: `{project['publication_class']}`.",
+            f"- Project: `{project['name'].strip()}`.",
+            f"- Publication class: `{project['publication_class'].strip()}`.",
             f"- Generated drift check: `python3 {roles['standalone_check']}`.",
-            f"- Publication boundary check: `{config['checks']['publication']}`.",
+            f"- Publication boundary check: `{config_path(config['checks']['publication'])}`.",
         ]
     except (OSError, UnicodeError, ValueError, KeyError, TypeError, AttributeError) as error:
         return [f"invalid shared interface: {error}"]
