@@ -3,7 +3,7 @@
 ## 현재 단계
 
 `ai-first`는 Stage 0부터 Stage 15까지의 구현·평가와 비례적 release/adoption을 완료했다.
-현재 published stable은 `v1.7.0`이다. signed release source와 원격 tag identity, GitHub
+현재 published stable은 `v1.7.1`이다. signed release source와 원격 tag identity, GitHub
 Release 및 Python 3.11/3.14 CI를 확인했다.
 
 self-hosting 선언, model/vendor 중립적 core, capability profile, repository overlay,
@@ -12,7 +12,8 @@ deterministic render, content-addressed lock, central drift check와 standalone 
 
 ## 현재 milestone
 
-현재 작업은 `docs/todo-startup-routing-release/spec.md`의 `v1.7.1` 패치 출고다.
+active milestone은 없다. `v1.7.1` 요청별 초기 탐색 안내의 release와 소비 갱신을 완료했다.
+공통 안내와 충돌하는 native 시작 문서의 조건을 명확히 하고 기존 검증·권한 경계를 유지했다.
 공통 interface assertion을 standalone checker에 위임하고 활성
 소비 저장소의 release pin과 native 검사를 갱신했다. 기존 profile·overlay·진행 중 작업과
 원본 working copy를 보존했으며 저장소별 native/publication gate, remote equality와
@@ -60,10 +61,10 @@ Python 3.11/3.14 CI가 통과했다.
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.7.0` release와 adoption 완료를 public `main`에 반영
+- remote: `v1.7.1` release와 adoption 완료를 public `main`에 반영
 - license: `Apache-2.0`
 - CI: release source의 Python 3.11/3.14 success; 소비 저장소의 동일 SHA CI verified
-- stable release: signed annotated `v1.7.0`, 서명·remote tag/source equality와 GitHub Release verified
+- stable release: signed annotated `v1.7.1`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

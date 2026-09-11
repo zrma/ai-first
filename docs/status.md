@@ -78,9 +78,13 @@
 - 기존 profile·overlay·active work·원본 working copy 보존; optional runtime 일괄 도입 없음
 - release gate 61개 회귀 테스트와 완료 지식 이관, active packet 및 pointer 정리
 
+- signed `v1.7.1` startup routing patch와 소비 pin/generated 갱신, native 시작 조건 정합화
+- source/tag·GitHub Release·동일 SHA CI 및 소비 native/publication/remote 검증; 기존 작업 보존
+- token·시간 절감은 미측정이며 실제 작업에서의 근거 누락·불필요한 탐색을 후속 trigger로 유지
+
 ## 진행 중
 
-`docs/todo-startup-routing-release/spec.md`: 요청별 초기 탐색 안내의 `v1.7.1` 출고와 소비 갱신.
+없음.
 
 ## 미착수
 

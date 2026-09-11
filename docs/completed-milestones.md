@@ -395,3 +395,32 @@ immutable revision에 남기고 결과를 native 소유 문서로 이관한 후 
 이 공개 기록에는 판단·방법·한계만 남겼다. 다음 확대는 반복 업무에서 추가 절차 비용을
 상쇄하는 효용 또는 명시적 요구가 확인될 때 검토한다. 일반 속도·비용·품질 우위는 여전히
 미입증이며 실험적 기능의 배포를 그 증명으로 취급하지 않는다.
+
+## Startup routing patch — v1.7.1
+
+요청별 초기 탐색 안내를 stable patch로 배포했다. 설명·조사·리뷰·계획은 관련 자료와
+필요한 재현부터 확인하고, 변경·재개는 현재 상태와 관련 active work를 복원한다.
+우선순위 판단과 구조 변경에 필요한 상세 문서는 해당 조건에서 읽는다. 적용되는 agent
+지침, 정체성·권한·공개 경계와 변경 작업의 필수 native 검증은 유지했다.
+
+원래 출고 완료 기준:
+`e9487162bccb7aece9697e88adc6991ff3a9960e:docs/todo-startup-routing-release/spec.md`.
+source/tag·release·CI·소비 pin·보존·native 검증 기준을 실제 결과와 대조했다.
+초기 탐색 계약은 `framework/core/AGENTS.md`, `framework/core/agent-harness.md`와
+repository overlay가 소유하며 self-hosting 경로와 후속 trigger는 `docs/HANDOFF.md`에 있다.
+
+signed annotated `v1.7.1`의 서명, 원격 tag object/target, 기본 브랜치와 GitHub Release,
+source의 동일 SHA CI를 확인했다. 소비 저장소는 현재 원격 기본 브랜치에서 격리 갱신했고
+새 source pin과 generated artifact의 정합성, native/publication gate, remote equality와
+동일 SHA terminal CI를 확인했다. 공통 안내와 충돌하는 native 시작 문서는 조건을
+명확히 했으며 profile·overlay·기존 active work·원본 working copy와 제품 코드는 보존했다.
+
+선언·lock schema, runtime과 optional capability 선택은 바뀌지 않았다. canonical local
+gate는 기존 61개 회귀 테스트, central/standalone drift, interface, publication,
+navigation과 CI contract를 포함한다. 제품 version/tag/release와 별도 live rollout,
+실제 agent 작업의 token·시간 절감은 이번 검증 범위 밖이다. 지침 정합성의 개선을
+생산성 향상의 실측 evidence로 해석하지 않는다. 반복 작업에서 필수 근거 누락이나
+불필요한 탐색이 관측되면 해당 경로를 조정한다.
+
+대상별 inventory와 raw evidence는 machine-local 계층에 보존하고 완료 packet과 active
+pointer는 정리했다. compatibility와 source pin 사용법은 `docs/COMPATIBILITY.md`가 소유한다.
