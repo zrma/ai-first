@@ -30,13 +30,24 @@ active milestone은 없다. 공통 interface assertion을 standalone checker에 
 
 ## 시작 순서
 
-1. `jj status`
-2. `docs/AI_FIRST_CHARTER.md`
-3. `docs/ARCHITECTURE.md`
-4. `docs/COMPATIBILITY.md`
-5. `docs/status.md`
-6. task-relevant active `docs/todo-*/spec.md`와 `open-questions.md`가 있으면 해당 문서
-7. `scripts/check.sh`
+적용되는 agent 지침과 정체성·권한·공개 경계는 항상 준수한다. 상세 문서는 요청과
+관련된 경로부터 읽고, 판단에 필요한 근거가 부족하면 범위를 넓힌다.
+
+1. 설명·조사·리뷰·계획은 질문 대상 문서·코드·설정에서 시작한다. 필요한 재현·검증은
+   수행하되 시작 절차만을 이유로 전체 검사를 실행하지 않는다.
+2. 작업 재개·변경·다음 과제 선택은 `jj status`, 이 문서의 현재 단계와
+   `docs/status.md`, 관련 활성 `docs/todo-*/spec.md`와 `open-questions.md`를 확인한다.
+   우선순위·후속 방향을 판단할 때 `docs/roadmap.md`를 읽는다.
+3. 정체성·역할은 `docs/AI_FIRST_CHARTER.md`, 구조·합성은 `docs/ARCHITECTURE.md`,
+   호환성·도입은 `docs/COMPATIBILITY.md`, spec·변경 리뷰·완료 이관은
+   `docs/WORK_LIFECYCLE.md`에서 해당 작업에 필요한 내용을 확인한다.
+4. 변경 검증은 `docs/VERIFICATION.md`에 따라 연결된 native gate를 실행한다.
+   이 저장소의 필수 local gate는 `scripts/check.sh`다. 공개 기록 작성과 publication은
+   `docs/PUBLICATION.md`의 경계를 확인한다.
+
+이 안내는 요청 범위에 비례하는 기존 계약과 시작 절차를 맞춘다. 실제 작업의 문서 읽기,
+token·시간 절감 효과는 미측정이며, 필수 근거·검증 누락과 불필요한 탐색이 반복되면
+해당 탐색 경로를 조정한다.
 
 ## 현재 검증
 
