@@ -18,6 +18,10 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
+`1.7.1`은 요청별 초기 탐색 안내를 명확히 한다. 설명·조사는 관련 자료와 필요한 재현부터,
+변경은 현재 상태와 관련 문서 확인부터 시작하며 필수 검증과 권한·공개 경계를 유지한다.
+실제 token·시간 절감 효과는 미측정이다.
+
 `1.7.0`은 공통 interface 검사를 standalone checker에 모아 framework 갱신 때 native
 assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존 profile 선택과 제품 고유
 검증을 유지하며 version/source pin과 generated artifact를 갱신한다.

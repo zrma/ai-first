@@ -12,7 +12,8 @@ deterministic render, content-addressed lock, central drift check와 standalone 
 
 ## 현재 milestone
 
-active milestone은 없다. 공통 interface assertion을 standalone checker에 위임하고 활성
+현재 작업은 `docs/todo-startup-routing-release/spec.md`의 `v1.7.1` 패치 출고다.
+공통 interface assertion을 standalone checker에 위임하고 활성
 소비 저장소의 release pin과 native 검사를 갱신했다. 기존 profile·overlay·진행 중 작업과
 원본 working copy를 보존했으며 저장소별 native/publication gate, remote equality와
 동일 SHA terminal CI를 확인했다.

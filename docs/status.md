@@ -80,7 +80,7 @@
 
 ## 진행 중
 
-없음.
+`docs/todo-startup-routing-release/spec.md`: 요청별 초기 탐색 안내의 `v1.7.1` 출고와 소비 갱신.
 
 ## 미착수
 

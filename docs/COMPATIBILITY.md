@@ -38,6 +38,14 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Request-scoped startup routing
+
+`1.7.1`은 상세 문서 탐색을 요청 조건에 연결한다. 적용되는 agent 지침과 정체성·권한·공개
+경계는 항상 유지하고, 변경 작업의 필수 native gate와 local closeout은 보존한다.
+선언·lock schema, runtime과 profile 선택은 바뀌지 않는다. 소비 저장소의 고유 탐색
+안내는 overlay가 소유하며 충돌이 확인된 부분만 해당 저장소에서 조정한다. 실제
+문서 읽기·token·시간 절감은 미측정이다.
+
 ## Optional verification capability
 
 `1.7.0`는 `verification` profile을 선택할 때만 runtime/skill output 세 개를 추가한다.
@@ -92,9 +100,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.7.0"
+framework_version = "1.7.1"
 source_kind = "release"
-source_revision = "v1.7.0"
+source_revision = "v1.7.1"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를
