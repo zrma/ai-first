@@ -424,3 +424,27 @@ navigation과 CI contract를 포함한다. 제품 version/tag/release와 별도 
 
 대상별 inventory와 raw evidence는 machine-local 계층에 보존하고 완료 packet과 active
 pointer는 정리했다. compatibility와 source pin 사용법은 `docs/COMPATIBILITY.md`가 소유한다.
+
+## Cumulative review clarification — v1.7.2
+
+고정된 snapshot과 범위, 요구사항·영향 경로별 검토 근거와 미확인 범위, 누적 finding
+상태를 기존 변경 리뷰 계약에 연결했다. 후발 지적은 새 회귀·이전 누락·새 범위·판정 불명을
+구분하며 debt 여부와 심각도를 별도로 판단한다. 기록 존재·지적 소멸·연속 무지적을
+완전성으로 해석하지 않는다. 작은 변경에 별도 장부·고정 횟수는 강제하지 않는다.
+
+중앙 lifecycle 문서만으로는 소비자가 새 계약을 읽을 수 없으므로 core AGENTS/harness
+템플릿과 generated output에 같은 내용을 전달했다. native lifecycle 형식, schema,
+Structure ID, profile·runtime·권한은 유지한다. 소유 문서는 `docs/WORK_LIFECYCLE.md`,
+전달 경로는 `framework/core/AGENTS.md`와 `framework/core/agent-harness.md`다.
+
+signed annotated `v1.7.2`의 서명·원격 tag/source identity·GitHub Release와 source의
+Python 3.11/3.14 CI를 확인했다. 활성 소비 저장소를 격리 checkout에서 갱신하고
+standalone/interface, native/publication gate, remote equality와 동일 SHA terminal CI를
+확인했다. 기존 overlay·profile·native script·active work를 보존하고, 깨끗하고 원격의
+조상인 로컬 기본 작업 사본을 최신 상태로 맞췄다. 원래 로컬 이력은 보존했다.
+
+framework canonical gate와 61개 회귀 테스트, framework 및 consumer 전달 경로의
+독립 리뷰를 통과했다. 새 clone의 import 산출물은 검증 환경에만 준비하고 출고 diff를
+보존했다. native 종료가 요구하는 기록은 해당 저장소의 소유 artifact로 이관했다.
+실제 agent 발견률·누락률·사용자 반복 요청 감소는 측정하지 않았으며, runtime 제품
+release나 별도 live rollout을 이번 지침 배포의 증거로 주장하지 않는다.

@@ -82,9 +82,13 @@
 - source/tag·GitHub Release·동일 SHA CI 및 소비 native/publication/remote 검증; 기존 작업 보존
 - token·시간 절감은 미측정이며 실제 작업에서의 근거 누락·불필요한 탐색을 후속 trigger로 유지
 
+- signed `v1.7.2` 누적 리뷰 지침을 core/generated에 연결하고 활성 소비 저장소에 적용
+- source/tag·Release·native/publication·remote·동일 SHA CI 검증 및 깨끗한 로컬 작업 사본 갱신
+- 기존 profile·overlay·active work·이력 보존; 실제 리뷰 누락 감소 효과는 미측정
+
 ## 진행 중
 
-- `v1.7.2` 누적 리뷰 지침의 signed source release와 활성 소비 저장소 갱신·검증.
+없음.
 
 ## 미착수
 
