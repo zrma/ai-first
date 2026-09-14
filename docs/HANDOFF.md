@@ -12,6 +12,12 @@ deterministic render, content-addressed lock, central drift check와 standalone 
 
 ## 현재 milestone
 
+`v1.7.2` 누적 리뷰 지침의 release와 소비 갱신을 준비 중이다. 완료 조건은 signed
+source/tag·Release·동일 SHA CI 및 소비 pin·native/publication·remote 검증이다.
+기존 profile·overlay·active work를 보존하고 실제 리뷰 누락 감소 효과는 별도 측정한다.
+
+### 직전 완료 상태
+
 active milestone은 없다. `v1.7.1` 요청별 초기 탐색 안내의 release와 소비 갱신을 완료했다.
 공통 안내와 충돌하는 native 시작 문서의 조건을 명확히 하고 기존 검증·권한 경계를 유지했다.
 공통 interface assertion을 standalone checker에 위임하고 활성

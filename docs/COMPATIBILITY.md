@@ -38,6 +38,14 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Cumulative review clarification
+
+`1.7.2`는 기존 변경 리뷰 계약의 범위·근거·누적 finding 추적을 구체화한다.
+고정 snapshot과 범위, 후발 지적의 기원 구분을 core generated 지침에 포함하므로
+중앙 lifecycle 문서 없이도 소비 저장소에서 읽을 수 있다. 선언·lock schema와
+Structure ID, native 형식·권한·profile 선택·runtime은 유지한다. 별도 장부나 고정
+리뷰 횟수를 강제하지 않으며 실제 누락률 감소는 아직 측정하지 않았다.
+
 ## Request-scoped startup routing
 
 `1.7.1`은 상세 문서 탐색을 요청 조건에 연결한다. 적용되는 agent 지침과 정체성·권한·공개
@@ -100,9 +108,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.7.1"
+framework_version = "1.7.2"
 source_kind = "release"
-source_revision = "v1.7.1"
+source_revision = "v1.7.2"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를
