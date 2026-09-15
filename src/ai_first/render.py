@@ -142,16 +142,13 @@ def _verify_framework_source(config: Config, framework: Path) -> str | None:
     return actual
 
 
-def build(repo_root: Path, framework_root: Path) -> Rendered:
-    config = load_config(repo_root)
-    framework = framework_root.resolve()
-    source_commit = _verify_framework_source(config, framework)
-
-    framework_inputs: dict[str, bytes] = {}
-    repository_inputs: dict[str, bytes] = {
-        ".ai-first.toml": _read(config.config_path, ".ai-first.toml")
-    }
-
+def _compose_documents(
+    config: Config,
+    framework: Path,
+    framework_inputs: dict[str, bytes],
+    repository_inputs: dict[str, bytes],
+) -> dict[str, bytes]:
+    """문서 입력을 수집하고 선언 순서대로 두 entrypoint를 합성한다."""
     def framework_text(relative: str) -> str:
         data = _read(framework / relative, relative)
         framework_inputs[relative] = data
@@ -192,14 +189,6 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         _validate_profile(harness_fragment, f"profile {profile} harness")
         agents_profiles.append(agents_fragment)
         harness_profiles.append(harness_fragment)
-
-    standalone_relative = "framework/standalone/check.py"
-    standalone = _read(framework / standalone_relative, standalone_relative)
-    framework_inputs[standalone_relative] = standalone
-    generator_root = framework / "src" / "ai_first"
-    for path in sorted(generator_root.glob("*.py")):
-        relative = path.relative_to(framework).as_posix()
-        framework_inputs[relative] = _read(path, relative)
 
     header = _generated_header(config.framework_version)
     agents = _join(
@@ -246,11 +235,20 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         ]
     )
 
-    outputs = {
+    return {
         config.output.agents: agents,
         config.output.harness: harness,
-        config.output.standalone_check: standalone,
     }
+
+
+def _add_optional_outputs(
+    config: Config,
+    framework: Path,
+    framework_inputs: dict[str, bytes],
+    repository_inputs: dict[str, bytes],
+    outputs: dict[str, bytes],
+) -> None:
+    """의존성과 경로를 검사한 뒤 선택된 runtime·skill을 입력과 출력에 등록한다."""
     if "work-coordination" in config.profiles and "verification" not in config.profiles:
         raise ConfigError("work-coordination requires the verification profile")
     for profile, capability_outputs in OPTIONAL_OUTPUTS.items():
@@ -271,6 +269,12 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
             data = _read(framework / source, source)
             framework_inputs[source] = data
             outputs[destination] = data
+
+
+def _add_verification_binding(
+    config: Config, repository_inputs: dict[str, bytes]
+) -> None:
+    """선택형 binding을 검증하고 repository 소유 입력으로 등록한다."""
     if "verification" in config.profiles:
         binding = path_within(config.repo_root, ".ai-first/verification.toml", "verification binding")
         if binding.exists():
@@ -281,6 +285,16 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
             except VerificationError as error:
                 raise ConfigError(str(error)) from error
             repository_inputs[".ai-first/verification.toml"] = _read(binding, "verification binding")
+
+
+def _build_lock(
+    config: Config,
+    source_commit: str | None,
+    framework_inputs: dict[str, bytes],
+    repository_inputs: dict[str, bytes],
+    outputs: dict[str, bytes],
+) -> bytes:
+    """수집된 입력·출력과 source identity를 결정적인 lock으로 직렬화한다."""
     framework_hashes = {
         path: _digest(data) for path, data in sorted(framework_inputs.items())
     }
@@ -304,10 +318,41 @@ def build(repo_root: Path, framework_root: Path) -> Rendered:
         "repository_inputs": repository_hashes,
         "outputs": output_hashes,
     }
-    lock_bytes = (
+    return (
         json.dumps(lock, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     ).encode("utf-8")
-    return Rendered(outputs=outputs, lock=lock_bytes)
+
+
+def build(repo_root: Path, framework_root: Path) -> Rendered:
+    config = load_config(repo_root)
+    framework = framework_root.resolve()
+    source_commit = _verify_framework_source(config, framework)
+    framework_inputs: dict[str, bytes] = {}
+    repository_inputs: dict[str, bytes] = {
+        ".ai-first.toml": _read(config.config_path, ".ai-first.toml")
+    }
+    outputs = _compose_documents(
+        config, framework, framework_inputs, repository_inputs
+    )
+    standalone_relative = "framework/standalone/check.py"
+    standalone = _read(framework / standalone_relative, standalone_relative)
+    framework_inputs[standalone_relative] = standalone
+    generator_root = framework / "src" / "ai_first"
+    for path in sorted(generator_root.glob("*.py")):
+        relative = path.relative_to(framework).as_posix()
+        framework_inputs[relative] = _read(path, relative)
+
+    outputs[config.output.standalone_check] = standalone
+    _add_optional_outputs(
+        config, framework, framework_inputs, repository_inputs, outputs
+    )
+    _add_verification_binding(config, repository_inputs)
+    return Rendered(
+        outputs=outputs,
+        lock=_build_lock(
+            config, source_commit, framework_inputs, repository_inputs, outputs
+        ),
+    )
 
 
 def _atomic_write(path: Path, data: bytes) -> None:

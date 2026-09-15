@@ -76,6 +76,23 @@ core, 선언 순서의 profile과 repository overlay를 합성한다. 선언 순
 뒤집지 않으며 profile/overlay는 core를 약화할 수 없다. schema와 heading 검사는
 구조 정합성을 확인하지만 자연어 지침의 의미적 충돌은 diff 검토로 확인해야 한다.
 
+## 렌더러 내부 책임
+
+`src/ai_first/render.py`의 `build`는 source identity 확인과 입력 수집을 시작하고,
+문서 합성, standalone checker 포함, optional output 구성, binding 검사와 lock 생성을
+순서대로 연결한다. private helper가 각 단계의 책임을 분리한다.
+
+- 문서 합성은 fragment 검증과 선언 순서를 유지하며 읽은 내용을 입력 목록에 등록한다.
+- optional output 구성은 profile 의존성과 경로 충돌·repository 경계를 검사한다.
+- binding 검사는 선택된 verification의 repository 소유 설정만 입력에 포함한다.
+- lock 생성은 수집된 byte 입력·출력으로 digest와 source metadata를 직렬화한다.
+
+출력 쓰기와 기존 optional 파일의 소유권·수정 여부·제거 판단은 `render_repository`가
+소유한다. build의 결과 계산과 filesystem 변경 경계를 유지하기 위해 같은 모듈 안의
+함수로 분리하며 새 배포 모듈이나 소비자 dependency를 도입하지 않는다.
+source 파일은 framework input이므로 내부 리팩토링에서도 lock digest는 갱신된다.
+문서·runtime output이나 schema 변경과 이를 구별한다.
+
 ## 독립 실행 계약
 
 소비 저장소는 다음 조건을 만족해야 한다.

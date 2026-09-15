@@ -2,14 +2,13 @@
 
 ## 현재 상태
 
-- published stable과 출고 검증 범위: `docs/HANDOFF.md`.
+- local 유지보수 결과와 unpublished 상태, published stable·출고 검증 범위: `docs/HANDOFF.md`.
 - Stage 0–15 및 후속 release/adoption 결과: `docs/completed-milestones.md`.
 - verification은 선택형 보조 기능, work-coordination은 실험적 opt-in이다.
 
 ## 진행 중
 
-- 문서 탐색과 렌더러 유지보수 정리: `docs/todo-maintenance-refactor/spec.md`.
-  현재 상태 문서의 중복 이력을 정리했고 렌더러 책임 분리와 테스트 정리를 진행한다.
+없음.
 
 ## Blocker와 결정 필요
 

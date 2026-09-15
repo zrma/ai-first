@@ -17,20 +17,74 @@ FRAMEWORK_ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_ROOT = FRAMEWORK_ROOT / "tests" / "fixtures" / "minimal"
 
 
-class AiFirstTest(unittest.TestCase):
+class ConsumerTestCase(unittest.TestCase):
     def copy_fixture(self) -> tuple[tempfile.TemporaryDirectory[str], Path]:
         temporary = tempfile.TemporaryDirectory()
         root = Path(temporary.name) / "consumer"
         shutil.copytree(FIXTURE_ROOT, root)
         return temporary, root
 
-    def test_render_is_deterministic_and_checkable(self) -> None:
+
+class RenderTests(ConsumerTestCase):
+    def test_render_is_deterministic(self) -> None:
         temporary, root = self.copy_fixture()
         self.addCleanup(temporary.cleanup)
 
+        self.assertEqual(build(root, FRAMEWORK_ROOT), build(root, FRAMEWORK_ROOT))
+
+    def test_render_is_idempotent_and_records_source_identity(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+
+        changed = render_repository(root, FRAMEWORK_ROOT)
+        self.assertEqual(
+            changed,
+            [
+                ".ai-first.lock",
+                ".ai-first/check.py",
+                "AGENTS.md",
+                "docs/agent-harness.md",
+            ],
+        )
+        check_repository(root, FRAMEWORK_ROOT)
+        self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
+
+        lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
+        self.assertEqual(lock["framework"]["version"], "1.7.2")
+        self.assertIsNone(lock["framework"]["source_revision"])
+        self.assertIsNone(lock["framework"]["source_commit"])
+        self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
+
+    def test_manual_output_drift_fails(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        (root / "AGENTS.md").write_text("manual drift\n", encoding="utf-8")
+
+        with self.assertRaisesRegex(DriftError, "drifted AGENTS.md"):
+            check_repository(root, FRAMEWORK_ROOT)
+
+    def test_overlay_drift_fails_until_rendered(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        overlay = root / ".ai-first" / "overlays" / "agents-project.md"
+        overlay.write_text(
+            overlay.read_text(encoding="utf-8") + "\n- New repository rule.\n",
+            encoding="utf-8",
+        )
+
+        with self.assertRaises(DriftError):
+            check_repository(root, FRAMEWORK_ROOT)
+        self.assertIn("AGENTS.md", render_repository(root, FRAMEWORK_ROOT))
+        check_repository(root, FRAMEWORK_ROOT)
+
+
+class GeneratedGuidanceTests(ConsumerTestCase):
+    def test_generated_guidance_preserves_operating_contract(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
         first = build(root, FRAMEWORK_ROOT)
-        second = build(root, FRAMEWORK_ROOT)
-        self.assertEqual(first, second)
         self.assertIn(
             b"- Publication boundary check: `scripts/check-publication-boundary.py`.",
             first.outputs["docs/agent-harness.md"],
@@ -80,24 +134,12 @@ class AiFirstTest(unittest.TestCase):
             first.outputs["docs/agent-harness.md"],
         )
 
-        changed = render_repository(root, FRAMEWORK_ROOT)
-        self.assertEqual(
-            changed,
-            [
-                ".ai-first.lock",
-                ".ai-first/check.py",
-                "AGENTS.md",
-                "docs/agent-harness.md",
-            ],
-        )
-        check_repository(root, FRAMEWORK_ROOT)
-        self.assertEqual(render_repository(root, FRAMEWORK_ROOT), [])
 
-        lock = json.loads((root / ".ai-first.lock").read_text(encoding="utf-8"))
-        self.assertEqual(lock["framework"]["version"], "1.7.2")
-        self.assertIsNone(lock["framework"]["source_revision"])
-        self.assertIsNone(lock["framework"]["source_commit"])
-        self.assertNotIn(str(FRAMEWORK_ROOT), json.dumps(lock))
+class StandaloneTests(ConsumerTestCase):
+    def test_generated_checker_runs_without_framework_checkout(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
 
         completed = subprocess.run(
             [sys.executable, ".ai-first/check.py"],
@@ -108,6 +150,68 @@ class AiFirstTest(unittest.TestCase):
         )
         self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
 
+    def test_standalone_check_rejects_tampered_framework_metadata(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        lock_path = root / ".ai-first.lock"
+        lock = json.loads(lock_path.read_text(encoding="utf-8"))
+        lock["framework"]["source_kind"] = "release"
+        lock["framework"]["source_revision"] = "v9.9.9"
+        lock["framework"]["source_commit"] = "f" * 40
+        lock["profiles"] = ["tampered-profile"]
+        framework_input = next(iter(lock["framework_inputs"]))
+        lock["framework_inputs"][framework_input] = "0" * 64
+        lock_path.write_text(
+            json.dumps(lock, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
+        completed = subprocess.run(
+            [sys.executable, ".ai-first/check.py"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        for message in (
+            "framework.source_kind does not match .ai-first.toml",
+            "framework.source_revision does not match .ai-first.toml",
+            "profiles does not match .ai-first.toml",
+            "framework.digest does not match framework_inputs",
+        ):
+            self.assertIn(message, completed.stdout)
+
+    def test_standalone_check_rejects_invalid_development_source_commit(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        render_repository(root, FRAMEWORK_ROOT)
+        lock_path = root / ".ai-first.lock"
+        lock = json.loads(lock_path.read_text(encoding="utf-8"))
+        lock["framework"]["source_commit"] = "f" * 40
+        lock_path.write_text(
+            json.dumps(lock, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
+        completed = subprocess.run(
+            [sys.executable, ".ai-first/check.py"],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn(
+            "development source requires null source_revision and source_commit",
+            completed.stdout,
+        )
+
+
+class LifecycleTests(ConsumerTestCase):
     def test_standalone_check_rejects_completed_active_work(self) -> None:
         terminal_statuses = (
             "상태: 완료\n",
@@ -215,66 +319,8 @@ class AiFirstTest(unittest.TestCase):
                 )
                 self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
 
-    def test_standalone_check_rejects_tampered_framework_metadata(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        render_repository(root, FRAMEWORK_ROOT)
-        lock_path = root / ".ai-first.lock"
-        lock = json.loads(lock_path.read_text(encoding="utf-8"))
-        lock["framework"]["source_kind"] = "release"
-        lock["framework"]["source_revision"] = "v9.9.9"
-        lock["framework"]["source_commit"] = "f" * 40
-        lock["profiles"] = ["tampered-profile"]
-        framework_input = next(iter(lock["framework_inputs"]))
-        lock["framework_inputs"][framework_input] = "0" * 64
-        lock_path.write_text(
-            json.dumps(lock, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
 
-        completed = subprocess.run(
-            [sys.executable, ".ai-first/check.py"],
-            cwd=root,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-
-        self.assertNotEqual(completed.returncode, 0)
-        for message in (
-            "framework.source_kind does not match .ai-first.toml",
-            "framework.source_revision does not match .ai-first.toml",
-            "profiles does not match .ai-first.toml",
-            "framework.digest does not match framework_inputs",
-        ):
-            self.assertIn(message, completed.stdout)
-
-    def test_standalone_check_rejects_invalid_development_source_commit(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        render_repository(root, FRAMEWORK_ROOT)
-        lock_path = root / ".ai-first.lock"
-        lock = json.loads(lock_path.read_text(encoding="utf-8"))
-        lock["framework"]["source_commit"] = "f" * 40
-        lock_path.write_text(
-            json.dumps(lock, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
-
-        completed = subprocess.run(
-            [sys.executable, ".ai-first/check.py"],
-            cwd=root,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-
-        self.assertNotEqual(completed.returncode, 0)
-        self.assertIn(
-            "development source requires null source_revision and source_commit",
-            completed.stdout,
-        )
-
+class PublicationCliTests(ConsumerTestCase):
     def test_publication_checker_supports_candidate_stdin(self) -> None:
         checker = FRAMEWORK_ROOT / "scripts" / "check-publication-boundary.py"
         safe = subprocess.run(
@@ -298,30 +344,8 @@ class AiFirstTest(unittest.TestCase):
         self.assertNotEqual(unsafe.returncode, 0)
         self.assertIn("local-home-path", unsafe.stderr)
 
-    def test_manual_output_drift_fails(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        render_repository(root, FRAMEWORK_ROOT)
-        (root / "AGENTS.md").write_text("manual drift\n", encoding="utf-8")
 
-        with self.assertRaisesRegex(DriftError, "drifted AGENTS.md"):
-            check_repository(root, FRAMEWORK_ROOT)
-
-    def test_overlay_drift_fails_until_rendered(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        render_repository(root, FRAMEWORK_ROOT)
-        overlay = root / ".ai-first" / "overlays" / "agents-project.md"
-        overlay.write_text(
-            overlay.read_text(encoding="utf-8") + "\n- New repository rule.\n",
-            encoding="utf-8",
-        )
-
-        with self.assertRaises(DriftError):
-            check_repository(root, FRAMEWORK_ROOT)
-        self.assertIn("AGENTS.md", render_repository(root, FRAMEWORK_ROOT))
-        check_repository(root, FRAMEWORK_ROOT)
-
+class PathSafetyTests(ConsumerTestCase):
     def test_unsafe_output_path_is_rejected(self) -> None:
         temporary, root = self.copy_fixture()
         self.addCleanup(temporary.cleanup)
@@ -352,6 +376,41 @@ class AiFirstTest(unittest.TestCase):
         with self.assertRaisesRegex(ConfigError, "safe repository-relative path"):
             build(root, FRAMEWORK_ROOT)
 
+    def test_output_cannot_overwrite_overlay(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'agents = "AGENTS.md"',
+                'agents = ".ai-first/overlays/agents-project.md"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "must not overwrite"):
+            build(root, FRAMEWORK_ROOT)
+
+    def test_symlinked_output_cannot_escape_repository(self) -> None:
+        temporary, root = self.copy_fixture()
+        self.addCleanup(temporary.cleanup)
+        outside = Path(temporary.name) / "outside"
+        outside.mkdir()
+        (root / "generated").symlink_to(outside, target_is_directory=True)
+        config = root / ".ai-first.toml"
+        config.write_text(
+            config.read_text(encoding="utf-8").replace(
+                'agents = "AGENTS.md"',
+                'agents = "generated/AGENTS.md"',
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(ConfigError, "inside the repository"):
+            build(root, FRAMEWORK_ROOT)
+
+
+class SourceIdentityTests(ConsumerTestCase):
     def test_commit_source_requires_full_revision(self) -> None:
         temporary, root = self.copy_fixture()
         self.addCleanup(temporary.cleanup)
@@ -520,36 +579,3 @@ class AiFirstTest(unittest.TestCase):
         ):
             with self.assertRaisesRegex(ConfigError, "annotated Git tag"):
                 build(root, FRAMEWORK_ROOT)
-
-    def test_output_cannot_overwrite_overlay(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        config = root / ".ai-first.toml"
-        config.write_text(
-            config.read_text(encoding="utf-8").replace(
-                'agents = "AGENTS.md"',
-                'agents = ".ai-first/overlays/agents-project.md"',
-            ),
-            encoding="utf-8",
-        )
-
-        with self.assertRaisesRegex(ConfigError, "must not overwrite"):
-            build(root, FRAMEWORK_ROOT)
-
-    def test_symlinked_output_cannot_escape_repository(self) -> None:
-        temporary, root = self.copy_fixture()
-        self.addCleanup(temporary.cleanup)
-        outside = Path(temporary.name) / "outside"
-        outside.mkdir()
-        (root / "generated").symlink_to(outside, target_is_directory=True)
-        config = root / ".ai-first.toml"
-        config.write_text(
-            config.read_text(encoding="utf-8").replace(
-                'agents = "AGENTS.md"',
-                'agents = "generated/AGENTS.md"',
-            ),
-            encoding="utf-8",
-        )
-
-        with self.assertRaisesRegex(ConfigError, "inside the repository"):
-            build(root, FRAMEWORK_ROOT)

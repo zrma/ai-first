@@ -12,10 +12,11 @@
 
 ## 현재 milestone
 
-문서 탐색과 렌더러 유지보수 정리를 진행한다.
-`docs/todo-maintenance-refactor/spec.md`와 `open-questions.md`가 범위·완료 기준을
-소유한다. 상태 문서의 중복 이력 정리 후 렌더러 책임 분리와 관련 테스트를 정리한다.
-이 작업은 local 유지보수이며 release와 소비 adoption은 포함하지 않는다.
+active milestone은 없다. 문서 탐색과 렌더러 유지보수 정리를 local change로 완료했다.
+status·roadmap의 중복 완료 목록을 정리하고 렌더러의 합성·optional output·binding·lock
+책임과 테스트 목적을 분리했다. 구조는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
+`docs/completed-milestones.md`, 다음 시작 조건은 `docs/roadmap.md`가 소유한다.
+이 유지보수 변경은 아직 unpublished이며 published stable은 `v1.7.2`다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
@@ -48,12 +49,16 @@ deterministic render, content-addressed lock과 central/standalone checker를 �
 
 ## 현재 검증
 
-`scripts/check.sh`는 central/standalone drift, harness interface, repository publication
-boundary, navigation, CI contract, Python syntax와 61개 회귀 테스트를 검사한다. 실제 jj
-clone 통합을 포함하며 CI는 pinned jj 설치와 부재 시 실패를 요구한다. release source의
-Python 3.11/3.14 CI가 통과했다. 소비 update의 독립 리뷰에서 generated 전달 경로와
-기존 계약 보존을 확인했다. 필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제
-사례를 기준으로 해당 지침을 조정한다.
+연결된 native gate로 central/standalone drift, harness interface, repository publication
+boundary, navigation, CI contract, Python syntax와 64개 회귀 테스트를 통과했다.
+실제 jj clone 통합도 실행했고 skip은 없었다. 테스트 수 증가는 기존 복합 테스트를
+목적별로 나눈 결과이며 새로운 행동 coverage의 증가로 해석하지 않는다.
+변경 전 renderer와 13개 synthetic 설정의 출력·오류 판정이 일치했다.
+
+이는 local 유지보수 검증이다. published release source의 Python 3.11/3.14 CI와
+소비 adoption evidence는 완료 이력에 유지하며 새 변경의 remote CI나 소비 검증으로
+간주하지 않는다. 필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를
+기준으로 해당 지침을 조정한다.
 
 ## Publication 상태
 

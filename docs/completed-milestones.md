@@ -479,3 +479,30 @@ status는 현재 작업·blocker, roadmap은 후속 시작 조건, handoff는 �
 소유하도록 과거 완료 목록을 정리했다. 기존 release/adoption 결과와 평가 수치·한계는
 이 문서에 보존하고 Stage 순서도 이 문서의 index로 이관했다. 문서의 중복 갱신 지점을
 줄였으며 실제 탐색 시간이나 token 절감은 측정하지 않았다.
+
+## Renderer responsibility refactor — local maintenance
+
+문서 합성, optional output 구성, verification binding 검사와 lock 직렬화를
+`src/ai_first/render.py` 내부 helper로 분리했다. build는 단계를 연결하고
+render_repository의 쓰기·소유권·opt-out 처리는 유지한다. 설계 이유와 책임 경계는
+`docs/ARCHITECTURE.md`가 소유한다. 새 모듈·runtime·schema·CLI는 도입하지 않았다.
+
+원래 범위와 완료 기준은 첫 local change의
+`0fae0110b3a64c2d8e7f788471d0697500d46f72:docs/todo-maintenance-refactor/spec.md`에 있다.
+기준을 변경하지 않고 문서 이력 보존·출력 동등성·보호 동작·검증 결과를 대조한 뒤
+packet과 active pointer를 정리했다. 해당 revision은 local 이력 참조이며 출고를 뜻하지 않는다.
+
+기존 복합 테스트 하나를 결정성, 반복 render/source metadata, 지침 전달과 standalone
+실행으로 나눴다. 나머지 테스트 본문과 원래 지침 전달 assertion을 보존하고 목적별
+class로 묶었다. 61개에서 64개로 늘어난 수치는 테스트 분리 결과다.
+
+변경 전 renderer와 같은 framework source 및 synthetic consumer 입력을 주고 13개
+설정을 대조했다. 기본·profile 순서·verification binding 유무·전체 profile·custom output의
+정상 7개에서 모든 출력 byte와 lock이 같았다. 의존성 누락·잘못된 binding·직접/상위 경로
+충돌·binding 경로 충돌·symlink escape의 오류 6개는 예외 종류와 메시지가 같았다.
+self-hosting render의 변경은 renderer source digest와 framework aggregate digest뿐이며,
+generated 문서·runtime·skill output은 그대로다.
+
+연결된 native gate에서 64개 회귀 테스트와 실제 jj clone 통합을 skip 없이 통과했다.
+central/standalone drift, interface, publication, navigation과 CI contract도 통과했다.
+소비 저장소 adoption, remote CI·release·live 동작과 성능·token 절감은 검증 범위 밖이다.
