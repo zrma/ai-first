@@ -8,7 +8,7 @@
 
 ## 진행 중
 
-없음.
+- `v1.7.3` release와 활성 소비 적용: `docs/todo-release-1.7.3/spec.md`.
 
 ## Blocker와 결정 필요
 

@@ -38,6 +38,13 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Renderer maintenance patch
+
+`1.7.3`은 렌더러 내부 책임과 테스트·상태 문서 구성을 정리한다. 선언/lock schema 1,
+Structure ID, CLI와 profile 선택을 유지한다. version 표기와 framework source digest를
+제외한 generated 지침·runtime은 유지되며 소비 저장소의 native script나 overlay를
+변경할 필요가 없다. signed release pin과 generated artifact를 함께 갱신한다.
+
 ## Cumulative review clarification
 
 `1.7.2`는 기존 변경 리뷰 계약의 범위·근거·누적 finding 추적을 구체화한다.
@@ -108,9 +115,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.7.2"
+framework_version = "1.7.3"
 source_kind = "release"
-source_revision = "v1.7.2"
+source_revision = "v1.7.3"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

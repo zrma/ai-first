@@ -12,11 +12,13 @@
 
 ## 현재 milestone
 
-active milestone은 없다. 문서 탐색과 렌더러 유지보수 정리를 local change로 완료했다.
+문서 탐색과 렌더러 유지보수 정리를 local change로 완료했다.
 status·roadmap의 중복 완료 목록을 정리하고 렌더러의 합성·optional output·binding·lock
 책임과 테스트 목적을 분리했다. 구조는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
 `docs/completed-milestones.md`, 다음 시작 조건은 `docs/roadmap.md`가 소유한다.
-이 유지보수 변경은 아직 unpublished이며 published stable은 `v1.7.2`다.
+이 유지보수 변경을 `v1.7.3` signed patch로 출고하고 활성 소비 저장소에 적용한다.
+완료 기준은 `docs/todo-release-1.7.3/spec.md`가 소유한다. 현재 published stable은
+`v1.7.2`이며 새 source/tag·CI·adoption의 완료 전까지 구별한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만

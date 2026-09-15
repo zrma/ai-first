@@ -379,8 +379,8 @@ native combined check 실패가 개별 worker PASS 이후에도 최종 실패로
 `docs/WORK_COORDINATION.md`, compatibility는 `docs/COMPATIBILITY.md`가 소유한다.
 `ai-first-verify` skill은 core의 일반 판단 예시 반복을 줄여 command와 결과 해석에 집중했다.
 
-canonical local gate는 interface, verification, 실제 jj workspace, optional distribution과
-기존 회귀 검증을 포함한다. CI는 checksum으로 고정한 jj 설치와 부재 시 실패를 연결했다.
+당시 canonical local gate의 60개 테스트가 통과했다. interface, verification, 실제 jj
+workspace, optional distribution과 기존 회귀 검증을 포함한다. CI는 checksum으로 고정한 jj 설치와 부재 시 실패를 연결했다.
 이 결과는 local candidate이며 새 remote CI, release 또는 기본 소비 저장소 도입의 evidence가
 아니다. 다음 확대는 실제 반복 과제에서 추가 호출 비용을 상쇄하는 운영 효과 또는 별도의
 명시적 요구를 기준으로 판단한다.
