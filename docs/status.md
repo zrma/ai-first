@@ -2,13 +2,13 @@
 
 ## 현재 상태
 
-- local 유지보수 결과와 unpublished 상태, published stable·출고 검증 범위: `docs/HANDOFF.md`.
+- 현재 published stable과 유지보수·출고 검증 범위: `docs/HANDOFF.md`.
 - Stage 0–15 및 후속 release/adoption 결과: `docs/completed-milestones.md`.
 - verification은 선택형 보조 기능, work-coordination은 실험적 opt-in이다.
 
 ## 진행 중
 
-- `v1.7.3` release와 활성 소비 적용: `docs/todo-release-1.7.3/spec.md`.
+없음. `v1.7.3` release와 활성 소비 적용을 완료했다.
 
 ## Blocker와 결정 필요
 

@@ -490,7 +490,7 @@ render_repository의 쓰기·소유권·opt-out 처리는 유지한다. 설계 �
 원래 범위와 완료 기준은 첫 local change의
 `0fae0110b3a64c2d8e7f788471d0697500d46f72:docs/todo-maintenance-refactor/spec.md`에 있다.
 기준을 변경하지 않고 문서 이력 보존·출력 동등성·보호 동작·검증 결과를 대조한 뒤
-packet과 active pointer를 정리했다. 해당 revision은 local 이력 참조이며 출고를 뜻하지 않는다.
+packet과 active pointer를 정리했다. 해당 revision은 v1.7.3 source의 ancestor이며 당시 local 검증 범위를 기록한다.
 
 기존 복합 테스트 하나를 결정성, 반복 render/source metadata, 지침 전달과 standalone
 실행으로 나눴다. 나머지 테스트 본문과 원래 지침 전달 assertion을 보존하고 목적별
@@ -506,3 +506,34 @@ generated 문서·runtime·skill output은 그대로다.
 연결된 native gate에서 64개 회귀 테스트와 실제 jj clone 통합을 skip 없이 통과했다.
 central/standalone drift, interface, publication, navigation과 CI contract도 통과했다.
 소비 저장소 adoption, remote CI·release·live 동작과 성능·token 절감은 검증 범위 밖이다.
+
+## Renderer maintenance release and adoption — v1.7.3
+
+문서·렌더러·테스트 정리를 signed annotated `v1.7.3` patch로 출고했다. source commit은
+`d523862613ca5410d0666b6cda13d043400a75cd`이며 원래 acceptance는
+`d523862613ca5410d0666b6cda13d043400a75cd:docs/todo-release-1.7.3/spec.md`에 있다.
+완료 기록을 갱신하는 이후 main commit과
+release source tag는 구별한다. 구조와 source pin 사용법은 `docs/ARCHITECTURE.md`와
+`docs/COMPATIBILITY.md`가 소유한다.
+
+tag 서명·원격 tag object/source equality·GitHub Release와 Python 3.11/3.14 source CI를
+확인했다. 공개 source를 새 checkout에서 받아 64개 회귀 테스트와 실제 jj clone 통합을
+skip 없이 통과했다. 독립 리뷰에서 발견한 과거 검증 수치의 이관 누락 한 건을 복원했고,
+수정 snapshot을 다시 확인했다. renderer 동등성 13개 설정의 판정은 위 유지보수 구간에 있다.
+
+활성 소비 저장소는 현재 원격 기본 브랜치를 기준으로 격리된 colocated jj checkout에서
+pin과 generated artifact를 갱신했다. 버전 표기 외의 generated 본문과 기존 profile,
+overlay·native script·active work를 보존했고 standalone/interface, 해당 변경의 native
+검증 범위, publication gate, remote equality와 동일 SHA terminal CI를 확인했다.
+native lifecycle이 요구하는 결과 이관과 packet 정리도 이행했다. 깨끗한 원격 조상인
+로컬 작업 사본은 새 empty change로 정렬했고, 진행 중인 WIP와 기존 고유 이력은 보존했다.
+archived 소비 저장소는 제외했다.
+
+검증 환경의 기존 개발 서버와 테스트 포트 충돌은 격리 포트로 재검증하고 원본 설정을
+복원했다. native 스크립트의 UTC 문서 날짜 기준과 빌드 산출물 경로도 유지했다.
+실패했던 시도와 보완 후 성공을 구별하며 native 검사의 선택적·CI 전용 항목을 local
+전체 실행으로 주장하지 않는다. 대상별 inventory와 raw evidence는 machine-local에 둔다.
+
+제품 runtime release·live rollout과 실제 탐색 시간·token·비용·리뷰 품질 개선은 이번
+검증 범위 밖이다. release/adoption acceptance와 유지할 artifact를 대조한 뒤 완료
+packet과 active pointer를 정리했다.

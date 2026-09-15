@@ -2,23 +2,16 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.7.2`다. 고정된 검토 snapshot과 범위, 중요한 요구사항·영향
-경로별 근거와 미확인 범위, 누적 finding 상태와 후발 지적의 기원 구분을 core generated
-지침으로 전달한다. 상세 계약은 `docs/WORK_LIFECYCLE.md`가 소유한다.
-
-출고 당시 source/tag·Release·CI와 소비 adoption 검증 결과는
-`docs/completed-milestones.md`의 v1.7.2 구간에 있다. 이후 local 유지보수 변경의
-검증과 published source의 evidence는 구별한다.
+현재 published stable은 `v1.7.3`이다. 문서 탐색과 렌더러·테스트의 책임을 정리한
+유지보수 patch이며 CLI·schema·core/profile 계약과 generated 지침 본문을 유지한다.
+signed source/tag·Release·CI와 활성 소비 adoption 검증 결과는
+`docs/completed-milestones.md`의 v1.7.3 구간에 있다.
 
 ## 현재 milestone
 
-문서 탐색과 렌더러 유지보수 정리를 local change로 완료했다.
-status·roadmap의 중복 완료 목록을 정리하고 렌더러의 합성·optional output·binding·lock
-책임과 테스트 목적을 분리했다. 구조는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
+활성 milestone은 없다. 유지보수와 release/adoption을 완료하고 packet을 정리했다.
+구조와 책임 경계는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
 `docs/completed-milestones.md`, 다음 시작 조건은 `docs/roadmap.md`가 소유한다.
-이 유지보수 변경을 `v1.7.3` signed patch로 출고하고 활성 소비 저장소에 적용한다.
-완료 기준은 `docs/todo-release-1.7.3/spec.md`가 소유한다. 현재 published stable은
-`v1.7.2`이며 새 source/tag·CI·adoption의 완료 전까지 구별한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
@@ -57,18 +50,19 @@ boundary, navigation, CI contract, Python syntax와 64개 회귀 테스트를 �
 목적별로 나눈 결과이며 새로운 행동 coverage의 증가로 해석하지 않는다.
 변경 전 renderer와 13개 synthetic 설정의 출력·오류 판정이 일치했다.
 
-이는 local 유지보수 검증이다. published release source의 Python 3.11/3.14 CI와
-소비 adoption evidence는 완료 이력에 유지하며 새 변경의 remote CI나 소비 검증으로
-간주하지 않는다. 필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를
-기준으로 해당 지침을 조정한다.
+signed release source의 새 checkout에서도 native gate를 통과했고, Python 3.11/3.14
+동일 source SHA CI를 확인했다. 활성 소비 저장소는 pin/source identity,
+standalone/interface·해당 native gate·publication boundary·remote equality와 동일
+SHA terminal CI를 확인했다. 기존 profile·overlay·native 검사·active work를 보존했다.
+필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를 기준으로 조정한다.
 
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.7.2` release 및 소비 adoption verified
+- remote: `v1.7.3` release 및 소비 adoption verified
 - license: `Apache-2.0`
 - CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA CI verified
-- stable release: signed annotated `v1.7.2`, 서명·remote tag/source equality와 GitHub Release verified
+- stable release: signed annotated `v1.7.3`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계
