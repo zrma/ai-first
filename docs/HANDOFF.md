@@ -6,18 +6,16 @@
 경로별 근거와 미확인 범위, 누적 finding 상태와 후발 지적의 기원 구분을 core generated
 지침으로 전달한다. 상세 계약은 `docs/WORK_LIFECYCLE.md`가 소유한다.
 
-signed release source와 원격 tag identity, GitHub Release 및 Python 3.11/3.14 CI를
-확인했다. 활성 소비 저장소는 같은 signed source에 고정했고 standalone/interface,
-repository-native/publication gate, remote equality와 동일 SHA terminal CI를 확인했다.
-기존 profile·overlay·native 검사·active work를 보존했다. 깨끗하고 원격의 조상인 로컬
-기본 작업 사본은 검증된 원격 상태로 갱신하고 기존 이력을 보존했다.
+출고 당시 source/tag·Release·CI와 소비 adoption 검증 결과는
+`docs/completed-milestones.md`의 v1.7.2 구간에 있다. 이후 local 유지보수 변경의
+검증과 published source의 evidence는 구별한다.
 
 ## 현재 milestone
 
-active milestone은 없다. Stage 0부터 Stage 15와 후속 startup routing·누적 리뷰 지침의
-release/adoption을 완료했다. 지적 소멸이나 연속 무지적을 검토 완전성으로 간주하지 않으며,
-작은 변경에 별도 장부나 고정 리뷰 횟수를 강제하지 않는다. 실제 agent의 리뷰 누락 감소는
-미측정이며 지침·출고 검증 통과를 행동 개선의 증거로 해석하지 않는다.
+문서 탐색과 렌더러 유지보수 정리를 진행한다.
+`docs/todo-maintenance-refactor/spec.md`와 `open-questions.md`가 범위·완료 기준을
+소유한다. 상태 문서의 중복 이력 정리 후 렌더러 책임 분리와 관련 테스트를 정리한다.
+이 작업은 local 유지보수이며 release와 소비 adoption은 포함하지 않는다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만

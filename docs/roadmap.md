@@ -1,138 +1,26 @@
 # Roadmap
 
-## Stage 0 — Charter and boundaries
+현재 작업은 `docs/status.md`, 재개 지점과 publication 상태는 `docs/HANDOFF.md`가
+소유한다. 완료된 Stage 0–15와 후속 release/adoption의 결과·검증 한계는
+`docs/completed-milestones.md`에서 확인한다.
 
-AI-first identity, 인간과 AI의 역할, layer, permission, publication과 migration
-boundary를 고정한다.
+## 다음 작업을 시작할 조건
 
-상태: 완료
+| 후보 | 시작 조건 | 범위를 정할 때 유지할 경계 |
+| --- | --- | --- |
+| 추가 versioned language/toolchain profile catalog | 둘 이상의 독립 소비 근거 | core는 model/vendor 중립적으로 유지하고 repository 고유 계약은 overlay에 둔다. |
+| verification 도입 확대 | 반복 업무의 수작업·재작업 감소 또는 명시적 요구 | 선택형 보조 기능을 유지하고 native 검사와 제품 acceptance를 대체하지 않는다. |
+| work-coordination 확대 | 추가 호출 비용을 상쇄하는 반복 운영 효용 또는 명시적 요구 | 실험적 opt-in을 유지하고 타 vendor adapter·일반 orchestration은 별도 범위로 판단한다. |
+| startup/review 지침 조정 | 실제 작업에서 필수 근거 누락·불필요한 탐색·기록 부담의 반복 | 지침 배포 성공과 실제 행동 개선을 구별한다. |
+| 배포·adoption 도구 확장 | 반복 installation friction 또는 수동 overlay 오류 | 독립 실행, version pin과 repository-native gate를 보존한다. |
 
-## Stage 1 — Self-hosting core
+추가 capability의 상세 조건과 compatibility 경계는 `docs/COMPATIBILITY.md`가 소유한다.
+후보의 존재만으로 active milestone을 열거나 소비 저장소에 기능을 일괄 도입하지 않는다.
 
-선언 schema, core/profile/overlay composition, lock, deterministic drift check와
-standalone fixture를 구현하고 이 저장소 자체에 적용한다.
+## 판단에 남아 있는 한계
 
-상태: 완료
-
-## Stage 2 — Public foundation
-
-repository gate, machine-local publication gate, CI와 license를 닫고 공개 remote에서
-branch, SHA와 terminal CI를 검증한다.
-
-상태: 완료
-
-## Stage 3 — Representative pilots
-
-서로 다른 개발·운영·위험 특성을 가진 대표 소비 저장소에 VCS-isolated migration
-checkout으로 도입한다. repository-native gate와 project identity 보존을 확인한다.
-
-상태: 완료
-
-## Stage 4 — Stable v1
-
-pilot evidence를 반영해 schema, profile, migration contract와 compatibility policy를
-안정화하고 versioned v1을 공개한다.
-
-상태: 완료
-
-## Stage 5 — Portfolio adoption
-
-나머지 대상 저장소를 저장소별 독립 change와 gate로 순차 도입한다. framework는
-소비 저장소의 inventory나 account-wide 진행 상태를 공개 tracked artifact로
-소유하지 않는다.
-
-상태: 완료
-
-## Stage 6 — Active-work lifecycle
-
-완료된 work packet이 active namespace와 pointer에 남지 않도록 terminal 상태를
-deterministic gate로 거부하고 completed history와 current work의 경계를 고정한다.
-
-상태: 완료
-
-## Stage 7 — VCS closeout and permission continuity
-
-검증된 local 작업을 logical change와 empty working copy로 기본 마감하고, 명확히 승인된
-publication transaction은 같은 bounded task 안에서 중복 승인 없이 terminal evidence까지
-계속하는 계약을 고정한다.
-
-상태: 완료
-
-## Stage 8 — Contract audit hardening
-
-일반 contract/status review를 명시 없이 exhaustive capability로 확대하지 않는
-proportionality를 core에 고정하고, standalone checker가 lock의 source/profile/input
-metadata 정합성을 독립적으로 검증하게 한다.
-
-상태: 완료
-
-## Stage 9 — Stable v1.3 release and adoption
-
-contract audit hardening을 signed annotated `v1.3.0`으로 공개한 뒤, generated Markdown
-formatter 호환성 patch인 `v1.3.1`을 adoption source로 사용해 승인된 소비 저장소 집합을
-VCS-isolated checkout에서 이관한다. 각 저장소의 standalone/native/publication gate,
-remote equality와 same-SHA terminal CI를 독립적으로 확인한다.
-
-상태: 완료
-
-## Stage 10 — GPT-6 Astra guidance and adoption
-
-공식 Astra 지침으로 `openai-agent-guidance` profile을 갱신하고 schema/core 경계를
-유지한다. 아카이브 여부와 원격 기본 브랜치의 관리 선언·lifecycle을 확인한 활성 소비
-저장소를 격리 checkout에서 검증하고, 승인된 publication과 same-SHA CI로 닫는다.
-
-상태: 완료. 결과와 검증 범위는 `docs/completed-milestones.md`에 있다.
-
-## Stage 11 — Spec-to-artifact lifecycle
-
-마일스톤의 설계 정합성을 spec으로 확보하고 완료 결과를 지속할 artifact로 이관한다.
-framework self-hosting 정리와 소비 저장소 적용을 각각 검증한다.
-
-상태: 완료. signed `v1.5.0`과 승인된 소비 저장소의 release pin, native/publication
-gate, remote equality와 same-SHA terminal CI를 확인했다. 결과와 검증 한계는
-`docs/completed-milestones.md`, 현재 상태는 `docs/HANDOFF.md`가 소유한다.
-
-## Stage 12 — Intent-aware change review
-
-기존 spec에 문제·원하는 결과·영향·제약·non-goal을 구별하고, 변경 전 기준과 spec
-변경 자체를 diff·검증과 대조한다. PR/local 리뷰 기록에서 완료 후에도 필요한 당시
-기준과 최종 소유 artifact를 추적한다. 문서량·리뷰 깊이는 위험에 비례시키며
-native 형식과 기존 permission/schema를 보존한다.
-
-상태: 완료. signed `v1.6.0` release와 승인된 활성 소비 저장소의 release pin,
-native/publication gate, remote equality 및 same-SHA terminal CI를 확인했다.
-계약은 `docs/WORK_LIFECYCLE.md`, 검증 범위와 한계는 `docs/completed-milestones.md`,
-현재 상태는 `docs/HANDOFF.md`가 소유한다.
-
-
-## Stage 13 — Reusable verification workflow
-
-공통 검증 runtime·skill을 versioned optional profile로 배포하고 native runner를 한 번
-연결한다. 실제 실행·결과·standalone 및 도입 비용을 검증한다.
-
-상태: 구현·평가 완료, v1.7.0에서 선택형 profile로 배포. 사용법은 `docs/VERIFICATION.md`, 결과와 한계는
-`docs/completed-milestones.md`를 따른다. 행동 판단 개선과 기존 직접 실행 대비 수작업
-감소는 입증하지 못했으므로 portfolio 확대를 자동으로 진행하지 않는다. 반복 업무의
-절감 evidence 또는 명시적 요구가 다음 시작 조건이다.
-
-
-## Stage 14 — Operational work coordination
-
-공통 interface assertion을 standalone checker에 위임하고 독립 변경의 배정·격리·검증 인계와
-통합을 command로 제공한다. 단일·다중 agent의 실제 파일 수정과 반복 갱신 비용을 평가한다.
-
-상태: 구현·평가 완료, v1.7.0에서 실험적 opt-in으로 배포. 두 소비 clone의 반복 native 수정 제거와 Codex에서의
-실제 작업 배정·통합을 확인했다. 작은 과제 세 arm은 모두 acceptance를 통과했으며 추가 호출
-비용도 관측했다. 사용 계약은 `docs/WORK_COORDINATION.md`, 평가와 한계는
-`docs/completed-milestones.md`가 소유한다. optional profile 확대나 타 vendor adapter는 별도의
-명시적 요구 또는 반복 운영 evidence가 생겼을 때 범위를 정한다.
-
-## Stage 15 — Proportional v1.7 release and adoption
-
-반복 유지보수 감소를 확인한 공통 interface checker 위임을 기본 적용하고 verification은
-선택형, work-coordination은 실험적 opt-in으로 배포한다. 기존 소비 profile과 native 제품
-검사를 유지하며 immutable release pin, publication과 동일 SHA CI까지 검증한다.
-
-상태: 완료. signed `v1.7.0`과 활성 소비 저장소의 native/publication gate, remote equality와
-terminal 동일 SHA CI를 확인했다. 제품 runtime 배포는 포함하지 않는다. 결과와 한계는
-`docs/completed-milestones.md`, 현재 상태와 다음 조건은 `docs/HANDOFF.md`가 소유한다.
+verification의 행동 보고 평가에서는 baseline 대비 개선을 관측하지 못했다.
+work-coordination은 반복 native 수정 제거와 실제 배정·인계·통합을 확인했지만,
+일반 속도·비용·품질 우위는 입증하지 못했다. startup routing의 token·시간 절감과
+누적 리뷰 지침의 실제 누락 감소도 미측정이다. 평가 방법과 수치는
+`docs/completed-milestones.md`에 유지한다.

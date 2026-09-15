@@ -4,6 +4,30 @@
 compatibility와 `docs/WORK_LIFECYCLE.md`가 소유하며 원래 작업 spec은 VCS 이력으로
 추적한다. 과거 성공 기록은 현재 remote/runtime 상태의 재검증을 뜻하지 않는다.
 
+## Stage index
+
+완료된 단계의 순서와 결과 소유 구간이다. 현재·후속 작업은 `docs/status.md`와
+`docs/roadmap.md`가 소유한다.
+
+| Stage | 이 문서의 결과 구간 |
+| --- | --- |
+| 0 | Charter and architecture |
+| 1 | Self-hosting core |
+| 2 | Public foundation |
+| 3 | Representative pilots |
+| 4 | Stable v1 |
+| 5 | Portfolio adoption |
+| 6 | Active-work lifecycle |
+| 7 | VCS closeout and permission continuity |
+| 8 | Contract audit hardening |
+| 9 | Stable v1.3 release and adoption |
+| 10 | GPT-6 Astra guidance and adoption |
+| 11 | Spec-to-artifact lifecycle |
+| 12 | Intent-aware change review |
+| 13 | Reusable verification workflow — local candidate |
+| 14 | Operational workflows — local candidate |
+| 15 | Stage 15 — Proportional v1.7 release and adoption |
+
 ## Charter and architecture
 
 AI-first를 command-only assistance가 아닌 active project stewardship로 정의했다.
@@ -448,3 +472,10 @@ framework canonical gate와 61개 회귀 테스트, framework 및 consumer 전�
 보존했다. native 종료가 요구하는 기록은 해당 저장소의 소유 artifact로 이관했다.
 실제 agent 발견률·누락률·사용자 반복 요청 감소는 측정하지 않았으며, runtime 제품
 release나 별도 live rollout을 이번 지침 배포의 증거로 주장하지 않는다.
+
+## Current-state documentation cleanup
+
+status는 현재 작업·blocker, roadmap은 후속 시작 조건, handoff는 재개·출고 상태를
+소유하도록 과거 완료 목록을 정리했다. 기존 release/adoption 결과와 평가 수치·한계는
+이 문서에 보존하고 Stage 순서도 이 문서의 index로 이관했다. 문서의 중복 갱신 지점을
+줄였으며 실제 탐색 시간이나 token 절감은 측정하지 않았다.
