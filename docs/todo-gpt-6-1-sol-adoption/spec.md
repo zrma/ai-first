@@ -23,14 +23,15 @@ application runtime model/API/tool handler 변경, 새 optional profile·binding
   overlay·native lifecycle·기존 작업은 유지한다.
 - 관리 대상은 current remote default branch의 선언과 활성 관리 의도 및 archived
   상태로 판단한다. 대상 inventory와 검증 원문은 machine-local에서만 관리한다.
-- 소비 변경은 기본 working copy 밖에 격리한다. release 전에는 immutable commit pin으로
-  준비하고 승인된 publication 후 release pin을 확정한다.
+- 소비 변경은 기본 working copy 밖에 격리한다. native 계약이 release source를
+  요구하므로 서명된 로컬 annotated tag에 고정해 준비하고 승인 후 같은 tag를 발행한다.
+  원래 commit pin 준비는 native gate가 거부해 변경했으며 검사와 source commit은 유지한다.
 
 ## Acceptance와 검증
 
-- [ ] baseline·공식 API 제약·family guidance의 근거와 한계가 합성 결과에 포함된다.
-- [ ] self-hosting/fixture version, generated drift와 연결된 native gate가 통과한다.
-- [ ] 활성 소비 저장소의 source/standalone/interface/native gate 및 기존 overlay·profile·
+- [x] baseline·공식 API 제약·family guidance의 근거와 한계가 합성 결과에 포함된다.
+- [x] self-hosting/fixture version, generated drift와 연결된 native gate가 통과한다.
+- [x] 활성 소비 저장소의 source/standalone/interface/native gate 및 기존 overlay·profile·
   active work 보존을 확인한다.
 - [ ] 승인된 framework main/signed `v1.8.0` tag와 소비 저장소 publication에서 remote
   identity 및 same-SHA terminal CI를 확인한다.
