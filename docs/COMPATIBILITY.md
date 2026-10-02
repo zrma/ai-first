@@ -38,6 +38,18 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## GPT-6.1 Sol guidance update
+
+`1.8.0`은 `openai-agent-guidance` baseline을 GPT-6.1 Sol로 갱신하는
+backward-compatible minor다. 공식 model page의 reasoning effort와 Responses tool
+calling 제약을 반영하고, family prompting 지침은 Astra 관측에서 나온 시작점임을
+명시한다. Sol의 행동 개선이나 cost/quality 효과는 실측하지 않았다.
+
+core, schema/Structure ID, CLI, renderer/runtime과 optional profile 선택을 보존한다.
+소비 저장소는 기존 overlay·native lifecycle·active work를 유지하며 version/source pin과
+generated artifact만 갱신한다. application runtime migration은 별도 범위를 정한다.
+현재 release/adoption 단계는 `docs/HANDOFF.md`가 소유한다.
+
 ## Renderer maintenance patch
 
 `1.7.3`은 렌더러 내부 책임과 테스트·상태 문서 구성을 정리한다. 선언/lock schema 1,

@@ -48,7 +48,7 @@ grep -Fq -- 'Scope proportionality' AGENTS.md ||
   fail "investigation-depth proportionality is missing"
 grep -Fq -- 'contract/status review' docs/agent-harness.md ||
   fail "contract review scope guard is missing"
-grep -Fq -- '`gpt-6-astra`' AGENTS.md ||
+grep -Fq -- '`gpt-6.1-sol`' AGENTS.md ||
   fail "current OpenAI model guidance is missing"
 
 printf 'agent harness interface check passed\n'

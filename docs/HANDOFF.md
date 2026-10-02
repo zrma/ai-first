@@ -9,7 +9,9 @@ signed source/tag·Release·CI와 활성 소비 adoption 검증 결과는
 
 ## 현재 milestone
 
-활성 milestone은 없다. 유지보수와 release/adoption을 완료하고 packet을 정리했다.
+활성 milestone은 `docs/todo-gpt-6-1-sol-adoption/spec.md`다. GPT-6.1 Sol provider
+guidance와 `1.8.0`의 활성 소비 저장소 pinned update를 준비한다. 현재 published stable은
+`v1.7.3`이며 새 source/tag와 소비 release pin의 publication 완료를 의미하지 않는다.
 구조와 책임 경계는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
 `docs/completed-milestones.md`, 다음 시작 조건은 `docs/roadmap.md`가 소유한다.
 

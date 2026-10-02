@@ -8,7 +8,8 @@
 
 ## 진행 중
 
-없음. `v1.7.3` release와 활성 소비 적용을 완료했다.
+- GPT-6.1 Sol guidance 및 backward-compatible `1.8.0` adoption 준비:
+  `docs/todo-gpt-6-1-sol-adoption/spec.md`.
 
 ## Blocker와 결정 필요
 

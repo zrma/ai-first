@@ -18,6 +18,12 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
+`1.8.0`은 GPT-6.1 Sol (`gpt-6.1-sol`) agent guidance와 활성 소비 저장소의 pinned
+update를 준비한다. 공식 model/API 제약을 반영하고 family prompting 지침의 Astra
+관측 근거와 Sol 행동 미측정 한계를 명시한다. 진행 범위는
+[Sol adoption spec](docs/todo-gpt-6-1-sol-adoption/spec.md), published stable은
+[handoff](docs/HANDOFF.md)에서 확인한다.
+
 `1.7.3`은 렌더러의 문서 합성·optional output·binding·lock 책임을 분리하고
 현재 상태 문서와 테스트 구성을 정리한 유지보수 패치다. 기존 CLI·schema·profile과
 생성되는 운영 계약을 유지한다. 실제 출고·소비 적용 상태는 [handoff](docs/HANDOFF.md)를 따른다.
@@ -38,8 +44,8 @@ assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존
 필요한 경우를 위한 실험적 opt-in이다. 소비 저장소 갱신 시 새 runtime이나 binding을
 일괄 추가하지 않는다. 작은 작업은 기존 native 명령과 흐름으로 수행한다.
 
-model/vendor 중립적인 core, 기존 schema/Structure ID와 GPT-6 Astra
-(`gpt-6-astra`) capability profile을 유지한다. 선언에서 core, profile과 overlay를
+model/vendor 중립적인 core와 기존 schema/Structure ID를 유지하며 provider profile의
+baseline은 GPT-6.1 Sol (`gpt-6.1-sol`)로 갱신한다. 선언에서 core, profile과 overlay를
 결정적으로 합성하며 central/standalone check가 같은 lock을 검증한다.
 기존 spec의 의도·제약·acceptance와 diff/evidence를 대조하고 완료 지식을 owning artifact로
 이관하는 계약도 유지한다.
