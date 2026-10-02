@@ -537,3 +537,38 @@ archived 소비 저장소는 제외했다.
 제품 runtime release·live rollout과 실제 탐색 시간·token·비용·리뷰 품질 개선은 이번
 검증 범위 밖이다. release/adoption acceptance와 유지할 artifact를 대조한 뒤 완료
 packet과 active pointer를 정리했다.
+
+## GPT-6.1 Sol guidance release and adoption — v1.8.0
+
+OpenAI agent guidance baseline을 `gpt-6.1-sol`로 갱신하고 signed annotated `v1.8.0`으로
+출고했다. 공식 model page에 맞춰 reasoning effort, Responses tool-calling과 unsupported
+sampling/logprob parameter를 명시했다. GPT-6 family prompting 지침은 Astra 관측에서
+나온 시작점이며 Sol 행동 실측으로 주장하지 않는다. 지속 계약은 provider profile과
+`docs/COMPATIBILITY.md`가 소유한다.
+
+source commit은 `39dd9d2aef19fef36b11b69bf7ed4dd4edad9df7`이다. 원래 기준은
+`39dd9d2aef19fef36b11b69bf7ed4dd4edad9df7:docs/todo-gpt-6-1-sol-adoption/spec.md`,
+준비 중 발견한 native release-source 계약과 변경 근거는
+`d99459841dfabaf5046800e6c49504dccfb8616b:docs/todo-gpt-6-1-sol-adoption/spec.md`에서
+추적한다. commit pin 준비가 native gate에서 거부돼 source commit을 유지한 서명된
+release tag로 고정했으며 검사를 우회하지 않았다. 이후 완료 문서 main과 source tag는
+구별한다.
+
+tag 서명·원격 tag object/source equality와 GitHub Release를 확인했다. 공개 source를
+새로 clone해 64개 기존 회귀 테스트와 실제 jj 통합을 skip 없이 통과했고,
+Python 3.11/3.14 동일 source SHA CI도 성공했다. canonical gate의 drift, interface,
+publication, navigation과 CI contract를 통과했다. 테스트 수는 기존 검증 범위이며
+새 행동 eval의 결과가 아니다.
+
+활성 소비 저장소는 current remote default branch 기준으로 격리 checkout에서 release
+pin과 generated artifact를 갱신했다. core, schema/Structure ID, renderer/runtime,
+기존 optional profile 선택·overlay·native script·active work와 로컬 이력을 보존했다.
+standalone/source/interface·native/publication gate, remote equality와 동일 SHA terminal
+CI를 확인했다. native lifecycle의 완료 이관과 packet 정리도 이행했다. archived 대상은
+제외했고 대상별 inventory와 raw evidence는 machine-local 계층에만 보존한다.
+
+native runner의 선택적·CI 전용 항목 및 환경에 따른 내부 skip은 local 전체 실행으로
+주장하지 않는다. application runtime model/API/tool handler 변경, 제품 runtime release와
+별도 live rollout은 포함하지 않았다. Sol 행동·속도·비용·품질 효과는 측정하지 않았다.
+원래 acceptance와 결과·결정·한계를 대조한 뒤 완료 지식을 이관하고 todo packet과
+stale pointer를 제거했다.

@@ -2,22 +2,20 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.7.3`이다. 문서 탐색과 렌더러·테스트의 책임을 정리한
-유지보수 patch이며 CLI·schema·core/profile 계약과 generated 지침 본문을 유지한다.
-signed source/tag·Release·CI와 활성 소비 adoption 검증 결과는
-`docs/completed-milestones.md`의 v1.7.3 구간에 있다.
+현재 published stable은 `v1.8.0`이다. OpenAI agent guidance baseline을
+GPT-6.1 Sol (`gpt-6.1-sol`)로 갱신하고 공식 API 제약 및 family prompting 근거의
+한계를 반영했다. model/vendor 중립 core, CLI·schema·runtime·optional profile 선택과
+소비 저장소 overlay·native lifecycle을 유지한다.
+signed source/tag·Release·CI와 활성 소비 adoption 결과는
+`docs/completed-milestones.md`의 v1.8.0 구간에 있다.
 
 ## 현재 milestone
 
-활성 milestone은 `docs/todo-gpt-6-1-sol-adoption/spec.md`다. GPT-6.1 Sol provider
-guidance와 `1.8.0`의 활성 소비 저장소 pinned update를 준비한다. 현재 published stable은
-`v1.7.3`이며 새 source/tag와 소비 release pin의 publication 완료를 의미하지 않는다.
-central/소비 저장소의 local native 검증과 source pin·기존 입력 보존을 확인했다.
-native 계약에 맞춰 서명된 로컬 annotated `v1.8.0` source를 준비했으며 다음 단계는
-정확한 action/target 권한에 따른 framework와 소비 저장소별 publication 및 same-SHA CI다.
-고정 source tag와 이후 준비·완료 문서 commit은 구별한다.
-구조와 책임 경계는 `docs/ARCHITECTURE.md`, 결과와 검증 한계는
-`docs/completed-milestones.md`, 다음 시작 조건은 `docs/roadmap.md`가 소유한다.
+활성 milestone은 없다. Sol guidance와 pinned adoption의 acceptance를 확인하고
+완료 지식을 이관한 뒤 todo packet과 active pointer를 정리했다. release source tag와
+이후 완료 문서 commit은 구별한다. 구조와 책임 경계는 `docs/ARCHITECTURE.md`,
+결과와 검증 한계는 `docs/completed-milestones.md`, 다음 시작 조건은
+`docs/roadmap.md`가 소유한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
@@ -51,24 +49,25 @@ deterministic render, content-addressed lock과 central/standalone checker를 �
 ## 현재 검증
 
 연결된 native gate로 central/standalone drift, harness interface, repository publication
-boundary, navigation, CI contract, Python syntax와 64개 회귀 테스트를 통과했다.
-실제 jj clone 통합도 실행했고 skip은 없었다. 테스트 수 증가는 기존 복합 테스트를
-목적별로 나눈 결과이며 새로운 행동 coverage의 증가로 해석하지 않는다.
-변경 전 renderer와 13개 synthetic 설정의 출력·오류 판정이 일치했다.
+boundary, navigation, CI contract, Python syntax와 기존 64개 회귀 테스트를 통과했다.
+실제 jj clone 통합도 실행했고 skip은 없었다. 테스트 수를 새 행동 coverage나 Sol의
+효과 실측으로 해석하지 않는다.
 
-signed release source의 새 checkout에서도 native gate를 통과했고, Python 3.11/3.14
-동일 source SHA CI를 확인했다. 활성 소비 저장소는 pin/source identity,
+공개된 signed release source를 새로 clone해 source identity와 native gate를 확인했고,
+Python 3.11/3.14 동일 source SHA CI가 성공했다. 활성 소비 저장소는 pin/source identity,
 standalone/interface·해당 native gate·publication boundary·remote equality와 동일
-SHA terminal CI를 확인했다. 기존 profile·overlay·native 검사·active work를 보존했다.
+SHA terminal CI를 확인했다. 기존 profile·overlay·native 검사·active work와 로컬 이력을
+보존했다. native의 선택적·CI 전용 skip은 실제 실행 범위와 구별했다.
+application runtime migration과 Sol의 행동·속도·비용 효과는 검증하지 않았다.
 필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를 기준으로 조정한다.
 
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.7.3` release 및 소비 adoption verified
+- remote: `v1.8.0` release 및 소비 adoption verified
 - license: `Apache-2.0`
 - CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA CI verified
-- stable release: signed annotated `v1.7.3`, 서명·remote tag/source equality와 GitHub Release verified
+- stable release: signed annotated `v1.8.0`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

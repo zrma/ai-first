@@ -127,9 +127,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.7.3"
+framework_version = "1.8.0"
 source_kind = "release"
-source_revision = "v1.7.3"
+source_revision = "v1.8.0"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

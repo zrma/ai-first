@@ -8,10 +8,8 @@
 
 ## 진행 중
 
-- GPT-6.1 Sol guidance 및 backward-compatible `1.8.0` adoption 준비:
-  `docs/todo-gpt-6-1-sol-adoption/spec.md`.
-- central/소비 저장소의 local native 검증 완료. 남은 단계는 승인된 publication과
-  remote identity·same-SHA CI 및 최종 지식 이관이다.
+없음. GPT-6.1 Sol guidance와 `v1.8.0` release/adoption을 완료했다.
+결과·검증 범위와 한계는 `docs/completed-milestones.md`가 소유한다.
 
 ## Blocker와 결정 필요
 
