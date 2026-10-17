@@ -2,26 +2,19 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.8.0`이다. OpenAI agent guidance baseline을
-GPT-6.1 Sol (`gpt-6.1-sol`)로 갱신하고 공식 API 제약 및 family prompting 근거의
-한계를 반영했다. model/vendor 중립 core, CLI·schema·runtime·optional profile 선택과
-소비 저장소 overlay·native lifecycle을 유지한다.
+현재 published stable은 `v1.8.1`이다. GPT-6.1 Sol (`gpt-6.1-sol`) baseline을
+유지하며 cache migration, effort update 호환성, Ultrafast/data residency와 logprobs
+제거 안내를 보완했다. core, runtime, schema/Structure ID와 profile 선택을 유지한다.
 signed source/tag·Release·CI와 활성 소비 adoption 결과는
-`docs/completed-milestones.md`의 v1.8.0 구간에 있다.
+`docs/completed-milestones.md`의 v1.8.1 구간에 있다.
 
 ## 현재 milestone
 
-활성 milestone은 `docs/todo-sol-guidance-release/spec.md`다. 공식 문서 재검토의
-guidance 보완을 `v1.8.1` patch와 활성 소비 저장소 pinned update로 출고한다.
-기존 `v1.8.0`의 acceptance와 완료 지식은 이관했다. release source tag와
-이후 완료 문서 commit은 구별한다. 구조와 책임 경계는 `docs/ARCHITECTURE.md`,
-결과와 검증 한계는 `docs/completed-milestones.md`, 다음 시작 조건은
-`docs/roadmap.md`가 소유한다.
-
-2026-10-17 공식 문서 재검토의 local 보완은 cache migration, effort update 호환성,
-Ultrafast/data residency와 unsupported parameter 제거를 명확히 한다. 검토 범위와
-한계는 `docs/completed-milestones.md`의 Sol guidance 재검토 구간에 있다.
-published stable과 소비 release pin은 위 `v1.8.0`이며 이 local 보완의 출고는 별도다.
+활성 milestone은 없다. 공식 문서 재검토 보완의 release/adoption acceptance를
+확인하고 완료 지식을 이관한 뒤 todo packet과 active pointer를 정리했다.
+release source tag와 이후 완료 문서 commit은 구별한다. 구조와 책임 경계는
+`docs/ARCHITECTURE.md`, 결과와 검증 한계는 `docs/completed-milestones.md`,
+다음 시작 조건은 `docs/roadmap.md`가 소유한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
@@ -70,10 +63,10 @@ application runtime migration과 Sol의 행동·속도·비용 효과는 검증�
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.8.0` release 및 소비 adoption verified
+- remote: `v1.8.1` release 및 소비 adoption verified
 - license: `Apache-2.0`
 - CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA CI verified
-- stable release: signed annotated `v1.8.0`, 서명·remote tag/source equality와 GitHub Release verified
+- stable release: signed annotated `v1.8.1`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

@@ -38,6 +38,14 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Sol guidance compatibility patch
+
+`1.8.1`은 기존 Sol baseline의 API migration 안내를 보완한다. cache TTL/과금,
+effort update의 standard single-agent/compaction 제약, Ultrafast/data residency와
+endpoint별 logprobs 제거를 명시한다. core, runtime, schema/Structure ID, profile
+선택과 native lifecycle은 유지하며 capability나 비용을 자동 활성화하지 않는다.
+소비 저장소는 release pin과 generated artifact를 함께 갱신한다.
+
 ## GPT-6.1 Sol guidance update
 
 `1.8.0`은 `openai-agent-guidance` baseline을 GPT-6.1 Sol로 갱신하는
@@ -127,9 +135,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.8.0"
+framework_version = "1.8.1"
 source_kind = "release"
-source_revision = "v1.8.0"
+source_revision = "v1.8.1"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

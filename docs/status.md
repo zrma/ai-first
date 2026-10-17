@@ -8,10 +8,8 @@
 
 ## 진행 중
 
-Sol guidance 보완의 `v1.8.1` release/adoption:
-`docs/todo-sol-guidance-release/spec.md`.
-현재 published stable은 `v1.8.0`이며 기존 결과·검증 한계는
-`docs/completed-milestones.md`가 소유한다.
+없음. Sol guidance 보완의 `v1.8.1` release/adoption을 완료했다.
+결과·검증 범위와 한계는 `docs/completed-milestones.md`가 소유한다.
 
 ## Blocker와 결정 필요
 
@@ -21,5 +19,3 @@ Sol guidance 보완의 `v1.8.1` release/adoption:
 
 추가 profile catalog와 optional capability 확대는 반복 운영 근거나 명시적 요구가
 생겼을 때 범위를 정한다. 후보별 시작 조건은 `docs/roadmap.md`를 따른다.
-Sol guidance 보완을 출고할 때는 새 version/source pin과 generated artifact를 함께
-검증하고 release 및 소비 저장소별 publication 범위를 확정한다.

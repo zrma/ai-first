@@ -592,3 +592,31 @@ profile source에서 self-hosting harness와 lock을 다시 합성했다. 연결
 통과했다. 이는 문서와 전달 경로 검증이며 Sol의 행동·속도·비용 효과 eval이나 실제 API
 request 검증을 뜻하지 않는다. runtime·schema·profile 선택과 published `v1.8.0` source는
 유지하며 새 release 및 소비 저장소 adoption은 이 local 수정에 포함하지 않는다.
+
+## Sol guidance patch release and adoption — v1.8.1
+
+공식 문서 재검토의 provider guidance 보완을 signed annotated `v1.8.1` patch로
+출고했다. source commit은 `c8727271d308b7b7cd90109e9ed850d1eb4c4e39`이며 출고 기준은
+`c8727271d308b7b7cd90109e9ed850d1eb4c4e39:docs/todo-sol-guidance-release/spec.md`에서 추적한다.
+기존 보완 change와 이관 내용은 위 local correction 구간에 있고 최종 계약은
+provider profile과 `docs/COMPATIBILITY.md`가 소유한다.
+
+tag 서명·원격 tag object/peeled source equality·GitHub Release를 확인했다.
+공개 source 새 clone에서 기존 64개 회귀 테스트와 실제 jj 통합을 skip 없이 통과했고,
+Python 3.11/3.14 동일 source SHA CI도 성공했다. 이후 완료 문서 main과 release source
+tag는 구별한다. core, runtime, schema/Structure ID, CLI와 optional profile 선택은 유지한다.
+
+승인된 활성 소비 대상을 current remote default branch에서 격리해 release pin과
+generated artifact를 갱신했다. 기존 overlay·profile·native script·active work와 이력을
+보존했고 source/render/standalone/interface·native/publication gate, remote equality와
+동일 SHA terminal CI를 확인했다. 기본 작업 사본과 다른 작업의 변경을 섞지 않았다.
+
+native 정책에 따라 만료된 운영 문서를 실제 실행 절차와 대조해 검토일을 갱신했고,
+현행 provider 지침과 충돌하는 고정 model 참조를 일반화했다. 필수 dependency가 준비된
+검증 환경에서 native 시작 검사와 full publication gate를 통과했으며 검사나 권한을
+우회하지 않았다. native lifecycle의 결과 이관과 자체 완료 packet 정리도 이행했다.
+선택적·CI 전용 및 환경 조건에 따른 내부 skip은 실제 실행 범위와 구별한다.
+
+application runtime release, 별도 live rollout, 실제 API request 및 Sol 행동·속도·비용
+효과 eval은 포함하지 않았다. acceptance와 결과·결정·한계를 대조하고 이관한 뒤 중앙
+packet과 stale pointer를 제거했다. 대상 inventory와 raw evidence는 machine-local 계층에만 둔다.
