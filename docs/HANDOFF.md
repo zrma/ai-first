@@ -11,8 +11,9 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 
 ## 현재 milestone
 
-활성 milestone은 없다. Sol guidance와 pinned adoption의 acceptance를 확인하고
-완료 지식을 이관한 뒤 todo packet과 active pointer를 정리했다. release source tag와
+활성 milestone은 `docs/todo-sol-guidance-release/spec.md`다. 공식 문서 재검토의
+guidance 보완을 `v1.8.1` patch와 활성 소비 저장소 pinned update로 출고한다.
+기존 `v1.8.0`의 acceptance와 완료 지식은 이관했다. release source tag와
 이후 완료 문서 commit은 구별한다. 구조와 책임 경계는 `docs/ARCHITECTURE.md`,
 결과와 검증 한계는 `docs/completed-milestones.md`, 다음 시작 조건은
 `docs/roadmap.md`가 소유한다.

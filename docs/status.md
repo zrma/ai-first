@@ -8,9 +8,10 @@
 
 ## 진행 중
 
-없음. GPT-6.1 Sol guidance와 `v1.8.0` release/adoption을 완료했다.
-결과·검증 범위와 한계는 `docs/completed-milestones.md`가 소유한다.
-2026-10-17 공식 문서 재검토의 local guidance 보완과 기존 published release는 구별한다.
+Sol guidance 보완의 `v1.8.1` release/adoption:
+`docs/todo-sol-guidance-release/spec.md`.
+현재 published stable은 `v1.8.0`이며 기존 결과·검증 한계는
+`docs/completed-milestones.md`가 소유한다.
 
 ## Blocker와 결정 필요
 
