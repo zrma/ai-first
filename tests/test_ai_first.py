@@ -126,6 +126,14 @@ class GeneratedGuidanceTests(ConsumerTestCase):
         for output in ("AGENTS.md", "docs/agent-harness.md"):
             self.assertIn("변경 전 의도·제약·".encode(), first.outputs[output])
             self.assertIn("immutable revision과 경로".encode(), first.outputs[output])
+            # 중앙 lifecycle을 읽지 않는 소비자도 두 보완 기준을 전달받는다.
+            for contract in (
+                "테스트 기대값은 원래 요구·계약",
+                "유지할 동작",
+                "교정 피드백",
+                "같은 원인",
+            ):
+                self.assertIn(contract.encode(), first.outputs[output])
         self.assertIn(
             (
                 "10. 의미 있고 검증된 결과를 하나 이상의 독립적으로 설명 가능한 local change로\n"
