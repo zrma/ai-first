@@ -572,3 +572,23 @@ native runner의 선택적·CI 전용 항목 및 환경에 따른 내부 skip은
 별도 live rollout은 포함하지 않았다. Sol 행동·속도·비용·품질 효과는 측정하지 않았다.
 원래 acceptance와 결과·결정·한계를 대조한 뒤 완료 지식을 이관하고 todo packet과
 stale pointer를 제거했다.
+
+## GPT-6.1 Sol guidance recheck — local correction
+
+2026-10-17의 공식 model/family prompting·migration·prompt caching·reasoning·Ultrafast
+문서를 provider profile과 대조했다. 기존 model ID, effort 범위, Responses tool calling,
+unsupported sampling parameter 및 Astra 관측과 Sol 행동 실측의 구별은 일치했다.
+기존 profile의 기준은
+`8003d2241dd5ec96d5666ffb73037e657635dd50:framework/profiles/openai-agent-guidance/agent-harness.md`다.
+
+기존 logprobs 문구는 제거 여부가 모호해 endpoint별 제거 대상으로 명확히 했다.
+cache TTL 전환과 read/write 과금, effort update의 standard single-agent 및 compaction
+호환성, Sol의 Ultrafast/data residency 조건은 누락된 migration 안내로 보완했다.
+PTC의 read-only 제한은 framework 운영 정책임을 명시했다. family prompting 지침의
+Astra 근거와 기존 permission·scope·위임 정책은 유지한다.
+
+profile source에서 self-hosting harness와 lock을 다시 합성했다. 연결된 canonical gate의
+기존 64개 회귀 테스트와 실제 jj 통합, drift/interface/publication/navigation·CI contract를
+통과했다. 이는 문서와 전달 경로 검증이며 Sol의 행동·속도·비용 효과 eval이나 실제 API
+request 검증을 뜻하지 않는다. runtime·schema·profile 선택과 published `v1.8.0` source는
+유지하며 새 release 및 소비 저장소 adoption은 이 local 수정에 포함하지 않는다.

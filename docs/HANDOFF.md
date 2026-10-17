@@ -17,6 +17,11 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 결과와 검증 한계는 `docs/completed-milestones.md`, 다음 시작 조건은
 `docs/roadmap.md`가 소유한다.
 
+2026-10-17 공식 문서 재검토의 local 보완은 cache migration, effort update 호환성,
+Ultrafast/data residency와 unsupported parameter 제거를 명확히 한다. 검토 범위와
+한계는 `docs/completed-milestones.md`의 Sol guidance 재검토 구간에 있다.
+published stable과 소비 release pin은 위 `v1.8.0`이며 이 local 보완의 출고는 별도다.
+
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
 선택한다. `docs/VERIFICATION.md`와 `docs/WORK_COORDINATION.md`가 사용법과 지원 경계를,
