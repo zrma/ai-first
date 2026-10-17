@@ -2,18 +2,19 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.8.1`이다. GPT-6.1 Sol (`gpt-6.1-sol`) baseline을
-유지하며 cache migration, effort update 호환성, Ultrafast/data residency와 logprobs
-제거 안내를 보완했다. core, runtime, schema/Structure ID와 profile 선택을 유지한다.
+현재 published stable은 `v1.8.2`다. 원래 요구·계약에서 테스트 기대값을 정하고
+유지할 동작을 함께 검증하며 같은 원인의 교정을 확정된 사실·의미·범위 안에 적용한다.
+기존 Sol baseline과 `v1.8.1` compatibility 보완, runtime·schema·profile을 유지한다.
 signed source/tag·Release·CI와 활성 소비 adoption 결과는
-`docs/completed-milestones.md`의 v1.8.1 구간에 있다.
+`docs/completed-milestones.md`의 v1.8.2 구간에 있다.
 
 ## 현재 milestone
 
-현재 작업은 `docs/todo-review-precision-release/spec.md`다. published `v1.8.1`의 Sol
-보완을 유지하고 리뷰 기대값·교정 범위를 통합한 `v1.8.2` source와 활성 소비 adoption을
-검증한다. release source tag와 이후 완료 문서 main은 구별한다.
-결과와 한계는 `docs/completed-milestones.md`가 소유한다.
+활성 milestone은 없다. Sol 보완과 리뷰 지침 통합의 release/adoption acceptance를
+확인하고 결과·결정·한계를 owning artifact에 이관한 뒤 완료 packet과 active pointer를
+정리했다. release source tag와 이후 완료 문서 main은 구별한다.
+구조·책임은 `docs/ARCHITECTURE.md`, 결과는 `docs/completed-milestones.md`,
+후속 시작 조건은 `docs/roadmap.md`가 소유한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
@@ -56,16 +57,16 @@ Python 3.11/3.14 동일 source SHA CI가 성공했다. 활성 소비 저장소�
 standalone/interface·해당 native gate·publication boundary·remote equality와 동일
 SHA terminal CI를 확인했다. 기존 profile·overlay·native 검사·active work와 로컬 이력을
 보존했다. native의 선택적·CI 전용 skip은 실제 실행 범위와 구별했다.
-application runtime migration과 Sol의 행동·속도·비용 효과는 검증하지 않았다.
+application runtime migration과 실제 agent의 재작업·시간·비용 효과는 검증하지 않았다.
 필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를 기준으로 조정한다.
 
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.8.1` release 및 소비 adoption verified
+- remote: `v1.8.2` release 및 소비 adoption verified
 - license: `Apache-2.0`
 - CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA CI verified
-- stable release: signed annotated `v1.8.1`, 서명·remote tag/source equality와 GitHub Release verified
+- stable release: signed annotated `v1.8.2`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

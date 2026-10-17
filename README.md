@@ -18,12 +18,14 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 stable은 [v1.8.1](https://github.com/zrma/ai-first/releases/tag/v1.8.1)이다.
-GPT-6.1 Sol (`gpt-6.1-sol`) agent guidance와 활성 소비 저장소의 pinned update를
-출고했다. `1.8.1`은 cache·effort update·Ultrafast/data residency와 logprobs migration
-안내를 보완한 patch다. 공식 model/API 제약을 반영하고 family prompting 지침의 Astra 관측 근거와
-Sol 행동 미측정 한계를 명시한다. source·release·adoption 검증 결과는
-[완료 요약](docs/completed-milestones.md), 현재 상태는 [handoff](docs/HANDOFF.md)가 소유한다.
+현재 stable은 [v1.8.2](https://github.com/zrma/ai-first/releases/tag/v1.8.2)이다.
+`1.8.2`는 원래 요구·계약에 따른 테스트 기대값과 유지할 동작 검증, 같은 원인의
+교정 범위를 기존 리뷰 지침에 명확히 한다. 새 skill이나 필수 절차를 추가하지 않는다.
+기존 GPT-6.1 Sol (`gpt-6.1-sol`) baseline과 `1.8.1`의 cache·effort update·
+Ultrafast/data residency·logprobs migration 보완을 유지한다.
+signed source·release와 활성 소비 저장소의 pinned update를 검증했다.
+지침 전달·호환성 검증이며 실제 재작업·시간·비용 감소 효과는 미측정이다.
+결과는 [완료 요약](docs/completed-milestones.md), 현재 상태는 [handoff](docs/HANDOFF.md)가 소유한다.
 
 `1.7.3`은 렌더러의 문서 합성·optional output·binding·lock 책임을 분리하고
 현재 상태 문서와 테스트 구성을 정리한 유지보수 패치다. 기존 CLI·schema·profile과

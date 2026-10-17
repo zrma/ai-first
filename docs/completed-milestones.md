@@ -642,3 +642,40 @@ packet과 stale pointer를 제거했다. 대상 inventory와 raw evidence는 mac
 출고·소비 adoption과 모델별 효과는 이번 local 보완의 범위 밖이다.
 
 acceptance와 소유 artifact를 대조하고 완료 packet과 active pointer를 정리했다.
+
+## Review precision release and adoption — v1.8.2
+
+published Sol compatibility 보완과 리뷰 기대값·교정 범위 명확화를 signed annotated
+`v1.8.2`로 통합 출고했다. source commit은 `2387240113cea1d8aec10df651d865e52e977630`이며 원래 acceptance는
+`2387240113cea1d8aec10df651d865e52e977630:docs/todo-review-precision-release/spec.md`에서 추적한다.
+앞선 local review precision 구간과 Sol v1.8.1 구간의 의도·제약을 최종 diff와 대조했다.
+고정 snapshot 독립 검토에서 중대한 미해결 finding은 없었다.
+
+원래 요구·계약에서 기대값을 정하고 변경할 결과와 유지할 동작을 함께 검증한다.
+교정은 확정된 사실·의미·범위 안에서 같은 원인이 있는 관련 위치에 적용하고 새 선호·범위
+변경과 기존 누락을 구분한다. 지속 계약은 core와 `docs/WORK_LIFECYCLE.md`가 소유한다.
+새 skill·필수 장부·필드·검사 단계·고정 리뷰 횟수는 추가하지 않았다. Sol provider profile,
+runtime, schema/Structure ID, CLI와 profile 선택은 기존 보완을 그대로 보존했다.
+
+두 generated entrypoint의 전달과 version/source/fixture 정합성을 검증했다. 공개 source를
+새로 clone해 서명된 tag object·peeled source·remote equality를 대조했고 연결된 native
+gate의 기존 64개 회귀와 실제 jj 통합을 skip 없이 통과했다. Python 3.11/3.14 동일 source
+SHA CI도 성공했다. release source tag와 이후 완료 문서 main은 구별한다.
+
+승인된 활성 소비 대상을 current remote 선언과 live archive 상태에서 확정했다. 격리
+checkout에서 release pin과 generated artifact를 갱신하고 source/render/standalone/interface,
+해당 native gate·publication boundary, remote equality와 동일 SHA terminal CI를 확인했다.
+검증 뒤 동시 작업으로 앞선 main은 도입 commit의 포함 관계·generated 지침 동일성과
+현재 head의 terminal CI를 별도로 대조했다. 후속 owner 결정으로 바뀐 overlay는 보존하고
+그 head의 pinned source·generated 정합성과 native agent gate를 다시 확인했다.
+원래 native 결과와 후속 owner 변경의 검증 범위는 구별한다.
+profile·overlay·native script·기존 active work와 로컬 이력을 보존했다. native lifecycle이
+요구하는 결과 이관·완료 packet 정리와 full publication gate도 우회 없이 수행했다.
+선택적·CI 전용 및 환경 조건에 따른 내부 skip은 실제 실행 범위와 구별한다.
+기존 native 테스트의 초기 로컬 연결 실패는 변경 없는 단독 재현과 전체 gate 재검증으로
+대조했고 초기 실패·재검증 기록을 함께 보존했다. 제품 코드나 기대값은 바꾸지 않았다.
+
+제품 runtime release·별도 live rollout·실제 API request 및 agent 재작업·시간·비용 감소
+평가는 포함하지 않았다. 지침 전달과 호환성 검증을 실제 행동 개선으로 해석하지 않는다.
+acceptance와 결과·결정·한계를 대조하고 이관한 뒤 중앙 packet과 stale pointer를 제거했다.
+대상 inventory와 raw evidence는 repository 밖의 machine-local 계층에서 관리한다.

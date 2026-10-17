@@ -8,8 +8,7 @@
 
 ## 진행 중
 
-`docs/todo-review-precision-release/spec.md`: Sol 보완을 유지한 리뷰 지침 통합과
-`v1.8.2` release/adoption을 진행한다. 현재 published stable은 `v1.8.1`이다.
+없음. Sol 보완을 유지한 리뷰 지침 통합의 `v1.8.2` release/adoption을 완료했다.
 결과·검증 범위와 한계는 `docs/completed-milestones.md`가 소유한다.
 
 ## Blocker와 결정 필요
