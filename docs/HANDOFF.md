@@ -11,8 +11,8 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 
 ## 현재 milestone
 
-활성 milestone은 없다. Sol guidance와 pinned adoption의 acceptance를 확인하고
-완료 지식을 이관한 뒤 todo packet과 active pointer를 정리했다. release source tag와
+현재 local 작업은 `docs/todo-rework-reduction/spec.md`다. 기존 계약·skill과 대조해
+회귀 기대값과 교정 적용 범위만 기존 리뷰 지침에 통합한다. release source tag와
 이후 완료 문서 commit은 구별한다. 구조와 책임 경계는 `docs/ARCHITECTURE.md`,
 결과와 검증 한계는 `docs/completed-milestones.md`, 다음 시작 조건은
 `docs/roadmap.md`가 소유한다.
