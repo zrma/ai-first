@@ -38,6 +38,15 @@ release다. 의도 정보, 기준 변경 검토와 리뷰 참조의 예시는
 검증으로 확인하고, native routing의 기존 예산은 그대로 보존한다. 전체 문서 크기를
 자동으로 제한하던 정책과는 구별하며 source 갱신의 diff review를 생략하지 않는다.
 
+## Review precision compatibility patch
+
+`1.8.2`는 `1.8.1`의 Sol 보완을 유지하며 기존 리뷰 계약의 테스트 기대값과 교정 적용
+범위를 명확히 한다. 두 generated entrypoint에 전달되며 새 skill/runtime/schema,
+필수 장부·필드·검사 횟수나 profile 선택 변경은 없다. 기대값은 원래 요구·계약에서
+정하고 변경할 결과와 유지할 동작을 함께 확인한다. 교정은 같은 산출물·기능의 같은
+원인에 적용하며 새 선호·범위 변경과 기존 누락을 구분한다. 실제 재작업 감소는
+실측하지 않았다. signed source pin과 generated artifact를 함께 갱신한다.
+
 ## Sol guidance compatibility patch
 
 `1.8.1`은 기존 Sol baseline의 API migration 안내를 보완한다. cache TTL/과금,
@@ -135,9 +144,9 @@ framework checkout은 public annotated release tag에 고정하고 소비 선언
 
 ```toml
 schema_version = 1
-framework_version = "1.8.1"
+framework_version = "1.8.2"
 source_kind = "release"
-source_revision = "v1.8.1"
+source_revision = "v1.8.2"
 ```
 
 그 checkout의 CLI로 render/check한 뒤 standalone check와 repository-native gate를

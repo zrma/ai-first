@@ -10,11 +10,10 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 
 ## 현재 milestone
 
-활성 milestone은 없다. 공식 문서 재검토 보완의 release/adoption acceptance를
-확인하고 완료 지식을 이관한 뒤 todo packet과 active pointer를 정리했다.
-release source tag와 이후 완료 문서 commit은 구별한다. 구조와 책임 경계는
-`docs/ARCHITECTURE.md`, 결과와 검증 한계는 `docs/completed-milestones.md`,
-다음 시작 조건은 `docs/roadmap.md`가 소유한다.
+현재 작업은 `docs/todo-review-precision-release/spec.md`다. published `v1.8.1`의 Sol
+보완을 유지하고 리뷰 기대값·교정 범위를 통합한 `v1.8.2` source와 활성 소비 adoption을
+검증한다. release source tag와 이후 완료 문서 main은 구별한다.
+결과와 한계는 `docs/completed-milestones.md`가 소유한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만

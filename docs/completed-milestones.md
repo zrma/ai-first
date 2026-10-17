@@ -620,3 +620,25 @@ native 정책에 따라 만료된 운영 문서를 실제 실행 절차와 대�
 application runtime release, 별도 live rollout, 실제 API request 및 Sol 행동·속도·비용
 효과 eval은 포함하지 않았다. acceptance와 결과·결정·한계를 대조하고 이관한 뒤 중앙
 packet과 stale pointer를 제거했다. 대상 inventory와 raw evidence는 machine-local 계층에만 둔다.
+
+## Review precision clarification — local maintenance
+
+기존 리뷰·실행·검증 계약과 대조한 뒤 회귀 기대값과 교정 적용 범위만 구체화했다.
+테스트 기대값은 원래 요구·계약에서 도출하고 변경할 결과와 유지할 동작을 함께
+확인한다. 교정은 확정된 사실·의미·범위를 보존해 같은 산출물·기능의 같은 원인이
+있는 관련 위치에 적용하며, 새 선호·범위 변경과 기존 요구 누락을 구분한다.
+
+기존 Verification·Change review 조항과 execution loop를 갱신했다. 의미 판단은 core와
+`docs/WORK_LIFECYCLE.md`, 실행 상태·coverage는 기존 verification skill이 계속 소유한다.
+경로 탐색·검증 cadence의 중복 규칙이나 단일 명령 오류에 대한 공통 운영 절차는
+추가하지 않았다. 새 skill/runtime/schema, 필수 장부·필드·리뷰 횟수도 만들지 않았다.
+
+원래 범위와 acceptance는 local revision
+`e5d94e9d059690772f76dc65f19766cfe43dd0e0:docs/todo-rework-reduction/spec.md`에 있다.
+기존 render 회귀 검증에서 두 generated entrypoint로 보완 기준이 전달되는지 확인하고,
+선택 범위 보존과 문서 교정의 합성 시나리오를 lifecycle에 반영했다. native gate의
+기존 64개 회귀 검증·generated/standalone 정합성과 실제 jj clone 통합을 통과했다.
+이는 지침 전달·호환성 검증이며 실제 agent 재작업·시간·비용 감소의 행동 평가는 아니다.
+출고·소비 adoption과 모델별 효과는 이번 local 보완의 범위 밖이다.
+
+acceptance와 소유 artifact를 대조하고 완료 packet과 active pointer를 정리했다.
