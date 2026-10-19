@@ -2,7 +2,7 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.8.2`다. 원래 요구·계약에서 테스트 기대값을 정하고
+현재 published stable은 `v1.9.0`이며 legacy workspace 호환성을 `v1.9.1`로 보완 중이다. 원래 요구·계약에서 테스트 기대값을 정하고
 유지할 동작을 함께 검증하며 같은 원인의 교정을 확정된 사실·의미·범위 안에 적용한다.
 기존 Sol baseline과 `v1.8.1` compatibility 보완, runtime·schema·profile을 유지한다.
 signed source/tag·Release·CI와 활성 소비 adoption 결과는
@@ -11,7 +11,7 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 ## 현재 milestone
 
 현재 작업은 `docs/todo-vcs-closeout/spec.md`의 선형 통합·임시 사본 회수 검사와
-활성 소비 adoption이다. 새 선택형 capability의 목표 버전은 `v1.9.0`이다.
+활성 소비 adoption이다. 새 선택형 capability의 목표 버전은 `v1.9.1`이다.
 기존 Sol 보완과 리뷰 지침 통합의 release/adoption acceptance를
 확인하고 결과·결정·한계를 owning artifact에 이관한 뒤 완료 packet과 active pointer를
 정리했다. release source tag와 이후 완료 문서 main은 구별한다.

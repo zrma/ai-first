@@ -1,6 +1,6 @@
 # VCS integration and closeout
 
-`1.9.0`의 선택형 `vcs-closeout`은 `vcs-jj`와 함께 선형 history와 로컬 작업 마감을
+`1.9.1`의 선택형 `vcs-closeout`은 `vcs-jj`와 함께 선형 history와 로컬 작업 마감을
 검사한다. 검사는 runtime/model, 제품 native gate나 GitHub administration을 대체하지
 않는다. 미선택 소비자에게 runtime이나 검사를 추가하지 않는다.
 
@@ -75,3 +75,10 @@ copy가 바뀌면 실패하며 삭제나 복원으로 덮지 않는다. 현재 t
 `--retired-path`로 지정한 directory/symlink 잔여물을 각각 거부한다. 어떤 항목도 자동
 삭제하지 않는다. 기존 작업 보존을 포함한 closeout과 모든 작업이 종료된 clean 상태를
 구분한다. 생성 시 기록하지 않은 외부 clone의 파일시스템 전수 발견은 지원하지 않는다.
+
+## Legacy workspace metadata
+
+jj 0.38 이전에 만든 workspace는 root 경로를 기록하지 않았다. 현재 workspace는
+유일한 working-copy commit과 CLI의 현재 root가 확인될 때 검사할 수 있다. 다른
+workspace의 경로가 없거나 같은 commit을 공유해 위치가 모호하면 계속 실패하며
+임의의 경로를 추정하거나 등록을 제거하지 않는다.

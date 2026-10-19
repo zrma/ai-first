@@ -7,6 +7,9 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
+
+from ai_first import vcs
 
 from ai_first.config import ConfigError
 from ai_first.render import render_repository
@@ -147,6 +150,23 @@ class JujutsuCloseoutTests(RepositoryTest):
         self.assertIn("expected parent", self.check("--closeout", ok=False).stderr)
         self.check("--closeout", "--revision", "@-")
         self.assertEqual((self.root / "pending").read_text(), "keep")
+
+    def test_legacy_current_workspace_uses_verified_root_but_unknown_secondary_fails(self):
+        original = vcs.jj
+        def legacy(root, *args):
+            result = original(root, *args)
+            if args[:2] == ("workspace", "list"):
+                result = "\n".join("\0".join((row[0], "", row[2])) for row in (line.split("\0") for line in result.splitlines()))
+            return result
+        target = self.value("main", "commit_id")
+        with patch.object(vcs, "jj", side_effect=legacy):
+            vcs.check_closeout(self.root, target, {"default"}, [])
+        active = self.base / "active"
+        self.run_command("jj", "workspace", "add", "--name", "active", "-r", "main", str(active))
+        with patch.object(vcs, "jj", side_effect=legacy):
+            with self.assertRaisesRegex(vcs.StateError, "root metadata"):
+                vcs.check_closeout(self.root, target, {"default", "active"}, [])
+        self.assertTrue(active.is_dir())
 
     def test_secondary_workspace_requires_explicit_retention_and_is_not_deleted(self):
         path = self.base / "active"

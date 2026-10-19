@@ -47,3 +47,9 @@ history, release와 active/WIP는 보존하면서 앞으로의 잘못된 통합�
 
 소유 계약은 docs/VCS_CLOSEOUT.md, profile/runtime과 compatibility 문서다. 결과와 한계를
 완료 요약에 이관하고 packet과 active pointer를 제거한다.
+
+## 구현 중 확인한 호환성
+
+실제 local closeout에서 jj 0.38 이전 current workspace의 root metadata 부재를 확인했다.
+현재 root와 유일한 WC ID로 확인되는 경우를 지원하고 unknown secondary는 계속 거부한다.
+공개된 v1.9.0은 보존하며 v1.9.1로 보완한다. 원래 WIP·release 보존 기준은 유지한다.
