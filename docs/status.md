@@ -8,7 +8,8 @@
 
 ## 진행 중
 
-`docs/todo-local-vcs-flow/spec.md`에 따라 로컬 작업 lifecycle을 연결한다.
+없음. `v1.10.1` 로컬 VCS workflow와 활성 소비 갱신을 검증하고 결과·한계를
+`docs/completed-milestones.md`, 실행 계약을 `docs/VCS_CLOSEOUT.md`로 이관했다.
 
 ## Blocker와 결정 필요
 

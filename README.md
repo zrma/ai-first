@@ -18,16 +18,16 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 stable은 [v1.9.1](https://github.com/zrma/ai-first/releases/tag/v1.9.1)이다.
-`1.9.1`은 선택형 `vcs-closeout` 검사와 `vcs-jj`의 선형 통합·작업 사본 회수 계약을
-제공한다. standalone gate는 실제 후보의 이력을 검사하고, 별도 closeout은 empty working
-copy, workspace·Git 등록, 참조 없는 head와 task-owned 경로를 확인한다. 과거 merge는
-고정된 기준점으로 보존하며 기존 WIP를 명시적으로 유지할 수 있다. 자동 삭제는 하지 않는다.
-`1.9.1`은 jj 0.38 이전 current workspace의 경로 metadata 호환성을 보완한다.
-기존 schema, model baseline, 제품 native gate와 선택하지 않은 capability를 유지한다.
-signed release·활성 소비 적용과 동일 SHA CI를 검증했다. 상세 검증 범위와 한계는
-[handoff](docs/HANDOFF.md)가 소유한다.
-검사의 실행 증거와 실제 agent의 재작업 감소 효과는 구별하며 후자는 미측정이다.
+현재 stable은 [v1.10.1](https://github.com/zrma/ai-first/releases/tag/v1.10.1)이다.
+선택형 `vcs-closeout`이 agent 변경 작업의 시작 기록, 작업 사본 소유, 선형 통합과
+회수 후 종료 확인을 하나의 private 로컬 세션으로 연결한다. 공유 Git hook의 임시 경로 참조도 검출한다. generated 지침과 기존
+native start/finalize가 같은 기록을 사용한다. 기존 WIP·고유 history·release는 보존한다.
+
+일반 standalone은 입력·생성물 무결성을 검사하고 로컬 lifecycle 검사는 통합·종료
+시점에 명시적으로 실행한다. 공통 검사 때문에 추가한 CI 후보 binding은 제거했다.
+제품 native gate와 CI, schema와 model baseline은 유지하며 도구가 자동 삭제·push하지 않는다.
+검증 범위와 한계는 [handoff](docs/HANDOFF.md), 실행 계약은
+[VCS workflow](docs/VCS_CLOSEOUT.md)가 소유한다. 실제 장기 agent 행동 개선은 미측정이다.
 
 `1.7.3`은 렌더러의 문서 합성·optional output·binding·lock 책임을 분리하고
 현재 상태 문서와 테스트 구성을 정리한 유지보수 패치다. 기존 CLI·schema·profile과

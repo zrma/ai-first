@@ -2,70 +2,50 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.9.1`이다. 선택형 `vcs-closeout`이 선형 후보 이력과
-명시적 local closeout을 검사한다. `vcs-jj` 지침은 선형 통합, fail-fast publication과
-작업 사본 회수 계약을 소유한다. 기존 WIP·고유 history·tag/release를 보존하고 자동
-삭제하지 않는다. source와 검증 한계는 `docs/completed-milestones.md`에 있다.
+현재 published stable은 `v1.10.1`이다. signed source tag와 원격 source identity,
+fresh clone의 canonical gate 및 동일 source SHA의 Python 3.11/3.14 CI를 확인했다.
+로컬 시작·선형 통합·종료 흐름의 실행 계약은 `docs/VCS_CLOSEOUT.md`가 소유한다.
+이전 source/tag/release와 도입 이전 이력은 보존했다.
 
 ## 현재 milestone
 
-`docs/todo-local-vcs-flow/spec.md`와 `open-questions.md`에 따라 `1.10.0`의
-로컬 시작·선형 통합·마감 연결을 구현·검증 중이다. 기존 stable과 release는 보존한다.
+활성 milestone은 없다. 로컬 VCS lifecycle과 활성 소비 갱신을 검증하고 의도·결정·
+한계를 owning artifact로 이관했다. 완료 packet과 active pointer는 제거했다.
+release source tag와 이후 완료 문서 main은 구별한다.
 
-`verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
-self-hosting은 verification과 vcs-closeout을 선택한다. 기존 소비자의 verification과
-coordination 선택은 보존하며 native 명령과 제품 acceptance를 유지한다.
-`docs/VERIFICATION.md`와 `docs/WORK_COORDINATION.md`가 사용법과 지원 경계를 소유한다.
+선택형 `vcs-closeout`은 start/resume/own/integrate/finish를 제공한다. 시작 기록은
+저장소 밖 private 파일이며 native start/finalize에 같은 세션을 전달한다. 종료 시
+기존 WIP·workspace·bookmark·tag 보존과 소유 사본의 등록·경로 회수를 대조한다.
+standalone은 생성물 무결성만 검사하고 로컬 절차를 CI나 서버 규칙으로 대체하지 않는다.
+제품 native CI를 유지하며 공통 VCS 후보 binding만 제거했다.
 
-self-hosting, model/vendor 중립 core, capability profile, repository overlay,
-deterministic render, content-addressed lock과 central/standalone checker를 유지한다.
-소비 저장소는 중앙 checkout 없이 generated artifact와 공통 interface를 검사한다.
-일반 속도·비용·품질 우위는 입증되지 않았다. 다음 확대는 반복 업무의 실측 효용 또는
-명시적 요구를 기준으로 판단한다. 타 vendor adapter와 일반 orchestration platform은
-미지원이다. 대상별 inventory와 평가·출고 원문은 machine-local 계층에서 관리한다.
+`verification`은 선택형 보조 기능, `work-coordination`은 실험적 opt-in이다.
+기존 profile·overlay·native lifecycle과 model baseline은 유지했다. 자동 삭제·push,
+임의 명령의 강제 차단, 외부 clone 전수 발견과 장기 행동 개선은 보증하지 않는다.
 
 ## 시작 순서
 
-적용되는 agent 지침과 정체성·권한·공개 경계는 항상 준수한다. 상세 문서는 요청과
-관련된 경로부터 읽고, 판단에 필요한 근거가 부족하면 범위를 넓힌다.
+1. answer/review/plan은 관련 경로에서 시작한다. 변경은 현재 상태와 관련 spec을 읽고
+   첫 수정 전 로컬 VCS 세션을 시작한다. 재개는 기존 세션을 resume한다.
+2. spec·완료 이관은 `docs/WORK_LIFECYCLE.md`, 검증은 `docs/VERIFICATION.md`를 따른다.
+3. publication은 `docs/PUBLICATION.md`의 repository 및 machine-local gate를 통과한다.
+4. native 결과, durable history, remote SHA와 사본 회수 후 finish를 확인해 마감한다.
 
-1. 설명·조사·리뷰·계획은 질문 대상 문서·코드·설정에서 시작한다. 필요한 재현·검증은
-   수행하되 시작 절차만을 이유로 전체 검사를 실행하지 않는다.
-2. 작업 재개·변경·다음 과제 선택은 `jj status`, 이 문서의 현재 단계와
-   `docs/status.md`, 관련 활성 `docs/todo-*/spec.md`와 `open-questions.md`를 확인한다.
-   우선순위·후속 방향을 판단할 때 `docs/roadmap.md`를 읽는다.
-3. 정체성·역할은 `docs/AI_FIRST_CHARTER.md`, 구조·합성은 `docs/ARCHITECTURE.md`,
-   호환성·도입은 `docs/COMPATIBILITY.md`, spec·변경 리뷰·완료 이관은
-   `docs/WORK_LIFECYCLE.md`에서 해당 작업에 필요한 내용을 확인한다.
-4. 변경 검증은 `docs/VERIFICATION.md`에 따라 연결된 native gate를 실행한다.
-   이 저장소의 필수 local gate는 `scripts/check.sh`다. 공개 기록 작성과 publication은
-   `docs/PUBLICATION.md`의 경계를 확인한다.
+## 검증과 한계
 
-## 현재 검증
+- canonical gate: framework 테스트 102개, real Git/Jujutsu fixture, generated/interface,
+  publication, navigation 및 기존 CI contract PASS.
+- source: signed annotated `v1.10.1`, remote tag/source equality와 fresh-clone gate PASS.
+- 소비 갱신: source/render/standalone, 각 native gate, 선형 후보와 remote head,
+  task-owned 사본 회수와 실제 세션 finish를 확인했다. 원격 CI는 private 출고 증거로 별도 대조한다.
+- 기존 WIP·고유 북마크·release/tag/배포 자산 identity를 시작 기록과 대조했다.
+- native runner의 의도된 내부 skip은 해당 명령의 검증 범위와 구별한다.
+- 지침·명령 회귀와 이번 실제 적용의 증거이며 향후 모든 agent의 준수나 재작업·시간·
+  비용 감소를 실측한 결과는 아니다. inventory와 raw evidence는 machine-local 계층에 둔다.
 
-central/standalone drift, harness interface, repository publication boundary, navigation,
-CI contract와 87개 테스트를 통과했다. 실제 Git/Jujutsu fixture와 legacy metadata 회귀를
-포함하며 signed release를 fresh clone한 검사와 Python 3.11/3.14 동일 source SHA CI가
-성공했다. 실제 legacy current workspace closeout도 검증했다.
+## 관련 문서와 후속 조건
 
-활성 소비 저장소의 pin/source, standalone/interface, native gate, publication, remote와
-동일 SHA terminal CI를 각각 확인했다. 소비 task-owned 사본 회수와 기본 workspace 마감도
-검증했다. 기존 WIP·고유 분기·태그·릴리스 파일과 native 선택적 skip 계약을 보존했다. 제품 runtime migration과 실제 agent의 재작업·시간·비용
-효과는 검증하지 않았다. 테스트 수를 행동 coverage나 효용 실측으로 해석하지 않는다.
-
-## Publication 상태
-
-- tracked content class: `public`
-- remote: `v1.9.1` source release 및 소비 adoption verified
-- license: `Apache-2.0`
-- CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA terminal CI success
-- stable release: signed annotated `v1.9.1`, 서명·remote tag/source equality와 GitHub Release verified
-- private vulnerability reporting: enabled
-
-## 보호 경계
-
-- 다른 저장소의 local path, 이름별 migration 상태, WIP와 private inventory를 이
-  공개 저장소에 기록하지 않는다.
-- 다른 저장소 adoption은 기본 working copy 밖의 VCS-isolated migration checkout에서
-  수행하고 repository-native metadata gate를 그대로 보존한다.
-- 소비 저장소의 push는 framework publish와 별개의 permission boundary다.
+구조는 `docs/ARCHITECTURE.md`, 호환성은 `docs/COMPATIBILITY.md`, 완료 결과는
+`docs/completed-milestones.md`, 현재 상태는 `docs/status.md`, 다음 trigger는
+`docs/roadmap.md`가 소유한다. capability 확대는 반복 운영 근거나 명시적 요구가
+있을 때 범위를 정하고 native 계약·권한을 보존한다.

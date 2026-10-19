@@ -716,3 +716,28 @@ merge는 고정된 checkpoint로 유지하며 그 이후 새 merge가 없음을 
 
 실제 agent의 이력·정리 실수 감소와 재작업·시간·비용 개선은 미측정이며 server-side
 branch administration은 별도 권한 경계다.
+
+## Local VCS workflow v1.10.1
+
+종료 명령과 CI history backstop만으로는 시작 상태와 agent가 만든 사본의 소유권을
+연결할 수 없었다. `vcs-closeout`의 start/resume/own/integrate/finish는 같은 private
+세션으로 기존 상태, 새 사본, 현재 main 및 live remote 위의 후보, 종료 상태를 대조한다.
+첫 수정 전 시작과 native helper 연결, 사본 회수 후 finish 성공을 generated 지침에 포함했다.
+기존 WIP와 고유 history, tag/release는 보호하며 자동 삭제·publication을 하지 않는다.
+
+standalone의 자동 history 호출과 CI 후보 환경 변수 binding을 제거했다. 기존 제품
+native gate와 CI는 유지한다. source compatibility와 실행 계약은 `docs/COMPATIBILITY.md`,
+`docs/VCS_CLOSEOUT.md`, spec 이관은 `docs/WORK_LIFECYCLE.md`가 소유한다.
+원래 acceptance는 [`v1.10.1`의 spec](https://github.com/zrma/ai-first/blob/v1.10.1/docs/todo-local-vcs-flow/spec.md)으로 추적한다.
+
+검증: canonical 테스트 102개와 실제 Git/Jujutsu 시나리오, 서명한 source의 fresh-clone
+full gate 및 Python 3.11/3.14 동일 SHA CI PASS. 활성 소비의 source pin/generated/native
+검증, 선형 통합·remote SHA, 이번 사본의 등록·경로 회수 후
+실제 finish를 확인했다. 기존 reference·release asset identity도 시작 기록과 대조했다.
+생성 문서 formatting과 native cache 위치의 초기 실패는 검증 소유권·실행 경계를 맞춘 뒤
+재검증했으며 제품 동작이나 실패 기대값을 완화하지 않았다.
+
+완료 packet과 active pointer는 제거하고 repository-owned 지식만 이관했다. raw evidence와
+소비 inventory는 machine-local 계층에 둔다. 임의 명령을 막는 sandbox, 외부 clone의
+전수 발견과 고유 결과의 의미상 중복 판정은 지원하지 않는다. 장기 agent 행동·재작업·
+시간·비용 개선을 실측한 것으로 해석하지 않는다.
