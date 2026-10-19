@@ -402,6 +402,35 @@ class JujutsuCloseoutTests(RepositoryTest):
         self.assertIn("secondary work changed", self.session("finish", ok=False).stderr)
         self.assertEqual((copy / "other-work").read_text(), "concurrent")
 
+    def test_finish_detects_shared_hook_reference_after_copy_is_removed(self):
+        self.session("start")
+        copy = self.base / "copy"
+        self.session("own", "--path", str(copy))
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.publish_local(candidate)
+        hook = self.root / ".git/hooks/pre-push"
+        hook.write_text("#!/bin/sh\n" + str(copy) + "/node_modules/tool\n")
+        self.assertIn("Git hook still references", self.session("finish", ok=False).stderr)
+        hook.write_text("#!/bin/sh\nexit 0\n")
+        self.session("finish")
+
+    def test_finish_detects_custom_hook_path_and_dangling_hook_symlink(self):
+        self.session("start")
+        copy = self.base / "copy"
+        self.session("own", "--path", str(copy))
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.publish_local(candidate)
+        self.run_command("git", "config", "core.hooksPath", str(copy))
+        self.assertIn("hooks configuration", self.session("finish", ok=False).stderr)
+        self.run_command("git", "config", "--unset", "core.hooksPath")
+        hook = self.root / ".git/hooks/pre-push"
+        hook.symlink_to(copy / "tool")
+        self.assertIn("Git hook still points", self.session("finish", ok=False).stderr)
+        hook.unlink()
+        self.session("finish")
+
     def test_session_checks_live_remote_and_stops_when_fetch_is_stale(self):
         remote = self.base / "remote.git"
         self.run_command("git", "init", "-q", "--bare", str(remote))

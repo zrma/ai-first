@@ -1,6 +1,6 @@
 # Local VCS task workflow
 
-`1.10.0`의 선택형 `vcs-closeout`은 agent의 change 작업을 시작 기록, 사본 소유,
+`1.10.1`의 선택형 `vcs-closeout`은 agent의 change 작업을 시작 기록, 사본 소유,
 선형 통합, 종료 확인으로 연결한다. `vcs-jj`와 Python 3.11+, Git, jj가 필요하다.
 선언/lock schema 1과 기존 `--revision`/`--closeout` 명령은 유지한다.
 도구는 읽기, working-copy snapshot과 private 상태 기록만 수행하며 자동 삭제·push를 하지 않는다.
@@ -72,7 +72,10 @@ python3 .ai-first/vcs.py finish
 ```
 
 완료 후보, empty WC/expected parent, 새 orphan head, 미분류 workspace/Git 등록과
-소유 경로의 directory/symlink 잔여물을 검사한다. 기존 dirty WC는 정확한 시작 ID를,
+소유 경로의 directory/symlink 잔여물을 검사한다. 공유 Git hook의 직접 경로 참조와 hooksPath도 확인한다. package prepare가 공통 hook을
+임시 사본의 실행 파일에 연결했다면 canonical workspace에서 native hook 설치 절차로
+복구한다. 사용자 정의 hook을 무조건 덮어쓰지 않으며 검사기는 hook을 실행하지 않는다.
+기존 dirty WC는 정확한 시작 ID를,
 기존 secondary workspace는 시작 위치와 ID를, 기존 bookmark와 release tag는 원래
 대상을 유지해야 한다. 동시 작업으로 바뀌면 삭제/복원하지 않고 보존·분류 후 재개한다.
 성공한 기록은 재사용하지 않는다. 실패·중단은 완료가 아니며 기록과 이유·재개점을 남긴다.

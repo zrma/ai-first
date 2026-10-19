@@ -136,6 +136,13 @@ release/WIP를 보존한다. 당시 사용법과 이후 로컬 workflow 전환�
 일반 standalone은 무결성 검사이며, 로컬 통합·마감은 명시적 실행이다. 기존 tag/release,
 WIP와 도입 이전 merge checkpoint는 보존한다. 실행 계약은 `docs/VCS_CLOSEOUT.md`를 따른다.
 
+## Shared hook residue patch
+
+`1.10.1`은 작업 사본에서 package prepare를 실행할 때 공통 Git hook에 임시 경로가
+남는 실제 종료 문제를 보완한다. finish와 기존 retired-path 검사는 hook 본문·symlink와
+hooksPath의 직접 참조를 거부한다. hook을 실행하거나 자동 복원하지 않으며 native
+canonical 설치 절차를 사용한다. 기존 CLI/schema, profile 선택과 release는 유지한다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.
