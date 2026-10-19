@@ -679,3 +679,40 @@ profile·overlay·native script·기존 active work와 로컬 이력을 보존�
 평가는 포함하지 않았다. 지침 전달과 호환성 검증을 실제 행동 개선으로 해석하지 않는다.
 acceptance와 결과·결정·한계를 대조하고 이관한 뒤 중앙 packet과 stale pointer를 제거했다.
 대상 inventory와 raw evidence는 repository 밖의 machine-local 계층에서 관리한다.
+
+## VCS closeout v1.9.1 release and adoption
+
+선택형 `vcs-closeout`이 locked standalone runtime을 배포한다. 일반 gate는 실제 후보의
+선형 이력을 검사하고 명시적 closeout은 empty working copy, expected parent, workspace,
+참조 없는 head, Git 등록과 task-owned 경로를 각각 검사한다. 기존 WIP는 정확한 시작
+revision으로 보존하며 과거 병합은 고정된 ancestor 기준으로 유지한다. 자동 삭제는 하지 않는다.
+
+`vcs-jj`는 stale push의 merge 우회 금지, publication 실패 후 후속 mutation 중단과
+task-owned 사본의 소유 기록·등록·실제 경로 회수 계약을 제공한다. model baseline, schema와
+선택하지 않은 capability를 유지한다. 실행·운영 계약은 `docs/VCS_CLOSEOUT.md`,
+`docs/ARCHITECTURE.md`, `docs/COMPATIBILITY.md`, `docs/WORK_LIFECYCLE.md`가 소유한다.
+
+실제 closeout에서 jj 0.38 이전 등록의 root metadata 부재를 확인해 현재 root와 유일한 WC
+ID로 검증하는 호환성을 `v1.9.1`로 보완했다. unknown secondary와 모호한 identity는
+계속 실패한다. 공개된 `v1.9.0` source·tag·release는 보존했다.
+
+검증: 87개 framework 테스트, real Git/Jujutsu fixture, standalone/interface, navigation,
+CI contract와 publication gate PASS. signed `v1.9.1` fresh clone 및 Python 3.11/3.14
+동일 source SHA CI PASS. 실제 legacy current workspace closeout PASS.
+원래 기준은 [`v1.9.0`의 spec](https://github.com/zrma/ai-first/blob/v1.9.0/docs/todo-vcs-closeout/spec.md),
+호환성 보완은 [`v1.9.1`의 spec](https://github.com/zrma/ai-first/blob/v1.9.1/docs/todo-vcs-closeout/spec.md)으로 추적한다.
+
+활성 소비 저장소는 source pin, generated/standalone/interface, 해당 native gate와 publication
+검사, remote head 및 동일 SHA terminal CI를 검증했다. CI는 full history와 실제 후보 ID를
+사용하며 native 명령·제품 코드·기존 overlay·다른 capability 선택을 보존했다. 기존 이력의
+merge는 고정된 checkpoint로 유지하며 그 이후 새 merge가 없음을 확인했다.
+
+소비 task-owned workspace·Git 등록·실제 경로 회수와 primary closeout을 확인했다.
+기존 WIP·고유 분기·기존 tag/release와 배포 파일을 보존했고, 현재 작업의 임시 사본만
+회수 가능한 방법으로 정리했다. 기존 native finalizer의 빠진 empty working-copy 단계는
+실제 jj fixture로 보완 검증했으며 native 테스트나 출고 경계를 완화하지 않았다.
+완료 packet과 active pointer는 제거했다. source tag와 이후 문서 마감 main은 구별한다.
+대상별 inventory, 원본 state와 검증 로그는 machine-local 계층에서 관리한다.
+
+실제 agent의 이력·정리 실수 감소와 재작업·시간·비용 개선은 미측정이며 server-side
+branch administration은 별도 권한 경계다.

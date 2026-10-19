@@ -2,26 +2,24 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.9.0`이며 legacy workspace 호환성을 `v1.9.1`로 보완 중이다. 원래 요구·계약에서 테스트 기대값을 정하고
-유지할 동작을 함께 검증하며 같은 원인의 교정을 확정된 사실·의미·범위 안에 적용한다.
-기존 Sol baseline과 `v1.8.1` compatibility 보완, runtime·schema·profile을 유지한다.
-signed source/tag·Release·CI와 활성 소비 adoption 결과는
-`docs/completed-milestones.md`의 v1.8.2 구간에 있다.
+현재 published stable은 `v1.9.1`이다. 선택형 `vcs-closeout`이 선형 후보 이력과
+명시적 local closeout을 검사한다. `vcs-jj` 지침은 선형 통합, fail-fast publication과
+작업 사본 회수 계약을 소유한다. 기존 WIP·고유 history·tag/release를 보존하고 자동
+삭제하지 않는다. source와 검증 한계는 `docs/completed-milestones.md`에 있다.
 
 ## 현재 milestone
 
-현재 작업은 `docs/todo-vcs-closeout/spec.md`의 선형 통합·임시 사본 회수 검사와
-활성 소비 adoption이다. 새 선택형 capability의 목표 버전은 `v1.9.1`이다.
-기존 Sol 보완과 리뷰 지침 통합의 release/adoption acceptance를
-확인하고 결과·결정·한계를 owning artifact에 이관한 뒤 완료 packet과 active pointer를
-정리했다. release source tag와 이후 완료 문서 main은 구별한다.
-구조·책임은 `docs/ARCHITECTURE.md`, 결과는 `docs/completed-milestones.md`,
+활성 repository-owned milestone은 없다. VCS 검사 도입과 활성 소비 adoption을
+검증하고 결과·결정·한계를 owning artifact로 이관했다. 완료 packet과 active pointer를 제거했다.
+`v1.9.0` source·tag·release는 보존하고 legacy current workspace 호환성을
+`v1.9.1`로 보완했다. release source tag와 이후 완료 문서 main은 구별한다.
+구조·책임은 `docs/ARCHITECTURE.md`, 사용법은 `docs/VCS_CLOSEOUT.md`,
 후속 시작 조건은 `docs/roadmap.md`가 소유한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
-소비 저장소에 새 binding/runtime을 일괄 추가하지 않았다. self-hosting은 verification만
-선택한다. `docs/VERIFICATION.md`와 `docs/WORK_COORDINATION.md`가 사용법과 지원 경계를,
-`docs/completed-milestones.md`가 평가·출고 결과와 한계를 소유한다.
+self-hosting은 verification과 vcs-closeout을 선택한다. 기존 소비자의 verification과
+coordination 선택은 보존하며 native 명령과 제품 acceptance를 유지한다.
+`docs/VERIFICATION.md`와 `docs/WORK_COORDINATION.md`가 사용법과 지원 경계를 소유한다.
 
 self-hosting, model/vendor 중립 core, capability profile, repository overlay,
 deterministic render, content-addressed lock과 central/standalone checker를 유지한다.
@@ -49,26 +47,23 @@ deterministic render, content-addressed lock과 central/standalone checker를 �
 
 ## 현재 검증
 
-연결된 native gate로 central/standalone drift, harness interface, repository publication
-boundary, navigation, CI contract, Python syntax와 기존 64개 회귀 테스트를 통과했다.
-실제 jj clone 통합도 실행했고 skip은 없었다. 테스트 수를 새 행동 coverage나 Sol의
-효과 실측으로 해석하지 않는다.
+central/standalone drift, harness interface, repository publication boundary, navigation,
+CI contract와 87개 테스트를 통과했다. 실제 Git/Jujutsu fixture와 legacy metadata 회귀를
+포함하며 signed release를 fresh clone한 검사와 Python 3.11/3.14 동일 source SHA CI가
+성공했다. 실제 legacy current workspace closeout도 검증했다.
 
-공개된 signed release source를 새로 clone해 source identity와 native gate를 확인했고,
-Python 3.11/3.14 동일 source SHA CI가 성공했다. 활성 소비 저장소는 pin/source identity,
-standalone/interface·해당 native gate·publication boundary·remote equality와 동일
-SHA terminal CI를 확인했다. 기존 profile·overlay·native 검사·active work와 로컬 이력을
-보존했다. native의 선택적·CI 전용 skip은 실제 실행 범위와 구별했다.
-application runtime migration과 실제 agent의 재작업·시간·비용 효과는 검증하지 않았다.
-필수 근거 누락·불필요한 탐색이나 기록 부담이 반복되면 실제 사례를 기준으로 조정한다.
+활성 소비 저장소의 pin/source, standalone/interface, native gate, publication, remote와
+동일 SHA terminal CI를 각각 확인했다. 소비 task-owned 사본 회수와 기본 workspace 마감도
+검증했다. 기존 WIP·고유 분기·태그·릴리스 파일과 native 선택적 skip 계약을 보존했다. 제품 runtime migration과 실제 agent의 재작업·시간·비용
+효과는 검증하지 않았다. 테스트 수를 행동 coverage나 효용 실측으로 해석하지 않는다.
 
 ## Publication 상태
 
 - tracked content class: `public`
-- remote: `v1.8.2` release 및 소비 adoption verified
+- remote: `v1.9.1` source release 및 소비 adoption verified
 - license: `Apache-2.0`
-- CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA CI verified
-- stable release: signed annotated `v1.8.2`, 서명·remote tag/source equality와 GitHub Release verified
+- CI: release source의 Python 3.11/3.14 success; 소비 저장소 동일 SHA terminal CI success
+- stable release: signed annotated `v1.9.1`, 서명·remote tag/source equality와 GitHub Release verified
 - private vulnerability reporting: enabled
 
 ## 보호 경계

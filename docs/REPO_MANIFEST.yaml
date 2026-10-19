@@ -18,7 +18,7 @@ entrypoints:
   completed_milestones: docs/completed-milestones.md
   publication: docs/PUBLICATION.md
 
-active_work: docs/todo-vcs-closeout/spec.md
+active_work: none
 active_work_glob: docs/todo-*/spec.md
 required_todo_files:
   - spec.md
@@ -44,7 +44,7 @@ publication:
   ci_status: passing
   private_vulnerability_reporting: enabled
   license_status: Apache-2.0
-  stable_release: v1.8.2
+  stable_release: v1.9.1
   policy: docs/PUBLICATION.md
 
 vcs:

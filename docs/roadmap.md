@@ -12,6 +12,7 @@
 | verification 도입 확대 | 반복 업무의 수작업·재작업 감소 또는 명시적 요구 | 선택형 보조 기능을 유지하고 native 검사와 제품 acceptance를 대체하지 않는다. |
 | work-coordination 확대 | 추가 호출 비용을 상쇄하는 반복 운영 효용 또는 명시적 요구 | 실험적 opt-in을 유지하고 타 vendor adapter·일반 orchestration은 별도 범위로 판단한다. |
 | startup/review 지침 조정 | 실제 작업에서 필수 근거 누락·불필요한 탐색·기록 부담의 반복 | 지침 배포 성공과 실제 행동 개선을 구별한다. |
+| VCS closeout 검사 보완 | 실제 native metadata의 false positive 또는 반복되는 미분류 잔여물 | 기존 WIP·release 보존과 명시적 분류를 유지하며 자동 삭제·일괄 history rewrite로 확대하지 않는다. |
 | 배포·adoption 도구 확장 | 반복 installation friction 또는 수동 overlay 오류 | 독립 실행, version pin과 repository-native gate를 보존한다. |
 
 추가 capability의 상세 조건과 compatibility 경계는 `docs/COMPATIBILITY.md`가 소유한다.

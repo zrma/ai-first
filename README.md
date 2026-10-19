@@ -18,13 +18,15 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
+현재 stable은 [v1.9.1](https://github.com/zrma/ai-first/releases/tag/v1.9.1)이다.
 `1.9.1`은 선택형 `vcs-closeout` 검사와 `vcs-jj`의 선형 통합·작업 사본 회수 계약을
 제공한다. standalone gate는 실제 후보의 이력을 검사하고, 별도 closeout은 empty working
 copy, workspace·Git 등록, 참조 없는 head와 task-owned 경로를 확인한다. 과거 merge는
 고정된 기준점으로 보존하며 기존 WIP를 명시적으로 유지할 수 있다. 자동 삭제는 하지 않는다.
 `1.9.1`은 jj 0.38 이전 current workspace의 경로 metadata 호환성을 보완한다.
 기존 schema, model baseline, 제품 native gate와 선택하지 않은 capability를 유지한다.
-실제 signed release와 소비 적용 상태는 [handoff](docs/HANDOFF.md)가 소유한다.
+signed release·활성 소비 적용과 동일 SHA CI를 검증했다. 상세 검증 범위와 한계는
+[handoff](docs/HANDOFF.md)가 소유한다.
 검사의 실행 증거와 실제 agent의 재작업 감소 효과는 구별하며 후자는 미측정이다.
 
 `1.7.3`은 렌더러의 문서 합성·optional output·binding·lock 책임을 분리하고
