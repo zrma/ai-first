@@ -35,8 +35,8 @@ profile은 core의 permission 또는 evidence 기준을 약화할 수 없다.
 `docs/WORK_COORDINATION.md`를 따른다.
 
 선택형 `vcs-closeout`은 `vcs-jj` 위에서 실제 후보의 선형 이력과 명시적 local closeout을
-검사한다. 일반 standalone gate는 history만 검사하며 기존 WIP의 보존 분류와 작업 사본
-회수는 종료 시 별도로 확인한다. 사용법과 과거 병합의 고정 기준은
+검사한다. 일반 standalone gate는 생성물 무결성을 검사한다. 로컬 세션은 시작 상태와
+후보 통합을 연결하고 기존 WIP 보존과 작업 사본 회수를 종료 시 확인한다. 사용법과 과거 병합의 고정 기준은
 `docs/VCS_CLOSEOUT.md`가 소유한다.
 
 ### 4. Repository overlay

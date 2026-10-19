@@ -122,7 +122,19 @@ skill/metadata 세 output을 추가한다. runtime은 Python stdlib, Git과 jj�
 선택 시 standalone gate에 history 검사만 연결하며 local closeout은 별도로 실행한다.
 기존 병합 이력은 repository-owned ancestor checkpoint로 보존할 수 있다. 미선택
 소비자는 바뀌지 않으며 schema 1과 Structure ID를 유지한다. 기존 native 명령과
-release/WIP를 보존한다. 사용법과 CI binding은 `docs/VCS_CLOSEOUT.md`가 소유한다.
+release/WIP를 보존한다. 당시 사용법과 이후 로컬 workflow 전환은 `docs/VCS_CLOSEOUT.md`가 소유한다.
+
+## Local workflow v1.10.0
+
+`1.10.0`은 같은 선택형 VCS runtime에 start/resume/own/integrate/finish를 추가한다.
+기존 CLI와 schema/Structure ID는 유지하고 generated agent 지침에서 실제 변경 작업에
+실행을 연결한다. state는 checkout 밖 private 파일이며 중앙 서버나 새 package가 필요 없다.
+기존 native start/finalize는 유지하고 세션이 있으면 공통 검사를 호출한다.
+
+기존 자동 standalone history 호출과 CI 후보 환경 변수 binding은 제거한다. 소비 도입은
+이 목적만으로 추가했던 CI env/fetch-depth 변경을 걷어내고 제품 고유 CI 설정은 유지한다.
+일반 standalone은 무결성 검사이며, 로컬 통합·마감은 명시적 실행이다. 기존 tag/release,
+WIP와 도입 이전 merge checkpoint는 보존한다. 실행 계약은 `docs/VCS_CLOSEOUT.md`를 따른다.
 
 ## Source identity
 

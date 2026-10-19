@@ -36,7 +36,7 @@ class RepositoryTest(unittest.TestCase):
         return result
 
     def check(self, *args, ok=True):
-        result = self.run_command("python3", str(CHECK), "--repo-root", str(self.root), *args, ok=False)
+        result = self.run_command("python3", str(CHECK), *args, "--repo-root", str(self.root), ok=False)
         if ok:
             self.assertEqual(result.returncode, 0, result.stderr)
         else:
@@ -239,6 +239,192 @@ class JujutsuCloseoutTests(RepositoryTest):
         self.check(ok=False)
         self.check("--base", merged)
 
+    def session(self, action, *args, ok=True):
+        return self.check(action, "--state", str(self.base / "session.json"), *args, ok=ok)
+
+    def candidate(self):
+        (self.root / "result").write_text("completed")
+        self.run_command("jj", "describe", "-m", "test: completed")
+        return self.value("@", "commit_id")
+
+    def publish_local(self, candidate):
+        self.run_command("jj", "bookmark", "set", "main", "-r", candidate)
+        self.run_command("jj", "new", "main")
+
+    def test_session_start_is_private_and_cannot_be_overwritten(self):
+        self.session("start")
+        path = self.base / "session.json"
+        original = path.read_bytes()
+        self.assertEqual(path.stat().st_mode & 0o777, 0o600)
+        self.session("start", ok=False)
+        self.assertEqual(path.read_bytes(), original)
+        self.check("start", "--state", str(self.root / "session.json"), ok=False)
+        link = self.base / "link.json"
+        link.symlink_to(path)
+        self.check("start", "--state", str(link), ok=False)
+
+    def test_session_requires_completed_durable_candidate_and_empty_working_copy(self):
+        self.session("start")
+        self.session("finish", ok=False)
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.assertIn("durable bookmark", self.session("finish", ok=False).stderr)
+        self.run_command("jj", "bookmark", "set", "main", "-r", candidate)
+        self.assertIn("not empty", self.session("finish", ok=False).stderr)
+        self.run_command("jj", "new")
+        self.session("finish")
+        self.session("finish", ok=False)
+
+    def test_session_keeps_an_inherited_empty_copy_on_unique_work(self):
+        self.candidate()
+        self.run_command("jj", "new")
+        inherited = self.value("@", "commit_id")
+        self.session("start")
+        self.session("integrate", "--revision", "main")
+        self.session("finish")
+        self.assertEqual(self.value("@", "commit_id"), inherited)
+
+    def test_native_resume_rejects_missing_or_finished_session(self):
+        self.session("resume", ok=False)
+        self.session("start")
+        self.session("resume")
+        self.session("integrate", "--revision", "main")
+        self.session("finish")
+        self.session("resume", ok=False)
+
+    def test_session_preserves_main_without_publication_permission(self):
+        initial = self.value("main", "commit_id")
+        self.session("start")
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.run_command("jj", "bookmark", "create", "feature/completed", "-r", candidate)
+        self.run_command("jj", "new")
+        self.session("finish")
+        self.assertEqual(self.value("main", "commit_id"), initial)
+
+    def test_session_rejects_divergence_before_bookmark_move(self):
+        self.session("start")
+        candidate = self.candidate()
+        self.run_command("jj", "new", "main")
+        (self.root / "result").write_text("concurrent")
+        concurrent = self.value("@", "commit_id")
+        self.run_command("jj", "bookmark", "set", "main", "-r", concurrent)
+        self.assertIn("extend current main", self.session("integrate", "--revision", candidate, ok=False).stderr)
+        self.assertEqual(self.value("main", "commit_id"), concurrent)
+
+    def test_session_rejects_linear_conflicted_candidate(self):
+        self.session("start")
+        (self.root / "baseline").write_text("left")
+        self.run_command("jj", "describe", "-m", "test: left")
+        left = self.value("@", "change_id")
+        self.run_command("jj", "new", "main")
+        (self.root / "baseline").write_text("right")
+        self.run_command("jj", "describe", "-m", "test: right")
+        right = self.value("@", "commit_id")
+        self.run_command("jj", "bookmark", "set", "main", "-r", right)
+        self.run_command("jj", "rebase", "-s", left, "-o", right)
+        self.assertIn("unresolved conflicts", self.session("integrate", "--revision", left, ok=False).stderr)
+        self.assertEqual(self.value("main", "commit_id"), right)
+
+    def test_session_owns_copy_before_creation_and_checks_registration_and_directory(self):
+        self.session("start")
+        self.session("own", "--path", str(self.root), ok=False)
+        copy = self.base / "copy"
+        self.session("own", "--path", str(copy))
+        self.run_command("jj", "workspace", "add", "--name", "task", "-r", "main", str(copy))
+        canonical = self.root
+        self.root = copy
+        candidate = self.candidate()
+        self.session("integrate", "--revision", "@")
+        self.root = canonical
+        self.publish_local(candidate)
+        self.assertIn("secondary workspaces", self.session("finish", ok=False).stderr)
+        self.run_command("jj", "workspace", "forget", "task")
+        self.assertIn("still exists", self.session("finish", ok=False).stderr)
+        shutil.rmtree(copy)
+        self.session("finish")
+
+    def test_session_retains_inherited_wip_and_release_history(self):
+        self.run_command("jj", "tag", "set", "v0.0.1", "-r", "main")
+        (self.root / "wip").write_text("must survive")
+        inherited = self.value("@", "commit_id")
+        self.session("start")
+        copy = self.base / "copy"
+        self.session("own", "--path", str(copy))
+        self.run_command("jj", "workspace", "add", "--name", "task", "-r", "main", str(copy))
+        canonical = self.root
+        self.root = copy
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.root = canonical
+        self.run_command("jj", "bookmark", "set", "main", "-r", candidate)
+        self.run_command("jj", "workspace", "forget", "task")
+        shutil.rmtree(copy)
+        self.session("finish")
+        self.assertEqual(self.value("@", "commit_id"), inherited)
+        self.assertEqual((self.root / "wip").read_text(), "must survive")
+        self.assertTrue(self.value("tags()", "commit_id"))
+
+    def test_session_detects_inherited_wip_and_tag_mutation(self):
+        self.run_command("jj", "tag", "set", "v0.0.1", "-r", "main")
+        (self.root / "wip").write_text("existing")
+        self.session("start")
+        candidate = self.value("main", "commit_id")
+        self.session("integrate", "--revision", candidate)
+        (self.root / "wip").write_text("modified")
+        self.assertIn("inherited working copy changed", self.session("finish", ok=False).stderr)
+        self.run_command("jj", "tag", "delete", "v0.0.1")
+        self.assertIn("release tags changed", self.session("finish", ok=False).stderr)
+
+    def test_session_detects_new_orphan_heads_and_unregistered_clone(self):
+        self.session("start")
+        copy = self.base / "clone"
+        self.session("own", "--path", str(copy))
+        copy.mkdir()
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.publish_local(candidate)
+        self.assertIn("still exists", self.session("finish", ok=False).stderr)
+        copy.rmdir()
+        self.run_command("jj", "new", "main")
+        (self.root / "orphan").write_text("unique")
+        self.run_command("jj", "new", "main")
+        self.assertIn("unreferenced heads", self.session("finish", ok=False).stderr)
+
+    def test_session_preserves_secondary_workspace_and_detects_concurrent_change(self):
+        copy = self.base / "existing"
+        self.run_command("jj", "workspace", "add", "--name", "existing", "-r", "main", str(copy))
+        self.session("start")
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate)
+        self.publish_local(candidate)
+        (copy / "other-work").write_text("concurrent")
+        self.assertIn("secondary work changed", self.session("finish", ok=False).stderr)
+        self.assertEqual((copy / "other-work").read_text(), "concurrent")
+
+    def test_session_checks_live_remote_and_stops_when_fetch_is_stale(self):
+        remote = self.base / "remote.git"
+        self.run_command("git", "init", "-q", "--bare", str(remote))
+        self.run_command("jj", "git", "remote", "add", "origin", str(remote))
+        self.run_command("jj", "git", "push", "--bookmark", "main")
+        self.session("start")
+        candidate = self.candidate()
+        self.session("integrate", "--revision", candidate, "--remote", "origin")
+        other = self.base / "writer"
+        self.run_command("git", "clone", "-q", "-b", "main", str(remote), str(other))
+        canonical = self.root
+        self.root = other
+        self.run_command("git", "config", "user.name", "Fixture")
+        self.run_command("git", "config", "user.email", "fixture@example.test")
+        self.run_command("git", "config", "commit.gpgsign", "false")
+        (other / "concurrent").write_text("other")
+        self.run_command("git", "add", ".")
+        self.run_command("git", "commit", "-qm", "test: concurrent")
+        self.run_command("git", "push", "-q", "origin", "main")
+        self.root = canonical
+        self.assertIn("remote advanced", self.session("integrate", "--revision", candidate, "--remote", "origin", ok=False).stderr)
+
+
 
 class CapabilityTests(GitRepository):
     def install(self):
@@ -251,26 +437,23 @@ class CapabilityTests(GitRepository):
     def standalone(self, **env):
         return subprocess.run(["python3", ".ai-first/check.py"], cwd=self.root, env=dict(self.env, **env), capture_output=True, text=True)
 
-    def test_generated_runtime_is_locked_and_runs_in_standalone(self):
+    def test_standalone_checks_integrity_without_running_local_vcs(self):
         self.install()
         self.assertTrue((self.root / ".ai-first/vcs.py").is_file())
         self.assertEqual(self.standalone().returncode, 0)
         self.merge()
-        self.assertNotEqual(self.standalone().returncode, 0)
+        self.assertEqual(self.standalone(AI_FIRST_VCS_REVISION="missing").returncode, 0)
+        self.assertIn("merge commits", self.check(ok=False).stderr)
 
-    def test_ci_binding_checks_the_proposed_revision(self):
+    def test_shallow_standalone_needs_no_ci_history_binding(self):
         self.install()
         self.run_command("git", "add", ".")
         self.run_command("git", "commit", "-qm", "test: installed contract")
-        initial = self.run_command("git", "rev-parse", "HEAD").stdout.strip()
-        self.merge()
-        proposed = self.run_command("git", "rev-parse", "HEAD").stdout.strip()
-        self.run_command("git", "checkout", "-q", "--detach", initial)
-        self.run_command("git", "branch", "-f", "main", initial)
+        clone = self.base / "standalone"
+        self.run_command("git", "clone", "-q", "--depth=1", self.root.as_uri(), str(clone))
+        self.root = clone
         self.assertEqual(self.standalone().returncode, 0)
-        result = self.standalone(AI_FIRST_VCS_REVISION=proposed)
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn("merge commits", result.stderr)
+        self.assertIn("full history", self.check(ok=False).stderr)
 
     def test_missing_locked_runtime_fails_before_execution(self):
         self.install()

@@ -9,12 +9,8 @@
 
 ## 현재 milestone
 
-활성 repository-owned milestone은 없다. VCS 검사 도입과 활성 소비 adoption을
-검증하고 결과·결정·한계를 owning artifact로 이관했다. 완료 packet과 active pointer를 제거했다.
-`v1.9.0` source·tag·release는 보존하고 legacy current workspace 호환성을
-`v1.9.1`로 보완했다. release source tag와 이후 완료 문서 main은 구별한다.
-구조·책임은 `docs/ARCHITECTURE.md`, 사용법은 `docs/VCS_CLOSEOUT.md`,
-후속 시작 조건은 `docs/roadmap.md`가 소유한다.
+`docs/todo-local-vcs-flow/spec.md`와 `open-questions.md`에 따라 `1.10.0`의
+로컬 시작·선형 통합·마감 연결을 구현·검증 중이다. 기존 stable과 release는 보존한다.
 
 `verification`은 선택형 보조 기능이고 `work-coordination`은 실험적 opt-in이다.
 self-hosting은 verification과 vcs-closeout을 선택한다. 기존 소비자의 verification과

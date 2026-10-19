@@ -8,8 +8,7 @@
 
 ## 진행 중
 
-없음. `v1.9.1` release와 활성 소비 adoption을 검증하고 완료 지식과 한계를
-`docs/completed-milestones.md` 및 `docs/VCS_CLOSEOUT.md`로 이관했다.
+`docs/todo-local-vcs-flow/spec.md`에 따라 로컬 작업 lifecycle을 연결한다.
 
 ## Blocker와 결정 필요
 

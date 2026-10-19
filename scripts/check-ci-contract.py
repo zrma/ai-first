@@ -23,8 +23,6 @@ def main() -> int:
 
     require(workflow, "permissions:\n  contents: read", "read-only permissions missing")
     require(workflow, "persist-credentials: false", "checkout credentials persist")
-    require(workflow, "fetch-depth: 0", "VCS history is shallow")
-    require(workflow, "AI_FIRST_VCS_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}", "actual VCS candidate is not bound")
     require(workflow, "ubuntu-24.04", "runner must be explicit")
     require(workflow, 'python-version: ["3.11", "3.14"]', "Python matrix drifted")
     require(

@@ -179,5 +179,6 @@ framework는 소비 저장소의 native work-start/finalize 명령과 domain art
 VCS 사본을 만들 때 task-local 소유 목록을 남기고 완료 시 등록 정보, 실제 경로,
 고유 history와 기본 working copy를 각각 재확인한다. 정상적인 새 empty working copy는
 잔여물이 아니다. 기존 WIP와 다른 active 작업은 보존하며 미출고 결과에는 설명과
-재개점을 남긴다. 자동 삭제 없이 검사하는 선택형 실행 계약은
+재개점을 남긴다. 작업 시작 기록을 native 시작 절차보다 먼저 만들고 같은 세션으로 통합 직전 검사와
+사본 회수 후 finish를 실행한다. 자동 삭제 없이 검사하는 선택형 실행 계약은
 [VCS closeout](VCS_CLOSEOUT.md)을 따른다.
