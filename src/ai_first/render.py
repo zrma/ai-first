@@ -21,9 +21,11 @@ COORDINATION_OUTPUTS = {
     ".agents/skills/ai-first-work/SKILL.md": "framework/skills/ai-first-work/SKILL.md",
     ".agents/skills/ai-first-work/agents/openai.yaml": "framework/skills/ai-first-work/agents/openai.yaml",
 }
+VCS_OUTPUTS = {".ai-first/vcs.py": "src/ai_first/vcs.py"}
 OPTIONAL_OUTPUTS = {
     "verification": VERIFICATION_OUTPUTS,
     "work-coordination": COORDINATION_OUTPUTS,
+    "vcs-closeout": VCS_OUTPUTS,
 }
 
 
@@ -251,6 +253,15 @@ def _add_optional_outputs(
     """의존성과 경로를 검사한 뒤 선택된 runtime·skill을 입력과 출력에 등록한다."""
     if "work-coordination" in config.profiles and "verification" not in config.profiles:
         raise ConfigError("work-coordination requires the verification profile")
+    if "vcs-closeout" in config.profiles:
+        if "vcs-jj" not in config.profiles:
+            raise ConfigError("vcs-closeout requires the vcs-jj profile")
+        from .vcs import StateError, load_policy
+
+        try:
+            load_policy(config.repo_root)
+        except StateError as error:
+            raise ConfigError(str(error)) from error
     for profile, capability_outputs in OPTIONAL_OUTPUTS.items():
         if profile not in config.profiles:
             continue

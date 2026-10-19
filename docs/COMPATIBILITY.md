@@ -116,6 +116,14 @@ skill/metadata 세 output을 추가한다. runtime은 Python stdlib, Git과 jj�
 자동 cleanup은 포함하지 않는다. 상세 상태와 재개 계약은 `docs/WORK_COORDINATION.md`에 있다.
 기존 profile 미선택 소비자는 변경되지 않는다.
 
+## Optional VCS closeout
+
+`1.9.0`은 `vcs-jj`를 요구하는 선택형 `vcs-closeout`과 `.ai-first/vcs.py`를 추가한다.
+선택 시 standalone gate에 history 검사만 연결하며 local closeout은 별도로 실행한다.
+기존 병합 이력은 repository-owned ancestor checkpoint로 보존할 수 있다. 미선택
+소비자는 바뀌지 않으며 schema 1과 Structure ID를 유지한다. 기존 native 명령과
+release/WIP를 보존한다. 사용법과 CI binding은 `docs/VCS_CLOSEOUT.md`가 소유한다.
+
 ## Source identity
 
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.

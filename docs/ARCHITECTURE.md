@@ -34,6 +34,11 @@ profile은 core의 permission 또는 evidence 기준을 약화할 수 없다.
 제품 acceptance는 유지한다. 자동 publish나 lifecycle 대체가 아닌 실행 도구이며 사용법은
 `docs/WORK_COORDINATION.md`를 따른다.
 
+선택형 `vcs-closeout`은 `vcs-jj` 위에서 실제 후보의 선형 이력과 명시적 local closeout을
+검사한다. 일반 standalone gate는 history만 검사하며 기존 WIP의 보존 분류와 작업 사본
+회수는 종료 시 별도로 확인한다. 사용법과 과거 병합의 고정 기준은
+`docs/VCS_CLOSEOUT.md`가 소유한다.
+
 ### 4. Repository overlay
 
 소비 저장소가 제품 목적, source of truth, architecture, domain invariant, 검증 명령,

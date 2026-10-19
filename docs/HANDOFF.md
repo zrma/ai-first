@@ -10,7 +10,9 @@ signed source/tag·Release·CI와 활성 소비 adoption 결과는
 
 ## 현재 milestone
 
-활성 milestone은 없다. Sol 보완과 리뷰 지침 통합의 release/adoption acceptance를
+현재 작업은 `docs/todo-vcs-closeout/spec.md`의 선형 통합·임시 사본 회수 검사와
+활성 소비 adoption이다. 새 선택형 capability의 목표 버전은 `v1.9.0`이다.
+기존 Sol 보완과 리뷰 지침 통합의 release/adoption acceptance를
 확인하고 결과·결정·한계를 owning artifact에 이관한 뒤 완료 packet과 active pointer를
 정리했다. release source tag와 이후 완료 문서 main은 구별한다.
 구조·책임은 `docs/ARCHITECTURE.md`, 결과는 `docs/completed-milestones.md`,

@@ -18,14 +18,13 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 stable은 [v1.8.2](https://github.com/zrma/ai-first/releases/tag/v1.8.2)이다.
-`1.8.2`는 원래 요구·계약에 따른 테스트 기대값과 유지할 동작 검증, 같은 원인의
-교정 범위를 기존 리뷰 지침에 명확히 한다. 새 skill이나 필수 절차를 추가하지 않는다.
-기존 GPT-6.1 Sol (`gpt-6.1-sol`) baseline과 `1.8.1`의 cache·effort update·
-Ultrafast/data residency·logprobs migration 보완을 유지한다.
-signed source·release와 활성 소비 저장소의 pinned update를 검증했다.
-지침 전달·호환성 검증이며 실제 재작업·시간·비용 감소 효과는 미측정이다.
-결과는 [완료 요약](docs/completed-milestones.md), 현재 상태는 [handoff](docs/HANDOFF.md)가 소유한다.
+`1.9.0`은 선택형 `vcs-closeout` 검사와 `vcs-jj`의 선형 통합·작업 사본 회수 계약을
+제공한다. standalone gate는 실제 후보의 이력을 검사하고, 별도 closeout은 empty working
+copy, workspace·Git 등록, 참조 없는 head와 task-owned 경로를 확인한다. 과거 merge는
+고정된 기준점으로 보존하며 기존 WIP를 명시적으로 유지할 수 있다. 자동 삭제는 하지 않는다.
+기존 schema, model baseline, 제품 native gate와 선택하지 않은 capability를 유지한다.
+실제 signed release와 소비 적용 상태는 [handoff](docs/HANDOFF.md)가 소유한다.
+검사의 실행 증거와 실제 agent의 재작업 감소 효과는 구별하며 후자는 미측정이다.
 
 `1.7.3`은 렌더러의 문서 합성·optional output·binding·lock 책임을 분리하고
 현재 상태 문서와 테스트 구성을 정리한 유지보수 패치다. 기존 CLI·schema·profile과
@@ -41,6 +40,9 @@ signed source·release와 활성 소비 저장소의 pinned update를 검증했�
 `1.7.0`은 공통 interface 검사를 standalone checker에 모아 framework 갱신 때 native
 assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존 profile 선택과 제품 고유
 검증을 유지하며 version/source pin과 generated artifact를 갱신한다.
+
+[VCS 검사](docs/VCS_CLOSEOUT.md)는 `vcs-jj`와 함께 선택하는 기능이다. 후보의 선형
+이력과 작업 종료 상태를 검사하며 기존 WIP와 과거 release를 보존한다.
 
 [검증 workflow](docs/VERIFICATION.md)는 필요할 때 선택하는 보조 기능이다.
 [작업 배정·통합 도구](docs/WORK_COORDINATION.md)는 독립 worker의 범위·revision·재개 관리가

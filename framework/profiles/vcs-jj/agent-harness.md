@@ -12,3 +12,6 @@
 - push 성공은 remote bookmark가 의도한 commit을 가리키는지로 검증한다.
 - empty working-copy change, unbookmarked head와 stale workspace를 같은 잔여물로
   취급하지 않는다.
+- 선형 통합, push 실패 후 후속 mutation 중단, task-owned 임시 사본의 생성·회수는
+  VCS closeout의 별도 postcondition이다. 정상 empty working copy는 잔여물이 아니다.
+  jj 버전에 따라 workspace forget이 Git 등록도 회수하므로 실제 inventory를 재조회한다.

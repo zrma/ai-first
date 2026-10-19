@@ -14,3 +14,12 @@
   요구하면 Git-backed checkout을 colocated `jj`로 관리한다.
 - `rebase`, `squash`, `split`, `abandon`과 published bookmark 이동은 명시적인
   history-mutation permission을 요구한다.
+- 기본 bookmark 통합은 선형 이력을 유지하며 stale push나 동시 변경을 새 merge로
+  우회하지 않는다. 최신 remote 위에 미출고 변경을 선형으로 재적용하고 검증한다.
+  기존 published history와 release ref는 별도 승인 없이 재작성하지 않는다.
+- publication은 fail-fast로 실행한다. push 거절이나 대상 SHA 불일치를 해결하기 전에
+  tag/release 등 후속 mutation을 실행하지 않는다. finalize helper도 기본값으로
+  default bookmark를 이동하지 않으며 성공 뒤 새 empty working copy를 확인한다.
+- task가 만드는 workspace/worktree/별도 clone을 생성 시점부터 task-local 범위에
+  기록한다. 완료·실패 뒤에는 소유한 사본의 unique work·등록·실제 경로를 각각 확인해
+  회수하고, 다른 active/WIP와 기존 고유 이력은 보존한다.

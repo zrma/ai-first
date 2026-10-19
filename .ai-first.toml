@@ -1,7 +1,7 @@
 schema_version = 1
-framework_version = "1.8.2"
+framework_version = "1.9.0"
 source_kind = "development"
-profiles = ["vcs-jj", "public-repository", "openai-agent-guidance", "verification"]
+profiles = ["vcs-jj", "public-repository", "openai-agent-guidance", "verification", "vcs-closeout"]
 
 [project]
 name = "ai-first"
@@ -25,3 +25,6 @@ lock = ".ai-first.lock"
 
 [checks]
 publication = "scripts/check-publication-boundary.py"
+
+[vcs]
+linear_history_base = "675b0a3ff9addf96e56484c11e0d206df9369da5"

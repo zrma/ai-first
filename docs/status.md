@@ -8,7 +8,8 @@
 
 ## 진행 중
 
-없음. Sol 보완을 유지한 리뷰 지침 통합의 `v1.8.2` release/adoption을 완료했다.
+`docs/todo-vcs-closeout/spec.md`: `v1.9.0`의 선택형 VCS 검사와 활성 소비 adoption.
+Sol 보완을 유지한 리뷰 지침 통합의 `v1.8.2` release/adoption은 완료했다.
 결과·검증 범위와 한계는 `docs/completed-milestones.md`가 소유한다.
 
 ## Blocker와 결정 필요

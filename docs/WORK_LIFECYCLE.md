@@ -173,3 +173,11 @@ spec과 결과를 대조하는 완료 검토가 필요하다.
 framework는 소비 저장소의 native work-start/finalize 명령과 domain artifact를
 보존한다. 기존 completed 기록은 원본 보존 필요와 내용의 소유 위치를 검토한 범위에서
 정리하며, 버전 업데이트를 이유로 소비 저장소의 과거 기록을 일괄 삭제하지 않는다.
+
+## VCS 마감
+
+VCS 사본을 만들 때 task-local 소유 목록을 남기고 완료 시 등록 정보, 실제 경로,
+고유 history와 기본 working copy를 각각 재확인한다. 정상적인 새 empty working copy는
+잔여물이 아니다. 기존 WIP와 다른 active 작업은 보존하며 미출고 결과에는 설명과
+재개점을 남긴다. 자동 삭제 없이 검사하는 선택형 실행 계약은
+[VCS closeout](VCS_CLOSEOUT.md)을 따른다.
