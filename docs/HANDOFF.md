@@ -2,8 +2,9 @@
 
 ## 현재 단계
 
-현재 stable은 `v1.10.2`다. GPT-6.2 Sol 지침을 배포하며, 소비 저장소는 검증한
-signed source tag를 고정한다.
+현재 stable은 `v1.10.3`이다. verification 스킬의 framework 갱신 검증 절차를
+보강했다. GPT-6.2 Sol 지침을 포함하며, 소비 저장소는 검증한 signed source tag를
+고정한다.
 로컬 시작·선형 통합·종료 흐름의 실행 계약은 `docs/VCS_CLOSEOUT.md`가 소유한다.
 이전 source/tag/release와 도입 이전 이력은 보존했다.
 
@@ -33,6 +34,9 @@ GPT-6.2 Sol의 Responses 동작과 서비스 조건을 반영한다. 자동 삭�
 4. native 결과, durable history, remote SHA와 사본 회수 후 finish를 확인해 마감한다.
 
 ## 검증과 한계
+
+`v1.10.3`의 갱신 검증 절차는 `docs/COMPATIBILITY.md`와 verification 스킬에서
+확인한다. 아래는 이전 지침·로컬 VCS workflow 출고의 검증 증거다.
 
 - canonical gate: framework 테스트 102개, real Git/Jujutsu fixture, generated/interface,
   publication, navigation 및 기존 CI contract PASS.

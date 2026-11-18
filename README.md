@@ -18,7 +18,7 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 stable은 [v1.10.2](https://github.com/zrma/ai-first/releases/tag/v1.10.2)이다.
+현재 stable은 [v1.10.3](https://github.com/zrma/ai-first/releases/tag/v1.10.3)이다.
 선택형 `vcs-closeout`이 agent 변경 작업의 시작 기록, 작업 사본 소유, 선형 통합과
 회수 후 종료 확인을 하나의 private 로컬 세션으로 연결한다. 공유 Git hook의 임시 경로 참조도 검출한다. generated 지침과 기존
 native start/finalize가 같은 기록을 사용한다. 기존 WIP·고유 history·release는 보존한다.

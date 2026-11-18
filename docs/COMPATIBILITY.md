@@ -145,6 +145,11 @@ canonical 설치 절차를 사용한다. 기존 CLI/schema, profile 선택과 re
 
 ## Source identity
 
+`1.10.3`은 선택형 verification 스킬에 framework 갱신 검증 절차를 추가한다.
+고정한 source의 생성 결과, 소비 저장소의 standalone 검사, 제품별 native gate를
+확인한다. 출고를 포함하면 framework source와 소비 저장소의 원격 revision에
+각각 해당하는 CI 결과를 대조한다. 기존 schema, runtime과 profile 선택을 유지한다.
+
 `1.10.2`는 `openai-agent-guidance`의 GPT-6.2 Sol 기준을 배포한다. Responses의
 대화 prefix와 `instructions` 배치, 캐시 과금, compaction 및 서비스 리전 조건을
 갱신했다. schema 1, Structure ID, CLI, runtime과 기존 profile 선택을 유지한다.
