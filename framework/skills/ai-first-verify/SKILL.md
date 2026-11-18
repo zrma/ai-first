@@ -20,6 +20,16 @@ repository의 native runner와 acceptance 자료는 제품별 판단 근거를 �
 5. native spec의 acceptance와 coverage를 대조하고, runner 밖의 사용자 시나리오는 기존
    browser/live/artifact 검사로 보완한다. 미검증과 기능 미충족을 구분해 보고한다.
 
+## Framework update 검증
+
+framework pin이나 generated output을 갱신하는 작업에는 pin이 가리키는 source의
+`ai-first check`로 생성 결과를 대조하고, 소비 저장소에서 `python3 .ai-first/check.py`로
+생성물과 lock을 독립 검증한다. 제품 검증은 해당 native gate로 실행한다. 연결된
+runner가 빠른 모드라면 그 모드의 coverage를 그대로 보고하고, 저장소가 이번 변경에
+요구하는 full 또는 release gate를 실행한다.
+출고가 범위에 있으면 framework release source와 소비 저장소의 실제 원격 head를 각각
+기록하고, CI 결과는 각 검증 대상 revision과 대조한다.
+
 ## Binding
 
 `.ai-first/verification.toml`은 아래와 같은 작은 adapter다. `argv`는 shell 문자열이

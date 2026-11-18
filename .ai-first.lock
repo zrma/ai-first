@@ -1,6 +1,6 @@
 {
   "framework": {
-    "digest": "f5c6ba2f3b746d44cb34f2923abbd24921dd88886217cdaf417fc6c04bb796be",
+    "digest": "0d1b639f056b2459e838cea9b0fcedd88a6a385e3b4fd67aab84dccc99d21d18",
     "source_commit": null,
     "source_kind": "development",
     "source_revision": null,
@@ -19,7 +19,7 @@
     "framework/profiles/vcs-jj/agent-harness.md": "989884c51bd4f0114de461eaa2cd9927c64c7890ebc1ea7938ee5c6f74137ef7",
     "framework/profiles/verification/AGENTS.md": "d486fb664bf142fdc9fed02e93bc2e9baddf17efa899221d74cc45623e2084e9",
     "framework/profiles/verification/agent-harness.md": "c5bef32f7c89b8a503a74afc5c69aedf1190b780de5b87667d2291d564f90b73",
-    "framework/skills/ai-first-verify/SKILL.md": "efe97070e6fb71497637c8ce0b969802e40a2fcc7f08bdb0a70fd3e9d137026f",
+    "framework/skills/ai-first-verify/SKILL.md": "e668264ec40bb53fbb2553de25365da38acd029827a6a70319d8fe80db08c9b4",
     "framework/skills/ai-first-verify/agents/openai.yaml": "e59e7699bf47a4431b24be5c237a27e61f548b4282db9085b09228befe98c76c",
     "framework/standalone/check.py": "37e126f57b6be940546e8ca306ae55d572d76717cf9ccfaa9c1148a9526f7403",
     "src/ai_first/__init__.py": "a5cbc0f3a828bbf1c470e2913f368cff86a0fcf926baecdc8b8ececa1ee9df78",
@@ -33,7 +33,7 @@
     "src/ai_first/verification.py": "3569bfb5b15b31e76e6257524ced916d36bd454bc0a054218ebba5d11078b8dc"
   },
   "outputs": {
-    ".agents/skills/ai-first-verify/SKILL.md": "efe97070e6fb71497637c8ce0b969802e40a2fcc7f08bdb0a70fd3e9d137026f",
+    ".agents/skills/ai-first-verify/SKILL.md": "e668264ec40bb53fbb2553de25365da38acd029827a6a70319d8fe80db08c9b4",
     ".agents/skills/ai-first-verify/agents/openai.yaml": "e59e7699bf47a4431b24be5c237a27e61f548b4282db9085b09228befe98c76c",
     ".ai-first/check.py": "37e126f57b6be940546e8ca306ae55d572d76717cf9ccfaa9c1148a9526f7403",
     ".ai-first/vcs.py": "b325ad909e3ac888a3a1bb73c2f1711a32d1f1b1a5abd3d27eca7ee58f43b8ef",
