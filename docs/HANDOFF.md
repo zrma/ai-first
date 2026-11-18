@@ -2,8 +2,8 @@
 
 ## 현재 단계
 
-`v1.10.2`는 GPT-6.2 Sol 지침을 배포하는 패치 릴리스다. signed source tag가
-소비 저장소의 canonical source다.
+현재 stable은 `v1.10.2`다. GPT-6.2 Sol 지침을 배포하며, 소비 저장소는 검증한
+signed source tag를 고정한다.
 로컬 시작·선형 통합·종료 흐름의 실행 계약은 `docs/VCS_CLOSEOUT.md`가 소유한다.
 이전 source/tag/release와 도입 이전 이력은 보존했다.
 
@@ -36,9 +36,10 @@ GPT-6.2 Sol의 Responses 동작과 서비스 조건을 반영한다. 자동 삭�
 
 - canonical gate: framework 테스트 102개, real Git/Jujutsu fixture, generated/interface,
   publication, navigation 및 기존 CI contract PASS.
-- source: signed annotated `v1.10.1`, remote tag/source equality와 fresh-clone gate PASS.
-- 소비 갱신: source/render/standalone, 각 native gate, 선형 후보와 remote head,
-  task-owned 사본 회수와 실제 세션 finish를 확인했다. 원격 CI는 private 출고 증거로 별도 대조한다.
+- source: signed annotated `v1.10.2`, 원격 태그 및 소스 일치, 새 clone의 필수 검사와
+  릴리스 소스의 Python 3.11/3.14 CI를 확인했다.
+- 소비 갱신: release pin, render/standalone, 각 native gate, 원격 head와 같은 커밋의
+  CI를 대조한다. 소비 저장소별 결과는 machine-local 출고 기록에 둔다.
 - 기존 WIP·고유 북마크·release/tag/배포 자산 identity를 시작 기록과 대조했다.
 - native runner의 의도된 내부 skip은 해당 명령의 검증 범위와 구별한다.
 - 지침·명령 회귀와 이번 실제 적용의 증거이며 향후 모든 agent의 준수나 재작업·시간·
