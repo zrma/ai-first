@@ -44,7 +44,7 @@ publication:
   ci_status: passing
   private_vulnerability_reporting: enabled
   license_status: Apache-2.0
-  stable_release: v1.10.1
+  stable_release: v1.10.2
   policy: docs/PUBLICATION.md
 
 vcs:

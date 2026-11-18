@@ -2,8 +2,8 @@
 
 ## 현재 단계
 
-현재 published stable은 `v1.10.1`이다. signed source tag와 원격 source identity,
-fresh clone의 canonical gate 및 동일 source SHA의 Python 3.11/3.14 CI를 확인했다.
+`v1.10.2`는 GPT-6.2 Sol 지침을 배포하는 패치 릴리스다. signed source tag가
+소비 저장소의 canonical source다.
 로컬 시작·선형 통합·종료 흐름의 실행 계약은 `docs/VCS_CLOSEOUT.md`가 소유한다.
 이전 source/tag/release와 도입 이전 이력은 보존했다.
 
@@ -20,7 +20,7 @@ standalone은 생성물 무결성만 검사하고 로컬 절차를 CI나 서버 
 제품 native CI를 유지하며 공통 VCS 후보 binding만 제거했다.
 
 `verification`은 선택형 보조 기능, `work-coordination`은 실험적 opt-in이다.
-기존 profile 선택·overlay·native lifecycle은 유지했다. `main`의 OpenAI provider profile은
+기존 profile 선택·overlay·native lifecycle은 유지했다. OpenAI provider profile은
 GPT-6.2 Sol의 Responses 동작과 서비스 조건을 반영한다. 자동 삭제·push,
 임의 명령의 강제 차단, 외부 clone 전수 발견과 장기 행동 개선은 보증하지 않는다.
 

@@ -18,7 +18,7 @@ AI는 맥락 복원, 다음 과제 발견, 계획, 구현, 검증, 문서화와 
 
 ## 현재 상태
 
-현재 stable은 [v1.10.1](https://github.com/zrma/ai-first/releases/tag/v1.10.1)이다.
+현재 stable은 [v1.10.2](https://github.com/zrma/ai-first/releases/tag/v1.10.2)이다.
 선택형 `vcs-closeout`이 agent 변경 작업의 시작 기록, 작업 사본 소유, 선형 통합과
 회수 후 종료 확인을 하나의 private 로컬 세션으로 연결한다. 공유 Git hook의 임시 경로 참조도 검출한다. generated 지침과 기존
 native start/finalize가 같은 기록을 사용한다. 기존 WIP·고유 history·release는 보존한다.
@@ -52,7 +52,7 @@ assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존
 필요한 경우를 위한 실험적 opt-in이다. 소비 저장소 갱신 시 새 runtime이나 binding을
 일괄 추가하지 않는다. 작은 작업은 기존 native 명령과 흐름으로 수행한다.
 
-model/vendor 중립적인 core와 기존 schema/Structure ID를 유지한다. `main`의 provider
+model/vendor 중립적인 core와 기존 schema/Structure ID를 유지한다. OpenAI provider
 profile 기준은 GPT-6.2 Sol (`gpt-6.2-sol`)이다. 선언에서 core, profile과 overlay를
 결정적으로 합성하며 central/standalone check가 같은 lock을 검증한다.
 기존 spec의 의도·제약·acceptance와 diff/evidence를 대조하고 완료 지식을 owning artifact로

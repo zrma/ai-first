@@ -145,6 +145,11 @@ canonical 설치 절차를 사용한다. 기존 CLI/schema, profile 선택과 re
 
 ## Source identity
 
+`1.10.2`는 `openai-agent-guidance`의 GPT-6.2 Sol 기준을 배포한다. Responses의
+대화 prefix와 `instructions` 배치, 캐시 과금, compaction 및 서비스 리전 조건을
+갱신했다. schema 1, Structure ID, CLI, runtime과 기존 profile 선택을 유지한다.
+소비자는 release pin과 생성물을 함께 갱신한다.
+
 `.ai-first.toml`은 framework source를 다음 중 하나로 고정한다.
 
 - `development`: revision 없음. framework 자체 개발과 local experiment 전용.
