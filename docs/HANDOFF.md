@@ -20,7 +20,8 @@ standalone은 생성물 무결성만 검사하고 로컬 절차를 CI나 서버 
 제품 native CI를 유지하며 공통 VCS 후보 binding만 제거했다.
 
 `verification`은 선택형 보조 기능, `work-coordination`은 실험적 opt-in이다.
-기존 profile·overlay·native lifecycle과 model baseline은 유지했다. 자동 삭제·push,
+기존 profile 선택·overlay·native lifecycle은 유지했다. `main`의 OpenAI provider profile은
+GPT-6.2 Sol의 Responses 동작과 서비스 조건을 반영한다. 자동 삭제·push,
 임의 명령의 강제 차단, 외부 clone 전수 발견과 장기 행동 개선은 보증하지 않는다.
 
 ## 시작 순서

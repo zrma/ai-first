@@ -1,6 +1,6 @@
 {
   "framework": {
-    "digest": "946ae83d045013591ea588f46f9a6251f4904b91f0834151ab7e1650bf995df8",
+    "digest": "46da2d53bb10cbaa0939dd444362b70e813fa73881413bc323c6386a73c745ce",
     "source_commit": null,
     "source_kind": "development",
     "source_revision": null,
@@ -9,8 +9,8 @@
   "framework_inputs": {
     "framework/core/AGENTS.md": "2dd6a0393e8d6dd0008b778157b7a33c7409d115cada23988406fc6e705eb6a6",
     "framework/core/agent-harness.md": "e8b5719d2349b059250f1865428b1195ac7c4d410a1863fc00414807b54786a7",
-    "framework/profiles/openai-agent-guidance/AGENTS.md": "843ff930cb3afcbc53030fdc257accb32a23ce3cd14726eb07b20a7732f12089",
-    "framework/profiles/openai-agent-guidance/agent-harness.md": "9a8a7d48db861ae9b7670323c7c8c98dc733f722a2c5c160e574a71c0d35f9da",
+    "framework/profiles/openai-agent-guidance/AGENTS.md": "08250230b632f0cef71d59ba48a868b0618e3dd486e3c890e5a34e25a290985f",
+    "framework/profiles/openai-agent-guidance/agent-harness.md": "283e6ad4fbd840642b771d364349ccd26bbefe7499d1ebf45207b68759714442",
     "framework/profiles/public-repository/AGENTS.md": "b07ac20c9e1611c7e98c5978ec385ca0560363c4b3f55f0a84399791aee7c917",
     "framework/profiles/public-repository/agent-harness.md": "4704a09b288b0afb5527c983f52b9ee28b4077c1876fb02c38b43b588b88afd9",
     "framework/profiles/vcs-closeout/AGENTS.md": "4f7bd93fd1bb77c51c31522c021ed255d429a106dcd0868a3afa75babb3635ff",
@@ -38,8 +38,8 @@
     ".ai-first/check.py": "37e126f57b6be940546e8ca306ae55d572d76717cf9ccfaa9c1148a9526f7403",
     ".ai-first/vcs.py": "b325ad909e3ac888a3a1bb73c2f1711a32d1f1b1a5abd3d27eca7ee58f43b8ef",
     ".ai-first/verify.py": "3569bfb5b15b31e76e6257524ced916d36bd454bc0a054218ebba5d11078b8dc",
-    "AGENTS.md": "d7115d5c561ba7c98944ff38d6dad46869f878bed86b2bb74501422691997d84",
-    "docs/agent-harness.md": "f77ffcdf774784672716949bd8c2150e114283b9919f6cfa75da466eeecc62d9"
+    "AGENTS.md": "75a2a30391cbaf3371e6d517fe66f6e2f34d092da2eb35d2325d3901562b650f",
+    "docs/agent-harness.md": "44d8b722550cf9f46013f60b9ecad9e90f18856400de298f94ccf6a3483c5e6e"
   },
   "profiles": [
     "vcs-jj",

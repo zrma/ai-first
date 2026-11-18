@@ -25,7 +25,7 @@ native start/finalize가 같은 기록을 사용한다. 기존 WIP·고유 histo
 
 일반 standalone은 입력·생성물 무결성을 검사하고 로컬 lifecycle 검사는 통합·종료
 시점에 명시적으로 실행한다. 공통 검사 때문에 추가한 CI 후보 binding은 제거했다.
-제품 native gate와 CI, schema와 model baseline은 유지하며 도구가 자동 삭제·push하지 않는다.
+제품 native gate와 CI, schema를 유지하며 도구가 자동 삭제·push하지 않는다.
 검증 범위와 한계는 [handoff](docs/HANDOFF.md), 실행 계약은
 [VCS workflow](docs/VCS_CLOSEOUT.md)가 소유한다. 실제 장기 agent 행동 개선은 미측정이다.
 
@@ -52,8 +52,8 @@ assertion을 반복 수정하는 비용을 줄인다. 소비 저장소는 기존
 필요한 경우를 위한 실험적 opt-in이다. 소비 저장소 갱신 시 새 runtime이나 binding을
 일괄 추가하지 않는다. 작은 작업은 기존 native 명령과 흐름으로 수행한다.
 
-model/vendor 중립적인 core와 기존 schema/Structure ID를 유지하며 provider profile의
-baseline은 GPT-6.1 Sol (`gpt-6.1-sol`)이다. 선언에서 core, profile과 overlay를
+model/vendor 중립적인 core와 기존 schema/Structure ID를 유지한다. `main`의 provider
+profile 기준은 GPT-6.2 Sol (`gpt-6.2-sol`)이다. 선언에서 core, profile과 overlay를
 결정적으로 합성하며 central/standalone check가 같은 lock을 검증한다.
 기존 spec의 의도·제약·acceptance와 diff/evidence를 대조하고 완료 지식을 owning artifact로
 이관하는 계약도 유지한다.
